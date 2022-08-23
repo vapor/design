@@ -26,7 +26,7 @@ $custom-colors: (
 );
 
 // Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors)
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica, sans-serif;
