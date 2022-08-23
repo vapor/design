@@ -15,7 +15,7 @@ brew install sass/sass/sass
 Then you can build and watch the code with:
 
 ```bash
-sass src:.dist
+sass --watch src/scss/main.scss .dist/style.css
 ```
 
 ### Running the demo site
@@ -23,7 +23,7 @@ sass src:.dist
 To run the demo site do:
 
 ```bash
-sass --watch src:Example/dist
+sass --watch src/scss/main.scss Example/dist/style.css
 ```
 
 Then start a web server to view the file:

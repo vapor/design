@@ -1,7 +1,3 @@
-@import "../bootstrap-5.2.0/scss/bootstrap";
-
-// Do not edit above this line unless changing Bootstrap version
-
 // Create the Vapor color map
 $custom-colors: (
   "blue-500": #135b80,
@@ -24,9 +20,6 @@ $custom-colors: (
   "grey-200": #F0F0F7,
   "grey-100": #FAFAFD,
 );
-
-// Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors);
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica, sans-serif;
@@ -77,27 +70,3 @@ $font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI 
 body {
     font-feature-settings: 'salt' on;
 }
-
-// /* Instance */
-
-// box-sizing: border-box;
-
-// /* Auto layout */
-// display: flex;
-// flex-direction: row;
-// justify-content: center;
-// align-items: center;
-// padding: 0px;
-
-// width: 196px;
-// height: 104px;
-
-// border-width: 0px 1px 1px 0px;
-// border-style: dashed;
-// border-color: #9747FF;
-
-// /* Inside auto layout */
-// flex: none;
-// order: 0;
-// align-self: stretch;
-// flex-grow: 0;

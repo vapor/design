@@ -1,0 +1,5 @@
+@import "vapor/vapor";
+@import "bootstrap-overrides";
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
