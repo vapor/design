@@ -33,43 +33,42 @@ $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica, sans-s
 $font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
 // Vapor Fonts
-/* ----- Roboto ----- */
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('../fonts/GeneraGrotesk-Regular.woff2') format("woff2");
+    src: url('/dist/fonts/GeneraGrotesk-Regular.woff2') format("woff2");
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('../fonts/GeneraGrotesk-Italic.woff2') format("woff2");
+    src: url('/dist/fonts/GeneraGrotesk-Italic.woff2') format("woff2");
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('../fonts/GeneraGrotesk-Medium.woff2') format("woff2");
+    src: url('/dist/fonts/GeneraGrotesk-Medium.woff2') format("woff2");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('../fonts/GeneraGrotesk-MediumItalic.woff2') format("woff2");
+    src: url('/dist/fonts/GeneraGrotesk-MediumItalic.woff2') format("woff2");
     font-weight: 500;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('../fonts/GeneraGrotesk-Bold.woff2') format("woff2");
+    src: url('/dist/fonts/GeneraGrotesk-Bold.woff2') format("woff2");
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('../fonts/GeneraGrotesk-BoldItalic.woff2') format("woff2");
+    src: url('/dist/fonts/GeneraGrotesk-BoldItalic.woff2') format("woff2");
     font-weight: 700;
     font-style: italic;
 }

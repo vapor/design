@@ -15,8 +15,24 @@ brew install sass/sass/sass
 Then you can build and watch the code with:
 
 ```bash
-sass --watch src:.dist
+sass src:.dist
 ```
+
+### Running the demo site
+
+To run the demo site do:
+
+```bash
+sass --watch src:Example/dist
+```
+
+Then start a web server to view the file:
+
+```bash
+python -m http.server 9000 --directory Example/
+```
+
+Then open the site at http://localhost:9000
 
 ## Copyright
 
