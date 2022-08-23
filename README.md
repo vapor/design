@@ -4,6 +4,20 @@ This repo contains all of the materials used for building out Vapor's design acr
 
 There is an example site in [Example](/Example/) to show you how it's used.
 
+## Running
+
+To build the design files you'll need [Sass](https://sass-lang.com/) installed:
+
+```bash
+brew install sass/sass/sass
+```
+
+Then you can build and watch the code with:
+
+```bash
+sass --watch src:.dist
+```
+
 ## Copyright
 
 All the designs and images in this repository are the copyright of Vapor and QuTheory LLC and not part of Vapor's open source code.
