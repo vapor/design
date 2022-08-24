@@ -75,3 +75,10 @@ $font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI 
 body {
     font-feature-settings: 'salt' on;
 }
+
+#theme-switch {
+    width: 22px;
+    height: 22px;
+    display: block;
+    background-size: 22px 22px;
+}
