@@ -77,8 +77,24 @@ body {
 }
 
 #theme-switch {
-    width: 22px;
-    height: 22px;
+
+}
+
+.vapor-icon {
+    width: 1em;
+    height: 1em;
     display: block;
-    background-size: 22px 22px;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+nav {
+    .vapor-icon {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+.icon-github-fill {
+    background: url(/dist/images/github-fill.svg);
 }

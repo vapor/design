@@ -9,11 +9,49 @@
     <script src="/dist/js/detectColorScheme.js"></script>
   </head>
   <body>
-    <!-- <label class="btn btn-primary" for="checkbox-theme" id="theme-switch">
-        Toggle Dark Mode
-        <input type="checkbox" class="btn-check" autocomplete="off" id="checkbox-theme">
-    </label> -->
-    <a href="#" id="theme-switch" aria-label="Toggle dark mode"></a>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-3" href="#">
+                <img src="/dist/images/logo-main-black.svg" alt="Vapor Logo" width="130" height="50" class="d-inline-block align-text-top">
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse me-3" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Showcase</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Documentation
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Framework Docs</a></li>
+                  <li><a class="dropdown-item" href="#">API Docs</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Community</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><span class="vapor-icon icon-github-fill"></span></a>
+              </li>
+              <li class="nav-item">
+                <a href="#" id="theme-switch" aria-label="Toggle dark mode">
+                    <span class="vapor-icon" id="theme-switch-icon"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
 
     <h1>Hello, world!</h1>
 
@@ -27,6 +65,6 @@
     <button type="button" class="btn btn-secondary">Secondary</button>
 
     <script src="/dist/js/toggleDarkMode.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>
