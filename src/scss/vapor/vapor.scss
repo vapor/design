@@ -1,3 +1,5 @@
+@import "../bootstrap-overrides";
+
 // Create the Vapor color map
 $custom-colors: (
   "blue-500": #135b80,
@@ -20,6 +22,9 @@ $custom-colors: (
   "grey-200": #F0F0F7,
   "grey-100": #FAFAFD,
 );
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica, sans-serif;
