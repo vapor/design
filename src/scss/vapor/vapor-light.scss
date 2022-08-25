@@ -2,10 +2,11 @@
 
 $nav-link-action-color-light: $grey-800;
 $heading-color-light: $grey-900;
+$nav-link-color-light: $grey-600;
 
 #theme-switch-icon {
     background-position: center;
-    background-color: $grey-600;
+    background-color: $nav-link-color-light;
     -webkit-mask-image: url(/dist/images/sun.svg);
     -webkit-mask-position: center;
     mask-image: url(/dist/images/sun.svg);
@@ -62,4 +63,28 @@ h6 {
 
 .blog-description {
     color: $grey-700;
+}
+
+footer {
+    background: $grey-200;
+    border-top: 1px solid $grey-300;
+    color: $nav-link-color-light;
+
+    li {
+        a {
+            color: $nav-link-color-light;
+        }
+        
+        a:hover {
+            color: $nav-link-action-color-light;
+        }
+    }
+
+    h6 {
+        color: $nav-link-action-color-light;
+    }
+
+    .vapor-icon {
+        background-color: $nav-link-color-light;
+    }
 }

@@ -105,4 +105,38 @@
             color: $blog-content-heading-color-dark;
         }
     }
+
+    $footer-link-color-dark: $grey-600;
+
+    footer {
+        background: $off-black;
+        border-top: 1px solid $grey-800;
+        color: $footer-link-color-dark;
+    
+        li {
+            a {
+                color: $footer-link-color-dark;
+            }
+            
+            a:hover {
+                color: $nav-link-action-color-dark;
+            }
+        }
+    
+        h6 {
+            color: $nav-link-action-color-dark;
+        }
+    
+        .vapor-icon {
+            background-color: $nav-link-action-color-dark;
+        }
+
+        .vapor-icon:hover {
+            background-color: $grey-200;
+        }
+
+        #footer-copyright {
+            color: $nav-link-action-color-dark
+        } 
+    }
 }
