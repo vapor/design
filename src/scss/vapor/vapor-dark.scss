@@ -1,6 +1,9 @@
 @import "vapor";
 
 .dark {
+    $heading-color-dark: $grey-100;
+    $nav-link-action-color-dark: $grey-400;
+
     body {
         background: $grey-900;
         color: $grey-700;
@@ -19,7 +22,7 @@
     }
 
     #theme-switch-icon:hover {
-        background-color: $grey-400;
+        background-color: $nav-link-action-color-dark;
     }
 
     .navbar {
@@ -33,17 +36,42 @@
 
     a:hover {
         .vapor-icon {
-            background-color: $grey-400;
+            background-color: $nav-link-action-color-dark;
         }
     }
 
     .nav-link:hover {
-        color: $grey-400;
+        color: $nav-link-action-color-dark;
     }
 
     .navbar-nav {
         .nav-link.active {
-            color: $grey-400;
+            color: $nav-link-action-color-dark;
         }
     }
+
+    h1 {
+        color: $heading-color-dark;
+    }
+
+    h2 {
+        color: $heading-color-dark;
+    }
+
+    h3 {
+        color: $heading-color-dark;
+    }
+
+    h4 {
+        color: $heading-color-dark;
+    }
+
+    h5 {
+        color: $heading-color-dark;
+    }
+
+    h6 {
+        color: $heading-color-dark;
+    }
+
 }

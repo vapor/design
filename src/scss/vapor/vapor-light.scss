@@ -1,5 +1,8 @@
 @import "vapor";
 
+$nav-link-action-color-light: $grey-800;
+$heading-color-light: $grey-900;
+
 .vapor-container {
     color: $pink-500;
 }
@@ -14,12 +17,12 @@
 }
 
 #theme-switch-icon:hover {
-    background-color: $grey-800;
+    background-color: $nav-link-action-color-light;
 }
 
 a:hover {
     .vapor-icon {
-        background-color: $grey-800;
+        background-color: $nav-link-action-color-light;
     }
 }
 
@@ -35,4 +38,28 @@ a:hover {
 body {
     background: white;
     color: $grey-700;
+}
+
+h1 {
+    color: $heading-color-light;
+}
+
+h2 {
+    color: $heading-color-light;
+}
+
+h3 {
+    color: $heading-color-light;
+}
+
+h4 {
+    color: $heading-color-light;
+}
+
+h5 {
+    color: $heading-color-light;
+}
+
+h6 {
+    color: $heading-color-light;
 }
