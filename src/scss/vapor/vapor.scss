@@ -132,6 +132,23 @@ $navbar-light-active-color: $grey-800;
     mask-position: center;
 }
 
+.icon-twitter-fill {
+    -webkit-mask-image: url(/dist/images/twitter-fill.svg);
+    -webkit-mask-position: center;
+    mask-image: url(/dist/images/twitter-fill.svg);
+    mask-position: center;
+}
+
 .dropdown-no-outline {
     outline: 0;
+}
+
+.blog-description {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+.vapor-container {
+    max-width: 720px;
 }

@@ -6,11 +6,7 @@
 
     body {
         background: $grey-900;
-        color: $grey-700;
-    }
-
-    .vapor-container {
-        color: $blue-500;
+        color: $grey-500;
     }
 
     #theme-switch-icon {
@@ -74,4 +70,39 @@
         color: $heading-color-dark;
     }
 
+    .blog-description {
+        color: $grey-500;
+    }
+
+    .blog-container {
+        color: $grey-400;
+    }
+
+    $blog-content-heading-color-dark: $grey-300;
+
+    .blog-content {
+        h1 {
+            color: $blog-content-heading-color-dark;
+        }
+    
+        h2 {
+            color: $blog-content-heading-color-dark;
+        }
+    
+        h3 {
+            color: $blog-content-heading-color-dark;
+        }
+    
+        h4 {
+            color: $blog-content-heading-color-dark;
+        }
+    
+        h5 {
+            color: $blog-content-heading-color-dark;
+        }
+    
+        h6 {
+            color: $blog-content-heading-color-dark;
+        }
+    }
 }

@@ -3,10 +3,6 @@
 $nav-link-action-color-light: $grey-800;
 $heading-color-light: $grey-900;
 
-.vapor-container {
-    color: $pink-500;
-}
-
 #theme-switch-icon {
     background-position: center;
     background-color: $grey-600;
@@ -62,4 +58,8 @@ h5 {
 
 h6 {
     color: $heading-color-light;
+}
+
+.blog-description {
+    color: $grey-700;
 }
