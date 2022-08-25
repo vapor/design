@@ -3,6 +3,7 @@
 .dark {
     body {
         background: $grey-900;
+        color: $grey-700;
     }
 
     .vapor-container {
@@ -17,6 +18,10 @@
         mask-position: center;
     }
 
+    #theme-switch-icon:hover {
+        background-color: $grey-400;
+    }
+
     .navbar {
         background: linear-gradient(180deg, $grey-900 0%, rgba($grey-900, 0) 100%);
     }
@@ -24,5 +29,21 @@
     #vapor-logo {
         background: url(/dist/images/logo-main-white.svg);
         background-position: center;
+    }
+
+    a:hover {
+        .vapor-icon {
+            background-color: $grey-400;
+        }
+    }
+
+    .nav-link:hover {
+        color: $grey-400;
+    }
+
+    .navbar-nav {
+        .nav-link.active {
+            color: $grey-400;
+        }
     }
 }

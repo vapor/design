@@ -112,7 +112,9 @@ nav {
     }
 }
 
-$nav-link-color: $grey-600;
+$navbar-light-color: $grey-600;
+$navbar-light-hover-color: $grey-800;
+$navbar-light-active-color: $grey-800;
 
 #vapor-navbar {
     height: 80px;
