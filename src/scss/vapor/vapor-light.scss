@@ -11,6 +11,8 @@ $nav-link-color-light: $grey-600;
     -webkit-mask-position: center;
     mask-image: url(/dist/images/sun.svg);
     mask-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #theme-switch-icon:hover {
@@ -26,6 +28,15 @@ a:hover {
 #vapor-logo {
     background: url(/dist/images/logo-main-black.svg);
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#vapor-logo-footer {
+    background: url(/dist/images/logo-main-black.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .navbar {
@@ -87,4 +98,8 @@ footer {
     .vapor-icon {
         background-color: $nav-link-color-light;
     }
+}
+
+hr {
+    color: $grey-300;
 }

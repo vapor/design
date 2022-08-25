@@ -15,6 +15,8 @@
         -webkit-mask-position: center;
         mask-image: url(/dist/images/moon-01.svg);
         mask-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     #theme-switch-icon:hover {
@@ -28,6 +30,15 @@
     #vapor-logo {
         background: url(/dist/images/logo-main-white.svg);
         background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #vapor-logo-footer {
+        background: url(/dist/images/logo-main-white.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     a:hover {
@@ -138,5 +149,9 @@
         #footer-copyright {
             color: $nav-link-action-color-dark
         } 
+    }
+
+    hr {
+        color: $grey-800;
     }
 }
