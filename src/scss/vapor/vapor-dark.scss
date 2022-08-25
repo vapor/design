@@ -1,4 +1,4 @@
-// @import "../bootstrap-overrides";
+@import "vapor";
 
 .dark {
     .vapor-container {
@@ -7,6 +7,15 @@
 
     #theme-switch-icon {
         background: url(/dist/images/moon-01.svg);
+        background-position: center;
+    }
+
+    .navbar {
+        background: linear-gradient(180deg, $grey-900 0%, rgba($grey-900, 0) 100%);
+    }
+
+    #vapor-logo {
+        background: url(/dist/images/logo-main-white.svg);
         background-position: center;
     }
 }

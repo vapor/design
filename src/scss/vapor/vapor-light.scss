@@ -6,3 +6,12 @@
     background: url(/dist/images/sun.svg);
     background-position: center;
 }
+
+#vapor-logo {
+    background: url(/dist/images/logo-main-black.svg);
+    background-position: center;
+}
+
+.navbar {
+    background: linear-gradient(180deg, $grey-100 0%, rgba($grey-100, 0) 100%);
+}
