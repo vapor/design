@@ -76,10 +76,6 @@ body {
     font-feature-settings: 'salt' on;
 }
 
-#theme-switch {
-
-}
-
 .vapor-icon {
     width: 1em;
     height: 1em;
@@ -97,4 +93,5 @@ nav {
 
 .icon-github-fill {
     background: url(/dist/images/github-fill.svg);
+    background-position: center;
 }
