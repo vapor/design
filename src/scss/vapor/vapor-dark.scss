@@ -1,6 +1,10 @@
 @import "vapor";
 
 .dark {
+    body {
+        background: $grey-900;
+    }
+
     .vapor-container {
         color: $blue-500;
     }
