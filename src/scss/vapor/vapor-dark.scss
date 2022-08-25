@@ -6,8 +6,11 @@
     }
 
     #theme-switch-icon {
-        background: url(/dist/images/moon-01.svg);
-        background-position: center;
+        background-color: $grey-600;
+        -webkit-mask-image: url(/dist/images/moon-01.svg);
+        -webkit-mask-position: center;
+        mask-image: url(/dist/images/moon-01.svg);
+        mask-position: center;
     }
 
     .navbar {
