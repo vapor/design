@@ -76,6 +76,74 @@
           Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. 
           Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat. 
         </p>
+
+        <pre>
+          <code class="language-swift">
+            struct CreateTodoTitleIndex: AsyncMigration {
+              func prepare(on database: Database) async throws {
+                  try await (database as! SQLDatabase)
+                      .create(index: "todo_index")
+                      .on("todos")
+                      .column("title")
+                      .run()
+              }
+
+              func revert(on database: Database) async throws {
+                  try await (database as! SQLDatabase)
+                      .drop(index: "todo_index")
+                      .run()
+              }
+            }
+          </code>
+        </pre>
+
+        <blockquote>
+          “Hendrerit amet nibh dui ut in feugiat pellentesque. Sed consectetur blandit lectus arcu lacus libero diam. Nulla turpis etiam non et, adipiscing. 
+          Egestas at vitae, at purus accumsan fermentum. Sed quis sed nulla malesuada.""
+        </blockquote>
+
+        <p>
+          Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. 
+          Tempor integer aliquam in vitae malesuada fringilla.
+        </p>
+        <p>
+          Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis risus. Sed condimentum enim 
+          dignissim adipiscing faucibus consequat, urna. Viverra purus et erat auctor aliquam. Risus, volutpat vulputate posuere purus 
+          sit congue convallis aliquet. Arcu id augue ut feugiat donec porttitor neque. Mauris, neque ultricies eu vestibulum, bibendum quam 
+          lorem id. Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.
+        </p>
+        <p>
+          Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque congue eget consectetur turpis. 
+          Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus. Quis velit 
+          eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.
+        </p>
+
+        <h3>Software and Tools</h3>
+
+        <p>
+          Pharetra morbi libero id aliquam elit massa integer tellus. Quis felis aliquam ullamcorper porttitor. 
+          Pulvinar ullamcorper sit dictumst ut eget a, elementum eu. Maecenas est morbi mattis id in ac pellentesque ac.
+        </p>
+      </div>
+
+      <hr>
+
+      <div id="blog-post-bottom" class="d-flex">
+        <div id="blog-bottom-tags">
+          <ul>
+            <li>Vapor</li>
+            <li>Swift</li>
+            <li>Framework</li>
+          </ul>
+        </div>
+        <div id="blog-bottom-share" class="ms=auto">
+          <ul>
+            <li><a><span class="vapor-icon icon-copy-06"></span> Copy Link</a></li>
+            <li><a><span class="vapor-icon icon-twitter-fill"></a></li>
+            <li><a><span class="vapor-icon icon-reddit-fill"></a></li>
+            <li><a><span class="vapor-icon icon-facebook-circle-fill"></a></li>
+          </ul>
+        </div>
       </div>
 
       <button type="button" class="vapor-btn btn btn-primary">Primary</button>

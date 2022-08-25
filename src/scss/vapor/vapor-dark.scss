@@ -7,6 +7,10 @@
     body {
         background: $grey-900;
         color: $grey-500;
+        background-image: url(/dist/images/main-background-dark.jpg);
+        background-position: top; 
+        background-repeat: no-repeat;
+        background-size: 100% 500px;
     }
 
     #theme-switch-icon {

@@ -46,6 +46,10 @@ a:hover {
 body {
     background: white;
     color: $grey-700;
+    background-image: url(/dist/images/main-background-light.jpg);
+    background-position: top; 
+    background-repeat: no-repeat;
+    background-size: 100% 500px;
 }
 
 h1 {
