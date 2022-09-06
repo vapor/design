@@ -135,7 +135,7 @@ $navbar-light-active-color: $grey-800;
     outline: 0;
 }
 
-.blog-description {
+#blog-description {
     font-size: 20px;
     line-height: 30px;
     font-weight: 400;
@@ -291,4 +291,19 @@ footer {
 
 #blog-time-tag-container {
     display: inline-block;
+}
+
+#blog-post-author-image {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#blog-post-author-name {
+    color: $grey-700;
+}
+
+#blog-post-publish-date {
+    color: $grey-600;
 }
