@@ -107,3 +107,33 @@ footer {
 hr {
     color: $grey-300;
 }
+
+.btn-secondary {
+    --#{$prefix}btn-bg: $grey-200;
+    --#{$prefix}btn-border-color: 1px solid rgba($pink-300, 0.1);
+    background: $grey-200;
+    border: 1px solid rgba($pink-300, 0.1);
+    --#{$prefix}btn-color: $pink-300;
+    color: $pink-300;
+
+    .vapor-icon {
+        background-color: $pink-300;
+    }
+}
+
+.btn-secondary:hover {
+    color: $pink-400;
+    background: $grey-300;
+    --#{$prefix}btn-bg: $grey-300;
+    --#{$prefix}btn-border-color: 1px solid rgba($pink-400, 0.1);
+    border: 1px solid rgba($pink-400, 0.1);
+    .vapor-icon {
+        background-color: $pink-400;
+    }
+}
+
+.btn-primary:hover {
+    --#{$prefix}btn-hover-bg: linear-gradient(180deg, $pink-400 0%, $pink-500 100%);
+    --#{$prefix}btn-hover-border-color: transparent;
+    background: linear-gradient(180deg, $pink-400 0%, $pink-500 100%);
+}

@@ -158,4 +158,34 @@
     hr {
         color: $grey-800;
     }
+
+    .btn-secondary {
+        --#{$prefix}btn-bg: rgba(white, 0.05);;
+        --#{$prefix}btn-border-color: 1px solid rgba($pink-300, 0.1);
+        color: $pink-300;
+        // border: 1px solid rgba($pink-300, 0.1);
+        background: rgba(white, 0.05);
+        border: 1px solid rgba($pink-300, 0.1);
+
+        .vapor-icon {
+            background-color: $pink-300;
+        }
+    }
+
+    .btn-secondary:hover {
+        color: $pink-200;
+        --#{$prefix}btn-bg: rgba(white, 0.1);;
+        --#{$prefix}btn-border-color: 1px solid rgba($pink-300, 0.2);
+        background: rgba(white, 0.1);
+        border: 1px solid rgba($pink-300, 0.2);
+        .vapor-icon {
+            background-color: $pink-200;
+        }
+    }
+
+    .btn-primary:hover {
+        --#{$prefix}btn-hover-bg: linear-gradient(180deg, $pink-300 0%, $pink-400 100%);
+        --#{$prefix}btn-hover-border-color: transparent;
+        background: linear-gradient(180deg, $pink-300 0%, $pink-400 100%);
+    }
 }
