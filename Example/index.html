@@ -6,7 +6,6 @@
     <meta name="color-scheme" content="light dark" />
     <title>Vapor Components Guide</title>
     <link href="/dist/style.css" rel="stylesheet">
-    <link href="/dist/styles/syntax.css" rel="stylesheet">
     <script src="/dist/js/detectColorScheme.js"></script>
   </head>
   <body>
@@ -125,6 +124,7 @@
 
         <pre>
           <code class="language-swift">
+            // This is a comment
             struct CreateTodoTitleIndex: AsyncMigration {
               func prepare(on database: Database) async throws {
                   try await (database as! SQLDatabase)
