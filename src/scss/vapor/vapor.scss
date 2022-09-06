@@ -217,7 +217,6 @@ footer {
             border-radius: 16px;
             line-height: 150%;
             padding: 6px 12px 6px 12px;
-            gap: 4px;
 
             a {
                 color: $grey-600;
@@ -306,4 +305,13 @@ footer {
 
 #blog-post-publish-date {
     color: $grey-600;
+}
+
+.blog-post-header {
+    padding-top: 5em;
+}
+
+.blog-post-divider {
+    margin-top: 4em;
+    margin-bottom: 4em;
 }
