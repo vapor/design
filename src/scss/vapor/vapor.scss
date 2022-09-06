@@ -267,7 +267,7 @@ footer {
 
 #blog-time-tags {
     align-items: center;
-    background: rgba($grey-800, 0.3);
+    background: $grey-200;
     mix-blend-mode: normal;
     border-radius: 16px;
     font-size: 12px;
@@ -277,5 +277,13 @@ footer {
         margin-left: 4px;
         margin-top: 4px;
         margin-bottom: 4px;
+
+        li {
+            background: $grey-100;
+
+            a {
+                color: $grey-800;
+            }
+        }
     }
 }
