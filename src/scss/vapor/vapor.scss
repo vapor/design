@@ -272,6 +272,7 @@ footer {
     border-radius: 16px;
     font-size: 12px;
     color: $grey-600;
+    padding-right: 12px;
     
     ul {
         margin-left: 4px;
@@ -286,4 +287,8 @@ footer {
             }
         }
     }
+}
+
+#blog-time-tag-container {
+    display: inline-block;
 }
