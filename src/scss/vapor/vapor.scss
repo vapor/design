@@ -320,4 +320,21 @@ blockquote {
     color: $grey-800;
     border-left: 2px solid $pink-300;
     padding: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+h1 {
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+}
+
+h2 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
 }
