@@ -188,4 +188,22 @@
         --#{$prefix}btn-hover-border-color: transparent;
         background: linear-gradient(180deg, $pink-300 0%, $pink-400 100%);
     }
+
+    .blog-tags {
+        color: $grey-100;
+    
+        ul {
+            li {
+                background: $grey-800;
+
+                a {
+                    color: $grey-100;
+                }
+
+                a:hover {
+                    color: white;
+                }
+            }
+        }
+    }
 }

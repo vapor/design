@@ -185,14 +185,12 @@ footer {
     display: flex;
 }
 
-#blog-bottom-share {
+.blog-share {
     .vapor-icon {
         width: 17px;
         height: 17px;
     }
-}
 
-.blog-share {
     ul {
         display: flex;
         list-style: none;
@@ -205,6 +203,9 @@ footer {
 }
 
 .blog-tags {
+    font-size: 14px;
+    color: $grey-600;
+
     ul {
         display: flex;
         list-style: none;
@@ -212,6 +213,20 @@ footer {
 
         li {
             margin-right: 12px;
+            background: $grey-200;
+            border-radius: 16px;
+            line-height: 150%;
+            padding: 6px 12px 6px 12px;
+            gap: 4px;
+
+            a {
+                color: $grey-600;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: $grey-800;
+            }
         }
     }
 }
@@ -247,5 +262,20 @@ footer {
     .vapor-icon {
         background-color: white;
         
+    }
+}
+
+#blog-time-tags {
+    align-items: center;
+    background: rgba($grey-800, 0.3);
+    mix-blend-mode: normal;
+    border-radius: 16px;
+    font-size: 12px;
+    color: $grey-600;
+    
+    ul {
+        margin-left: 4px;
+        margin-top: 4px;
+        margin-bottom: 4px;
     }
 }
