@@ -201,6 +201,16 @@ footer {
         li {
             margin-left: 12px;
         }
+
+        li:first-child {
+            margin-left: 0;
+        }
+
+        @media (min-width: 992px) {
+            li:first-child {
+                margin-left: 12px;
+            }
+        }
     }
 }
 
@@ -310,8 +320,15 @@ footer {
 }
 
 .blog-post-header {
-    padding-top: 5em;
+    padding-top: 3em;
 }
+
+@media (min-width: 992px) {
+    .blog-post-header {
+        padding-top: 5em;
+    }
+}
+
 
 .blog-post-divider {
     margin-top: 3em;
