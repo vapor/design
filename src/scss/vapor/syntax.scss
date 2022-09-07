@@ -129,7 +129,9 @@
 .hljs-ln {
     border-collapse: collapse;
 
-    .hljs-ln td{}.hljs-ln-n:before{content:attr(data-line-number)};
+    .hljs-ln-n:before {
+        content:attr(data-line-number);
+    }
 }
 
 @media (min-width: 992px) {
