@@ -1,71 +1,27 @@
-.icon-github-fill {
-    -webkit-mask-image: url(/dist/images/github-fill.svg);
+@mixin create-icon($name) {
+    $mask-image-url: '/dist/images/'+$name +'.svg';
+    -webkit-mask-image: url($mask-image-url);
     -webkit-mask-position: center;
-    mask-image: url(/dist/images/github-fill.svg);
+    mask-image: url($mask-image-url);
     mask-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.icon-twitter-fill {
-    -webkit-mask-image: url(/dist/images/twitter-fill.svg);
-    -webkit-mask-position: center;
-    mask-image: url(/dist/images/twitter-fill.svg);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+$icon-names: (
+    'x-close',
+    'menu-04',
+    'github-fill',
+    'twitter-fill',
+    'copy-06',
+    'reddit-fill',
+    'facebook-circle-fill',
+    'server-04',
+    'dataflow-03',
+);
 
-.icon-copy-06 {
-    -webkit-mask-image: url(/dist/images/copy-06.svg);
-    -webkit-mask-position: center;
-    mask-image: url(/dist/images/copy-06.svg);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.icon-reddit-fill {
-    -webkit-mask-image: url(/dist/images/reddit-fill.svg);
-    -webkit-mask-position: center;
-    mask-image: url(/dist/images/reddit-fill.svg);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.icon-facebook-circle-fill {
-    -webkit-mask-image: url(/dist/images/facebook-circle-fill.svg);
-    -webkit-mask-position: center;
-    mask-image: url(/dist/images/facebook-circle-fill.svg);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.icon-server-04 {
-    -webkit-mask-image: url(/dist/images/server-04.svg);
-    -webkit-mask-position: center;
-    mask-image: url(/dist/images/server-04.svg);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.icon-dataflow-03 {
-    -webkit-mask-image: url(/dist/images/dataflow-03.svg);
-    -webkit-mask-position: center;
-    mask-image: url(/dist/images/dataflow-03.svg);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.icon-menu-04 {
-    -webkit-mask-image: url(/dist/images/menu-04.svg);
-    -webkit-mask-position: center;
-    mask-image: url(/dist/images/menu-04.svg);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+@each $name in $icon-names {
+    .icon-#{$name} {
+        @include create-icon($name);
+    }
 }
