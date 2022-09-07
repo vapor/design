@@ -124,22 +124,26 @@
 
         <pre>
           <code class="language-swift">
-            // This is a comment
-            struct CreateTodoTitleIndex: AsyncMigration {
-              func prepare(on database: Database) async throws {
-                  try await (database as! SQLDatabase)
-                      .create(index: "todo_index")
-                      .on("todos")
-                      .column("title")
-                      .run()
-              }
+// This is a comment
+struct CreateTodoTitleIndex: AsyncMigration {
+  func prepare(on database: Database) async throws {
+      try await (database as! SQLDatabase)
+          .create(index: "todo_index")
+          .on("todos")
+          .column("title")
+          .run()
+  }
 
-              func revert(on database: Database) async throws {
-                  try await (database as! SQLDatabase)
-                      .drop(index: "todo_index")
-                      .run()
-              }
-            }
+  func thisIsALongLineOfCodeToTestHowWeDealWithBiggerLinesOfCode(something somethingeElse: MySuperLongType) async throws -> MyOtherType {
+      fatalError()
+  }
+
+  func revert(on database: Database) async throws {
+      try await (database as! SQLDatabase)
+          .drop(index: "todo_index")
+          .run()
+  }
+}
           </code>
         </pre>
 
