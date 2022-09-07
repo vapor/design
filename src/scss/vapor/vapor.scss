@@ -396,3 +396,13 @@ h3 {
 .dropdown-toggle:after {
     transition: 0.5s;
 }
+
+nav {
+    #vapor-navbar-toggler-icon {
+        background-color: $grey-900;
+    }
+}
+
+.navbar-toggler {
+    border: none;
+}

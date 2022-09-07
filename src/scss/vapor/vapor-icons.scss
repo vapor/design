@@ -60,3 +60,12 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.icon-menu-04 {
+    -webkit-mask-image: url(/dist/images/menu-04.svg);
+    -webkit-mask-position: center;
+    mask-image: url(/dist/images/menu-04.svg);
+    mask-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
