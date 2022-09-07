@@ -228,4 +228,19 @@
     blockquote {
         color: $grey-200;
     }
+
+    #framework-dropdown-menu {
+        background: $off-black;
+        border: 1px solid $grey-800;
+    }
+    
+    .nav-dropdown-container-title {
+        color: $grey-100;
+    }
+    
+    .nav-dropdown-container {
+        .vapor-icon {
+            background-color: $blue-300;
+        }
+    }
 }
