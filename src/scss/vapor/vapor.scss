@@ -2,25 +2,25 @@
 
 // Create the Vapor color map
 $custom-colors: (
-  "blue-500": #135b80,
-  "blue-400": #1E92CC,
-  "blue-300": #40c4ff,
-  "blue-200": #a6e3ff,
-  "blue-100": #e8f6fd,
-  "pink-500": #701980,
-  "pink-400": #B11FCC,
-  "pink-300": #DF3EFB,
-  "pink-200": #EA7EFC,
-  "pink-100": #F9ECFB,
-  "grey-900": #141416,
-  "grey-800": #373953,
-  "grey-700": #666880,
-  "grey-600": #8385A3,
-  "grey-500": #9FA1BF,
-  "grey-400": #C1C2D6,
-  "grey-300": #DFE0EB,
-  "grey-200": #F0F0F7,
-  "grey-100": #FAFAFD,
+    "blue-500": #135b80,
+    "blue-400": #1E92CC,
+    "blue-300": #40c4ff,
+    "blue-200": #a6e3ff,
+    "blue-100": #e8f6fd,
+    "pink-500": #701980,
+    "pink-400": #B11FCC,
+    "pink-300": #DF3EFB,
+    "pink-200": #EA7EFC,
+    "pink-100": #F9ECFB,
+    "grey-900": #141416,
+    "grey-800": #373953,
+    "grey-700": #666880,
+    "grey-600": #8385A3,
+    "grey-500": #9FA1BF,
+    "grey-400": #C1C2D6,
+    "grey-300": #DFE0EB,
+    "grey-200": #F0F0F7,
+    "grey-100": #FAFAFD,
 );
 
 // Merge the maps
@@ -163,6 +163,7 @@ footer {
     li {
         list-style: none;
         margin-top: 12px;
+
         a {
             text-decoration: none;
         }
@@ -178,6 +179,7 @@ footer {
         width: 24px;
         height: 24px;
     }
+
     font-size: 24px;
 }
 
@@ -260,7 +262,7 @@ footer {
 
     .vapor-icon {
         background-color: white;
-        
+
     }
 }
 
@@ -272,7 +274,7 @@ footer {
     font-size: 12px;
     color: $grey-600;
     padding-right: 12px;
-    
+
     ul {
         margin-left: 4px;
         margin-top: 4px;
@@ -367,4 +369,13 @@ h3 {
     .vapor-icon {
         background-color: $blue-400;
     }
+}
+
+.dropdown-toggle[aria-expanded="true"]:after {
+    transform: rotate(180deg);
+}
+
+/*for animation*/
+.dropdown-toggle:after {
+    transition: 0.5s;
 }
