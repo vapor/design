@@ -249,4 +249,10 @@
             background-color: $grey-100;
         }
     }
+
+    @media (max-width: 991px) {
+        #navbarSupportedContent {
+            background: $off-black;
+        }
+    }
 }
