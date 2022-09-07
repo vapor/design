@@ -2,13 +2,13 @@
 
 .dark {
     $heading-color-dark: $grey-100;
-    $nav-link-action-color-dark: $grey-400;
+    $nav-link-action-color-dark: $blue-300;
 
     body {
         background: $grey-900;
         color: $grey-500;
         background-image: url(/dist/images/main-background-dark.jpg);
-        background-position: top; 
+        background-position: top;
         background-repeat: no-repeat;
         background-size: 100% 500px;
     }
@@ -99,23 +99,23 @@
         h1 {
             color: $blog-content-heading-color-dark;
         }
-    
+
         h2 {
             color: $blog-content-heading-color-dark;
         }
-    
+
         h3 {
             color: $blog-content-heading-color-dark;
         }
-    
+
         h4 {
             color: $blog-content-heading-color-dark;
         }
-    
+
         h5 {
             color: $blog-content-heading-color-dark;
         }
-    
+
         h6 {
             color: $blog-content-heading-color-dark;
         }
@@ -127,21 +127,21 @@
         background: $off-black;
         border-top: 1px solid $grey-800;
         color: $footer-link-color-dark;
-    
+
         li {
             a {
                 color: $footer-link-color-dark;
             }
-            
+
             a:hover {
                 color: $nav-link-action-color-dark;
             }
         }
-    
+
         h6 {
             color: $nav-link-action-color-dark;
         }
-    
+
         .vapor-icon {
             background-color: $nav-link-action-color-dark;
         }
@@ -152,7 +152,7 @@
 
         #footer-copyright {
             color: $nav-link-action-color-dark
-        } 
+        }
     }
 
     hr {
@@ -160,7 +160,8 @@
     }
 
     .btn-secondary {
-        --#{$prefix}btn-bg: rgba(white, 0.05);;
+        --#{$prefix}btn-bg: rgba(white, 0.05);
+        ;
         --#{$prefix}btn-border-color: 1px solid rgba($pink-300, 0.1);
         color: $pink-300;
         // border: 1px solid rgba($pink-300, 0.1);
@@ -174,10 +175,12 @@
 
     .btn-secondary:hover {
         color: $pink-200;
-        --#{$prefix}btn-bg: rgba(white, 0.1);;
+        --#{$prefix}btn-bg: rgba(white, 0.1);
+        ;
         --#{$prefix}btn-border-color: 1px solid rgba($pink-300, 0.2);
         background: rgba(white, 0.1);
         border: 1px solid rgba($pink-300, 0.2);
+
         .vapor-icon {
             background-color: $pink-200;
         }
@@ -191,7 +194,7 @@
 
     .blog-tags {
         color: $grey-100;
-    
+
         ul {
             li {
                 background: $grey-800;
@@ -213,7 +216,7 @@
         ul {
             li {
                 background: $grey-800;
-    
+
                 a {
                     color: white;
                 }
@@ -231,13 +234,16 @@
 
     #framework-dropdown-menu {
         background: $off-black;
-        border: 1px solid $grey-800;
+        border-top: 1px solid $grey-800;
+        border-bottom: 1px solid $grey-800;
+        border-left: none;
+        border-right: none;
     }
-    
+
     .nav-dropdown-container-title {
         color: $grey-100;
     }
-    
+
     .nav-dropdown-container {
         .vapor-icon {
             background-color: $blue-300;
@@ -254,5 +260,16 @@
         #navbarSupportedContent {
             background: $off-black;
         }
+    }
+
+    @media (min-width: 992px) {
+        #framework-dropdown-menu {
+            box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+            border: 1px solid $grey-800;
+        }
+    }
+
+    .dropdown-toggle:after {
+        background-color: $navbar-dark-color;
     }
 }
