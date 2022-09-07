@@ -111,6 +111,21 @@
     font-style: italic;
   }
 
+  .hljs-ln-n {
+    color: $grey-600;
+    padding-left: 40px;
+    padding-right: 16px;
+  }
+
+  .hljs-ln-numbers {
+    border-right: 1px solid $grey-300;
+  }
+
+  .hljs-ln-code {
+    padding-left: -46px;
+  }
+
+  // DARK MODE
   .dark {
     .hljs {
         background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba(35, 172, 240, 0.052) 0%, rgba(35, 172, 240, 0) 100%), rgba(55, 57, 83, 0.3);
@@ -197,4 +212,12 @@
     //   .hljs-selector-class {
     //     color: #9b703f;
     //   }
+
+    .hljs-ln-n {
+        color: $grey-400;
+    }
+
+    .hljs-ln-numbers {
+        border-right: 1px solid rgba(221, 214, 254, 0.1);
+    }
   }
