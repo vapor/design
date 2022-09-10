@@ -461,3 +461,44 @@ nav {
         z-index: 1;
     }
 }
+
+.pagination {
+    .page-item {
+        color: $grey-600;
+        background: transparent;
+        border: none;
+
+        a {
+            color: $grey-600;
+            border: none;
+        }
+
+        a:hover {
+            color: $blue-300;
+            background-color: transparent;
+        }
+    }
+
+    .active {
+        .page-link {
+            color: $grey-800;
+            background-color: $grey-100;
+            border: 1px solid $grey-300;
+            border-radius: 8px;
+        }
+    }
+
+    .page-link-next-previous {
+        background: $grey-100;
+        border-radius: 12px;
+        border: 1px solid rgba($blue-300, 0.1);
+
+        a {
+            color: $blue-300;
+        }
+
+        a:hover {
+            color: $blue-400;
+        }
+    }
+}
