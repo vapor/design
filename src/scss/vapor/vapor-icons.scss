@@ -1,5 +1,5 @@
 @mixin create-icon($name) {
-    $mask-image-url: '/dist/images/'+$name +'.svg';
+    $mask-image-url: '/dist/images/' + $name + '.svg';
     -webkit-mask-image: url($mask-image-url);
     -webkit-mask-position: center;
     mask-image: url($mask-image-url);
