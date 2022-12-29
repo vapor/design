@@ -6,7 +6,7 @@ import { sassPlugin } from 'esbuild-sass-plugin'
 try {
   await esbuild.build({
     entryPoints: ['src/js/main.js'/*, 'src/scss/main.scss'*/],
-    outdir: 'Example',
+    outdir: 'Example/dist/',
     bundle: true,
     sourcemap: true,
     minify: true,
