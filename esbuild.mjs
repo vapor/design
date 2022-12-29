@@ -5,7 +5,7 @@ import { sassPlugin } from 'esbuild-sass-plugin'
 
 try {
   await esbuild.build({
-    entryPoints: ['src/js/main.js'/*, 'src/scss/main.scss'*/],
+    entryPoints: ['src/js/main.js', 'src/js/detectColorScheme.js'/*, 'src/scss/main.scss'*/],
     outdir: 'Example/dist/',
     bundle: true,
     sourcemap: true,
