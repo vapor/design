@@ -1,3 +1,4 @@
 .dist
 Example/dist/
 node_modules/
+Example/*.js*
