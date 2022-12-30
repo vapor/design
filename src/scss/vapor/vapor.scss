@@ -54,40 +54,40 @@ $font-family-monospace: "Roboto Mono", ui-monospace, Menlo, Monaco, "Cascadia Mo
 // Vapor Fonts
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('/dist/fonts/GeneraGrotesk-Regular.woff2') format("woff2");
+    src: url('../../fonts/GeneraGrotesk-Regular.woff2') format("woff2");
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('/dist/fonts/GeneraGrotesk-Italic.woff2') format("woff2");
+    src: url('../../fonts/GeneraGrotesk-Italic.woff2') format("woff2");
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('/dist/fonts/GeneraGrotesk-Medium.woff2') format("woff2");
+    src: url('../../fonts/GeneraGrotesk-Medium.woff2') format("woff2");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('/dist/fonts/GeneraGrotesk-MediumItalic.woff2') format("woff2");
+    src: url('../../fonts/GeneraGrotesk-MediumItalic.woff2') format("woff2");
     font-weight: 500;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('/dist/fonts/GeneraGrotesk-Bold.woff2') format("woff2");
+    src: url('../../fonts/GeneraGrotesk-Bold.woff2') format("woff2");
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Genera Grotesk";
-    src: url('/dist/fonts/GeneraGrotesk-BoldItalic.woff2') format("woff2");
+    src: url('../../fonts/GeneraGrotesk-BoldItalic.woff2') format("woff2");
     font-weight: 700;
     font-style: italic;
 }
@@ -401,19 +401,19 @@ h3 {
     }
 }
 
-.dropdown-toggle:after {
-    $mask-image-url: '/dist/images/chevron-down.svg';
-    -webkit-mask-image: url($mask-image-url);
-    -webkit-mask-position: center;
-    mask-image: url($mask-image-url);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
-    width: 10px;
-    height: 10px;
-    background-color: $navbar-light-color;
-}
+// .dropdown-toggle:after {
+//     $mask-image-url: '/dist/images/chevron-down.svg';
+//     -webkit-mask-image: url($mask-image-url);
+//     -webkit-mask-position: center;
+//     mask-image: url($mask-image-url);
+//     mask-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     border: none;
+//     width: 10px;
+//     height: 10px;
+//     background-color: $navbar-light-color;
+// }
 
 .dropdown-toggle:hover:after {
     background-color: $navbar-light-active-color;

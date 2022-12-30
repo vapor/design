@@ -6,12 +6,12 @@ module.exports = {
   mode: 'production',
   entry: './src/js/main.js',
   plugins: [
-    new miniCssExtractPlugin(),
     new CopyWebpackPlugin({
       patterns: [
           { from: 'static' }
       ]
-    })
+    }),
+    new miniCssExtractPlugin()
   ],
   output: {
     filename: 'main.js',
@@ -22,6 +22,7 @@ module.exports = {
     port: 8080,
     hot: true
   },
+  devtool:'source-map',
   module: {
     rules: [
       {
@@ -33,13 +34,23 @@ module.exports = {
         }
       },
       {
+        type: 'asset/resource',
+        test: /\.(woff|woff2)$/,
+        generator: {
+          filename: 'fonts/[hash][ext]'
+        }
+      },
+      {
         test: /\.(scss)$/,
         use: [
           {
             loader: miniCssExtractPlugin.loader
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
           },
           {
             loader: 'postcss-loader',
@@ -48,11 +59,18 @@ module.exports = {
                 plugins: () => [
                   require('autoprefixer')
                 ]
-              }
+              },
+              sourceMap: true
             }
           },
           {
-            loader: 'sass-loader'
+            loader: 'resolve-url-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
           }
         ]
       }
