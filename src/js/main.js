@@ -5,6 +5,7 @@ import '../scss/main.scss'
 import * as bootstrap from 'bootstrap'
 
 import './highlight.min.js'
-import './highlightjs-line-numbers.min.js'
+
+// import './highlightjs-line-numbers.min.js'
 import './startSyntaxHighlighting.js'
 import './toggleDarkMode.js'
