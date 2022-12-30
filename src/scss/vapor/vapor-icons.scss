@@ -1,28 +1,28 @@
-// @mixin create-icon($name) {
-//     $mask-image-url: '/dist/images/' + $name + '.svg';
-//     -webkit-mask-image: url($mask-image-url);
-//     -webkit-mask-position: center;
-//     mask-image: url($mask-image-url);
-//     mask-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-// }
+@mixin create-icon($name) {
+    $mask-image-url: '../../images/' + $name + '.svg';
+    -webkit-mask-image: url($mask-image-url);
+    -webkit-mask-position: center;
+    mask-image: url($mask-image-url);
+    mask-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-// $icon-names: (
-//     'x-close',
-//     'menu-04',
-//     'github-fill',
-//     'twitter-fill',
-//     'copy-06',
-//     'reddit-fill',
-//     'facebook-circle-fill',
-//     'server-04',
-//     'dataflow-03',
-//     'chevron-up',
-// );
+$icon-names: (
+    'x-close',
+    'menu-04',
+    'github-fill',
+    'twitter-fill',
+    'copy-06',
+    'reddit-fill',
+    'facebook-circle-fill',
+    'server-04',
+    'dataflow-03',
+    'chevron-up',
+);
 
-// @each $name in $icon-names {
-//     .icon-#{$name} {
-//         @include create-icon($name);
-//     }
-// }
+@each $name in $icon-names {
+    .icon-#{$name} {
+        @include create-icon($name);
+    }
+}

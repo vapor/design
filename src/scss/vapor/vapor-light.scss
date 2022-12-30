@@ -4,16 +4,16 @@ $nav-link-action-color-light: $grey-800;
 $heading-color-light: $grey-900;
 $nav-link-color-light: $grey-600;
 
-// #theme-switch-icon {
-//     background-position: center;
-//     background-color: $nav-link-color-light;
-//     -webkit-mask-image: url(/dist/images/sun.svg);
-//     -webkit-mask-position: center;
-//     mask-image: url(/dist/images/sun.svg);
-//     mask-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-// }
+#theme-switch-icon {
+    background-position: center;
+    background-color: $nav-link-color-light;
+    -webkit-mask-image: url(../../images/sun.svg);
+    -webkit-mask-position: center;
+    mask-image: url(../../images/sun.svg);
+    mask-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 #theme-switch-icon:hover {
     background-color: $nav-link-action-color-light;
@@ -25,32 +25,32 @@ a:hover {
     }
 }
 
-// #vapor-logo {
-//     background: url(/dist/images/logo-main-black.svg);
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-// }
+#vapor-logo {
+    background: url(../../images/logo-main-black.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-// #vapor-logo-footer {
-//     background: url(/dist/images/logo-main-black.svg);
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-// }
+#vapor-logo-footer {
+    background: url(../../images/logo-main-black.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .navbar {
     background: linear-gradient(180deg, $grey-100 0%, rgba($grey-100, 0) 100%);
 }
 
-// body {
-//     background: white;
-//     color: $grey-700;
-//     background-image: url(/dist/images/main-background-light.jpg);
-//     background-position: top; 
-//     background-repeat: no-repeat;
-//     background-size: 100% 500px;
-// }
+body {
+    background: white;
+    color: $grey-700;
+    background-image: url(../../images/main-background-light.jpg);
+    background-position: top; 
+    background-repeat: no-repeat;
+    background-size: 100% 500px;
+}
 
 h1 {
     color: $heading-color-light;
