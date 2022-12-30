@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug DesignSite",
+            "program": "${workspaceFolder:design}/.build/debug/DesignSite",
+            "args": [],
+            "cwd": "${workspaceFolder:design}",
+            "preLaunchTask": "swift: Build Debug DesignSite"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release DesignSite",
+            "program": "${workspaceFolder:design}/.build/release/DesignSite",
+            "args": [],
+            "cwd": "${workspaceFolder:design}",
+            "preLaunchTask": "swift: Build Release DesignSite"
+        }
+    ]
+}
