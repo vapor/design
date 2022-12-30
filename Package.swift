@@ -9,7 +9,9 @@ let package = Package(
         .executable(
             name: "DesignSite",
             targets: ["DesignSite"]
-        )
+        ),
+        .plugin(name: "ExecuteCommandPlugin", targets: ["ExecuteCommandPlugin"]),
+        .library(name: "VaporDesign", targets: ["VaporDesign"])
     ],
     dependencies: [
         .package(url: "https://github.com/johnsundell/publish.git", from: "0.8.0")
@@ -18,8 +20,19 @@ let package = Package(
         .executableTarget(
             name: "DesignSite",
             dependencies: [
+                .product(name: "Publish", package: "publish"),
+                "VaporDesign"
+            ],
+            plugins: [
+//                .plugin(name: "ExecuteCommandPlugin")
+            ]
+        ),
+        .target(
+            name: "VaporDesign",
+            dependencies: [
                 .product(name: "Publish", package: "publish")
             ]
-        )
+        ),
+        .plugin(name: "ExecuteCommandPlugin", capability: .buildTool())
     ]
 )
