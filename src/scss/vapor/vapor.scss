@@ -401,19 +401,19 @@ h3 {
     }
 }
 
-// .dropdown-toggle:after {
-//     $mask-image-url: '/dist/images/chevron-down.svg';
-//     -webkit-mask-image: url($mask-image-url);
-//     -webkit-mask-position: center;
-//     mask-image: url($mask-image-url);
-//     mask-position: center;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     border: none;
-//     width: 10px;
-//     height: 10px;
-//     background-color: $navbar-light-color;
-// }
+.dropdown-toggle:after {
+    $mask-image-url: '../../images/chevron-down.svg';
+    -webkit-mask-image: url($mask-image-url);
+    -webkit-mask-position: center;
+    mask-image: url($mask-image-url);
+    mask-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    width: 10px;
+    height: 10px;
+    background-color: $navbar-light-color;
+}
 
 .dropdown-toggle:hover:after {
     background-color: $navbar-light-active-color;
