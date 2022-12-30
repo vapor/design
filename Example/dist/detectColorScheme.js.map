@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/js/detectColorScheme.js"],
+  "sourcesContent": ["// Work out the currently preferred color scheme\nfunction detectColorScheme() {\n    // Default to light\n    var theme = \"light\";\n\n    // Check local storage\n    if (localStorage.getItem(\"theme\")) {\n        if (localStorage.getItem(\"theme\") == \"dark\") {\n            theme = \"dark\";\n        }\n    // No setting in local storage, work it out from the OS setting\n    } else if (!window.matchMedia) {\n        // matchMedia method not supported\n        return false;\n    } else if (window.matchMedia(\"(prefers-color-scheme: dark)\").matches) {\n        // OS theme setting detected as dark\n        theme = \"dark\";\n    }\n\n    // Dark theme preferred, set document with a correct class\n    if (theme==\"dark\") {\n         document.documentElement.classList.add(\"dark\");\n    }\n}\ndetectColorScheme();"],
+  "mappings": "MACA,SAASA,GAAoB,CAEzB,IAAIC,EAAQ,QAGZ,GAAI,aAAa,QAAQ,OAAO,EACxB,aAAa,QAAQ,OAAO,GAAK,SACjCA,EAAQ,gBAGJ,OAAO,WAGR,OAAO,WAAW,8BAA8B,EAAE,UAEzDA,EAAQ,YAHR,OAAO,GAOPA,GAAO,QACN,SAAS,gBAAgB,UAAU,IAAI,MAAM,CAEtD,CACAD,EAAkB",
+  "names": ["detectColorScheme", "theme"]
+}
