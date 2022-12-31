@@ -9,7 +9,7 @@ The repo also contains a `VaporDesign` Swift library that includes a number of c
 To build the design files you'll need [NPM](https://www.npmjs.com) installed (you should probably use [nvm](https://github.com/nvm-sh/nvm) to manage this). Then, run:
 
 ```bash
-npm run build
+npm install && npm run build
 ```
 
 This compiles the JavaScript and CSS from Sass and copies over any other static files into the Output directory.
@@ -18,7 +18,7 @@ To run the demo site, run:
 
 ```bash
 swift run
-npm start
+npm install && npm start
 ```
 
 This generates the HTML for the site then copies over the additional files.
