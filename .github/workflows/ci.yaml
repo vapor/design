@@ -41,6 +41,7 @@ jobs:
         run: npm run build
       - name: Deploy S3 Website
         uses: danburtenshaw/s3-website-pr-action@v2
+        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }}
         with:
           bucket-prefix: "vapor-design-pulls"
           folder-to-copy: "./Output"
