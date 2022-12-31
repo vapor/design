@@ -45,7 +45,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'eu-west-2'
         SOURCE_DIR: 'Output'
-      if: steps.clouddeploy.outcome == 'success'
+      # if: steps.clouddeploy.outcome == 'success'
     - name: Invalidate CloudFront
       uses: awact/cloudfront-action@master
       env:
