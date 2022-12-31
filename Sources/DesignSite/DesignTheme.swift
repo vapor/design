@@ -15,7 +15,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     func makeIndexHTML(for index: Index,
                        context: PublishingContext<Site>) throws -> HTML {
         let body: Node<HTML.DocumentContext> = .body {
-            SiteHeader(context: context, selectedSelectionID: nil)
+            SiteNavigation(context: context, selectedSelectionID: nil)
             H1("Hello")
             SiteFooter()
         }
