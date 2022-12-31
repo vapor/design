@@ -74,7 +74,7 @@ public struct SiteFooter: Component {
                                 }
                             }
                             ListItem {
-                                Link("Press Kit", url: "https://design.vapor.codes/presskit.zip").attribute(named: "download", value: nil)
+                                Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil)
                             }
                             ListItem {
                                 Link("Help", url: "#")
