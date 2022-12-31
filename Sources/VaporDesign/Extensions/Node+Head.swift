@@ -94,13 +94,6 @@ public extension Node where Context == HTML.HeadContext {
             .href(manifestURL)
         )
         
-        let maskIconURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/safari-pinned-tab.svg", isLocal: true)
-        let maskIconLink = Node<HTML.HeadContext>.link(
-            .rel(.maskIcon),
-            .href(maskIconURL),
-            .color("#5bbad5")
-        )
-        
         let shortcutURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/favicon.ico", isLocal: isLocal)
         let shortcutLink = Node<HTML.HeadContext>.link(
             .rel(.shortcutIcon),
