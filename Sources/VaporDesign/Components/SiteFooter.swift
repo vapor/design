@@ -17,7 +17,11 @@ public struct SiteFooter: Component {
                     Div {
                         Span {
                             
-                        }.class("d-inline-block align-text-top").accessibilityLabel("Vapor Logo").id("vapor-logo-footer").attribute(named: "width", value: "197").attribute(named: "height", value: "76")
+                        }.class("d-inline-block align-text-top")
+                            .accessibilityLabel("Vapor Logo")
+                            .id("vapor-logo-footer")
+                            .width(197)
+                            .height(76)
                         Div {
                             Text("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift")
                         }.class("w-50 mt-4")
