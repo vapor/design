@@ -22,4 +22,4 @@ struct DesignSite: Website {
 }
 
 // This will generate your website using the built-in Foundation theme:
-try DesignSite().publish(withTheme: .foundation)
+try DesignSite().publish(withTheme: .vapor)

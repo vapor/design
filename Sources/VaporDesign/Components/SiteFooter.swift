@@ -2,8 +2,8 @@ import Plot
 
 public struct SiteFooter: Component {
     
-    var isLocal: Bool
-    var isMainSite: Bool
+    let isLocal: Bool
+    let isMainSite: Bool
     
     public init(isLocal: Bool = false, isMainSite: Bool = false) {
         self.isLocal = isLocal
@@ -11,7 +11,7 @@ public struct SiteFooter: Component {
     }
     
     public var body: Component {
-        Footer {
+        let footer = Footer {
             Div {
                 Div {
                     Div {
@@ -92,9 +92,10 @@ public struct SiteFooter: Component {
                 }.id("footer-bottom")
             }.class("container mt-5")
         }.class("mt-5")
-    }
-    
-    func buildNavLink(to url: URLRepresentable, label: String) -> Link {
-        return Link(label, url: url)
+        let jsScript = Script(url: VaporDesignUtilities.buildResourceLink(for: "/main.js", isLocal: isLocal))
+        return ComponentGroup {
+            footer
+            jsScript
+        }
     }
 }

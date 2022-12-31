@@ -14,68 +14,42 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     
     func makeIndexHTML(for index: Index,
                        context: PublishingContext<Site>) throws -> HTML {
-        HTML(
-            .lang(context.site.language),
-            buildHead(for: index, context: context),
-            .body {
-                SiteHeader(context: context, selectedSelectionID: nil)
-                H1("Hello")
-                SiteFooter()
-            }
-        )
+        let body: Node<HTML.DocumentContext> = .body {
+            SiteHeader(context: context, selectedSelectionID: nil)
+            H1("Hello")
+            SiteFooter()
+        }
+        let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+        return builder.buildHTML(for: index, context: context, body: body)
     }
 
     func makeSectionHTML(for section: Section<Site>,
                          context: PublishingContext<Site>) throws -> HTML {
-        HTML(
-            .lang(context.site.language),
-            buildHead(for: section, context: context),
-            .body {
-                
-            }
-        )
+        let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+        return builder.buildHTML(for: section, context: context, body: .body())
     }
 
     func makeItemHTML(for item: Item<Site>,
                       context: PublishingContext<Site>) throws -> HTML {
-        HTML(
-            .lang(context.site.language),
-            buildHead(for: item, context: context),
-            .body()
-        )
+        let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+        return builder.buildHTML(for: item, context: context, body: .body())
     }
 
     func makePageHTML(for page: Page,
                       context: PublishingContext<Site>) throws -> HTML {
-        HTML(
-            .lang(context.site.language),
-            buildHead(for: page, context: context),
-            .body()
-        )
+        let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+        return builder.buildHTML(for: page, context: context, body: .body())
     }
 
     func makeTagListHTML(for page: TagListPage,
                          context: PublishingContext<Site>) throws -> HTML? {
-        HTML(
-            .lang(context.site.language),
-            buildHead(for: page, context: context),
-            .body()
-        )
+        let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+        return builder.buildHTML(for: page, context: context, body: .body())
     }
 
     func makeTagDetailsHTML(for page: TagDetailsPage,
                             context: PublishingContext<Site>) throws -> HTML? {
-        HTML(
-            .lang(context.site.language),
-            buildHead(for: page, context: context),
-            .body()
-        )
+        let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+        return builder.buildHTML(for: page, context: context, body: .body())
     }
-    
-    func buildHead(for page: Location, context: PublishingContext<Site>) -> Node<HTML.DocumentContext> {
-            .head(for: page, on: context.site, stylesheetPaths: [
-                "/static/styles/styles.css",
-                "/static/styles/syntax.css"
-            ])
-        }
 }
