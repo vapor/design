@@ -55,12 +55,6 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         return builder.buildHTML(for: page, context: context, body: .body())
     }
     
-    func buildExampleBlogPage() -> Component {
-        Div {
-            
-        }
-    }
-    
     func buildComponentDemo() -> Component {
         Div {
             H1("Everything below this is for just showing components")
