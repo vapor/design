@@ -35,11 +35,12 @@ jobs:
       if: steps.cred.outcome == 'success'
     - name: Deploy to S3
       id: s3deploy
-      uses: jakejarvis/s3-sync-action@master
-      with:
-        args: --acl public-read --follow-symlinks --delete
+      run: >
+        aws s3 sync
+        ./docs
+        s3:/vapor-design-site/
+        --acl public-read --follow-symlinks --delete
       env:
-        AWS_S3_BUCKET: 'vapor-design-site'
         AWS_ACCESS_KEY_ID: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'eu-west-2'
