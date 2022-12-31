@@ -27,6 +27,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -45,3 +46,4 @@ jobs:
         with:
           bucket-prefix: "vapor-design-pulls"
           folder-to-copy: "./Output"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

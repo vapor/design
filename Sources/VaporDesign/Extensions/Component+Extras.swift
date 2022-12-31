@@ -12,4 +12,8 @@ public extension Component {
     func role(_ role: String) -> Component {
         attribute(named: "role", value: role)
     }
+    
+    func onclick(_ javascript: String) -> Component {
+        attribute(named: "onclick", value: javascript)
+    }
 }

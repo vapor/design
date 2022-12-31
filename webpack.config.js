@@ -1,6 +1,7 @@
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path')
+const path = require('path');
+const { library } = require('webpack');
 
 module.exports = {
   mode: 'production',
@@ -15,7 +16,11 @@ module.exports = {
   ],
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'Output')
+    path: path.resolve(__dirname, 'Output'),
+    library: {
+      name: 'Vapor',
+      type: 'var',
+    },
   },
   devServer: {
     static: path.resolve(__dirname, 'Output'),

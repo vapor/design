@@ -97,7 +97,7 @@ public struct BlogPost<Site: Website>: Component {
                 Link(url: "#") {
                     Span().class("vapor-icon icon-copy-06 me-2")
                     Text("Copy Link")
-                }.class("btn btn-secondary btn-small d-flex")
+                }.class("btn btn-secondary btn-small d-flex").onclick("Vapor.copyURLToClipboard(); return false;")
             }
             ListItem {
                 Link(url: "#") {
