@@ -11,7 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.12.1
+        cache: npm
     - name: Build site
       run: swift run && npm install && npm run build
     - name: Configure AWS credentials
@@ -23,7 +28,7 @@ jobs:
         aws-region: 'eu-west-2'
     - name: Deploy to AWS Cloudformation
       id: clouddeploy
-      uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
         name: vapor-design-stack
         template: stack.yaml
