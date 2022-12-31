@@ -121,7 +121,6 @@ public extension Node where Context == HTML.HeadContext {
             icon32Link,
             icon16Link,
             manifestLink,
-            maskIconLink,
             shortcutLink,
             msApplicationTileMeta,
             msApplicationConfig,
