@@ -38,7 +38,7 @@ jobs:
       run: >
         aws s3 sync
         ./Output
-        s3:/vapor-design-site/
+        s3://vapor-design-site/
         --acl public-read --follow-symlinks --delete
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
