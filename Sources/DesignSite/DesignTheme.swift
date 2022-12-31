@@ -21,7 +21,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             SiteNavigation(context: context, selectedSelectionID: nil)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site)
             buildComponentDemo()
-            SiteFooter()
+            SiteFooter(isLocal: true)
             
             
         }
