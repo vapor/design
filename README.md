@@ -1,38 +1,32 @@
 # Vapor Design
 
-This repo contains all of the materials used for building out Vapor's design across its many sites, built on top of Bootstrap. It contains the reference designs and files from designers in [Reference](/Reference/) and build pipelines and code to generate the necessary files to be included in Vapor's sites. These are automatically deployed to design.vapor.codes - hosted on our CDN - and then included in the different sites.
+This repo contains all of the materials used for building out Vapor's design across its many sites, built on top of Bootstrap. It contains the reference designs and files from designers in [Reference](/Reference/) and build pipelines and code to generate the necessary files to be included in Vapor's sites. These are automatically deployed to https://design.vapor.codes - hosted on our CDN - and then included in the different sites.
 
-There is an example site in [Example](/Example/) to show you how it's used.
+The repo also contains a `VaporDesign` Swift library that includes a number of components for working with [Publish](https://github.com/JohnSundell/Publish) and the design guide, such as a `SiteFooter` and `SiteNavigation` component.
 
 ## Running
 
-To build the design files you'll need [Sass](https://sass-lang.com/) installed:
+To build the design files you'll need [NPM](https://www.npmjs.com) installed (you should probably use [nvm](https://github.com/nvm-sh/nvm) to manage this). Then, run:
 
 ```bash
-brew install sass/sass/sass
+npm run build
 ```
 
-Then you can build and watch the code with:
+This compiles the JavaScript and CSS from Sass and copies over any other static files into the Output directory.
+
+To run the demo site, run:
 
 ```bash
-sass --watch src/scss/main.scss .dist/style.css
+swift run
+npm start
 ```
 
-### Running the demo site
+This generates the HTML for the site then copies over the additional files.
 
-To run the demo site do:
+> **Warning**
+> Currently Publish will empty the `Output` directory before regenerating the files meaning that all the CSS, JS and images will be removed. You **must** run `npm start` or `npm run build` after generating the HTML for the styles to work. Any changes to JS or CSS will automatically be picked up.
 
-```bash
-sass --watch src/scss/main.scss Example/dist/style.css
-```
-
-Then start a web server to view the file:
-
-```bash
-python -m http.server 9000 --directory Example/
-```
-
-Then open the site at http://localhost:9000
+Then open the site at http://localhost:8001
 
 ## Copyright
 
