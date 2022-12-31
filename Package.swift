@@ -10,7 +10,6 @@ let package = Package(
             name: "DesignSite",
             targets: ["DesignSite"]
         ),
-        .plugin(name: "ExecuteCommandPlugin", targets: ["ExecuteCommandPlugin"]),
         .library(name: "VaporDesign", targets: ["VaporDesign"])
     ],
     dependencies: [
@@ -22,9 +21,6 @@ let package = Package(
             dependencies: [
                 .product(name: "Publish", package: "publish"),
                 "VaporDesign"
-            ],
-            plugins: [
-//                .plugin(name: "ExecuteCommandPlugin")
             ]
         ),
         .target(
@@ -32,7 +28,6 @@ let package = Package(
             dependencies: [
                 .product(name: "Publish", package: "publish")
             ]
-        ),
-        .plugin(name: "ExecuteCommandPlugin", capability: .buildTool())
+        )
     ]
 )
