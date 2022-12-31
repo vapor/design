@@ -3,11 +3,11 @@ import Plot
 public struct SiteFooter: Component {
     
     let isLocal: Bool
-    let isMainSite: Bool
+    let currentSite: CurrentSite
     
-    public init(isLocal: Bool = false, isMainSite: Bool = false) {
+    public init(isLocal: Bool = false, currentSite: CurrentSite) {
         self.isLocal = isLocal
-        self.isMainSite = isMainSite
+        self.currentSite = currentSite
     }
     
     public var body: Component {
@@ -49,13 +49,25 @@ public struct SiteFooter: Component {
                         H6("Resources")
                         List {
                             ListItem {
-                                Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank)
+                                if currentSite == .blog {
+                                    Link("Blog", url: "/")
+                                } else {
+                                    Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank)
+                                }
                             }
                             ListItem {
-                                Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank)
+                                if currentSite == .docs {
+                                    Link("Framework Docs", url: "/")
+                                } else {
+                                    Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank)
+                                }
                             }
                             ListItem {
-                                Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank)
+                                if currentSite == .apiDocs {
+                                    Link("API Docs", url: "/")
+                                } else {
+                                    Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank)
+                                }
                             }
                             ListItem {
                                 Link("Press Kit", url: "https://design.vapor.codes/presskit.zip").attribute(named: "download", value: nil)

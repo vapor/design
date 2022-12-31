@@ -14,14 +14,15 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     
     func makeIndexHTML(for index: Index,
                        context: PublishingContext<Site>) throws -> HTML {
+        let currentSite: CurrentSite = .blog
         let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim", imageURL: "/images/author-image-placeholder.png"), publishedDate: "Published 1st September 2022")
         let itemContent = Content(title: "Hello, world!", description: "Quis orci, sociis fringilla sed aenean sem. Pulvinar mi nunc neque vestibulum at. Sem tincidunt.", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
-            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: .blog)
+            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: true)
             buildComponentDemo()
-            SiteFooter(isLocal: true)
+            SiteFooter(isLocal: true, currentSite: currentSite)
         }
         
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)

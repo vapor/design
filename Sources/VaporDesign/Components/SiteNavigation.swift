@@ -1,13 +1,6 @@
 import Plot
 import Publish
 
-public enum CurrentSite {
-    case main
-    case blog
-    case apiDocs
-    case docs
-}
-
 public struct SiteNavigation<Site: Website>: Component {
     let context: PublishingContext<Site>
     let selectedSelectionID: Site.SectionID?
