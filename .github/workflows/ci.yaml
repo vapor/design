@@ -46,3 +46,4 @@ jobs:
         with:
           bucket-prefix: "vapor-design-pulls"
           folder-to-copy: "./Output"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
