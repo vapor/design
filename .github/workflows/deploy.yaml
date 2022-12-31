@@ -31,7 +31,7 @@ jobs:
         parameter-overrides: >-
           DomainName=design.vapor.codes,
           S3BucketName=vapor-design-site,
-          AcmCertificateArn=${{ secrets.CERTIFICATE_ARN }}
+          AcmCertificateArn=${{ secrets.CERTIFICATE_ARN }},
       if: steps.cred.outcome == 'success'
     - name: Deploy to S3
       id: s3deploy

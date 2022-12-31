@@ -13,6 +13,12 @@ Parameters:
   S3BucketName:
     Type: String
     Description: Name for the bucket
+  VaporHostedZoneID:
+    Type: String
+    Description: The ID of the hosted zone for the domain
+    AllowedPattern: "Z[0-9A-Z]{13,}"
+    ConstraintDescription: must be a valid hosted zone ID.
+    Default: 'Z06581742SY16C173XCLE'
 Resources:
   S3BucketForWebsiteContent:
     Type: AWS::S3::Bucket
@@ -96,9 +102,9 @@ Resources:
   DNSEntry:
     Type: 'AWS::Route53::RecordSetGroup'
     Properties:
-      HostedZoneId: !Ref myHostedZoneID
+      HostedZoneId: !Ref VaporHostedZoneID
       RecordSets:
-        - Name: !Ref myRecordSetDomainName
+        - Name: !Ref DomainName
           Type: A
           AliasTarget:
             HostedZoneId: Z2FDTNDATAQYW2
