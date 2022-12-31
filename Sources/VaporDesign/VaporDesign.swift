@@ -24,6 +24,8 @@ public struct VaporDesign<Site: Website> {
     func buildHead(for page: Location, context: PublishingContext<Site>) -> Node<HTML.DocumentContext> {
         let head = Node.head(for: page, on: context.site, stylesheetPaths: [
             Path(VaporDesignUtilities.buildResourceLink(for: "/main.css", isLocal: isLocal))
+        ], scripts: [
+            Path(VaporDesignUtilities.buildResourceLink(for: "/js/detectColorScheme.js", isLocal: isLocal))
         ])
         return head
     }
