@@ -1,13 +1,22 @@
 import Plot
 import Publish
 
+public enum CurrentSite {
+    case main
+    case blog
+    case apiDocs
+    case docs
+}
+
 public struct SiteNavigation<Site: Website>: Component {
-    var context: PublishingContext<Site>
-    var selectedSelectionID: Site.SectionID?
+    let context: PublishingContext<Site>
+    let selectedSelectionID: Site.SectionID?
+    let currentSite: CurrentSite
     
-    public init(context: PublishingContext<Site>, selectedSelectionID: Site.SectionID?) {
+    public init(context: PublishingContext<Site>, selectedSelectionID: Site.SectionID?, currentSite: CurrentSite) {
         self.context = context
         self.selectedSelectionID = selectedSelectionID
+        self.currentSite = currentSite
     }
 
     public var body: Component {
@@ -81,8 +90,12 @@ public struct SiteNavigation<Site: Website>: Component {
                             Link("Community", url: "#").class("nav-link")
                         }.class("nav-item")
                         ListItem {
-                            #warning("Build")
-                            Link("Blog", url: "#").class("nav-link active").attribute(named: "aria-current", value: "page")
+                            if currentSite == .blog {
+                                Link("Blog", url: "/").class("nav-link active").attribute(named: "aria-current", value: "page")
+                            } else {
+                                Link("Blog", url: "https://blog.vapor.codes").class("nav-link").linkTarget(.blank)
+                            }
+                            
                         }.class("nav-item")
                         ListItem {
                             Link(url: "https://github.com/vapor") {
