@@ -19,12 +19,11 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
             SiteNavigation(context: context, selectedSelectionID: nil)
-            BlogPost(blogPostData: blogPostData, item: item, site: context.site)
+            BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: true)
             buildComponentDemo()
             SiteFooter(isLocal: true)
-            
-            
         }
+        
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: index, context: context, body: body)
     }

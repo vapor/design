@@ -5,11 +5,13 @@ public struct BlogPost<Site: Website>: Component {
     let blogPostData: BlogPostExtraData
     let item: Item<Site>
     let site: Site
+    let isDemo: Bool
     
-    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site) {
+    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool = false) {
         self.blogPostData = blogPostData
         self.item = item
         self.site = site
+        self.isDemo = isDemo
     }
     
     public var body: Component {
@@ -27,7 +29,7 @@ public struct BlogPost<Site: Website>: Component {
             Div {
                 Div {
                     Div {
-                        buildBlogPostTagList()
+                        buildBlogPostTagList(isDemo: isDemo)
                     }.class("blog-tags")
                     Div {
                         Text(blogPostData.length)
@@ -71,7 +73,7 @@ public struct BlogPost<Site: Website>: Component {
     func buildBlogPostBottom() -> Component {
         Div {
             Div {
-                buildBlogPostTagList()
+                buildBlogPostTagList(isDemo: isDemo)
             }.id("blog-bottom-tags").class("blog-tags col-lg-6")
             Div {
                 buildBlogPostShareList()
@@ -79,9 +81,13 @@ public struct BlogPost<Site: Website>: Component {
         }.id("blog-post-bottom").class("row")
     }
     
-    func buildBlogPostTagList() -> Component {
+    func buildBlogPostTagList(isDemo: Bool) -> Component {
         List(item.tags) { tag in
-            Link(tag.string, url: site.path(for: tag).absoluteString)
+            if isDemo {
+                return Link(tag.string, url: "#")
+            } else {
+                return Link(tag.string, url: site.path(for: tag).absoluteString)
+            }
         }
     }
     
