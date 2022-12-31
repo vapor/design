@@ -37,14 +37,13 @@ jobs:
       id: s3deploy
       run: >
         aws s3 sync
-        ./docs
+        ./Output
         s3:/vapor-design-site/
         --acl public-read --follow-symlinks --delete
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'eu-west-2'
-        SOURCE_DIR: 'Output'
       # if: steps.clouddeploy.outcome == 'success'
     - name: Invalidate CloudFront
       uses: awact/cloudfront-action@master
