@@ -82,8 +82,8 @@ public struct SiteNavigation<Site: Website>: Component {
                         }.class("nav-item")
                         ListItem {
                             #warning("Build")
-                            Link("Blog", url: "#").class("nav-link").attribute(named: "aria-current", value: "page")
-                        }.class("nav-item active")
+                            Link("Blog", url: "#").class("nav-link active").attribute(named: "aria-current", value: "page")
+                        }.class("nav-item")
                         ListItem {
                             Link(url: "https://github.com/vapor") {
                                 Span().class("vapor-icon icon-github-fill")
