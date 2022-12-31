@@ -43,16 +43,25 @@ public struct SiteNavigation<Site: Website>: Component {
                             Link("Showcase", url: "#").class("nav-link")
                         }.class("nav-item")
                         ListItem {
-                            Link("Documentation", url: "#")
-                                .class("nav-link dropdown-toggle dropdown-no-outline")
+                            var classList = "nav-link dropdown-toggle dropdown-no-outline"
+                            if currentSite == .docs || currentSite == .apiDocs {
+                                classList += " active"
+                            }
+                            var docsLink = Link("Documentation", url: "#")
+                                .class(classList)
                                 .role("button")
                                 .attribute(named: "data-bs-toggle", value: "dropdown")
                                 .attribute(named: "aria-expanded", value: "fale")
                             
-                            List {
-                                ListItem {
-                                    Link(url: "#") {
-                                        Div {
+                            if currentSite == .docs || currentSite == .apiDocs {
+                                docsLink = docsLink.attribute(named: "aria-current", value: "page")
+                            }
+                            return ComponentGroup {
+                                docsLink
+                                
+                                List {
+                                    ListItem {
+                                        let linkBody = Div {
                                             Span().class("vapor-icon icon-server-04")
                                             Div {
                                                 Div {
@@ -63,12 +72,20 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-caption")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
-                                    }.class("dropdown-item")
-                                }
-                                
-                                ListItem {
-                                    Link(url: "#") {
-                                        Div {
+                                        
+                                        if currentSite == .docs {
+                                            Link(url: "/") {
+                                                linkBody
+                                            }.class("dropdown-item")
+                                        } else {
+                                            Link(url: "https://docs.vapor.codes") {
+                                                linkBody
+                                            }.class("dropdown-item").linkTarget(.blank)
+                                        }
+                                    }
+                                    
+                                    ListItem {
+                                        let linkBody = Div {
                                             Span().class("vapor-icon icon-dataflow-03")
                                             Div {
                                                 Div {
@@ -79,9 +96,19 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-caption")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
-                                    }.class("dropdown-item")
-                                }
-                            }.class("dropdown-menu").id("framework-dropdown-menu")
+                                        
+                                        if currentSite == .apiDocs {
+                                            Link(url: "/") {
+                                                linkBody
+                                            }.class("dropdown-item")
+                                        } else {
+                                            Link(url: "https://api.vapor.codes") {
+                                                linkBody
+                                            }.class("dropdown-item").linkTarget(.blank)
+                                        }
+                                    }
+                                }.class("dropdown-menu").id("framework-dropdown-menu")
+                            }
                         }.class("nav-item dropdown")
                         ListItem {
                             Link("Team", url: "#").class("nav-link")
