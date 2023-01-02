@@ -466,16 +466,33 @@ nav {
     .page-item {
         color: $grey-600;
         background: transparent;
-        border: none;
+        margin-left: 1px;
+        margin-right: 1px;
 
         a {
             color: $grey-600;
-            border: none;
+            border: 1px solid transparent;
+            border-radius: 8px;
         }
 
         a:hover {
             color: $blue-300;
-            background-color: transparent;
+            background-color: $grey-100;
+            border: 1px solid $grey-300;
+            border-radius: 8px;
+        }
+
+        .page-link-next-previous {
+            background: $grey-100;
+            border-radius: 12px;
+            border: 1px solid rgba($blue-300, 0.1);
+            color: $blue-300;
+            border-radius: 12px;
+        }
+
+        .page-link-next-previous:hover {
+            color: $blue-400;
+            border-radius: 12px;
         }
     }
 
@@ -488,17 +505,7 @@ nav {
         }
     }
 
-    .page-link-next-previous {
-        background: $grey-100;
-        border-radius: 12px;
-        border: 1px solid rgba($blue-300, 0.1);
-
-        a {
-            color: $blue-300;
-        }
-
-        a:hover {
-            color: $blue-400;
-        }
+    .pagination-ellipsis {
+        margin-top: 5px;
     }
 }
