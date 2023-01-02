@@ -72,7 +72,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             Div {
                                 Text("Previous")
                             }.class("d-none d-lg-block")
-                        }.class("page-link page-link-next-previous").accessibilityLabel("Previous")
+                        }.class("page-link page-link-next-previous d-flex").accessibilityLabel("Previous")
                     }.class("page-item me-auto")
                     ListItem {
                         Span {
@@ -107,7 +107,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             Div {
                                 Text("Next")
                             }.class("d-none d-lg-block")
-                        }.class("page-link page-link-next-previous").accessibilityLabel("Next")
+                        }.class("page-link page-link-next-previous d-flex").accessibilityLabel("Next")
                     }.class("page-item ms-auto")
                 }.class("pagination justify-content-center")
             }.accessibilityLabel("blog-pagination")
