@@ -88,7 +88,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("page-item d-none d-lg-block")
                     ListItem {
                         Text("...")
-                    }.class("page-item pagination-ellipsis d-none d-lg-block")
+                    }.class("page-item pagination-ellipsis d-none d-lg-block ms-1 me-1")
                     ListItem {
                         Link("8", url: "#").class("page-link")
                     }.class("page-item d-none d-lg-block")
