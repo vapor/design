@@ -469,6 +469,10 @@ nav {
         margin-left: 1px;
         margin-right: 1px;
 
+        .page-link {
+            background: transparent;
+        }
+
         a {
             color: $grey-600;
             border: 1px solid transparent;
@@ -483,7 +487,7 @@ nav {
         }
 
         .page-link-next-previous {
-            background: $grey-100;
+            background: $grey-200;
             border-radius: 12px;
             border: 1px solid rgba($blue-300, 0.1);
             color: $blue-300;

@@ -272,4 +272,38 @@
     .dropdown-toggle:after {
         background-color: $navbar-dark-color;
     }
+
+    .pagination {
+        .page-item {
+            color: $grey-500;
+            background: transparent;
+
+            a {
+                color: $grey-500;
+            }
+
+            a:hover {
+                background-color: $off-black;
+                border: 1px solid $grey-800;
+            }
+
+            .page-link-next-previous {
+                background: rgba(white, 0.05);
+                border: 1px solid rgba($pink-300, 0.1);
+                color: $blue-300;
+            }
+
+            .page-link-next-previous:hover {
+                color: $blue-400;
+            }
+        }
+
+        .active {
+            .page-link {
+                color: $grey-400;
+                background-color: $off-black;
+                border: 1px solid $grey-800;
+            }
+        }
+    }
 }
