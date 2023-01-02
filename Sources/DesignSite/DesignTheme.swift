@@ -68,44 +68,47 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 List {
                     ListItem {
                         Link(url: "#") {
-                            Span() {
-                                Text("«")
-                            }.attribute(named: "aria-hidden", value: "true")
-                            Text("Previous")
+                            Span().class("vapor-icon icon-chevron-left")
+                            Div {
+                                Text("Previous")
+                            }.class("d-none d-lg-block")
                         }.class("page-link page-link-next-previous").accessibilityLabel("Previous")
-                    }.class("page-item")
+                    }.class("page-item me-auto")
                     ListItem {
                         Span {
                             Text("1")
                         }.class("page-link")
-                    }.class("page-item active").attribute(named: "aria-current", value: "page")
+                    }.class("page-item active d-none d-lg-block").attribute(named: "aria-current", value: "page")
 
                     ListItem {
                         Link("2", url: "#").class("page-link")
-                    }.class("page-item")
+                    }.class("page-item d-none d-lg-block")
                     ListItem {
                         Link("3", url: "#").class("page-link")
-                    }.class("page-item")
+                    }.class("page-item d-none d-lg-block")
                     ListItem {
                         Text("...")
-                    }.class("page-item pagination-ellipsis")
+                    }.class("page-item pagination-ellipsis d-none d-lg-block")
                     ListItem {
                         Link("8", url: "#").class("page-link")
-                    }.class("page-item")
+                    }.class("page-item d-none d-lg-block")
                     ListItem {
                         Link("9", url: "#").class("page-link")
-                    }.class("page-item")
+                    }.class("page-item d-none d-lg-block")
                     ListItem {
                         Link("10", url: "#").class("page-link")
-                    }.class("page-item")
+                    }.class("page-item d-none d-lg-block")
+                    ListItem {
+                        Text("Page 1 of 10")
+                    }.class("page-item pagination-ellipsis d-lg-none")
                     ListItem {
                         Link(url: "#") {
-                            Span() {
-                                Text("»")
-                            }.attribute(named: "aria-hidden", value: "true")
-                            Text("Next")
+                            Span().class("vapor-icon icon-chevron-right")
+                            Div {
+                                Text("Next")
+                            }.class("d-none d-lg-block")
                         }.class("page-link page-link-next-previous").accessibilityLabel("Next")
-                    }.class("page-item")
+                    }.class("page-item ms-auto")
                 }.class("pagination justify-content-center")
             }.accessibilityLabel("blog-pagination")
         }.class("container")

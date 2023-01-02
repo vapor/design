@@ -488,11 +488,19 @@ nav {
             border: 1px solid rgba($blue-300, 0.1);
             color: $blue-300;
             border-radius: 12px;
+
+            .vapor-icon {
+                background-color: $blue-300;
+            }
         }
 
         .page-link-next-previous:hover {
             color: $blue-400;
             border-radius: 12px;
+
+            .vapor-icon {
+                background-color: $blue-400;
+            }
         }
     }
 
