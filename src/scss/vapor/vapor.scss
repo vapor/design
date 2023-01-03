@@ -417,43 +417,45 @@ h3 {
 }
 
 .dropdown-toggle:after {
-    $mask-image-url: '../../images/chevron-down.svg';
-    -webkit-mask-image: url($mask-image-url);
-    -webkit-mask-position: center;
-    mask-image: url($mask-image-url);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
-    width: 10px;
-    height: 10px;
-    background-color: $navbar-light-color;
+    display: none;
 }
 
-.dropdown-toggle:hover:after {
-    background-color: $navbar-light-active-color;
-}
-
-.dropdown-toggle:active:after {
-    background-color: $navbar-light-active-color;
-}
-
-.dropdown-toggle:focus:after {
-    background-color: $navbar-light-active-color;
+#documentation-navbar-chevron {
+    width: 15px;
+    height: 5px;
+    padding-top: 22px
 }
 
 @include media-breakpoint-down(lg) {
-    .dropdown-toggle:after {
+    #documentation-navbar-chevron {
         float: right;
     }
 }
 
-.dropdown-toggle[aria-expanded="true"]:after {
+#documentation-navbar-chevron[data-shown="true"] {
     transform: rotate(180deg);
 }
 
+#documentation-dropdown-link:hover {
+    .vapor-icon {
+        background-color: $navbar-light-active-color;
+    }
+}
+
+#documentation-dropdown-link:active {
+    .vapor-icon {
+        background-color: $navbar-light-active-color;
+    }
+}
+
+#documentation-dropdown-link:focus {
+    .vapor-icon {
+        background-color: $navbar-light-active-color;
+    }
+}
+
 /*for animation*/
-.dropdown-toggle:after {
+#documentation-navbar-chevron {
     transition: 0.5s;
 }
 

@@ -269,8 +269,22 @@
         }
     }
 
-    .dropdown-toggle:after {
-        background-color: $navbar-dark-color;
+    #documentation-dropdown-link:hover {
+        .vapor-icon {
+            background-color: $nav-link-action-color-dark;
+        }
+    }
+    
+    #documentation-dropdown-link:active {
+        .vapor-icon {
+            background-color: $nav-link-action-color-dark;
+        }
+    }
+    
+    #documentation-dropdown-link:focus {
+        .vapor-icon {
+            background-color: $nav-link-action-color-dark;
+        }
     }
 
     .pagination {

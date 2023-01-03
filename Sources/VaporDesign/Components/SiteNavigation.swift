@@ -36,16 +36,18 @@ public struct SiteNavigation<Site: Website>: Component {
                             Link("Showcase", url: "#").class("nav-link")
                         }.class("nav-item")
                         ListItem {
-                            var classList = "nav-link dropdown-toggle dropdown-no-outline"
+                            var classList = "nav-link dropdown-toggle dropdown-no-outline d-flex"
                             if currentSite == .docs || currentSite == .apiDocs {
                                 classList += " active"
                             }
                             var docsLink = Link(url: "#") {
                                 Text("Documentation")
-                                Span().class("vapor-icon icon-chevron-down")
+                                Span().class("vapor-icon icon-chevron-down ms-auto ms-lg-3").id("documentation-navbar-chevron")
                             }
                                 .class(classList)
+                                .id("documentation-dropdown-link")
                                 .role("button")
+                                .onclick("Vapor.toggleDocumentationDropdown(); return true;")
                                 .attribute(named: "data-bs-toggle", value: "dropdown")
                                 .attribute(named: "aria-expanded", value: "false")
                             
