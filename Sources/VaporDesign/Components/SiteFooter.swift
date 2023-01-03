@@ -93,7 +93,7 @@ public struct SiteFooter: Component {
                 Div {
                     Div {
                         Text("&copy; QuTheory, LLC \(year)")
-                    }.id("footer-copyright")
+                    }.id("footer-copyright").class("my-auto")
                     
                     Div {
                         List {

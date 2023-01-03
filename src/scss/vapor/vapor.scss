@@ -466,6 +466,12 @@ nav {
     }
 }
 
+@include media-breakpoint-up(lg) {
+    .w-lg-50 {
+        width: 50% !important;
+    }
+}
+
 .pagination {
     .page-item {
         color: $grey-600;
