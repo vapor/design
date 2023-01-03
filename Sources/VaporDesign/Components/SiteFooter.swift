@@ -1,4 +1,5 @@
 import Plot
+import Foundation
 
 public struct SiteFooter: Component {
     
@@ -11,6 +12,9 @@ public struct SiteFooter: Component {
     }
     
     public var body: Component {
+        guard let year = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year else {
+            fatalError("Unable to get the current year")
+        }
         let footer = Footer {
             Div {
                 Div {
@@ -24,72 +28,76 @@ public struct SiteFooter: Component {
                             .height(76)
                         Div {
                             Text("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift")
-                        }.class("w-50 mt-4")
-                    }.id("footer-callout").class("col-lg-6")
+                        }.class("w-lg-50 mt-4")
+                    }.id("footer-callout").class("col-md")
                     Div {
-                        H6("Community").class("ps-5")
-                        List {
-                            ListItem {
-                                Link("Team", url: "#")
-                            }
-                            ListItem {
-                                Link("Contributors", url: "#")
-                            }
-                            ListItem {
-                                Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank)
-                            }
-                            ListItem {
-                                Link("Evangelists", url: "#")
-                            }
-                            ListItem {
-                                Link("Showcase", url: "#")
-                            }
-                            ListItem {
-                                Link("Supporters", url: "#")
-                            }
-                        }.class("ps-5")
-                    }.id("footer-community-links").class("col-lg-3 col-6 ps-5")
-                    Div {
-                        H6("Resources")
-                        List {
-                            ListItem {
-                                if currentSite == .blog {
-                                    Link("Blog", url: "/")
-                                } else {
-                                    Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank)
+                        Div {
+                            Div {
+                                H6("Community").class("ps-lg-5")
+                                List {
+                                    ListItem {
+                                        Link("Team", url: "#")
+                                    }
+                                    ListItem {
+                                        Link("Contributors", url: "#")
+                                    }
+                                    ListItem {
+                                        Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank)
+                                    }
+                                    ListItem {
+                                        Link("Evangelists", url: "#")
+                                    }
+                                    ListItem {
+                                        Link("Showcase", url: "#")
+                                    }
+                                    ListItem {
+                                        Link("Supporters", url: "#")
+                                    }
+                                }.class("ps-lg-5")
+                            }.id("footer-community-links").class("col-6 ps-lg-5")
+                            Div {
+                                H6("Resources")
+                                List {
+                                    ListItem {
+                                        if currentSite == .blog {
+                                            Link("Blog", url: "/")
+                                        } else {
+                                            Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank)
+                                        }
+                                    }
+                                    ListItem {
+                                        if currentSite == .docs {
+                                            Link("Framework Docs", url: "/")
+                                        } else {
+                                            Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank)
+                                        }
+                                    }
+                                    ListItem {
+                                        if currentSite == .apiDocs {
+                                            Link("API Docs", url: "/")
+                                        } else {
+                                            Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank)
+                                        }
+                                    }
+                                    ListItem {
+                                        Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil)
+                                    }
+                                    ListItem {
+                                        Link("Help", url: "#")
+                                    }
+                                    ListItem {
+                                        Link("Contact", url: "#")
+                                    }
                                 }
-                            }
-                            ListItem {
-                                if currentSite == .docs {
-                                    Link("Framework Docs", url: "/")
-                                } else {
-                                    Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank)
-                                }
-                            }
-                            ListItem {
-                                if currentSite == .apiDocs {
-                                    Link("API Docs", url: "/")
-                                } else {
-                                    Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank)
-                                }
-                            }
-                            ListItem {
-                                Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil)
-                            }
-                            ListItem {
-                                Link("Help", url: "#")
-                            }
-                            ListItem {
-                                Link("Contact", url: "#")
-                            }
-                        }
-                    }.id("footer-resources-links").class("col-lg-3 col-6")
+                            }.id("footer-resources-links").class("col-6")
+                        }.class("row")
+                    }.class("mt-4 mt-lg-0 col-md")
                 }.class("row")
                 Node.hr()
                 Div {
                     Div {
-                        Text("&copy; QuTheory, LLC 2022")
-                    }.id("footer-copyright")
+                        Text("&copy; QuTheory, LLC \(year)")
+                    }.id("footer-copyright").class("my-auto")
                     
                     Div {
                         List {

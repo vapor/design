@@ -75,7 +75,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 linkBody
                                             }.class("dropdown-item").linkTarget(.blank)
                                         }
-                                    }
+                                    }.class("m-lg-2")
                                     
                                     ListItem {
                                         let linkBody = Div {
@@ -99,7 +99,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 linkBody
                                             }.class("dropdown-item").linkTarget(.blank)
                                         }
-                                    }
+                                    }.class("m-lg-2")
                                 }.class("dropdown-menu").id("framework-dropdown-menu")
                             }
                         }.class("nav-item dropdown")

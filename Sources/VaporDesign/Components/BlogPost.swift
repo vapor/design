@@ -82,11 +82,33 @@ public struct BlogPost<Site: Website>: Component {
     }
     
     func buildBlogPostTagList(isDemo: Bool) -> Component {
-        List(item.tags) { tag in
-            if isDemo {
-                return Link(tag.string, url: "#")
-            } else {
-                return Link(tag.string, url: site.path(for: tag).absoluteString)
+        List {
+            for (index, tag) in item.tags.enumerated() {
+                if index == 0 {
+                    ListItem {
+                        if isDemo {
+                            Link(tag.string, url: "#")
+                        } else {
+                            Link(tag.string, url: site.path(for: tag).absoluteString)
+                        }
+                    }.class("ms-auto")
+                } else if index == item.tags.count - 1 {
+                    ListItem {
+                        if isDemo {
+                            Link(tag.string, url: "#")
+                        } else {
+                            Link(tag.string, url: site.path(for: tag).absoluteString)
+                        }
+                    }.class("me-auto")
+                } else {
+                    ListItem {
+                        if isDemo {
+                            Link(tag.string, url: "#")
+                        } else {
+                            Link(tag.string, url: site.path(for: tag).absoluteString)
+                        }
+                    }
+                }
             }
         }
     }
@@ -98,7 +120,7 @@ public struct BlogPost<Site: Website>: Component {
                     Span().class("vapor-icon icon-copy-06 me-2")
                     Text("Copy Link")
                 }.class("btn btn-secondary btn-small d-flex").onclick("Vapor.copyURLToClipboard(); return false;")
-            }
+            }.class("ms-auto")
             ListItem {
                 Link(url: "#") {
                     Span().class("vapor-icon icon-twitter-fill")
@@ -113,7 +135,7 @@ public struct BlogPost<Site: Website>: Component {
                 Link(url: "#") {
                     Span().class("vapor-icon icon-facebook-circle-fill")
                 }.class("btn btn-secondary btn-small")
-            }
+            }.class("me-auto")
         }
     }
 }
