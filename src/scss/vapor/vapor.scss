@@ -93,6 +93,12 @@ $font-family-monospace: "Roboto Mono", ui-monospace, Menlo, Monaco, "Cascadia Mo
 }
 
 // Global Overrides
+$link-color: $blue-300;
+$link-decoration: none;
+$link-hover-color: shift-color($blue-300, $link-shade-percentage);
+$link-hover-decoration: underline;
+
+
 body {
     font-feature-settings: 'salt' on;
 }
