@@ -133,7 +133,7 @@ public struct BlogPost<Site: Website>: Component {
             }
             ListItem {
                 Link(url: "#") {
-                    Span().class("vapor-icon icon-facebook-circle-fill")
+                    Span().class("vapor-icon icon-mastodon-fill")
                 }.class("btn btn-secondary btn-small")
             }.class("me-auto")
         }
