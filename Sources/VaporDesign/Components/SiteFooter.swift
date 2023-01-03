@@ -1,4 +1,5 @@
 import Plot
+import Foundation
 
 public struct SiteFooter: Component {
     
@@ -11,6 +12,9 @@ public struct SiteFooter: Component {
     }
     
     public var body: Component {
+        guard let year = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year else {
+            fatalError("Unable to get the current year")
+        }
         let footer = Footer {
             Div {
                 Div {
@@ -88,7 +92,7 @@ public struct SiteFooter: Component {
                 Node.hr()
                 Div {
                     Div {
-                        Text("&copy; QuTheory, LLC 2022")
+                        Text("&copy; QuTheory, LLC \(year)")
                     }.id("footer-copyright")
                     
                     Div {
