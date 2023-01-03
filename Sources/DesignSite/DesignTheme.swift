@@ -129,8 +129,7 @@ let demoPostHTML = """
         </p>
 
         <pre>
-          <code class="language-swift">
-// This is a comment
+          <code class="language-swift">// This is a comment
 struct CreateTodoTitleIndex: AsyncMigration {
   func prepare(on database: Database) async throws {
       try await (database as! SQLDatabase)
