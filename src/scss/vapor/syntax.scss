@@ -134,7 +134,7 @@
     }
 }
 
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
     .hljs-ln-n {
         color: $grey-600;
         padding-left: 40px;
