@@ -98,7 +98,7 @@ public struct BlogPost<Site: Website>: Component {
                     Span().class("vapor-icon icon-copy-06 me-2")
                     Text("Copy Link")
                 }.class("btn btn-secondary btn-small d-flex").onclick("Vapor.copyURLToClipboard(); return false;")
-            }
+            }.class("ms-auto")
             ListItem {
                 Link(url: "#") {
                     Span().class("vapor-icon icon-twitter-fill")
@@ -113,7 +113,7 @@ public struct BlogPost<Site: Website>: Component {
                 Link(url: "#") {
                     Span().class("vapor-icon icon-facebook-circle-fill")
                 }.class("btn btn-secondary btn-small")
-            }
+            }.class("me-auto")
         }
     }
 }
