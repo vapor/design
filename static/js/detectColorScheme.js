@@ -19,7 +19,9 @@ function detectColorScheme() {
 
     // Dark theme preferred, set document with a correct class
     if (theme=="dark") {
-         document.documentElement.classList.add("dark");
+        document.documentElement.classList.add("dark");
+        var metaThemeColor = document.querySelector("meta[name=theme-color]");
+        metaThemeColor.setAttribute("content", "#141416");
     }
 }
 detectColorScheme();

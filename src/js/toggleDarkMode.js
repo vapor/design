@@ -5,9 +5,13 @@ function switchTheme(e) {
     if (document.documentElement.classList.contains("dark")) {
         localStorage.setItem('theme', 'light');
         document.documentElement.classList.remove("dark");
+        var metaThemeColor = document.querySelector("meta[name=theme-color]");
+        metaThemeColor.setAttribute("content", "#ffffff");
     } else {
         localStorage.setItem('theme', 'dark');
         document.documentElement.classList.add("dark");
+        var metaThemeColor = document.querySelector("meta[name=theme-color]");
+        metaThemeColor.setAttribute("content", "#141416");
     }    
 }
 
