@@ -15,8 +15,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     func makeIndexHTML(for index: Index,
                        context: PublishingContext<Site>) throws -> HTML {
         let currentSite: CurrentSite = .blog
-        let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim", imageURL: "/images/author-image-placeholder.png"), publishedDate: "Published 1st September 2022")
-        let itemContent = Content(title: "Hello, world!", description: "Quis orci, sociis fringilla sed aenean sem. Pulvinar mi nunc neque vestibulum at. Sem tincidunt.", body: .init(html: demoPostHTML))
+        let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim", imageURL: "/images/author-image-placeholder.png"), publishedDate: "Published 3rd January 2023")
+        let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
             SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite)
@@ -61,7 +61,18 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     
     func buildComponentDemo() -> Component {
         Div {
-            H1("Everything below this is for just showing components")
+            H1("Component Guide")
+            
+            H2("Typography")
+            
+            H1("Header 1")
+            H2("Header 2")
+            H3("Header 3")
+            H4("Header 4")
+            H5("Header 5")
+            H6("Header 6")
+            
+            H2("Pagination")
 
             #warning("Extract to component")
             Navigation {
@@ -111,6 +122,10 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("page-item ms-auto")
                 }.class("pagination justify-content-center")
             }.accessibilityLabel("blog-pagination")
+            
+            H2("Blog Post Card")
+            
+            
         }.class("container")
     }
 }
@@ -119,14 +134,17 @@ let demoPostHTML = """
 <h2>Introduction</h2>
 
         <p>
-          Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis.
-          Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt.
-          At feugiat sapien varius id.
+          This site contains Vapor's Design Guide showing examples of different components used in web pages. Evetually, this design guide will be rolled out across all of Vapor's sites, old and new.
         </p>
         <p>
-          Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim.
-          Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat.
+          The designs have been developed in conjunction with <a href="https://www.redbourbon.co">Red Bourbon</a> who have created some amazing desgins for us. The code for this site, the desgin guide and the reference designs can be found on <a href="https://github.com/vapor/design">GitHub</a>.
         </p>
+
+        <p>
+            Originally this page was a proof on concept for building the blog (the first site to be ported over to the new design) as a way of getting the styling and HTML/CSS to work. It's now evolved to host the generated CSS and JS the sites can pull in, this example site, all the static files (like images) and components for Publish to use when building out sites.
+        </p>
+
+        <p>Here's an example of a code block:</p>
 
         <pre>
           <code class="language-swift">// This is a comment
@@ -152,39 +170,17 @@ struct CreateTodoTitleIndex: AsyncMigration {
           </code>
         </pre>
 
+        <p>And now a quote:</p>
+
         <blockquote>
           “Hendrerit amet nibh dui ut in feugiat pellentesque. Sed consectetur blandit lectus arcu lacus libero diam. Nulla turpis etiam non et, adipiscing.
           Egestas at vitae, at purus accumsan fermentum. Sed quis sed nulla malesuada.""
         </blockquote>
 
         <p>
-          Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam.
-          Tempor integer aliquam in vitae malesuada fringilla.
+          And finally a list:
         </p>
-        <p>
-          Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis risus. Sed condimentum enim
-          dignissim adipiscing faucibus consequat, urna. Viverra purus et erat auctor aliquam. Risus, volutpat vulputate posuere purus
-          sit congue convallis aliquet. Arcu id augue ut feugiat donec porttitor neque. Mauris, neque ultricies eu vestibulum, bibendum quam
-          lorem id. Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.
-        </p>
-        <p>
-          Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque congue eget consectetur turpis.
-          Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus. Quis velit
-          eget ut tortor tellus. Sed vel, congue felis elit erat nam nibh orci.
-        </p>
-
-        <h3>Software and Tools</h3>
-
-        <p>
-          Pharetra morbi libero id aliquam elit massa integer tellus. Quis felis aliquam ullamcorper porttitor.
-          Pulvinar ullamcorper sit dictumst ut eget a, elementum eu. Maecenas est morbi mattis id in ac pellentesque ac.
-        </p>
-
-        <p>
-          Sagittis et eu at elementum, quis in. Proin praesent volutpat egestas sociis sit lorem nunc nunc sit. Eget diam curabitur mi ac.
-          Auctor rutrum lacus malesuada massa ornare et. Vulputate consectetur ac ultrices at diam dui eget fringilla tincidunt.
-          Arcu sit dignissim massa erat cursus vulputate gravida id. Sed quis auctor vulputate hac elementum gravida cursus dis.
-        </p>
+        
 
         <ol>
           <li>Lectus id duis vitae porttitor enim gravida morbi.</li>

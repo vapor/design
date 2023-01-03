@@ -111,9 +111,15 @@ public extension Node where Context == HTML.HeadContext {
             .content(msApplicationURL)
         )
         
-        let themeColor = Node<HTML.HeadContext>.meta(
+        let themeColorDark = Node<HTML.HeadContext>.meta(
             .name("theme-color"),
-            .content("#ffffff")
+            .content("#141416"),
+            .attribute(named: "media", value: "(prefers-color-scheme: dark)")
+        )
+        let themeColorLight = Node<HTML.HeadContext>.meta(
+            .name("theme-color"),
+            .content("#ffffff"),
+            .attribute(named: "media", value: "(prefers-color-scheme: light)")
         )
         
         return .group(
@@ -124,7 +130,8 @@ public extension Node where Context == HTML.HeadContext {
             shortcutLink,
             msApplicationTileMeta,
             msApplicationConfig,
-            themeColor
+            themeColorLight,
+            themeColorDark
         )
     }
 }
