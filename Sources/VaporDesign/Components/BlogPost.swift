@@ -82,11 +82,33 @@ public struct BlogPost<Site: Website>: Component {
     }
     
     func buildBlogPostTagList(isDemo: Bool) -> Component {
-        List(item.tags) { tag in
-            if isDemo {
-                return Link(tag.string, url: "#")
-            } else {
-                return Link(tag.string, url: site.path(for: tag).absoluteString)
+        List {
+            for (index, tag) in item.tags.enumerated() {
+                if index == 0 {
+                    ListItem {
+                        if isDemo {
+                            Link(tag.string, url: "#")
+                        } else {
+                            Link(tag.string, url: site.path(for: tag).absoluteString)
+                        }
+                    }.class("ms-auto")
+                } else if index == item.tags.count - 1 {
+                    ListItem {
+                        if isDemo {
+                            Link(tag.string, url: "#")
+                        } else {
+                            Link(tag.string, url: site.path(for: tag).absoluteString)
+                        }
+                    }.class("me-auto")
+                } else {
+                    ListItem {
+                        if isDemo {
+                            Link(tag.string, url: "#")
+                        } else {
+                            Link(tag.string, url: site.path(for: tag).absoluteString)
+                        }
+                    }
+                }
             }
         }
     }
