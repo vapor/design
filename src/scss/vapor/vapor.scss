@@ -422,8 +422,8 @@ h3 {
 
 #documentation-navbar-chevron {
     width: 15px;
-    height: 5px;
-    padding-top: 22px
+    height: 15px;
+    margin-top: 4px;
 }
 
 @include media-breakpoint-down(lg) {
@@ -456,7 +456,7 @@ h3 {
 
 /*for animation*/
 #documentation-navbar-chevron {
-    transition: 0.5s;
+    transition: 0.35s;
 }
 
 nav {
