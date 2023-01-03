@@ -306,4 +306,8 @@
             }
         }
     }
+
+    .dropdown-item:hover {
+        background-color: rgba($grey-800, 0.3);
+    }
 }

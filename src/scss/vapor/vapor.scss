@@ -385,6 +385,11 @@ h3 {
     background: transparent;
 }
 
+.dropdown-item:hover {
+    border-radius: 16px;
+    background: $grey-100;
+}
+
 .nav-dropdown-container {
     padding: 1em;
 
