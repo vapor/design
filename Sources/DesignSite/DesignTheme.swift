@@ -14,14 +14,15 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     
     func makeIndexHTML(for index: Index,
                        context: PublishingContext<Site>) throws -> HTML {
+        let isDemo = true
         let currentSite: CurrentSite = .blog
-        let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim", imageURL: "/images/author-image-placeholder.png"), publishedDate: "Published 3rd January 2023")
+        let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), publishedDate: "3rd January 2023")
         let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
             SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite)
-            BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: true)
-            buildComponentDemo()
+            BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
+            buildComponentDemo(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
             SiteFooter(isLocal: true, currentSite: currentSite)
         }
         
@@ -59,7 +60,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         return builder.buildHTML(for: page, context: context, body: .body())
     }
     
-    func buildComponentDemo() -> Component {
+    func buildComponentDemo(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) -> Component {
         Div {
             H1("Component Guide")
             
@@ -74,60 +75,27 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             
             H2("Pagination")
 
-            #warning("Extract to component")
-            Navigation {
-                List {
-                    ListItem {
-                        Link(url: "#") {
-                            Span().class("vapor-icon icon-chevron-left")
-                            Div {
-                                Text("Previous")
-                            }.class("d-none d-lg-block")
-                        }.class("page-link page-link-next-previous d-flex page-link-previous").accessibilityLabel("Previous")
-                    }.class("page-item me-auto")
-                    ListItem {
-                        Span {
-                            Text("1")
-                        }.class("page-link")
-                    }.class("page-item active d-none d-lg-block").attribute(named: "aria-current", value: "page")
-
-                    ListItem {
-                        Link("2", url: "#").class("page-link")
-                    }.class("page-item d-none d-lg-block")
-                    ListItem {
-                        Link("3", url: "#").class("page-link")
-                    }.class("page-item d-none d-lg-block")
-                    ListItem {
-                        Text("...")
-                    }.class("page-item pagination-ellipsis d-none d-lg-block ms-1 me-1")
-                    ListItem {
-                        Link("8", url: "#").class("page-link")
-                    }.class("page-item d-none d-lg-block")
-                    ListItem {
-                        Link("9", url: "#").class("page-link")
-                    }.class("page-item d-none d-lg-block")
-                    ListItem {
-                        Link("10", url: "#").class("page-link")
-                    }.class("page-item d-none d-lg-block")
-                    ListItem {
-                        Text("Page 1 of 10")
-                    }.class("page-item pagination-ellipsis d-lg-none")
-                    ListItem {
-                        Link(url: "#") {
-                            Div {
-                                Text("Next")
-                            }.class("d-none d-lg-block")
-                            Span().class("vapor-icon icon-chevron-right")
-                        }.class("page-link page-link-next-previous d-flex page-link-next").accessibilityLabel("Next")
-                    }.class("page-item ms-auto")
-                }.class("pagination justify-content-center")
-            }.accessibilityLabel("blog-pagination")
+            Pagination(activePage: 1, numberOfPages: 15, pageURL: { pageNumber in
+                return "/\(pageNumber)"
+            }, isDemo: isDemo)
             
             H2("HR")
             
             Node.hr()
             
-            H2("Blog Post Card")
+            H2("Blog Post Cards")
+            
+            Div {
+                Div {
+                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                }.class("col")
+                Div {
+                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                }.class("col")
+                Div {
+                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                }.class("col")
+            }.class("row row-cols-1 row-cols-lg-2 g-4")
             
             
         }.class("container")

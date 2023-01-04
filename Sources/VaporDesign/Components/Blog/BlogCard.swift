@@ -1,7 +1,9 @@
 import Plot
+
+import Plot
 import Publish
 
-public struct BlogPost<Site: Website>: Component {
+public struct BlogCard<Site: Website>: Component {
     let blogPostData: BlogPostExtraData
     let item: Item<Site>
     let site: Site
@@ -16,12 +18,17 @@ public struct BlogPost<Site: Website>: Component {
     
     public var body: Component {
         Div {
-            buildBlogHeader()
-            blogPostDivider()
-            buildBlogPostContent()
-            blogPostDivider()
-            buildBlogPostBottom()
-        }.class("container vapor-container blog-container")
+            Div {
+                H2(item.title).class("card-title")
+                Paragraph(item.description).class("card-text")
+                Div {
+                    BlogPostAuthorComponent(blogPostData: blogPostData, postPage: false)
+                    Div {
+                        BlogTagList(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
+                    }.class("col-lg blog-tags pt-4 pt-lg-0")
+                }.class("row")
+            }.class("card-body")
+        }.class("card blog-card")
     }
     
     func buildBlogHeader() -> Component {

@@ -224,7 +224,7 @@
         }
     }
 
-    #blog-post-author-name {
+    .blog-post-author-name {
         color: $grey-300;
     }
 
@@ -312,6 +312,14 @@
             }
         }
 
+        .disabled {
+            .page-link {
+                color: $blue-400;
+                background-color: $off-black;
+                border: 1px solid $grey-800;
+            }
+        }
+
         .active {
             .page-link {
                 color: $grey-400;
@@ -323,5 +331,27 @@
 
     .dropdown-item:hover {
         background-color: rgba($grey-800, 0.3);
+    }
+
+    .blog-card {
+        background: rgba($grey-800, 0.3);
+
+        .card-title {
+            color: $grey-300;
+        }
+    
+        .card-text {
+            color: $grey-500;
+        }
+
+        .card-body {
+            .blog-post-publish-date {
+                color: $grey-700;
+            }
+    
+            .blog-post-author-name {
+                color: $grey-500;
+            }
+        }
     }
 }
