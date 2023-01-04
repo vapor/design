@@ -653,3 +653,18 @@ nav {
     letter-spacing: -0.025em;
     max-width: 768px;
 }
+
+.blog-tag-list {
+    .list-heading {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        padding-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+}
