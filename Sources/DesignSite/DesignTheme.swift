@@ -97,6 +97,10 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }.class("col")
             }.class("row row-cols-1 row-cols-lg-2 g-4")
             
+            H2("Blog Site Title")
+            
+            H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
+            
             
         }.class("container")
     }
