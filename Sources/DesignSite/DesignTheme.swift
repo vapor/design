@@ -75,7 +75,9 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             
             H2("Pagination")
 
-            Pagination()
+            Pagination(activePage: 2, numberOfPages: 15, pageURL: { pageNumber in
+                return "/\(pageNumber)"
+            }, isDemo: isDemo)
             
             H2("HR")
             

@@ -9,7 +9,7 @@ public struct BlogCard<Site: Website>: Component {
     let site: Site
     let isDemo: Bool
     
-    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) {
+    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool = false) {
         self.blogPostData = blogPostData
         self.item = item
         self.site = site

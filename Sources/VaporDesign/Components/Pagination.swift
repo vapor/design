@@ -3,7 +3,16 @@ import Publish
 
 public struct Pagination: Component {
     
-    public init() {
+    let activePage: Int
+    let numberOfPages: Int
+    let pageURL: (_ pageNumber: Int) -> String
+    let isDemo: Bool
+    
+    public init(activePage: Int, numberOfPages: Int, pageURL: @escaping (Int) -> String, isDemo: Bool = false) {
+        self.activePage = activePage
+        self.numberOfPages = numberOfPages
+        self.pageURL = pageURL
+        self.isDemo = isDemo
     }
     
     public var body: Component {
