@@ -123,6 +123,10 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }.class("pagination justify-content-center")
             }.accessibilityLabel("blog-pagination")
             
+            H2("HR")
+            
+            Node.hr()
+            
             H2("Blog Post Card")
             
             
