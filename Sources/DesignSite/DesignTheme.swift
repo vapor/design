@@ -114,10 +114,10 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("page-item pagination-ellipsis d-lg-none")
                     ListItem {
                         Link(url: "#") {
-                            Span().class("vapor-icon icon-chevron-right")
                             Div {
                                 Text("Next")
                             }.class("d-none d-lg-block")
+                            Span().class("vapor-icon icon-chevron-right")
                         }.class("page-link page-link-next-previous d-flex").accessibilityLabel("Next")
                     }.class("page-item ms-auto")
                 }.class("pagination justify-content-center")
