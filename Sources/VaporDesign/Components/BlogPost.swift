@@ -123,18 +123,24 @@ public struct BlogPost<Site: Website>: Component {
             }.class("ms-auto")
             ListItem {
                 Link(url: "#") {
-                    Span().class("vapor-icon icon-twitter-fill")
-                }.class("btn btn-secondary btn-small")
+                    Text("&nbsp;")
+                    Span().class("vapor-icon icon-twitter-fill share-icon-empty")
+                    Text("&nbsp;")
+                }.class("btn btn-secondary btn-small d-flex")
             }
             ListItem {
                 Link(url: "#") {
-                    Span().class("vapor-icon icon-reddit-fill")
-                }.class("btn btn-secondary btn-small")
+                    Text("&nbsp;")
+                    Span().class("vapor-icon icon-reddit-fill share-icon-empty")
+                    Text("&nbsp;")
+                }.class("btn btn-secondary btn-small d-flex")
             }
             ListItem {
                 Link(url: "#") {
-                    Span().class("vapor-icon icon-mastodon-fill")
-                }.class("btn btn-secondary btn-small")
+                    Text("&nbsp;")
+                    Span().class("vapor-icon icon-mastodon-fill share-icon-empty")
+                    Text("&nbsp;")
+                }.class("btn btn-secondary btn-small d-flex")
             }.class("me-auto")
         }
     }
