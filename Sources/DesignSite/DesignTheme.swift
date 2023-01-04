@@ -23,7 +23,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentPage: nil, isDemo: isDemo)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
             buildComponentDemo(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
-            SiteFooter(isLocal: true, currentSite: currentSite)
+            SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
         }
         
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
