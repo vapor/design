@@ -32,7 +32,14 @@ public struct BlogTagList<Site: Website>: Component {
                     if selectedTag == nil {
                         classList.append(" active")
                     }
-                    return ComponentGroup(Link("View All", url: allTagsURL).class(classList))
+                    return ComponentGroup {
+                        Link(url: allTagsURL) {
+                            Text("View All")
+                            Span {
+                                Text("\(totalPosts)")
+                            }.class("badge bg-secondary")
+                        }.class(classList)
+                    }
                 }.class("tag-list-tag")
                 
                 for tag in tags {
@@ -47,7 +54,14 @@ public struct BlogTagList<Site: Website>: Component {
                         if selectedTag == tag.tag {
                             classList.append(" active")
                         }
-                        return ComponentGroup(Link(tag.tag.string, url: tagURL).class(classList))
+                        return ComponentGroup {
+                            Link(url: tagURL) {
+                                Text(tag.tag.string)
+                                Span {
+                                    Text("\(tag.postCount)")
+                                }.class("badge bg-secondary")
+                            }.class(classList)
+                        }
                     }.class("tag-list-tag")
                 }
             }
