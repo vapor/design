@@ -491,6 +491,7 @@ nav {
         background: transparent;
         margin-left: 1px;
         margin-right: 1px;
+        line-height: 175%;
 
         .page-link {
             background: transparent;
@@ -514,10 +515,40 @@ nav {
             border-radius: 12px;
             border: 1px solid rgba($blue-300, 0.1);
             color: $blue-300;
-            border-radius: 12px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            justify-content: center;
+            align-items: center;
 
             .vapor-icon {
                 background-color: $blue-300;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            .page-link-next-previous {
+                .vapor-icon {
+                    height: 15px;
+                    width: 15px;
+                }
+            }
+
+            .page-link-previous {
+                padding-right: 16px;
+
+                .vapor-icon {
+                    margin-left: -3px;
+                    margin-right: 5px;
+                }
+            }
+    
+            .page-link-next {
+                padding-left: 16px;
+
+                .vapor-icon {
+                    margin-left: 5px;
+                    margin-right: -3px;
+                }
             }
         }
 
