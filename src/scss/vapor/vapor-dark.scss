@@ -312,6 +312,14 @@
             }
         }
 
+        .disabled {
+            .page-link {
+                color: $blue-400;
+                background-color: $off-black;
+                border: 1px solid $grey-800;
+            }
+        }
+
         .active {
             .page-link {
                 color: $grey-400;

@@ -581,6 +581,14 @@ nav {
         }
     }
 
+    .disabled {
+        .page-link {
+            color: $blue-400;
+            background-color: $grey-100;
+            border: 1px solid $grey-300;
+        }
+    }
+
     .active {
         .page-link {
             color: $grey-800;
