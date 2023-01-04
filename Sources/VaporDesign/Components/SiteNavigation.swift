@@ -67,7 +67,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-title")
                                                 Div {
                                                     Text("Learn how to use Vapor")
-                                                }.class("nav-dropdown-container-caption")
+                                                }.class("nav-dropdown-container-caption d-none d-lg-block")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
                                         
@@ -91,7 +91,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-title")
                                                 Div {
                                                     Text("Reference documentation for Vapor")
-                                                }.class("nav-dropdown-container-caption")
+                                                }.class("nav-dropdown-container-caption d-none d-lg-block")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
                                         

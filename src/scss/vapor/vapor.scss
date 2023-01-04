@@ -402,8 +402,20 @@ h3 {
     background: $grey-100;
 }
 
+#framework-dropdown-menu {
+    @include media-breakpoint-down(lg) {
+        margin-left: -1em;
+        margin-right: -1em;
+    }
+}
+
 .nav-dropdown-container {
-    padding: 1em;
+    @include media-breakpoint-up(lg) {
+        padding: 1em;
+    }
+
+    padding-top: 1em;
+    padding-bottom: 1em;
 
     .vapor-icon {
         background-color: $blue-400;
