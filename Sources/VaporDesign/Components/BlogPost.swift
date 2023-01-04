@@ -122,26 +122,25 @@ public struct BlogPost<Site: Website>: Component {
                 }.class("btn btn-secondary btn-small d-flex").onclick("Vapor.copyURLToClipboard(); return false;")
             }.class("ms-auto")
             ListItem {
-                //<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 Link(url: "#") {
                     Text("&nbsp;")
                     Span().class("vapor-icon icon-twitter-fill share-icon-empty")
                     Text("&nbsp;")
-                }.class("btn btn-secondary btn-small d-flex")
+                }.class("btn btn-secondary btn-small d-flex twitter-share-button")
             }
             ListItem {
                 Link(url: "#") {
                     Text("&nbsp;")
                     Span().class("vapor-icon icon-reddit-fill share-icon-empty")
                     Text("&nbsp;")
-                }.class("btn btn-secondary btn-small d-flex")
+                }.class("btn btn-secondary btn-small d-flex reddit-share-button")
             }
             ListItem {
                 Link(url: "#") {
                     Text("&nbsp;")
                     Span().class("vapor-icon icon-mastodon-fill share-icon-empty")
                     Text("&nbsp;")
-                }.class("btn btn-secondary btn-small d-flex")
+                }.class("btn btn-secondary btn-small d-flex mastodon-share-button")
             }.class("me-auto")
         }
     }
