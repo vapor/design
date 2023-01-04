@@ -18,7 +18,7 @@ public struct BlogCard<Site: Website>: Component {
     let site: Site
     let isDemo: Bool
     
-    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool = false) {
+    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) {
         self.blogPostData = blogPostData
         self.item = item
         self.site = site
@@ -31,7 +31,10 @@ public struct BlogCard<Site: Website>: Component {
                 H2(item.title).class("card-title")
                 Paragraph(item.description).class("card-text")
                 Div {
-                    
+                    BlogPostAuthorComponent(blogPostData: blogPostData, postPage: false)
+                    Div {
+                        BlogTagList(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
+                    }.class("col-lg blog-tags pt-4 pt-lg-0")
                 }.class("row")
             }.class("card-body")
         }.class("card blog-card")

@@ -24,6 +24,6 @@ public struct BlogPostAuthorComponent: Component {
                     Text(blogPostData.publishedDate)
                 }.class("blog-post-publish-date")
             }.class("blog-post-author-date-container")
-        }.class("blog-post-author").class("d-flex col-lg-6")
+        }.class("blog-post-author").class("d-flex col-lg")
     }
 }

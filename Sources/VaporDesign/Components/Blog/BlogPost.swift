@@ -7,7 +7,7 @@ public struct BlogPost<Site: Website>: Component {
     let site: Site
     let isDemo: Bool
     
-    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool = false) {
+    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) {
         self.blogPostData = blogPostData
         self.item = item
         self.site = site
@@ -29,7 +29,7 @@ public struct BlogPost<Site: Website>: Component {
             Div {
                 Div {
                     Div {
-                        buildBlogPostTagList(isDemo: isDemo)
+                        BlogTagList(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
                     }.class("blog-tags")
                     Div {
                         Text(blogPostData.length)
@@ -62,44 +62,12 @@ public struct BlogPost<Site: Website>: Component {
     func buildBlogPostBottom() -> Component {
         Div {
             Div {
-                buildBlogPostTagList(isDemo: isDemo)
+                BlogTagList(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
             }.id("blog-bottom-tags").class("blog-tags col-lg-6")
             Div {
                 buildBlogPostShareList()
             }.class("ms-auto blog-share col-lg-6").id("blog-bottom-share")
         }.id("blog-post-bottom").class("row align-items-center")
-    }
-    
-    func buildBlogPostTagList(isDemo: Bool) -> Component {
-        List {
-            for (index, tag) in item.tags.enumerated() {
-                if index == 0 {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
-                    }.class("ms-auto")
-                } else if index == item.tags.count - 1 {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
-                    }.class("me-auto")
-                } else {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
-                    }
-                }
-            }
-        }
     }
     
     func buildBlogPostShareList() -> Component {

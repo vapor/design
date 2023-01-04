@@ -324,4 +324,26 @@
     .dropdown-item:hover {
         background-color: rgba($grey-800, 0.3);
     }
+
+    .blog-card {
+        background: rgba($grey-800, 0.3);
+
+        .card-title {
+            color: $grey-300;
+        }
+    
+        .card-text {
+            color: $grey-500;
+        }
+
+        .card-body {
+            .blog-post-publish-date {
+                color: $grey-700;
+            }
+    
+            .blog-post-author-name {
+                color: $grey-500;
+            }
+        }
+    }
 }

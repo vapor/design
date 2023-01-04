@@ -46,6 +46,7 @@ $grey-300: #DFE0EB;
 $grey-200: #F0F0F7;
 $grey-100: #FAFAFD;
 $off-black: #1C1C1F;
+$off-light-grey: #EAECF0;
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica, sans-serif;
@@ -591,5 +592,47 @@ nav {
 
     .pagination-ellipsis {
         margin-top: 5px;
+    }
+}
+
+.blog-card {
+    border-radius: 24px;
+    border: 1px solid rgba($off-light-grey, 0.1);
+
+    .card-body {
+        @include media-breakpoint-down(lg) {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 32px;
+        }
+        
+        @include media-breakpoint-up(lg) {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 32px;
+        }
+
+        .blog-post-publish-date {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+        }
+    }
+
+    .card-title {
+        margin-top: 0;
+        font-size: 24px;
+        line-height: 150%;
+        font-weight: 500;
+        padding-bottom: 12px;
+    }
+
+    .card-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        padding-bottom: 32px;
     }
 }
