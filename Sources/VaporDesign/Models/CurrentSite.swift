@@ -4,3 +4,13 @@ public enum CurrentSite {
     case apiDocs
     case docs
 }
+
+public enum CurrentPage {
+    case team
+    case contributors
+    case evangelists
+    case showcase
+    case supporters
+    case help
+    case contact
+}

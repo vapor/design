@@ -5,11 +5,15 @@ public struct SiteNavigation<Site: Website>: Component {
     let context: PublishingContext<Site>
     let selectedSelectionID: Site.SectionID?
     let currentSite: CurrentSite
+    let currentPage: CurrentPage?
+    let isDemo: Bool
     
-    public init(context: PublishingContext<Site>, selectedSelectionID: Site.SectionID?, currentSite: CurrentSite) {
+    public init(context: PublishingContext<Site>, selectedSelectionID: Site.SectionID?, currentSite: CurrentSite, currentPage: CurrentPage?, isDemo: Bool) {
         self.context = context
         self.selectedSelectionID = selectedSelectionID
         self.currentSite = currentSite
+        self.currentPage = currentPage
+        self.isDemo = isDemo
     }
     
     public var body: Component {
@@ -32,8 +36,19 @@ public struct SiteNavigation<Site: Website>: Component {
                 Div {
                     List {
                         ListItem {
-#warning("Sort out all these links")
-                            Link("Showcase", url: "#").class("nav-link")
+                            if isDemo {
+                                return ComponentGroup(members: [Link("Showcase", url: "#").class("nav-link")])
+                            } else if currentSite == .main {
+                                var classList = "nav-link"
+                                if currentPage! == .showcase {
+                                    classList += " active"
+                                }
+                                let link = Link("Showcase", url: "/showcase").class(classList)
+                                return ComponentGroup(members: [link])
+                            } else {
+                                #warning("Fix link")
+                                return ComponentGroup(members: [Link("Showcase", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
+                            }
                         }.class("nav-item")
                         ListItem {
                             var classList = "nav-link dropdown-toggle dropdown-no-outline d-flex"
@@ -109,10 +124,19 @@ public struct SiteNavigation<Site: Website>: Component {
                             }
                         }.class("nav-item dropdown")
                         ListItem {
-                            Link("Team", url: "#").class("nav-link")
-                        }.class("nav-item")
-                        ListItem {
-                            Link("Community", url: "#").class("nav-link")
+                            if isDemo {
+                                return ComponentGroup(members: [Link("Team", url: "#").class("nav-link")])
+                            } else if currentSite == .main {
+                                var classList = "nav-link"
+                                if currentPage! == .team {
+                                    classList += " active"
+                                }
+                                let link = Link("Team", url: "/team").class(classList)
+                                return ComponentGroup(members: [link])
+                            } else {
+                                #warning("Fix link")
+                                return ComponentGroup(members: [Link("Team", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
+                            }
                         }.class("nav-item")
                         ListItem {
                             if currentSite == .blog {

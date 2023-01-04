@@ -20,7 +20,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
-            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite)
+            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentPage: nil, isDemo: isDemo)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
             buildComponentDemo(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
             SiteFooter(isLocal: true, currentSite: currentSite)
