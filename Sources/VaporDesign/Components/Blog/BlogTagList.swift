@@ -3,15 +3,17 @@ import Publish
 
 public struct BlogTagList<Site: Website>: Component {
     let isDemo: Bool
-    let tags: [Tag]
+    let tags: [TagWithPostCount]
     let site: Site
     let selectedTag: Tag?
+    let totalPosts: Int
     
-    public init(tags: [Tag], site: Site, selectedTag: Tag?, isDemo: Bool = false) {
+    public init(tags: [TagWithPostCount], site: Site, selectedTag: Tag?, totalPosts: Int, isDemo: Bool = false) {
         self.isDemo = isDemo
         self.tags = tags
         self.site = site
         self.selectedTag = selectedTag
+        self.totalPosts = totalPosts
     }
     
     public var body: Component {
@@ -39,13 +41,13 @@ public struct BlogTagList<Site: Website>: Component {
                         if isDemo {
                             tagURL = "#"
                         } else {
-                            tagURL = site.path(for: tag).absoluteString
+                            tagURL = site.path(for: tag.tag).absoluteString
                         }
                         var classList = "tag-link"
-                        if selectedTag == nil {
+                        if selectedTag == tag.tag {
                             classList.append(" active")
                         }
-                        return ComponentGroup(Link(tag.string, url: tagURL).class(classList))
+                        return ComponentGroup(Link(tag.tag.string, url: tagURL).class(classList))
                     }.class("tag-list-tag")
                 }
             }

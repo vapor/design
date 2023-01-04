@@ -105,8 +105,9 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             
             Div {
                 Div {
-                    let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API")]
-                    BlogTagList(tags: tags, site: site, selectedTag: nil, isDemo: true)
+                    let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
+                    let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2)}
+                    return ComponentGroup(BlogTagList(tags: tagsWithPostCount, site: site, selectedTag: nil, totalPosts: 72, isDemo: true))
                 }.class("col-lg-3")
                 Div().class("col")
             }.class("row")
