@@ -2,47 +2,53 @@ import Plot
 import Publish
 
 public struct BlogTagList<Site: Website>: Component {
-    let blogPostData: BlogPostExtraData
     let isDemo: Bool
-    let item: Item<Site>
+    let tags: [Tag]
     let site: Site
+    let selectedTag: Tag?
     
-    public init(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) {
-        self.blogPostData = blogPostData
-        self.item = item
-        self.site = site
+    public init(tags: [Tag], site: Site, selectedTag: Tag?, isDemo: Bool) {
         self.isDemo = isDemo
+        self.tags = tags
+        self.site = site
+        self.selectedTag = selectedTag
     }
     
     public var body: Component {
-        List {
-            for (index, tag) in item.tags.enumerated() {
-                if index == 0 {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
-                    }.class("ms-auto")
-                } else if index == item.tags.count - 1 {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
-                    }.class("me-auto")
-                } else {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
+        Div {
+            H5("Blog Tags").class("list-heading")
+            
+            List {
+                ListItem {
+                    let allTagsURL: String
+                    if isDemo {
+                        allTagsURL = "#"
+                    } else {
+                        allTagsURL = site.tagListPath.absoluteString
                     }
+                    var classList = "tag-link"
+                    if selectedTag == nil {
+                        classList.append(" active")
+                    }
+                    return ComponentGroup(Link("View All", url: allTagsURL).class(classList))
+                }.class("tag-list-tag")
+                
+                for tag in tags {
+                    ListItem {
+                        let tagURL: String
+                        if isDemo {
+                            tagURL = "#"
+                        } else {
+                            tagURL = site.path(for: tag).absoluteString
+                        }
+                        var classList = "tag-link"
+                        if selectedTag == nil {
+                            classList.append(" active")
+                        }
+                        return ComponentGroup(Link(tag.string, url: tagURL).class(classList))
+                    }.class("tag-list-tag")
                 }
             }
-        }
+        }.class("blog-tag-list")
     }
 }

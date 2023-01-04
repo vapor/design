@@ -101,6 +101,9 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             
             H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
             
+            H2("Blog Tag List")
+            
+            
             
         }.class("container")
     }
