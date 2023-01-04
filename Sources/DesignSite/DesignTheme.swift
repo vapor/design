@@ -15,7 +15,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     func makeIndexHTML(for index: Index,
                        context: PublishingContext<Site>) throws -> HTML {
         let currentSite: CurrentSite = .blog
-        let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim", imageURL: "/images/author-image-placeholder.png"), publishedDate: "Published 3rd January 2023")
+        let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim", imageURL: "/images/author-image-placeholder.png"), publishedDate: "3rd January 2023")
         let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {

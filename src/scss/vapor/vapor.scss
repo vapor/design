@@ -316,18 +316,18 @@ footer {
     display: inline-block;
 }
 
-#blog-post-author-image {
+.blog-post-author-image {
     width: 48px;
     height: 48px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-#blog-post-author-name {
+.blog-post-author-name {
     color: $grey-700;
 }
 
-#blog-post-publish-date {
+.blog-post-publish-date {
     color: $grey-600;
 }
 

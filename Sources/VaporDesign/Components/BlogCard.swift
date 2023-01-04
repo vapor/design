@@ -1,7 +1,18 @@
 import Plot
+
+//<div class="card" style="width: 18rem;">
+//  <img src="..." class="card-img-top" alt="...">
+//  <div class="card-body">
+//    <h5 class="card-title">Card title</h5>
+//    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+//    <a href="#" class="btn btn-primary">Go somewhere</a>
+//  </div>
+//</div>
+
+import Plot
 import Publish
 
-public struct BlogPost<Site: Website>: Component {
+public struct BlogCard<Site: Website>: Component {
     let blogPostData: BlogPostExtraData
     let item: Item<Site>
     let site: Site
@@ -16,12 +27,14 @@ public struct BlogPost<Site: Website>: Component {
     
     public var body: Component {
         Div {
-            buildBlogHeader()
-            blogPostDivider()
-            buildBlogPostContent()
-            blogPostDivider()
-            buildBlogPostBottom()
-        }.class("container vapor-container blog-container")
+            Div {
+                H2(item.title).class("card-title")
+                Paragraph(item.description).class("card-text")
+                Div {
+                    
+                }.class("row")
+            }.class("card-body")
+        }.class("card blog-card")
     }
     
     func buildBlogHeader() -> Component {
@@ -41,7 +54,18 @@ public struct BlogPost<Site: Website>: Component {
                 Text(item.description)
             }.class("mb-4").id("blog-description")
             Div {
-                BlogPostAuthorComponent(blogPostData: blogPostData, postPage: true)
+                Div {
+                    Image(url: blogPostData.author.imageURL, description: blogPostData.author.name).id("blog-post-author-image").class("me-2")
+                    Div {
+                        Div {
+                            Text(blogPostData.author.name)
+                        }.id("blog-post-author-name")
+                        Div {
+                            Text(blogPostData.publishedDate)
+                        }.id("blog-post-publish-date")
+                    }.id("blog-post-author-date-container")
+                }.id("blog-post-author").class("d-flex col-lg-6")
+                
                 Div {
                     buildBlogPostShareList()
                 }.id("blog-top-share").class("ms-auto blog-share col-lg-6 mt-4 mt-lg-0")
