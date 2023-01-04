@@ -78,7 +78,7 @@ public struct BlogPost<Site: Website>: Component {
             Div {
                 buildBlogPostShareList()
             }.class("ms-auto blog-share col-lg-6").id("blog-bottom-share")
-        }.id("blog-post-bottom").class("row")
+        }.id("blog-post-bottom").class("row align-items-center")
     }
     
     func buildBlogPostTagList(isDemo: Bool) -> Component {
@@ -122,6 +122,7 @@ public struct BlogPost<Site: Website>: Component {
                 }.class("btn btn-secondary btn-small d-flex").onclick("Vapor.copyURLToClipboard(); return false;")
             }.class("ms-auto")
             ListItem {
+                //<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 Link(url: "#") {
                     Text("&nbsp;")
                     Span().class("vapor-icon icon-twitter-fill share-icon-empty")
