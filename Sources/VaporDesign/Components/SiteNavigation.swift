@@ -11,7 +11,7 @@ public struct SiteNavigation<Site: Website>: Component {
         self.selectedSelectionID = selectedSelectionID
         self.currentSite = currentSite
     }
-
+    
     public var body: Component {
         Navigation {
             Div {
@@ -32,19 +32,24 @@ public struct SiteNavigation<Site: Website>: Component {
                 Div {
                     List {
                         ListItem {
-                            #warning("Sort out all these links")
+#warning("Sort out all these links")
                             Link("Showcase", url: "#").class("nav-link")
                         }.class("nav-item")
                         ListItem {
-                            var classList = "nav-link dropdown-toggle dropdown-no-outline"
+                            var classList = "nav-link dropdown-toggle dropdown-no-outline d-flex"
                             if currentSite == .docs || currentSite == .apiDocs {
                                 classList += " active"
                             }
-                            var docsLink = Link("Documentation", url: "#")
+                            var docsLink = Link(url: "#") {
+                                Text("Documentation")
+                                Span().class("vapor-icon icon-chevron-down ms-auto ms-lg-3").id("documentation-navbar-chevron")
+                            }
                                 .class(classList)
+                                .id("documentation-dropdown-link")
                                 .role("button")
+                                .onclick("Vapor.toggleDocumentationDropdown(); return true;")
                                 .attribute(named: "data-bs-toggle", value: "dropdown")
-                                .attribute(named: "aria-expanded", value: "fale")
+                                .attribute(named: "aria-expanded", value: "false")
                             
                             if currentSite == .docs || currentSite == .apiDocs {
                                 docsLink = docsLink.attribute(named: "aria-current", value: "page")
@@ -62,7 +67,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-title")
                                                 Div {
                                                     Text("Learn how to use Vapor")
-                                                }.class("nav-dropdown-container-caption")
+                                                }.class("nav-dropdown-container-caption d-none d-lg-block")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
                                         
@@ -86,7 +91,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-title")
                                                 Div {
                                                     Text("Reference documentation for Vapor")
-                                                }.class("nav-dropdown-container-caption")
+                                                }.class("nav-dropdown-container-caption d-none d-lg-block")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
                                         

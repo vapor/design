@@ -83,7 +83,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             Div {
                                 Text("Previous")
                             }.class("d-none d-lg-block")
-                        }.class("page-link page-link-next-previous d-flex").accessibilityLabel("Previous")
+                        }.class("page-link page-link-next-previous d-flex page-link-previous").accessibilityLabel("Previous")
                     }.class("page-item me-auto")
                     ListItem {
                         Span {
@@ -114,14 +114,18 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("page-item pagination-ellipsis d-lg-none")
                     ListItem {
                         Link(url: "#") {
-                            Span().class("vapor-icon icon-chevron-right")
                             Div {
                                 Text("Next")
                             }.class("d-none d-lg-block")
-                        }.class("page-link page-link-next-previous d-flex").accessibilityLabel("Next")
+                            Span().class("vapor-icon icon-chevron-right")
+                        }.class("page-link page-link-next-previous d-flex page-link-next").accessibilityLabel("Next")
                     }.class("page-item ms-auto")
                 }.class("pagination justify-content-center")
             }.accessibilityLabel("blog-pagination")
+            
+            H2("HR")
+            
+            Node.hr()
             
             H2("Blog Post Card")
             

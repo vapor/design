@@ -197,6 +197,12 @@ footer {
     .vapor-icon {
         width: 17px;
         height: 17px;
+        margin-top: 2px;
+    }
+
+    .share-icon-empty {
+        margin-left: -2px;
+        margin-right: -2px;
     }
 
     ul {
@@ -396,8 +402,20 @@ h3 {
     background: $grey-100;
 }
 
+#framework-dropdown-menu {
+    @include media-breakpoint-down(lg) {
+        margin-left: -1em;
+        margin-right: -1em;
+    }
+}
+
 .nav-dropdown-container {
-    padding: 1em;
+    @include media-breakpoint-up(lg) {
+        padding: 1em;
+    }
+
+    padding-top: 1em;
+    padding-bottom: 1em;
 
     .vapor-icon {
         background-color: $blue-400;
@@ -417,44 +435,46 @@ h3 {
 }
 
 .dropdown-toggle:after {
-    $mask-image-url: '../../images/chevron-down.svg';
-    -webkit-mask-image: url($mask-image-url);
-    -webkit-mask-position: center;
-    mask-image: url($mask-image-url);
-    mask-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
-    width: 10px;
-    height: 10px;
-    background-color: $navbar-light-color;
+    display: none;
 }
 
-.dropdown-toggle:hover:after {
-    background-color: $navbar-light-active-color;
-}
-
-.dropdown-toggle:active:after {
-    background-color: $navbar-light-active-color;
-}
-
-.dropdown-toggle:focus:after {
-    background-color: $navbar-light-active-color;
+#documentation-navbar-chevron {
+    width: 15px;
+    height: 15px;
+    margin-top: 4px;
 }
 
 @include media-breakpoint-down(lg) {
-    .dropdown-toggle:after {
+    #documentation-navbar-chevron {
         float: right;
     }
 }
 
-.dropdown-toggle[aria-expanded="true"]:after {
+#documentation-navbar-chevron[data-shown="true"] {
     transform: rotate(180deg);
 }
 
+#documentation-dropdown-link:hover {
+    .vapor-icon {
+        background-color: $navbar-light-active-color;
+    }
+}
+
+#documentation-dropdown-link:active {
+    .vapor-icon {
+        background-color: $navbar-light-active-color;
+    }
+}
+
+#documentation-dropdown-link:focus {
+    .vapor-icon {
+        background-color: $navbar-light-active-color;
+    }
+}
+
 /*for animation*/
-.dropdown-toggle:after {
-    transition: 0.5s;
+#documentation-navbar-chevron {
+    transition: 0.35s;
 }
 
 nav {
@@ -489,6 +509,7 @@ nav {
         background: transparent;
         margin-left: 1px;
         margin-right: 1px;
+        line-height: 175%;
 
         .page-link {
             background: transparent;
@@ -512,10 +533,40 @@ nav {
             border-radius: 12px;
             border: 1px solid rgba($blue-300, 0.1);
             color: $blue-300;
-            border-radius: 12px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            justify-content: center;
+            align-items: center;
 
             .vapor-icon {
                 background-color: $blue-300;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            .page-link-next-previous {
+                .vapor-icon {
+                    height: 15px;
+                    width: 15px;
+                }
+            }
+
+            .page-link-previous {
+                padding-right: 16px;
+
+                .vapor-icon {
+                    margin-left: -3px;
+                    margin-right: 5px;
+                }
+            }
+    
+            .page-link-next {
+                padding-left: 16px;
+
+                .vapor-icon {
+                    margin-left: 5px;
+                    margin-right: -3px;
+                }
             }
         }
 

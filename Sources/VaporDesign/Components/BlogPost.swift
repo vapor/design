@@ -78,7 +78,7 @@ public struct BlogPost<Site: Website>: Component {
             Div {
                 buildBlogPostShareList()
             }.class("ms-auto blog-share col-lg-6").id("blog-bottom-share")
-        }.id("blog-post-bottom").class("row")
+        }.id("blog-post-bottom").class("row align-items-center")
     }
     
     func buildBlogPostTagList(isDemo: Bool) -> Component {
@@ -123,18 +123,24 @@ public struct BlogPost<Site: Website>: Component {
             }.class("ms-auto")
             ListItem {
                 Link(url: "#") {
-                    Span().class("vapor-icon icon-twitter-fill")
-                }.class("btn btn-secondary btn-small")
+                    Text("&nbsp;")
+                    Span().class("vapor-icon icon-twitter-fill share-icon-empty")
+                    Text("&nbsp;")
+                }.class("btn btn-secondary btn-small d-flex twitter-share-button")
             }
             ListItem {
                 Link(url: "#") {
-                    Span().class("vapor-icon icon-reddit-fill")
-                }.class("btn btn-secondary btn-small")
+                    Text("&nbsp;")
+                    Span().class("vapor-icon icon-reddit-fill share-icon-empty")
+                    Text("&nbsp;")
+                }.class("btn btn-secondary btn-small d-flex reddit-share-button")
             }
             ListItem {
                 Link(url: "#") {
-                    Span().class("vapor-icon icon-facebook-circle-fill")
-                }.class("btn btn-secondary btn-small")
+                    Text("&nbsp;")
+                    Span().class("vapor-icon icon-mastodon-fill share-icon-empty")
+                    Text("&nbsp;")
+                }.class("btn btn-secondary btn-small d-flex mastodon-share-button")
             }.class("me-auto")
         }
     }

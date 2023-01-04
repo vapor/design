@@ -19,8 +19,8 @@
         -webkit-mask-position: center;
         mask-image: url(../../images/moon-01.svg);
         mask-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        mask-repeat: no-repeat;
+        mask-size: cover;
     }
 
     #theme-switch-icon:hover {
@@ -269,8 +269,22 @@
         }
     }
 
-    .dropdown-toggle:after {
-        background-color: $navbar-dark-color;
+    #documentation-dropdown-link:hover {
+        .vapor-icon {
+            background-color: $nav-link-action-color-dark;
+        }
+    }
+    
+    #documentation-dropdown-link:active {
+        .vapor-icon {
+            background-color: $nav-link-action-color-dark;
+        }
+    }
+    
+    #documentation-dropdown-link:focus {
+        .vapor-icon {
+            background-color: $nav-link-action-color-dark;
+        }
     }
 
     .pagination {

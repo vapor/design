@@ -6,7 +6,11 @@ import * as bootstrap from 'bootstrap'
 
 import './startSyntaxHighlighting.js'
 import './toggleDarkMode.js'
+import './styleHelpers.js'
+import './shareLinks.js'
 
 // Functions to export to HTML
 require('./copyLink.js');
+require('./styleHelpers.js');
 export * from './copyLink.js'
+export * from './styleHelpers.js'
