@@ -32,36 +32,37 @@ public struct Pagination: Component {
                     }.class("page-link page-link-next-previous d-flex page-link-previous").accessibilityLabel("Previous")
                 }.class(previousClassList)
                 pageLinks.append(previousLink)
+                var builtEllipsisBeforeActivePage = false
+                var builtEllipsisAfterActivePage = false
                 for pageNumber in 1...numberOfPages {
-                    let pageLink = ListItem {
-                        Link("\(pageNumber)", url: generatePageURL(pageNumber: pageNumber)).class("page-link")
-                    }.class("page-item d-none d-lg-block")
+                    // The maximum number of pages we should show is 9:
+                    // 1 2 3 ... 10 11 12 ... 19 20 21
+                    // Where 11 is the current page
+                    // So we always show the first three and last three
+                    if numberOfPages > 9 {
+                        // Check if we're generating outside the first and last 3 or around the active page
+                        let activePageSet = [activePage - 1, activePage, activePage + 1]
+                        if (pageNumber > 3 && pageNumber <= numberOfPages - 3) && !activePageSet.contains(pageNumber) {
+                            
+                            // We now need to build ellipsis - we should only do this once before and after the active page
+                            if !builtEllipsisBeforeActivePage && pageNumber < activePage {
+                                builtEllipsisBeforeActivePage = true
+                            } else if !builtEllipsisAfterActivePage && pageNumber > activePage {
+                                builtEllipsisAfterActivePage = true
+                            } else {
+                                // If we hit here without either of the above conditions then we've already built an ellipsis and can skip
+                                continue
+                            }
+                            let ellipsisLink = buildEllipsisPageLink()
+                            pageLinks.append(ellipsisLink)
+                            continue
+                        }
+                    }
+                    
+                    let pageLink = buildPageLink(pageNumber: pageNumber)
                     pageLinks.append(pageLink)
                 }
-//                ListItem {
-//                    Span {
-//                        Text("1")
-//                    }.class("page-link")
-//                }.class("page-item active d-none d-lg-block").attribute(named: "aria-current", value: "page")
-//
-//                ListItem {
-//                    Link("2", url: "#").class("page-link")
-//                }.class("page-item d-none d-lg-block")
-//                ListItem {
-//                    Link("3", url: "#").class("page-link")
-//                }.class("page-item d-none d-lg-block")
-//                ListItem {
-//                    Text("...")
-//                }.class("page-item pagination-ellipsis d-none d-lg-block ms-1 me-1")
-//                ListItem {
-//                    Link("8", url: "#").class("page-link")
-//                }.class("page-item d-none d-lg-block")
-//                ListItem {
-//                    Link("9", url: "#").class("page-link")
-//                }.class("page-item d-none d-lg-block")
-//                ListItem {
-//                    Link("10", url: "#").class("page-link")
-//                }.class("page-item d-none d-lg-block")
+
                 let mobilePagination = ListItem {
                     Text("Page 1 of 10")
                 }.class("page-item pagination-ellipsis d-lg-none")
@@ -86,5 +87,32 @@ public struct Pagination: Component {
         } else {
             return pageURL(pageNumber)
         }
+    }
+    
+    func buildPageLink(pageNumber: Int) -> Component {
+        var linkClassList = "page-item d-none d-lg-block"
+        let generatingCurrentPageLink = pageNumber == activePage
+        var pageLink: Component = ListItem {
+            if generatingCurrentPageLink {
+                Span {
+                    Text("\(pageNumber)")
+                }.class("page-link")
+            } else {
+                Link("\(pageNumber)", url: generatePageURL(pageNumber: pageNumber)).class("page-link")
+            }
+        }
+        if generatingCurrentPageLink {
+            linkClassList.append(" active")
+            pageLink = pageLink.attribute(named: "aria-current", value: "page")
+        }
+        
+        pageLink = pageLink.class(linkClassList)
+        return pageLink
+    }
+    
+    func buildEllipsisPageLink() -> Component {
+        ListItem {
+            Text("...")
+        }.class("page-item pagination-ellipsis d-none d-lg-block ms-1 me-1")
     }
 }
