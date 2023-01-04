@@ -7,7 +7,7 @@ public struct BlogTagList<Site: Website>: Component {
     let site: Site
     let selectedTag: Tag?
     
-    public init(tags: [Tag], site: Site, selectedTag: Tag?, isDemo: Bool) {
+    public init(tags: [Tag], site: Site, selectedTag: Tag?, isDemo: Bool = false) {
         self.isDemo = isDemo
         self.tags = tags
         self.site = site

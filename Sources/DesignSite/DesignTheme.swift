@@ -103,7 +103,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             
             H2("Blog Tag List")
             
-            
+            let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API")]
+            BlogTagList(tags: tags, site: site, selectedTag: nil, isDemo: true)
             
         }.class("container")
     }
