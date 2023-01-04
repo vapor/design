@@ -666,13 +666,12 @@ nav {
     ul {
         list-style: none;
         padding-left: 0;
+        width: 100%
     }
 
     .tag-list-tag {
         .tag-link {
             background-color: transparent;
-            font-size: normal;
-            font-weight: 500;
             font-size: 16px;
             line-height: 24px;
             border-radius: 51px;
@@ -680,14 +679,17 @@ nav {
             padding-right: 16px;
             padding-top: 12px;
             padding-bottom: 12px;
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
 
             .badge {
-                font-size: normal;
-                font-weight: 400;
                 font-size: 14px;
                 line-height: 150%;
                 text-align: center;
                 border-radius: 16px;
+                vertical-align: middle;
+                font-weight: 400;
             }
         }
 
@@ -696,7 +698,7 @@ nav {
         }
 
         width: 100%;
-        margin-top: 25px;
-        margin-bottom: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }

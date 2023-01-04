@@ -28,7 +28,7 @@ public struct BlogTagList<Site: Website>: Component {
                     } else {
                         allTagsURL = site.tagListPath.absoluteString
                     }
-                    var classList = "tag-link"
+                    var classList = "tag-link d-flex align-items-center"
                     if selectedTag == nil {
                         classList.append(" active")
                     }
@@ -50,7 +50,7 @@ public struct BlogTagList<Site: Website>: Component {
                         } else {
                             tagURL = site.path(for: tag.tag).absoluteString
                         }
-                        var classList = "tag-link"
+                        var classList = "tag-link d-flex align-items-center"
                         if selectedTag == tag.tag {
                             classList.append(" active")
                         }
