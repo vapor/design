@@ -159,3 +159,27 @@ hr {
         }
     }
 }
+
+.blog-tag-list {
+    .tag-list-tag {
+        .tag-link {
+            color: $grey-700;
+
+            .badge {
+                color: $grey-600;
+                background-color: $grey-200;
+            }
+        }
+    }
+
+    .tag-list-tag {
+        .tag-link:hover, .tag-link.active {
+            color: $grey-800;
+            background-color: $grey-200;
+
+            .badge {
+                background-color: $grey-100;
+            }
+        }
+    }
+}
