@@ -675,10 +675,10 @@ nav {
             font-size: 16px;
             line-height: 24px;
             border-radius: 51px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 12px;
-            padding-bottom: 12px;
+            padding-left: 14px;
+            padding-right: 14px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             width: 100%;
             display: inline-block;
             vertical-align: middle;
@@ -690,6 +690,10 @@ nav {
                 border-radius: 16px;
                 vertical-align: middle;
                 font-weight: 400;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                padding-left: 10px;
+                padding-right: 10px;
             }
         }
 
