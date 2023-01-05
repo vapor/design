@@ -254,8 +254,6 @@ h3 {
         padding-right: 16px;
         padding-top: 20px;
         padding-bottom: 20px;
-        background: $grey-100;
-        border: 1px solid $grey-200;
         box-shadow: 0px 19px 32px rgba(black, 0.05);
         backdrop-filter: blur(10px);
         border-radius: 12px;
@@ -269,8 +267,6 @@ h3 {
             line-height: 150%;
             margin-bottom: 24px;
             text-decoration: none;
-
-            color: $grey-700;
         }
 
         li a.active, a:hover, li a:active {

@@ -205,3 +205,14 @@ hr {
         background-color: $grey-700;
     }
 }
+
+.mobile-drop-down-menu {
+    @include media-breakpoint-down(lg) {
+        background: $grey-100;
+        border: 1px solid $grey-200;
+
+        li a {
+            color: $grey-700;
+        }
+    }
+}

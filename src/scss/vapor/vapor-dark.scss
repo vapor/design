@@ -405,4 +405,15 @@
             background-color: $grey-400;
         }
     }
+
+    .mobile-drop-down-menu {
+        @include media-breakpoint-down(lg) {
+            background: $off-black;
+            border: 1px solid $grey-800;
+    
+            li a {
+                color: $grey-500;
+            }
+        }
+    }
 }
