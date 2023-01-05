@@ -32,7 +32,7 @@ public struct BlogTags<Site: Website>: Component {
                         } else {
                             Link(tag.string, url: site.path(for: tag).absoluteString)
                         }
-                    }.class("me-auto")
+                    }.class("me-auto me-lg-0")
                 } else {
                     ListItem {
                         if isDemo {
