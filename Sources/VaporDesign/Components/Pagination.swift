@@ -24,12 +24,20 @@ public struct Pagination: Component {
                     previousClassList.append(" disabled")
                 }
                 let previousLink = ListItem {
-                    Link(url: "#") {
-                        Span().class("vapor-icon icon-chevron-left")
-                        Div {
-                            Text("Previous")
-                        }.class("d-none d-lg-block")
-                    }.class("page-link page-link-next-previous d-flex page-link-previous").accessibilityLabel("Previous")
+                    let link: String
+                    if activePage == 1 {
+                        link = "#"
+                    } else {
+                        link = generatePageURL(pageNumber: activePage - 1)
+                    }
+                    return ComponentGroup {
+                        Link(url: link) {
+                            Span().class("vapor-icon icon-chevron-left")
+                            Div {
+                                Text("Previous")
+                            }.class("d-none d-lg-block")
+                        }.class("page-link page-link-next-previous d-flex page-link-previous").accessibilityLabel("Previous")
+                    }
                 }.class(previousClassList)
                 pageLinks.append(previousLink)
                 var builtEllipsisBeforeActivePage = false
@@ -64,17 +72,29 @@ public struct Pagination: Component {
                 }
 
                 let mobilePagination = ListItem {
-                    Text("Page 1 of 10")
+                    Text("Page \(activePage) of \(numberOfPages)")
                 }.class("page-item pagination-ellipsis d-lg-none")
                 pageLinks.append(mobilePagination)
+                var nextClassList = "page-item ms-auto"
+                if activePage == numberOfPages {
+                    nextClassList.append(" disabled")
+                }
                 let next = ListItem {
-                    Link(url: "#") {
-                        Div {
-                            Text("Next")
-                        }.class("d-none d-lg-block")
-                        Span().class("vapor-icon icon-chevron-right")
-                    }.class("page-link page-link-next-previous d-flex page-link-next").accessibilityLabel("Next")
-                }.class("page-item ms-auto")
+                    let link: String
+                    if activePage == numberOfPages {
+                        link = "#"
+                    } else {
+                        link = generatePageURL(pageNumber: activePage + 1)
+                    }
+                    return ComponentGroup {
+                        Link(url: link) {
+                            Div {
+                                Text("Next")
+                            }.class("d-none d-lg-block")
+                            Span().class("vapor-icon icon-chevron-right")
+                        }.class("page-link page-link-next-previous d-flex page-link-next").accessibilityLabel("Next")
+                    }
+                }.class(nextClassList)
                 pageLinks.append(next)
                 return ComponentGroup(members: pageLinks)
             }.class("pagination justify-content-center")
