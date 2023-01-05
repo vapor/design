@@ -91,7 +91,7 @@ Resources:
               Override: true
         SecurityHeadersConfig:
           ContentSecurityPolicy:
-              ContentSecurityPolicy: default-src 'none'; script-src 'self'; img-src 'self'; style-src 'self'; font-src 'self'
+              ContentSecurityPolicy: default-src 'none'; script-src 'self'; img-src 'self'; style-src 'self'; font-src 'self; manifest-src 'self';'
               Override: false
           ContentTypeOptions:
             Override: false
