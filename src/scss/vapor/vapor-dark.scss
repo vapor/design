@@ -383,4 +383,24 @@
             }
         }
     }
+
+    .vapor-molecule {
+        background-color: $off-black;
+        border: 1px solid $grey-800;
+        color: $grey-500;
+    
+        .vapor-icon {
+            background-color: $grey-500;
+        }
+    }
+    
+    .vapor-molecule:active, .vapor-molecule:hover {
+        background-color: $grey-800;
+        border: 1px solid $grey-700;
+        color: $grey-400;
+    
+        .vapor-icon {
+            background-color: $grey-400;
+        }
+    }
 }
