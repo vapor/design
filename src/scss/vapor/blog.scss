@@ -194,41 +194,43 @@
         width: 100%
     }
 
-    .tag-list-tag {
-        .tag-link {
-            background-color: transparent;
-            font-size: 16px;
-            line-height: 24px;
-            border-radius: 51px;
-            padding-left: 14px;
-            padding-right: 14px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            width: 100%;
-            display: inline-block;
-            vertical-align: middle;
-
-            .badge {
-                font-size: 14px;
-                line-height: 150%;
-                text-align: center;
-                border-radius: 16px;
+    @include media-breakpoint-up(lg) {
+        .tag-list-tag {
+            .tag-link {
+                background-color: transparent;
+                font-size: 16px;
+                line-height: 24px;
+                border-radius: 51px;
+                padding-left: 14px;
+                padding-right: 14px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width: 100%;
+                display: inline-block;
                 vertical-align: middle;
-                font-weight: 400;
-                padding-top: 2px;
-                padding-bottom: 2px;
-                padding-left: 10px;
-                padding-right: 10px;
+
+                .badge {
+                    font-size: 14px;
+                    line-height: 150%;
+                    text-align: center;
+                    border-radius: 16px;
+                    vertical-align: middle;
+                    font-weight: 400;
+                    padding-top: 2px;
+                    padding-bottom: 2px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
             }
-        }
 
-        .tag-link:hover {
-            text-decoration: none;
-        }
+            .tag-link:hover {
+                text-decoration: none;
+            }
 
-        width: 100%;
-        margin-top: 10px;
-        margin-bottom: 10px;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     }
 
     .tag-list-collapse {

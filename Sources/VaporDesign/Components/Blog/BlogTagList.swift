@@ -57,7 +57,7 @@ public struct BlogTagList<Site: Website>: Component {
                             Text("View All")
                             Span {
                                 Text("\(totalPosts)")
-                            }.class("badge ms-2")
+                            }.class("badge ms-2 d-none d-lg-block")
                         }.class(classList)
                     }
                 }.class("tag-list-tag")
@@ -79,12 +79,12 @@ public struct BlogTagList<Site: Website>: Component {
                                 Text(tag.tag.string)
                                 Span {
                                     Text("\(tag.postCount)")
-                                }.class("badge ms-2")
+                                }.class("badge ms-2 d-none d-lg-block")
                             }.class(classList)
                         }
                     }.class("tag-list-tag")
                 }
-            }.class("collapse tag-list-collapse").id("tagListCollapse")
+            }.class("collapse tag-list-collapse mobile-drop-down-menu").id("tagListCollapse")
         }.class("blog-tag-list")
     }
 }

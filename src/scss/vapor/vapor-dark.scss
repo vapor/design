@@ -360,25 +360,27 @@
             color: $grey-200;
         }
 
-        .tag-list-tag {
-            .tag-link {
-                color: $grey-500;
-    
-                .badge {
-                    color: $grey-300;
-                    background-color: $grey-800;
+        @include media-breakpoint-up(lg) {
+            .tag-list-tag {
+                .tag-link {
+                    color: $grey-500;
+        
+                    .badge {
+                        color: $grey-300;
+                        background-color: $grey-800;
+                    }
                 }
             }
-        }
-    
-        .tag-list-tag {
-            .tag-link:hover, .tag-link.active {
-                color: $grey-100;
-                background-color: $grey-800;
-    
-                .badge {
-                    background-color: $grey-700;
-                    color: $blue-300;
+        
+            .tag-list-tag {
+                .tag-link:hover, .tag-link.active {
+                    color: $grey-100;
+                    background-color: $grey-800;
+        
+                    .badge {
+                        background-color: $grey-700;
+                        color: $blue-300;
+                    }
                 }
             }
         }
