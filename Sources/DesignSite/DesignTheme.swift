@@ -87,7 +87,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             
             Div {
                 Div {
-                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                    BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
                     BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
