@@ -120,7 +120,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                             }.class("dropdown-item").linkTarget(.blank)
                                         }
                                     }.class("m-lg-2")
-                                }.class("dropdown-menu").id("framework-dropdown-menu")
+                                }.class("dropdown-menu animate slideIn").id("framework-dropdown-menu")
                             }
                         }.class("nav-item dropdown")
                         ListItem {
