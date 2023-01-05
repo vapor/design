@@ -51,7 +51,7 @@ public struct SiteNavigation<Site: Website>: Component {
                             }
                         }.class("nav-item")
                         ListItem {
-                            var classList = "nav-link dropdown-toggle dropdown-no-outline d-flex"
+                            var classList = "nav-link dropdown-no-outline d-flex"
                             if currentSite == .docs || currentSite == .apiDocs {
                                 classList += " active"
                             }
