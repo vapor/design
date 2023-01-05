@@ -5,14 +5,14 @@ public struct SiteNavigation<Site: Website>: Component {
     let context: PublishingContext<Site>
     let selectedSelectionID: Site.SectionID?
     let currentSite: CurrentSite
-    let currentPage: CurrentPage?
+    let currentMainSitePage: CurrentPage?
     let isDemo: Bool
     
-    public init(context: PublishingContext<Site>, selectedSelectionID: Site.SectionID?, currentSite: CurrentSite, currentPage: CurrentPage?, isDemo: Bool) {
+    public init(context: PublishingContext<Site>, selectedSelectionID: Site.SectionID?, currentSite: CurrentSite, currentMainSitePage: CurrentPage?, isDemo: Bool = false) {
         self.context = context
         self.selectedSelectionID = selectedSelectionID
         self.currentSite = currentSite
-        self.currentPage = currentPage
+        self.currentMainSitePage = currentMainSitePage
         self.isDemo = isDemo
     }
     
@@ -40,7 +40,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                 return ComponentGroup(members: [Link("Showcase", url: "#").class("nav-link")])
                             } else if currentSite == .main {
                                 var classList = "nav-link"
-                                if currentPage! == .showcase {
+                                if currentMainSitePage! == .showcase {
                                     classList += " active"
                                 }
                                 let link = Link("Showcase", url: "/showcase").class(classList)
@@ -128,7 +128,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                 return ComponentGroup(members: [Link("Team", url: "#").class("nav-link")])
                             } else if currentSite == .main {
                                 var classList = "nav-link"
-                                if currentPage! == .team {
+                                if currentMainSitePage! == .team {
                                     classList += " active"
                                 }
                                 let link = Link("Team", url: "/team").class(classList)
