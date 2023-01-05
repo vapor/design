@@ -239,3 +239,8 @@
         }
     }
 }
+
+.blog-post-link:hover {
+    text-decoration: none !important;
+    color: $blue-300;
+}

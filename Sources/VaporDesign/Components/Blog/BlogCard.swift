@@ -21,7 +21,7 @@ public struct BlogCard<Site: Website>: Component {
             Div {
                 Link(url: buildLinkForPost(item: item, isDemo: isDemo)) {
                     H2(item.title).class("card-title")
-                }
+                }.class("blog-post-link")
                 Paragraph(item.description).class("card-text")
                 Div {
                     BlogPostAuthorComponent(blogPostData: blogPostData, postPage: false)
