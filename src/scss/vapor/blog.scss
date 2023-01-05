@@ -177,6 +177,11 @@
     line-height: 105%;
     letter-spacing: -0.025em;
     max-width: 768px;
+
+    @include media-breakpoint-down(lg) {
+        margin-top: 0.5em;
+        margin-bottom: 0.7em;
+    }
 }
 
 .blog-tag-list {
