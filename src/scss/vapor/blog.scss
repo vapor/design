@@ -230,4 +230,10 @@
         margin-top: 10px;
         margin-bottom: 10px;
     }
+
+    .tag-list-collapse {
+        @include media-breakpoint-up(lg) {
+            display: block !important;
+        }
+    }
 }

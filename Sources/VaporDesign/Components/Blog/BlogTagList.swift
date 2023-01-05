@@ -26,7 +26,7 @@ public struct BlogTagList<Site: Website>: Component {
                 } else {
                     Text("View All")
                 }
-            }.class("d-lg-none btn vapor-molecule")
+            }.class("d-lg-none btn vapor-molecule vapor-molecule-list")
                 .id("tag-list-mobile-button")
                 .attribute(named: "type", value: "button")
                 .attribute(named: "data-bs-toggle", value: "collapse")
@@ -78,7 +78,7 @@ public struct BlogTagList<Site: Website>: Component {
                         }
                     }.class("tag-list-tag")
                 }
-            }
+            }.class("collapse tag-list-collapse").id("tagListCollapse")
         }.class("blog-tag-list")
     }
 }

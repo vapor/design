@@ -47,6 +47,7 @@ $grey-200: #F0F0F7;
 $grey-100: #FAFAFD;
 $off-black: #1C1C1F;
 $off-light-grey: #EAECF0;
+$off-black-2: #101828;
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica, sans-serif;
@@ -224,4 +225,42 @@ h3 {
 .slideIn {
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
+}
+
+.vapor-molecule {
+    background-color: $grey-100;
+    border: 1px solid $grey-200;
+    box-shadow: 0px 1px 2px rgba($off-black-2, 0.05);
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: $grey-600;
+    padding: 12px 16px;
+    min-width: 320px;
+    text-align: left;
+
+    @include media-breakpoint-down(lg) {
+        font-size: 14px;
+        padding: 7px 16px;
+        width: 100%;
+    }
+}
+
+.vapor-molecule-list {
+    color: red;
+}
+
+.vapor-molecule-list::after {
+    $mask-image-url: '../../images/chevron-down.svg';
+    -webkit-mask-image: url($mask-image-url);
+    -webkit-mask-position: center;
+    mask-image: url($mask-image-url);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    border: none;
+    width: 10px;
+    height: 10px;
+    background-color: red;
 }
