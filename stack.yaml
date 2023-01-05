@@ -67,6 +67,20 @@ Resources:
       ResponseHeadersPolicyConfig:
         Name: Design-Security-Header-Policy
         Comment: The Vapor Design security header policy
+        CorsConfig:
+          AccessControlAllowCredentials: true
+          AccessControlAllowHeaders:
+            Items:
+              - "ORIGIN"
+          AccessControlAllowMethods:
+            Items:
+              - "GET"
+              - "HEAD"
+              - "OPTIONS"
+          AccessControlAllowOrigins:
+            Items:
+              - "*"
+          OriginOverride: true
         CustomHeadersConfig:
           Items:
             - Header: Permissions-Policy
