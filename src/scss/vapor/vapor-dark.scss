@@ -354,4 +354,70 @@
             }
         }
     }
+
+    .blog-tag-list {
+        .list-heading {
+            color: $grey-200;
+        }
+
+        @include media-breakpoint-up(lg) {
+            .tag-list-tag {
+                .tag-link {
+                    color: $grey-500;
+        
+                    .badge {
+                        color: $grey-300;
+                        background-color: $grey-800;
+                    }
+                }
+            }
+        
+            .tag-list-tag {
+                .tag-link:hover, .tag-link.active {
+                    color: $grey-100;
+                    background-color: $grey-800;
+        
+                    .badge {
+                        background-color: $grey-700;
+                        color: $blue-300;
+                    }
+                }
+            }
+        }
+    }
+
+    .vapor-molecule {
+        background-color: $off-black;
+        border: 1px solid $grey-800;
+        color: $grey-500;
+    
+        .vapor-icon {
+            background-color: $grey-500;
+        }
+    }
+    
+    .vapor-molecule:active, .vapor-molecule:hover {
+        background-color: $grey-800;
+        border: 1px solid $grey-700;
+        color: $grey-400;
+    
+        .vapor-icon {
+            background-color: $grey-400;
+        }
+    }
+
+    .mobile-drop-down-menu {
+        @include media-breakpoint-down(lg) {
+            background: $off-black;
+            border: 1px solid $grey-800;
+    
+            li a {
+                color: $grey-500;
+            }
+
+            li a.active, a:hover, li a:active {
+                color: $blue-300;
+            }
+        }
+    }
 }

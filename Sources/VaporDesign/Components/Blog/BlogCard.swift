@@ -24,7 +24,7 @@ public struct BlogCard<Site: Website>: Component {
                 Div {
                     BlogPostAuthorComponent(blogPostData: blogPostData, postPage: false)
                     Div {
-                        BlogTagList(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
+                        BlogTags(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
                     }.class("col-lg blog-tags pt-4 pt-lg-0")
                 }.class("row")
             }.class("card-body")

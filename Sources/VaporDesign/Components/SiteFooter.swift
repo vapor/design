@@ -4,10 +4,12 @@ import Foundation
 public struct SiteFooter: Component {
     
     let isLocal: Bool
+    let isDemo: Bool
     let currentSite: CurrentSite
     
-    public init(isLocal: Bool = false, currentSite: CurrentSite) {
+    public init(isLocal: Bool = false, isDemo: Bool = false, currentSite: CurrentSite) {
         self.isLocal = isLocal
+        self.isDemo = isDemo
         self.currentSite = currentSite
     }
     
@@ -36,22 +38,47 @@ public struct SiteFooter: Component {
                                 H6("Community").class("ps-lg-5")
                                 List {
                                     ListItem {
-                                        Link("Team", url: "#")
-                                    }
-                                    ListItem {
-                                        Link("Contributors", url: "#")
+                                        if isDemo {
+                                            Link("Team", url: "#").class("nav-link")
+                                        } else if currentSite == .main {
+                                            Link("Team", url: "/team").class("nav-link")
+                                        } else {
+                                            #warning("Fix link")
+                                            Link("Team", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                        }
                                     }
                                     ListItem {
                                         Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank)
                                     }
                                     ListItem {
-                                        Link("Evangelists", url: "#")
+                                        if isDemo {
+                                            Link("Evangelists", url: "#").class("nav-link")
+                                        } else if currentSite == .main {
+                                            Link("Evangelists", url: "/evangelists").class("nav-link")
+                                        } else {
+                                            #warning("Fix link")
+                                            Link("Evangelists", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                        }
                                     }
                                     ListItem {
-                                        Link("Showcase", url: "#")
+                                        if isDemo {
+                                            Link("Showcase", url: "#").class("nav-link")
+                                        } else if currentSite == .main {
+                                            Link("Showcase", url: "/showcase").class("nav-link")
+                                        } else {
+                                            #warning("Fix link")
+                                            Link("Showcase", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                        }
                                     }
                                     ListItem {
-                                        Link("Supporters", url: "#")
+                                        if isDemo {
+                                            Link("Supporters", url: "#").class("nav-link")
+                                        } else if currentSite == .main {
+                                            Link("Supporters", url: "/supporters").class("nav-link")
+                                        } else {
+                                            #warning("Fix link")
+                                            Link("Supporters", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                        }
                                     }
                                 }.class("ps-lg-5")
                             }.id("footer-community-links").class("col-6 ps-lg-5")
@@ -83,10 +110,7 @@ public struct SiteFooter: Component {
                                         Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil)
                                     }
                                     ListItem {
-                                        Link("Help", url: "#")
-                                    }
-                                    ListItem {
-                                        Link("Contact", url: "#")
+                                        Link("Help", url: "https://vapor.team").linkTarget(.blank)
                                     }
                                 }
                             }.id("footer-resources-links").class("col-6")

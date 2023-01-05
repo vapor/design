@@ -159,3 +159,64 @@ hr {
         }
     }
 }
+
+.blog-tag-list {
+    @include media-breakpoint-up(lg) {
+        .tag-list-tag {
+            .tag-link {
+                color: $grey-700;
+
+                .badge {
+                    color: $grey-600;
+                    background-color: $grey-200;
+                }
+            }
+        }
+
+        .tag-list-tag {
+            .tag-link:hover, .tag-link.active {
+                color: $grey-800;
+                background-color: $grey-200;
+
+                .badge {
+                    background-color: $grey-100;
+                }
+            }
+        }
+    }
+}
+
+.vapor-molecule {
+    background-color: $grey-100;
+    border: 1px solid $grey-200;
+    color: $grey-600;
+
+    .vapor-icon {
+        background-color: $grey-600;
+    }
+}
+
+.vapor-molecule:active, .vapor-molecule:hover {
+    background-color: $grey-200;
+    border: 1px solid $grey-300;
+    color: $grey-700;
+
+    .vapor-icon {
+        background-color: $grey-700;
+    }
+}
+
+.mobile-drop-down-menu {
+    @include media-breakpoint-down(lg) {
+        background: $grey-100;
+        border: 1px solid $grey-200;
+
+        li a {
+            color: $grey-700;
+        }
+
+        li a.active, a:hover, li a:active {
+            color: $blue-300;
+        }
+    }
+}

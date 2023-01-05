@@ -1,0 +1,241 @@
+.blog-share {
+    .vapor-icon {
+        width: 17px;
+        height: 17px;
+        margin-top: 2px;
+    }
+
+    .share-icon-empty {
+        margin-left: -2px;
+        margin-right: -2px;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            margin-left: 12px;
+        }
+
+        li:first-child {
+            margin-left: 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+            li:first-child {
+                margin-left: 12px;
+            }
+        }
+    }
+}
+
+.blog-tags {
+    font-size: 14px;
+    color: $grey-600;
+
+    ul {
+        display: flex;
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            margin-right: 12px;
+            background: $grey-200;
+            border-radius: 16px;
+            line-height: 150%;
+            padding: 6px 12px 6px 12px;
+
+            a {
+                color: $grey-600;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: $grey-800;
+            }
+        }
+    }
+}
+
+#blog-time-tags {
+    align-items: center;
+    background: $grey-200;
+    mix-blend-mode: normal;
+    border-radius: 16px;
+    font-size: 12px;
+    color: $grey-600;
+    padding-right: 12px;
+
+    ul {
+        margin-left: 4px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+
+        li {
+            background: $grey-100;
+
+            a {
+                color: $grey-800;
+            }
+        }
+    }
+}
+
+#blog-time-tag-container {
+    display: inline-block;
+}
+
+.blog-post-author-image {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.blog-post-author-name {
+    color: $grey-700;
+}
+
+.blog-post-publish-date {
+    color: $grey-600;
+}
+
+.blog-post-header {
+    padding-top: 3em;
+}
+
+#blog-post-reading-time {
+    padding-left: 12px;
+}
+
+@include media-breakpoint-up(lg) {
+    .blog-post-header {
+        padding-top: 5em;
+    }
+}
+
+
+.blog-post-divider {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+#blog-description {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+.blog-card {
+    border-radius: 24px;
+    border: 1px solid rgba($off-light-grey, 0.1);
+
+    .card-body {
+        @include media-breakpoint-down(lg) {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 32px;
+        }
+        
+        @include media-breakpoint-up(lg) {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 32px;
+        }
+
+        .blog-post-publish-date {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+        }
+    }
+
+    .card-title {
+        margin-top: 0;
+        font-size: 24px;
+        line-height: 150%;
+        font-weight: 500;
+        padding-bottom: 12px;
+    }
+
+    .card-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        padding-bottom: 32px;
+    }
+}
+
+.vapor-blog-page-heading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 105%;
+    letter-spacing: -0.025em;
+    max-width: 768px;
+}
+
+.blog-tag-list {
+    .list-heading {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        padding-bottom: 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+        width: 100%
+    }
+
+    @include media-breakpoint-up(lg) {
+        .tag-list-tag {
+            .tag-link {
+                background-color: transparent;
+                font-size: 16px;
+                line-height: 24px;
+                border-radius: 51px;
+                padding-left: 14px;
+                padding-right: 14px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width: 100%;
+                display: inline-block;
+                vertical-align: middle;
+
+                .badge {
+                    font-size: 14px;
+                    line-height: 150%;
+                    text-align: center;
+                    border-radius: 16px;
+                    vertical-align: middle;
+                    font-weight: 400;
+                    padding-top: 2px;
+                    padding-bottom: 2px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+
+            .tag-link:hover {
+                text-decoration: none;
+            }
+
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .tag-list-collapse {
+        @include media-breakpoint-up(lg) {
+            display: block !important;
+        }
+    }
+}

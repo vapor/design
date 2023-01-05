@@ -30,3 +30,11 @@ $icon-names: (
         @include create-icon($name);
     }
 }
+
+.vapor-icon {
+    width: 1em;
+    height: 1em;
+    display: block;
+    overflow: hidden;
+    background-color: black;
+}

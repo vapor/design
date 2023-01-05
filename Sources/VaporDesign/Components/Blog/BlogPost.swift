@@ -29,7 +29,7 @@ public struct BlogPost<Site: Website>: Component {
             Div {
                 Div {
                     Div {
-                        BlogTagList(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
+                        BlogTags(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
                     }.class("blog-tags")
                     Div {
                         Text(blogPostData.length)
@@ -62,7 +62,7 @@ public struct BlogPost<Site: Website>: Component {
     func buildBlogPostBottom() -> Component {
         Div {
             Div {
-                BlogTagList(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
+                BlogTags(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
             }.id("blog-bottom-tags").class("blog-tags col-lg-6")
             Div {
                 buildBlogPostShareList()

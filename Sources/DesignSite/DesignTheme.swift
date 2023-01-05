@@ -20,10 +20,10 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
-            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite)
+            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentPage: nil, isDemo: isDemo)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
             buildComponentDemo(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
-            SiteFooter(isLocal: true, currentSite: currentSite)
+            SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
         }
         
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
@@ -97,6 +97,22 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }.class("col")
             }.class("row row-cols-1 row-cols-lg-2 g-4")
             
+            H2("Blog Site Title")
+            
+            H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
+            
+            H2("Blog Tag List")
+            
+            H4("This is a list on desktop and a drop down menu on mobile")
+            
+            Div {
+                Div {
+                    let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
+                    let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2)}
+                    return ComponentGroup(BlogTagList(tags: tagsWithPostCount, site: site, selectedTag: nil, totalPosts: 72, isDemo: true))
+                }.class("col-lg-3")
+                Div().class("col")
+            }.class("row")
             
         }.class("container")
     }
