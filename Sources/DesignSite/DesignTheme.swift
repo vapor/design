@@ -103,6 +103,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             
             H2("Blog Tag List")
             
+            H4("This is a list on desktop and a drop down menu on mobile")
+            
             Div {
                 Div {
                     let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
