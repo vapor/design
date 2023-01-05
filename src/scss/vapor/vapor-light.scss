@@ -214,5 +214,9 @@ hr {
         li a {
             color: $grey-700;
         }
+
+        li a.active, a:hover, li a:active {
+            color: $blue-300;
+        }
     }
 }

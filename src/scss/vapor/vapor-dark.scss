@@ -414,6 +414,10 @@
             li a {
                 color: $grey-500;
             }
+
+            li a.active, a:hover, li a:active {
+                color: $blue-300;
+            }
         }
     }
 }
