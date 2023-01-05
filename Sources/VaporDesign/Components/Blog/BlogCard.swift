@@ -19,7 +19,9 @@ public struct BlogCard<Site: Website>: Component {
     public var body: Component {
         Div {
             Div {
-                H2(item.title).class("card-title")
+                Link(url: buildLinkForPost(item: item, isDemo: isDemo)) {
+                    H2(item.title).class("card-title")
+                }
                 Paragraph(item.description).class("card-text")
                 Div {
                     BlogPostAuthorComponent(blogPostData: blogPostData, postPage: false)
@@ -149,6 +151,14 @@ public struct BlogCard<Site: Website>: Component {
                     Text("&nbsp;")
                 }.class("btn btn-secondary btn-small d-flex mastodon-share-button")
             }.class("me-auto")
+        }
+    }
+    
+    func buildLinkForPost(item: Item<Site>, isDemo: Bool) -> String {
+        if isDemo {
+            return "#"
+        } else {
+            return item.path.absoluteString
         }
     }
 }
