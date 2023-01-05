@@ -88,7 +88,7 @@ public extension Node where Context == HTML.HeadContext {
             .attribute(named: "type", value: "image/png")
         )
         
-        let manifestURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/site.webmanifest", isLocal: true)
+        let manifestURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/site.webmanifest", isLocal: isLocal)
         let manifestLink = Node<HTML.HeadContext>.link(
             .rel(.manifest),
             .href(manifestURL)
