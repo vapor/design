@@ -37,6 +37,17 @@ public struct SiteNavigation<Site: Website>: Component {
                     List {
                         ListItem {
                             if isDemo {
+                                return ComponentGroup(members: [Link("Home", url: "#").class("nav-link")])
+                            } else if currentSite == .main {
+                                let classList = "nav-link"
+                                let link = Link("Home", url: "/").class(classList)
+                                return ComponentGroup(members: [link])
+                            } else {
+                                return ComponentGroup(members: [Link("Home", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
+                            }
+                        }
+                        ListItem {
+                            if isDemo {
                                 return ComponentGroup(members: [Link("Showcase", url: "#").class("nav-link")])
                             } else if currentSite == .main {
                                 var classList = "nav-link"
