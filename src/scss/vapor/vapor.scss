@@ -258,6 +258,8 @@ h3 {
         backdrop-filter: blur(10px);
         border-radius: 12px;
         margin-bottom: 0;
+        max-height: 250px;
+        overflow-y: auto;
 
         li a {
             margin-left: 16px;
