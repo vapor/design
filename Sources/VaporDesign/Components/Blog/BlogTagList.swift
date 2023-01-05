@@ -22,11 +22,17 @@ public struct BlogTagList<Site: Website>: Component {
             
             Button {
                 if let selectedTag {
-                    Text(selectedTag.tag.string)
+                    Div {
+                        Text(selectedTag.tag.string)
+                        Span().class("ms-auto vapor-icon icon-chevron-down")
+                    }.class("d-flex flex-row align-items-center")
                 } else {
-                    Text("View All")
+                    Div {
+                        Text("View All")
+                        Span().class("ms-auto vapor-icon icon-chevron-down")
+                    }.class("d-flex flex-row align-items-center")
                 }
-            }.class("d-lg-none btn vapor-molecule vapor-molecule-list")
+            }.class("d-lg-none vapor-molecule vapor-molecule-list")
                 .id("tag-list-mobile-button")
                 .attribute(named: "type", value: "button")
                 .attribute(named: "data-bs-toggle", value: "collapse")
