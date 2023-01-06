@@ -126,7 +126,7 @@ let demoPostHTML = """
           This site contains Vapor's Design Guide showing examples of different components used in web pages. Evetually, this design guide will be rolled out across all of Vapor's sites, old and new.
         </p>
         <p>
-          The designs have been developed in conjunction with <a href="https://www.redbourbon.co">Red Bourbon</a> who have created some amazing desgins for us. The code for this site, the desgin guide and the reference designs can be found on <a href="https://github.com/vapor/design">GitHub</a>.
+          The designs have been developed in conjunction with <a href="https://www.redbourbon.co">Red Bourbon</a> who have created some amazing designs for us. The code for this site, the design guide and the reference designs can be found on <a href="https://github.com/vapor/design">GitHub</a>.
         </p>
 
         <p>
