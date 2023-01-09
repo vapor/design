@@ -133,6 +133,8 @@ let demoPostHTML = """
             Originally this page was a proof on concept for building the blog (the first site to be ported over to the new design) as a way of getting the styling and HTML/CSS to work. It's now evolved to host the generated CSS and JS the sites can pull in, this example site, all the static files (like images) and components for Publish to use when building out sites.
         </p>
 
+        <h2>Some <code>Vapor</code> code blocks</h2>
+
         <p>Here's an example of a code block:</p>
 
         <pre>
@@ -158,6 +160,8 @@ struct CreateTodoTitleIndex: AsyncMigration {
 }
           </code>
         </pre>
+
+        <p>And then we have some inline code: <code>let vaporIsAwesome = true</code></p>
 
         <p>And now a quote:</p>
 
