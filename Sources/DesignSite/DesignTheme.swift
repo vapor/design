@@ -61,61 +61,139 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     }
     
     func buildComponentDemo(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) -> Component {
-        Div {
-            H1("Component Guide")
-            
-            H2("Typography")
-            
-            H1("Header 1")
-            H2("Header 2")
-            H3("Header 3")
-            H4("Header 4")
-            H5("Header 5")
-            H6("Header 6")
-            
-            H2("Pagination")
+        ComponentGroup {
+            Div {
+                H1("Component Guide")
+                
+                H2("Typography")
+                
+                H1("Header 1")
+                H2("Header 2")
+                H3("Header 3")
+                H4("Header 4")
+                H5("Header 5")
+                H6("Header 6")
+                
+                H2("Pagination")
 
-            Pagination(activePage: 1, numberOfPages: 15, pageURL: { pageNumber in
-                return "/\(pageNumber)"
-            }, isDemo: isDemo)
-            
-            H2("HR")
-            
-            Node.hr()
-            
-            H2("Blog Post Cards")
-            
+                Pagination(activePage: 1, numberOfPages: 15, pageURL: { pageNumber in
+                    return "/\(pageNumber)"
+                }, isDemo: isDemo)
+                
+                H2("HR")
+                
+                Node.hr()
+                
+                H2("Blog Post Cards")
+                
+                Div {
+                    Div {
+                        let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                        BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
+                    }.class("col")
+                    Div {
+                        BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                    }.class("col")
+                    Div {
+                        BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                    }.class("col")
+                }.class("row row-cols-1 row-cols-lg-2 g-4")
+                
+                H2("Blog Site Title")
+                
+                H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
+                
+                H2("Blog Tag List")
+                
+                H4("This is a list on desktop and a drop down menu on mobile")
+                
+                Div {
+                    Div {
+                        let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
+                        let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2)}
+                        return ComponentGroup(BlogTagList(tags: tagsWithPostCount, site: site, selectedTag: nil, totalPosts: 72, isDemo: true))
+                    }.class("col-lg-3")
+                    Div().class("col")
+                }.class("row")
+                
+            }.class("container")
+
             Div {
-                Div {
-                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
-                    BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
-                }.class("col")
-                Div {
-                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
-                }.class("col")
-                Div {
-                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
-                }.class("col")
-            }.class("row row-cols-1 row-cols-lg-2 g-4")
-            
-            H2("Blog Site Title")
-            
-            H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
-            
-            H2("Blog Tag List")
-            
-            H4("This is a list on desktop and a drop down menu on mobile")
-            
+                buildMainSiteDemo()
+            }.class("container")
+        }
+    }
+
+    func buildMainSiteDemo() -> Component {
+        return ComponentGroup {
+            H1("Swift, but on a server").class("main-title")
+            H3("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift").class("main-page-caption")
+
             Div {
-                Div {
-                    let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
-                    let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2)}
-                    return ComponentGroup(BlogTagList(tags: tagsWithPostCount, site: site, selectedTag: nil, totalPosts: 72, isDemo: true))
-                }.class("col-lg-3")
-                Div().class("col")
-            }.class("row")
-            
-        }.class("container")
+                Button {
+                    Link("Get Started", url: "https://docs.vapor.codes/").linkTarget(.blank)
+                }.class("btn btn-primary")
+                Button {
+                    Link(url: "https://github.com/vapor/vapor") {
+                        Span().class("vapor-icon icon-github-line")
+                        Text("22k stars on GitHub")
+                    }
+                }.class("btn btn-link")
+            }.class("main-page-callout-buttons")
+
+            Div {
+                let html = """
+                import Vapor
+
+                let app = try Application(.detect())
+                defer { app.shutdown() }
+
+                app.get("hello") { req in
+                    return "Hello, world!"
+                }
+
+                try app.run()
+                """
+                let code = Node.code(.text(html)).class("language-swift")
+                Node.pre(.component(code))
+                // Code(language: .swift, code: html)
+            }.class("main-code-demo")
+
+            Div {
+                H5("Powering companies like:").class("used-by-caption")
+                List {
+                    ListItem {
+                        Link(url: "https://swiftpackageindex.com") {
+                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                        }.class("used-by-logo")
+                    }.class("used-by-item")
+
+                    ListItem {
+                        Link(url: "https://swiftpackageindex.com") {
+                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                        }.class("used-by-logo")
+                    }.class("used-by-item")
+
+                    ListItem {
+                        Link(url: "https://swiftpackageindex.com") {
+                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                        }.class("used-by-logo")
+                    }.class("used-by-item")
+
+                    ListItem {
+                        Link(url: "https://swiftpackageindex.com") {
+                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                        }.class("used-by-logo")
+                    }.class("used-by-item")
+
+                    ListItem {
+                        Link(url: "https://swiftpackageindex.com") {
+                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                        }.class("used-by-logo")
+                    }.class("used-by-item")
+                }
+            }.class("used-by-companies")
+        }
     }
 }
 
