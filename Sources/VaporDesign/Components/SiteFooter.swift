@@ -21,9 +21,7 @@ public struct SiteFooter: Component {
             Div {
                 Div {
                     Div {
-                        Span {
-                            
-                        }.class("d-inline-block align-text-top")
+                        Span().class("d-inline-block align-text-top")
                             .accessibilityLabel("Vapor Logo")
                             .id("vapor-logo-footer")
                             .width(197)

@@ -5,6 +5,15 @@
     font-style: normal;
     line-height: 105%;
     letter-spacing: -0.03em;
+    margin-top: 56px;
+    margin-bottom: 0px;
+
+    @include media-breakpoint-down(lg) {
+        margin-top: 48px;
+        font-size: 36px;
+        line-height: 125%;
+        letter-spacing: -0.02em;
+    }
 }
 
 .main-page-caption {
@@ -13,8 +22,51 @@
     font-size: 24px;
     line-height: 150%;
     text-align: center;
+    max-width: 768px;
+    margin-top: 24px;
+
+    @include media-breakpoint-down(lg) {
+        margin-top: 16px;
+        font-size: 16px;
+    }
 }
 
 .main-code-demo {
     margin-top: 64px;
+}
+
+.main-site-main-page {
+    #vapor-navbar {
+        display: none;
+    }
+}
+
+.main-page-callout-buttons {
+    margin-top: 48px;
+
+}
+
+#vapor-hero-logo {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 233px;
+    height: 90px;
+
+    @include media-breakpoint-down(lg) {
+        margin-top: 16px;
+        width: 100px;
+        height: 38px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin-top: 64px;
+    }
+}
+
+.main-site-main-page {
+    background-position-x: center; 
+    background-position-y: 320px;
+    background-repeat: no-repeat;
+    background-size: 100% 500px;
 }

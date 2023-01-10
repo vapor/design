@@ -32,8 +32,22 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
 
     func makeSectionHTML(for section: Section<Site>,
                          context: PublishingContext<Site>) throws -> HTML {
-        let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
-        return builder.buildHTML(for: section, context: context, body: .body())
+        if section.title == "Mainpagedemo" {
+            let body: Node<HTML.DocumentContext> = .body {
+                let isDemo = true
+                let currentSite: CurrentSite = .main
+                SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: nil, isDemo: isDemo)
+                buildMainSiteDemo()
+                SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
+            }
+            
+            let bodyWithClass = body.class("main-site-main-page")
+            let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+            return builder.buildHTML(for: section, context: context, body: bodyWithClass.convertToNode())
+        } else {
+            let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
+            return builder.buildHTML(for: section, context: context, body: .body())
+        }
     }
 
     func makeItemHTML(for item: Item<Site>,
@@ -61,73 +75,70 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
     }
     
     func buildComponentDemo(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) -> Component {
-        ComponentGroup {
-            Div {
-                H1("Component Guide")
-                
-                H2("Typography")
-                
-                H1("Header 1")
-                H2("Header 2")
-                H3("Header 3")
-                H4("Header 4")
-                H5("Header 5")
-                H6("Header 6")
-                
-                H2("Pagination")
+        Div {
+            H1("Component Guide")
+            
+            H2("Typography")
+            
+            H1("Header 1")
+            H2("Header 2")
+            H3("Header 3")
+            H4("Header 4")
+            H5("Header 5")
+            H6("Header 6")
+            
+            H2("Pagination")
 
-                Pagination(activePage: 1, numberOfPages: 15, pageURL: { pageNumber in
-                    return "/\(pageNumber)"
-                }, isDemo: isDemo)
-                
-                H2("HR")
-                
-                Node.hr()
-                
-                H2("Blog Post Cards")
-                
-                Div {
-                    Div {
-                        let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
-                        BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
-                    }.class("col")
-                    Div {
-                        BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
-                    }.class("col")
-                    Div {
-                        BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
-                    }.class("col")
-                }.class("row row-cols-1 row-cols-lg-2 g-4")
-                
-                H2("Blog Site Title")
-                
-                H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
-                
-                H2("Blog Tag List")
-                
-                H4("This is a list on desktop and a drop down menu on mobile")
-                
-                Div {
-                    Div {
-                        let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
-                        let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2)}
-                        return ComponentGroup(BlogTagList(tags: tagsWithPostCount, site: site, selectedTag: nil, totalPosts: 72, isDemo: true))
-                    }.class("col-lg-3")
-                    Div().class("col")
-                }.class("row")
-                
-            }.class("container")
-
+            Pagination(activePage: 1, numberOfPages: 15, pageURL: { pageNumber in
+                return "/\(pageNumber)"
+            }, isDemo: isDemo)
+            
+            H2("HR")
+            
+            Node.hr()
+            
+            H2("Blog Post Cards")
+            
             Div {
-                buildMainSiteDemo()
-            }.class("container")
-        }
+                Div {
+                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                    BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
+                }.class("col")
+                Div {
+                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                }.class("col")
+                Div {
+                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                }.class("col")
+            }.class("row row-cols-1 row-cols-lg-2 g-4")
+            
+            H2("Blog Site Title")
+            
+            H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
+            
+            H2("Blog Tag List")
+            
+            H4("This is a list on desktop and a drop down menu on mobile")
+            
+            Div {
+                Div {
+                    let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
+                    let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2)}
+                    return ComponentGroup(BlogTagList(tags: tagsWithPostCount, site: site, selectedTag: nil, totalPosts: 72, isDemo: true))
+                }.class("col-lg-3")
+                Div().class("col")
+            }.class("row")
+            
+        }.class("container")
     }
 
     func buildMainSiteDemo() -> Component {
-        return ComponentGroup {
+        Div {
+            Span().class("d-flex mx-auto")
+                .accessibilityLabel("Vapor Logo")
+                .id("vapor-hero-logo")
             H1("Swift, but on a server").class("main-title")
-            H3("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift").class("main-page-caption")
+            H3("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift").class("main-page-caption d-flex mx-auto")
 
             Div {
                 Div {
@@ -197,7 +208,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("used-by-item")
                 }
             }.class("used-by-companies")
-        }
+        }.class("container")
     }
 }
 
@@ -213,6 +224,10 @@ let demoPostHTML = """
 
         <p>
             Originally this page was a proof on concept for building the blog (the first site to be ported over to the new design) as a way of getting the styling and HTML/CSS to work. It's now evolved to host the generated CSS and JS the sites can pull in, this example site, all the static files (like images) and components for Publish to use when building out sites.
+        </p>
+
+        <p>
+            You can see an example of the main site <a href="/mainPageDemo">here</a>.
         </p>
 
         <h2>Some <code>Vapor</code> code blocks</h2>

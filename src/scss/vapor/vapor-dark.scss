@@ -7,7 +7,7 @@
     body {
         background: $grey-900;
         color: $grey-500;
-        background-image: url(../../images/main-background-dark.jpg);
+        background-image: url(../../images/main-background-dark.webp);
         background-position: top;
         background-repeat: no-repeat;
         background-size: 100% 500px;
@@ -459,5 +459,13 @@
 
     .icon-secondary {
         background-color: $grey-500;
+    }
+
+    .main-site-main-page {
+        background-image: url(../../images/main-site-homepage-hero-dark.svg);
+    }
+
+    #vapor-hero-logo {
+        background-image: url(../../images/logo-main-white.svg);
     }
 }
