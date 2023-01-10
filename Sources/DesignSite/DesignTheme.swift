@@ -132,9 +132,9 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 Div {
                     Button {
-                        Link("Get Started", url: "https://docs.vapor.codes/").linkTarget(.blank)
-                    }.class("btn btn-primary")
-                }
+                        Link("Get Started", url: "https://docs.vapor.codes/").linkTarget(.blank).id("main-page-callout-button-link")
+                    }.class("btn btn-primary w-mobile-100")
+                }.class("w-mobile-100")
                 Div {
                     Button {
                         Link(url: "https://github.com/vapor/vapor") {
@@ -142,8 +142,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             Text("22k stars on GitHub")
                         }.class(" d-flex align-items-center")
                     }.class("btn btn-link btn-secondary-link")
-                }.class("d-flex align-items-center ms-5")
-            }.class("main-page-callout-buttons d-flex justify-content-center align-items-center")
+                }.class("d-flex align-items-center ms-lg-5")
+            }.class("main-page-callout-buttons d-flex align-items-center justify-content-center flex-column flex-lg-row")
 
             Div {
                 let html = """

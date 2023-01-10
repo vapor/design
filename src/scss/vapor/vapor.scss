@@ -191,6 +191,12 @@ h3 {
     }
 }
 
+@include media-breakpoint-down(lg) {
+    .w-mobile-100 {
+        width: 100%;
+    }
+}
+
 .animate {
     animation-duration: 0.3s;
     -webkit-animation-duration: 0.3s;
