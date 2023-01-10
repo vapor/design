@@ -120,7 +120,7 @@ body {
 
 .btn {
     font-size: 16px;
-    line-height: 150%;
+    line-height: 100%;
     --#{$prefix}btn-border-radius: 16px;
     --#{$prefix}btn-border-color: transparent;
     padding-top: 16px;
@@ -145,10 +145,20 @@ body {
     background: linear-gradient(180deg, $pink-300 0%, $pink-500 100%);
     --#{$prefix}btn-color: white;
     color: white;
+    border: none;
+
+    a {
+        color: white;
+    }
+
+
+    a:hover {
+        color: white;
+        text-decoration: none;
+    }
 
     .vapor-icon {
         background-color: white;
-
     }
 }
 
@@ -283,4 +293,9 @@ h3 {
             margin-bottom: 0;
         }
     }
+}
+
+.btn-icon {
+    height: 21px;
+    width: 21px;
 }

@@ -130,16 +130,20 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             H3("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift").class("main-page-caption")
 
             Div {
-                Button {
-                    Link("Get Started", url: "https://docs.vapor.codes/").linkTarget(.blank)
-                }.class("btn btn-primary")
-                Button {
-                    Link(url: "https://github.com/vapor/vapor") {
-                        Span().class("vapor-icon icon-github-line")
-                        Text("22k stars on GitHub")
-                    }
-                }.class("btn btn-link")
-            }.class("main-page-callout-buttons")
+                Div {
+                    Button {
+                        Link("Get Started", url: "https://docs.vapor.codes/").linkTarget(.blank)
+                    }.class("btn btn-primary")
+                }
+                Div {
+                    Button {
+                        Link(url: "https://github.com/vapor/vapor") {
+                            Span().class("vapor-icon icon-github-line icon-secondary btn-icon me-2")
+                            Text("22k stars on GitHub")
+                        }.class(" d-flex align-items-center")
+                    }.class("btn btn-link btn-secondary-link")
+                }.class("d-flex align-items-center ms-5")
+            }.class("main-page-callout-buttons d-flex justify-content-center align-items-center")
 
             Div {
                 let html = """

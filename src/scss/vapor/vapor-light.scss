@@ -228,3 +228,39 @@ code {
 .main-page-caption {
     color: $grey-700;
 }
+
+.btn-link {
+    color: $grey-800;
+
+    a {
+        color: $grey-800;
+    }
+
+    a:hover {
+        color: $grey-900;
+
+        .vapor-icon {
+            background-color: $grey-900;
+        }
+    }
+}
+
+.btn-secondary-link {
+    color: $grey-600;
+
+    a {
+        color: $grey-600;
+    }
+
+    a:hover {
+        color: $grey-700;
+
+        .vapor-icon {
+            background-color: $grey-700;
+        }
+    }
+}
+
+.icon-secondary {
+    background-color: $grey-600;
+}

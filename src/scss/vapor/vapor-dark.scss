@@ -424,4 +424,40 @@
     .main-page-caption {
         color: $grey-500;
     }
+
+    .btn-link {
+        color: $grey-200;
+    
+        a {
+            color: $grey-200;
+        }
+    
+        a:hover {
+            color: $grey-100;
+
+            .vapor-icon {
+                background-color: $grey-100;
+            }
+        }
+    }
+
+    .btn-secondary-link {
+        color: $grey-500;
+    
+        a {
+            color: $grey-500;
+        }
+    
+        a:hover {
+            color: $grey-400;
+
+            .vapor-icon {
+                background-color: $grey-400;
+            }
+        }
+    }
+
+    .icon-secondary {
+        background-color: $grey-500;
+    }
 }
