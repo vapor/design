@@ -468,4 +468,12 @@
     #vapor-hero-logo {
         background-image: url(../../images/logo-main-white.svg);
     }
+
+    .used-by-caption {
+        color: $grey-400;
+    }
+
+    .used-by-icon {
+        background-color: $grey-500;
+    }
 }

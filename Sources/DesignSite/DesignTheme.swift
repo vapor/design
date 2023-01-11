@@ -168,45 +168,55 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }
 
                 try app.run()
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 """
                 let code = Node.code(.text(html)).class("language-swift")
                 Node.pre(.component(code))
-                // Code(language: .swift, code: html)
-            }.class("main-code-demo")
+            }.class("main-code-demo mx-auto")
 
             Div {
                 H5("Powering companies like:").class("used-by-caption")
-                List {
-                    ListItem {
+                Div {
+                    Div {
                         Link(url: "https://swiftpackageindex.com") {
-                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                            Span().class("used-by-icon icon-transeo").attribute(named: "title", value: "Transeo")
                         }.class("used-by-logo")
                     }.class("used-by-item")
 
-                    ListItem {
+                    Div {
                         Link(url: "https://swiftpackageindex.com") {
-                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                            Span().class("used-by-icon icon-john-lewis").attribute(named: "title", value: "John Lewis")
                         }.class("used-by-logo")
                     }.class("used-by-item")
 
-                    ListItem {
+                    Div {
                         Link(url: "https://swiftpackageindex.com") {
-                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                            Span().class("used-by-icon icon-spotify").attribute(named: "title", value: "Spotify")
                         }.class("used-by-logo")
                     }.class("used-by-item")
 
-                    ListItem {
+                    Div {
                         Link(url: "https://swiftpackageindex.com") {
-                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                            Span().class("used-by-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
                         }.class("used-by-logo")
                     }.class("used-by-item")
 
-                    ListItem {
+                    Div {
                         Link(url: "https://swiftpackageindex.com") {
-                            Span().class("vapor-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
+                            Span().class("used-by-icon icon-allegro").attribute(named: "title", value: "Allegro")
                         }.class("used-by-logo")
                     }.class("used-by-item")
-                }
+                }.class("d-flex flex-row flex-wrap align-items-center justify-content-center used-by-companies-items")
             }.class("used-by-companies")
         }.class("container")
     }

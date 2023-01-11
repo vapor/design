@@ -33,6 +33,7 @@
 
 .main-code-demo {
     margin-top: 64px;
+    max-width: 900px;
 }
 
 .main-site-main-page {
@@ -69,4 +70,78 @@
     background-position-y: 320px;
     background-repeat: no-repeat;
     background-size: 100% 500px;
+}
+
+.used-by-caption {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.used-by-companies-items {
+    column-gap: 80px;
+    margin-bottom: 32px;
+
+    @include media-breakpoint-down(lg) {
+        column-gap: 40px;
+        margin-bottom: 16px;
+    }
+}
+
+.used-by-icon {
+    display: block;
+    overflow: hidden;
+}
+
+.icon-swift-package-index {
+    width: 241px;
+    height: 54px;
+
+    @include media-breakpoint-down(lg) {
+        width: 163px;
+        height: 36px;
+    }
+}
+
+.icon-spotify {
+    width: 161px;
+    height: 49px;
+
+    @include media-breakpoint-down(lg) {
+        width: 80px;
+        height: 24px;
+    }
+}
+
+.icon-john-lewis {
+    width: 115px;
+    height: 73px;
+
+    @include media-breakpoint-down(lg) {
+        width: 57px;
+        height: 36px;
+    }
+}
+
+.icon-allegro {
+    width: 145px;
+    height: 51px;
+
+    @include media-breakpoint-down(lg) {
+        width: 70px;
+        height: 24px;
+    }
+}
+
+.icon-transeo {
+    width: 239px;
+    height: 49px;
+
+    @include media-breakpoint-down(lg) {
+        width: 120px;
+        height: 24px;
+    }
 }
