@@ -91,6 +91,14 @@
     }
 }
 
+.used-by-item {
+    margin-bottom: 32px;
+
+    @include media-breakpoint-down(lg) {
+        margin-bottom: 16px;
+    }
+}
+
 .used-by-icon {
     display: block;
     overflow: hidden;
