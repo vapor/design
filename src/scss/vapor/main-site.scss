@@ -153,3 +153,35 @@
         height: 24px;
     }
 }
+
+.main-site-section-header {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 105%;
+    letter-spacing: -0.02em;
+    max-width: 768px;
+    font-style: normal;
+    margin-bottom: 20px;
+
+    @include media-breakpoint-down(lg) {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 125%;
+    }
+}
+
+.main-site-packages-list {
+    .caption {
+        max-width: 768px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 150%;
+
+        @include media-breakpoint-down(lg) {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+        }
+    }
+}

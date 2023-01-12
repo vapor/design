@@ -218,6 +218,33 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("used-by-item")
                 }.class("d-flex flex-row flex-wrap align-items-center justify-content-center used-by-companies-items")
             }.class("used-by-companies")
+            
+            Div {
+                H1("Build server side with the tooling you already understand").class("main-site-section-header")
+                Paragraph {
+                    Text("No need to learn a language from scratch (or assemble a different team) just for your backend. Vapor is built on Apple’s SwiftNIO so you’ll get to use the language you already know and love.")
+                }.class("caption")
+                
+                Div {
+                    var cards = [Component]()
+                    for _ in 1...4 {
+                        let card = Div {
+                            Div {
+                                Span().class("vapor-icon icon-server-04")
+                                Div {
+                                    H4("Vapor").class("card-title")
+                                    Paragraph("Build efficient APIs in a language you love. Create routes, send and receive JSON and build HTTP servers.").class("card-text")
+                                    Link(url: "https://github.com/vapor/vapor") {
+                                        Text("Learn More")
+                                    }.linkTarget(.blank).class("main-site-learn-more-link")
+                                }.class("card-body")
+                            }.class("card h-100 vapor-feature-card")
+                        }.class("col")
+                        cards.append(card)
+                    }
+                    return ComponentGroup(members: cards)
+                }.class("main-site-packages-grid row row-cols-1 row-cols-lg-2 g-4")
+            }.class("main-site-packages-list")
         }.class("container")
     }
 }
