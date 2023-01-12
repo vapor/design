@@ -126,7 +126,7 @@ public struct SiteFooter: Component {
                             ListItem {
                                 Link(url: "https://twitter.com/codevapor") {
                                     Span().class("vapor-icon icon-twitter-fill")
-                                }.linkTarget(.blank)
+                                }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }.class("me-4")
                             ListItem {
                                 Link(url: "https://hachyderm.io/@codevapor") {
@@ -136,7 +136,7 @@ public struct SiteFooter: Component {
                             ListItem {
                                 Link(url: "https://github.com/vapor") {
                                     Span().class("vapor-icon icon-github-fill")
-                                }.linkTarget(.blank)
+                                }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }
                         }.class("d-flex")
                     }.id("footer-social-links").class("ms-auto")
