@@ -476,4 +476,24 @@
     .used-by-icon {
         background-color: $grey-500;
     }
+
+    .vapor-feature-card {
+        background-color: rgba($grey-800, 0.3);
+    }
+
+    .main-site-learn-more-link {
+        color: $grey-200;
+
+        .vapor-icon {
+            background-color: $grey-200;
+        }
+    }
+    
+    .main-site-learn-more-link:hover {
+        color: $grey-100;
+
+        .vapor-icon {
+            background-color: $grey-100;
+        }
+    }
 }

@@ -230,20 +230,21 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     for _ in 1...4 {
                         let card = Div {
                             Div {
-                                Span().class("vapor-icon icon-server-04")
+                                Span().class("vapor-icon feature-card-icon icon-server-04")
                                 Div {
                                     H4("Vapor").class("card-title")
                                     Paragraph("Build efficient APIs in a language you love. Create routes, send and receive JSON and build HTTP servers.").class("card-text")
                                     Link(url: "https://github.com/vapor/vapor") {
                                         Text("Learn More")
+                                        Span().class("vapor-icon icon-chevron-right")
                                     }.linkTarget(.blank).class("main-site-learn-more-link")
-                                }.class("card-body")
+                                }
                             }.class("card h-100 vapor-feature-card")
                         }.class("col")
                         cards.append(card)
                     }
                     return ComponentGroup(members: cards)
-                }.class("main-site-packages-grid row row-cols-1 row-cols-lg-2 g-4")
+                }.class("main-site-packages-grid row row-cols-1 row-cols-lg-2 gx-5")
             }.class("main-site-packages-list")
         }.class("container")
     }
