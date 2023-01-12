@@ -129,6 +129,11 @@ public struct SiteFooter: Component {
                                 }.linkTarget(.blank)
                             }.class("me-4")
                             ListItem {
+                                Link(url: "https://hachyderm.io/@codevapor") {
+                                    Span().class("vapor-icon icon-mastodon-fill")
+                                }.linkTarget(.blank).attribute(named: "rel", value: "me")
+                            }.class("me-4")
+                            ListItem {
                                 Link(url: "https://github.com/vapor") {
                                     Span().class("vapor-icon icon-github-fill")
                                 }.linkTarget(.blank)
