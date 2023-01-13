@@ -127,7 +127,6 @@ body {
     padding-bottom: 16px;
     padding-left: 24px;
     padding-right: 24px;
-
 }
 
 .btn-small {
@@ -149,6 +148,7 @@ body {
 
     a {
         color: white;
+        display: inline-flex;
     }
 
 
@@ -159,6 +159,9 @@ body {
 
     .vapor-icon {
         background-color: white;
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;
     }
 }
 
@@ -327,6 +330,7 @@ h3 {
         font-weight: 500;
         font-size: 30px;
         line-height: 125%;
+        margin-top: 28px;
 
         @include media-breakpoint-down(lg) {
             font-size: 24px;

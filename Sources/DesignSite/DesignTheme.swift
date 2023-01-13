@@ -220,7 +220,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             }.class("used-by-companies")
             
             Div {
-                H1("Build server side with the tooling you already understand").class("main-site-section-header")
+                H2("Build server side with the tooling you already understand").class("main-site-section-header")
                 Paragraph {
                     Text("No need to learn a language from scratch (or assemble a different team) just for your backend. Vapor is built on Apple’s SwiftNIO so you’ll get to use the language you already know and love.")
                 }.class("caption")
@@ -230,9 +230,9 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     for _ in 1...4 {
                         let card = Div {
                             Div {
-                                Span().class("vapor-icon feature-card-icon icon-server-04")
                                 Div {
-                                    H4("Vapor").class("card-title")
+                                    Span().class("vapor-icon feature-card-icon icon-server-04")
+                                    H3("Vapor").class("card-title")
                                     Paragraph("Build efficient APIs in a language you love. Create routes, send and receive JSON and build HTTP servers.").class("card-text")
                                     Link(url: "https://github.com/vapor/vapor") {
                                         Text("Learn More")
@@ -246,6 +246,27 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     return ComponentGroup(members: cards)
                 }.class("main-site-packages-grid row row-cols-1 row-cols-lg-2 gx-5")
             }.class("main-site-packages-list")
+            
+            Div {
+                Div {
+                    Div {
+                        Span().class("vapor-icon icon-dataflow-03")
+                        H2("High-performant APIs and servers")
+                        Paragraph {
+                            Text("Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift’s Concurrency model, you can write clear, maintainable code that’s efficient and easy to read.")
+                        }
+                        Button {
+                            Link(url: "https://docs.vapor.codes/") {
+                                Text("Get Started")
+                                Span().class("vapor-icon icon-chevron-right")
+                            }.linkTarget(.blank)
+                        }.class("btn btn-primary w-mobile-100")
+                    }.class("col")
+                    Div {
+                        
+                    }.class("col")
+                }.class("row row-cols-1 row-cols-lg-2")
+            }.class("main-site-features")
         }.class("container")
     }
 }

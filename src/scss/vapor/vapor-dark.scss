@@ -192,6 +192,14 @@
         background: linear-gradient(180deg, $pink-300 0%, $pink-400 100%);
     }
 
+    .btn-primary {
+        a:hover {
+            .vapor-icon {
+                background-color: white;
+            }
+        }
+    }
+
     .blog-tags {
         color: $grey-100;
 

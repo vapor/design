@@ -192,3 +192,43 @@
         }
     }
 }
+
+.main-site-features {
+    margin-top: 271px;
+
+    @include media-breakpoint-down(lg) {
+        margin-top: 128px;
+    }
+
+    h2 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 105%;
+        letter-spacing: -0.02em;
+        max-width: 560px;
+        margin-top: 26px;
+        margin-bottom: 16px;
+
+        @include media-breakpoint-down(lg) {
+            font-size: 30px;
+            line-height: 125%;
+        }
+    }
+
+    .vapor-icon {
+        background-color: $pink-300;
+        width: 42px;
+        height: 42px;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 32px;
+        max-width: 488px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+    }
+}
