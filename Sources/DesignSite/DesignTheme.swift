@@ -263,9 +263,25 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         }.class("btn btn-primary w-mobile-100")
                     }.class("col")
                     Div {
-                        
+                        Div {
+                            let html = """
+                            func search (req: Request) async throws -> [Todo] {
+
+                               let searchTerm =
+                                 try req.query.get(String.self, at: "term")
+
+                               let results = try await
+                               Todo.query (on: req.db). filter
+                               (\\.$title == searchTerm).all
+
+                               return results
+                            }
+                            """
+                            let code = Node.code(.text(html)).class("language-swift")
+                            Node.pre(.component(code))
+                        }.class("code-example mx-auto")
                     }.class("col")
-                }.class("row row-cols-1 row-cols-lg-2")
+                }.class("row row-cols-1 row-cols-lg-2 align-items-center")
             }.class("main-site-features")
         }.class("container")
     }

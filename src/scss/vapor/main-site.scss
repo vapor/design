@@ -231,4 +231,10 @@
         font-size: 16px;
         line-height: 150%;
     }
+
+    .code-example {
+        @include media-breakpoint-down(lg) {
+            margin-top: 110px;
+        }
+    }
 }
