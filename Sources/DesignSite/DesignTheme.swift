@@ -261,7 +261,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                                 Span().class("vapor-icon icon-chevron-right")
                             }.linkTarget(.blank)
                         }.class("btn btn-primary w-mobile-100")
-                    }.class("col")
+                    }.class("col order-2 order-lg-1")
                     Div {
                         Div {
                             let html = """
@@ -280,7 +280,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
                         }.class("code-example mx-auto")
-                    }.class("col")
+                    }.class("col order-1 order-lg-2")
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
             }.class("main-site-features")
         }.class("container")
