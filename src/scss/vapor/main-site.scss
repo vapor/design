@@ -194,10 +194,12 @@
 }
 
 .main-site-features {
-    margin-top: 271px;
+    .row {
+        margin-top: 271px;
 
-    @include media-breakpoint-down(lg) {
-        margin-top: 128px;
+        @include media-breakpoint-down(lg) {
+            margin-top: 128px;
+        }
     }
 
     h2 {
@@ -236,5 +238,21 @@
         @include media-breakpoint-down(lg) {
             margin-top: 60px;
         }
+
+        @include media-breakpoint-up(lg) {
+            margin-left: 48px;
+            margin-right: 48px;
+        }
+    }
+
+    .code-example-explainer {
+        @include media-breakpoint-up(lg) {
+            margin-left: 48px;
+            margin-right: 48px;
+        }
+    }
+
+    pre {
+        margin-bottom: 0;
     }
 }

@@ -250,18 +250,20 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 Div {
                     Div {
-                        Span().class("vapor-icon icon-dataflow-03")
-                        H2("High-performant APIs and servers")
-                        Paragraph {
-                            Text("Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift’s Concurrency model, you can write clear, maintainable code that’s efficient and easy to read.")
-                        }
-                        Button {
-                            Link(url: "https://docs.vapor.codes/") {
-                                Text("Get Started")
-                                Span().class("vapor-icon icon-chevron-right")
-                            }.linkTarget(.blank)
-                        }.class("btn btn-primary w-mobile-100")
-                    }.class("col order-2 order-lg-1")
+                        Div {
+                            Span().class("vapor-icon icon-dataflow-03")
+                            H2("High-performant APIs and servers")
+                            Paragraph {
+                                Text("Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift’s Concurrency model, you can write clear, maintainable code that’s efficient and easy to read.")
+                            }
+                            Button {
+                                Link(url: "https://docs.vapor.codes/") {
+                                    Text("Get Started")
+                                    Span().class("vapor-icon icon-chevron-right")
+                                }.linkTarget(.blank)
+                            }.class("btn btn-primary w-mobile-100")
+                        }.class("code-example-explainer")
+                    }.class("col order-2 order-lg-1 g-lg-0")
                     Div {
                         Div {
                             let html = """
@@ -271,16 +273,53 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                                  try req.query.get(String.self, at: "term")
 
                                let results = try await
-                               Todo.query (on: req.db). filter
-                               (\\.$title == searchTerm).all
+                               Todo.query(on: req.db)
+                                 .filter(\\.$title == searchTerm).all
 
                                return results
                             }
                             """
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
-                        }.class("code-example mx-auto")
-                    }.class("col order-1 order-lg-2")
+                        }.class("code-example")
+                    }.class("col order-1 order-lg-2 g-lg-0")
+                }.class("row row-cols-1 row-cols-lg-2 align-items-center")
+                
+                Div {
+                    Div {
+                        Div {
+                            Span().class("vapor-icon icon-brackets-check")
+                            H2("Ship with confidence, even on Fridays")
+                            Paragraph {
+                                Text("With Vapor’s expressive, protocol oriented design, you’ll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.")
+                            }
+                            Button {
+                                Link(url: "https://docs.vapor.codes/") {
+                                    Text("Get Started")
+                                    Span().class("vapor-icon icon-chevron-right")
+                                }.linkTarget(.blank)
+                            }.class("btn btn-primary w-mobile-100")
+                        }.class("code-example-explainer")
+                    }.class("col order-2 g-lg-0")
+                    Div {
+                        Div {
+                            let html = """
+                            func search (req: Request) async throws -> [Todo] {
+
+                               let searchTerm =
+                                 try req.query.get(String.self, at: "term")
+
+                               let results = try await
+                               Todo.query(on: req.db)
+                                 .filter(\\.$number == searchTerm).all
+
+                               return results
+                            }
+                            """
+                            let code = Node.code(.text(html)).class("language-swift")
+                            Node.pre(.component(code))
+                        }.class("code-example")
+                    }.class("col order-1 g-lg-0")
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
             }.class("main-site-features")
         }.class("container")
