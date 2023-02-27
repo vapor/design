@@ -1,6 +1,4 @@
 import Plot
-
-import Plot
 import Publish
 
 public struct BlogCard<Site: Website>: Component {

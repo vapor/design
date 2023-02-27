@@ -274,13 +274,13 @@
             background-color: $nav-link-action-color-dark;
         }
     }
-    
+
     #documentation-dropdown-link:active {
         .vapor-icon {
             background-color: $nav-link-action-color-dark;
         }
     }
-    
+
     #documentation-dropdown-link:focus {
         .vapor-icon {
             background-color: $nav-link-action-color-dark;
@@ -339,7 +339,7 @@
         .card-title {
             color: $grey-300;
         }
-    
+
         .card-text {
             color: $grey-500;
         }
@@ -348,9 +348,29 @@
             .blog-post-publish-date {
                 color: $grey-700;
             }
-    
+
             .blog-post-author-name {
                 color: $grey-500;
+            }
+        }
+    }
+
+    .feature-card {
+        background: rgba($grey-800, 0.3);
+
+        .card-title {
+            color: $grey-300;
+        }
+
+        .card-text {
+            color: $grey-500;
+        }
+
+        .card-link {
+            color: $grey-200;
+
+            .icon-chevron-right {
+                background-color: $grey-200;
             }
         }
     }
@@ -364,19 +384,21 @@
             .tag-list-tag {
                 .tag-link {
                     color: $grey-500;
-        
+
                     .badge {
                         color: $grey-300;
                         background-color: $grey-800;
                     }
                 }
             }
-        
+
             .tag-list-tag {
-                .tag-link:hover, .tag-link.active {
+
+                .tag-link:hover,
+                .tag-link.active {
                     color: $grey-100;
                     background-color: $grey-800;
-        
+
                     .badge {
                         background-color: $grey-700;
                         color: $blue-300;
@@ -390,17 +412,18 @@
         background-color: $off-black;
         border: 1px solid $grey-800;
         color: $grey-500;
-    
+
         .vapor-icon {
             background-color: $grey-500;
         }
     }
-    
-    .vapor-molecule:active, .vapor-molecule:hover {
+
+    .vapor-molecule:active,
+    .vapor-molecule:hover {
         background-color: $grey-800;
         border: 1px solid $grey-700;
         color: $grey-400;
-    
+
         .vapor-icon {
             background-color: $grey-400;
         }
@@ -410,12 +433,14 @@
         @include media-breakpoint-down(lg) {
             background: $off-black;
             border: 1px solid $grey-800;
-    
+
             li a {
                 color: $grey-500;
             }
 
-            li a.active, a:hover, li a:active {
+            li a.active,
+            a:hover,
+            li a:active {
                 color: $blue-300;
             }
         }

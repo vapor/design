@@ -97,6 +97,23 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
                 }.class("col")
             }.class("row row-cols-1 row-cols-lg-2 g-4")
+
+            H2("Feature Cards")
+
+            Div {
+                Div {
+                    let item2 = Item<Site>(path: "/demo", sectionID: .features, metadata: .init(), content: Content(title: "Vapor", description: "Build efficient APIs in a language you love. Create routes, send and receive JSON and build HTTP servers."))
+                    FeatureCard(featureCardData: FeatureCardData(icon: "server-04", url: "#"), item: item2, site: site, isDemo: true)
+                }.class("col")
+                Div {
+                    let item2 = Item<Site>(path: "/demo", sectionID: .features, metadata: .init(), content: Content(title: "Fluent", description: "Create models and interact with your database in native, safe Swift code without needing to write any SQL"))
+                    FeatureCard(featureCardData: FeatureCardData(icon: "database-03", url: "#"), item: item2, site: site, isDemo: true)
+                }
+                Div {
+                    let item2 = Item<Site>(path: "/demo", sectionID: .features, metadata: .init(), content: Content(title: "JWT", description: "Create, sign and verify JSON Web Tokens in Swift. Built on top of SwiftNIO"))
+                    FeatureCard(featureCardData: FeatureCardData(icon: "key-01", url: "#"), item: item2, site: site, isDemo: true)
+                }
+            }.class("row row-cols-1 row-cols-lg-2 g-4")
             
             H2("Blog Site Title")
             

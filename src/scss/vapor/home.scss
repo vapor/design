@@ -1,0 +1,45 @@
+.feature-card {
+    background-color: $grey-100;
+    border-radius: 24px !important;
+    border: 0px;
+
+    .card-body {
+        @include media-breakpoint-down(lg) {
+            padding: 24px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 48px;
+        }
+    }
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 26px;
+        background-color: $blue-300;
+    }
+
+    .card-title {
+        margin-top: 0;
+        font-size: 24px;
+        line-height: 150%;
+        font-weight: 500;
+    }
+
+    .card-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        margin-bottom: 24px;
+    }
+
+    .card-link {
+        color: $grey-800;
+
+        .icon-chevron-right {
+            margin-left: 8px;
+        }
+    }
+}
