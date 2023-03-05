@@ -13,9 +13,24 @@ public struct BlogPostAuthorComponent: Component {
     public var body: Component {
         Div {
             Image(url: blogPostData.author.imageURL, description: blogPostData.author.name).class("blog-post-author-image").class("me-2")
+            for author in blogPostData.contributingAuthors {
+                Image(url: author.imageURL, description: author.name).class("blog-post-author-image").class("me-2")
+            }
             Div {
                 Div {
-                    Text(blogPostData.author.name)
+                    Div {
+                        Text(blogPostData.author.name)
+                    }
+                    for author in blogPostData.contributingAuthors {
+                        Div {
+                            Text(author.name)
+                        }
+                    }
+//                    if blogPostData.contributingAuthors.count > 1 {
+//                        Text(", \(blogPostData.contributingAuthors.map(\.name).joined(separator: ", "))")
+//                    } else if !blogPostData.contributingAuthors.isEmpty {
+//                        Text(" &amp; \(blogPostData.contributingAuthors[0].name)")
+//                    }
                 }.class("blog-post-author-name")
                 Div {
                     if postPage {
