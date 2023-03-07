@@ -187,35 +187,11 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 H5("Powering companies like:").class("used-by-caption")
                 Div {
-                    Div {
-                        Link(url: "https://swiftpackageindex.com") {
-                            Span().class("used-by-icon icon-transeo").attribute(named: "title", value: "Transeo")
-                        }.class("used-by-logo")
-                    }.class("used-by-item")
-
-                    Div {
-                        Link(url: "https://swiftpackageindex.com") {
-                            Span().class("used-by-icon icon-john-lewis").attribute(named: "title", value: "John Lewis")
-                        }.class("used-by-logo")
-                    }.class("used-by-item")
-
-                    Div {
-                        Link(url: "https://swiftpackageindex.com") {
-                            Span().class("used-by-icon icon-spotify").attribute(named: "title", value: "Spotify")
-                        }.class("used-by-logo")
-                    }.class("used-by-item")
-
-                    Div {
-                        Link(url: "https://swiftpackageindex.com") {
-                            Span().class("used-by-icon icon-swift-package-index").attribute(named: "title", value: "Swift Package Index")
-                        }.class("used-by-logo")
-                    }.class("used-by-item")
-
-                    Div {
-                        Link(url: "https://swiftpackageindex.com") {
-                            Span().class("used-by-icon icon-allegro").attribute(named: "title", value: "Allegro")
-                        }.class("used-by-logo")
-                    }.class("used-by-item")
+                    CompanyCard(name: "Transeo", url: "https://gotranseo.com", logo: "icon-transeo")
+                    CompanyCard(name: "John Lewis", url: "https://johnlewis.com", logo: "icon-john-lewis")
+                    CompanyCard(name: "Spotify", url: "https://spotify.com", logo: "icon-spotify")
+                    CompanyCard(name: "Swift Package Index", url: "https://swiftpackageindex.com", logo: "icon-swift-package-index")
+                    CompanyCard(name: "Allegro", url: "https://allegro.pl", logo: "icon-allegro")
                 }.class("d-flex flex-row flex-wrap align-items-center justify-content-center used-by-companies-items")
             }.class("used-by-companies")
             
@@ -226,43 +202,20 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }.class("caption")
                 
                 Div {
-                    var cards = [Component]()
-                    for _ in 1...4 {
-                        let card = Div {
-                            Div {
-                                Div {
-                                    Span().class("vapor-icon feature-card-icon icon-server-04")
-                                    H3("Vapor").class("card-title")
-                                    Paragraph("Build efficient APIs in a language you love. Create routes, send and receive JSON and build HTTP servers.").class("card-text")
-                                    Link(url: "https://github.com/vapor/vapor") {
-                                        Text("Learn More")
-                                        Span().class("vapor-icon icon-chevron-right")
-                                    }.linkTarget(.blank).class("main-site-learn-more-link")
-                                }
-                            }.class("card h-100 vapor-feature-card")
-                        }.class("col")
-                        cards.append(card)
-                    }
-                    return ComponentGroup(members: cards)
+                    let vapor = PackageCard(title: "Vapor", description: "Build efficient APIs in a language you love. Create routes, send and receive JSON and build HTTP servers.", icon: "server-04", url: "https://docs.vapor.codes/")
+                    let fluent = PackageCard(title: "Fluent", description: "Create models and interact with your database in native, safe Swift code without needing to write any SQL", icon: "database-03", url: "https://docs.vapor.codes/fluent/overview/")
+                    let JWT = PackageCard(title: "JWT", description: "Create, sign and verify JSON Web Tokens in Swift. Built on top of SwiftNIO", icon: "key-01", url: "https://docs.vapor.codes/security/jwt/")
+                    let leaf = PackageCard(title: "Leaf", description: "A templating engine written in Swift. Generate HTML for both web apps and emails with a simple syntax anyone can use", icon: "code-browser", url: "https://docs.vapor.codes/4.0/leaf/overview/")
+                    return ComponentGroup(members: [vapor, fluent, JWT, leaf].map { card in
+                        Div { card }.class("col")
+                    })
                 }.class("main-site-packages-grid row row-cols-1 row-cols-lg-2 gx-5")
             }.class("main-site-packages-list")
             
             Div {
                 Div {
                     Div {
-                        Div {
-                            Span().class("vapor-icon icon-dataflow-03")
-                            H2("High-performant APIs and servers")
-                            Paragraph {
-                                Text("Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift’s Concurrency model, you can write clear, maintainable code that’s efficient and easy to read.")
-                            }
-                            Button {
-                                Link(url: "https://docs.vapor.codes/") {
-                                    Text("Get Started")
-                                    Span().class("vapor-icon icon-chevron-right")
-                                }.linkTarget(.blank)
-                            }.class("btn btn-primary w-mobile-100")
-                        }.class("code-example-explainer")
+                        FeatureContainer(title: "High-performant APIs and servers", description: "Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift’s Concurrency model, you can write clear, maintainable code that’s efficient and easy to read.", url: "https://docs.vapor.codes/", icon: "icon-dataflow-03")
                     }.class("col order-2 order-lg-1 g-lg-0")
                     Div {
                         Div {
@@ -282,24 +235,13 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
                         }.class("code-example")
-                    }.class("col order-1 order-lg-2 g-lg-0")
+                        Div {}.class("grey-outline-border-wrap-right")
+                    }.class("col order-1 order-lg-2 g-lg-0 position-relative")
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
                 
                 Div {
                     Div {
-                        Div {
-                            Span().class("vapor-icon icon-brackets-check")
-                            H2("Ship with confidence, even on Fridays")
-                            Paragraph {
-                                Text("With Vapor’s expressive, protocol oriented design, you’ll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.")
-                            }
-                            Button {
-                                Link(url: "https://docs.vapor.codes/") {
-                                    Text("Get Started")
-                                    Span().class("vapor-icon icon-chevron-right")
-                                }.linkTarget(.blank)
-                            }.class("btn btn-primary w-mobile-100")
-                        }.class("code-example-explainer")
+                        FeatureContainer(title: "Ship with confidence, even on Fridays", description: "With Vapor's expressive, protocol oriented design, you'll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.", url: "https://docs.vapor.codes/", icon: "icon-brackets-check")
                     }.class("col order-2 g-lg-0")
                     Div {
                         Div {
@@ -318,8 +260,65 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             """
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
-                        }.class("code-example")
-                    }.class("col order-1 g-lg-0")
+                        }.class("code-example errored")
+                        Div {}.class("grey-outline-border-wrap-left")
+                        Div {
+                            Div {
+                                Span().class("vapor-icon icon-alert-octagon")
+                            }.class("code-error-sidebar")
+                            Div {
+                                Text("""
+                                Binary operator '==' cannot be applied to operands of type 'KeyPath<Todo, 
+                                FieldProperty<Todo, Int>>* and 'String'
+                                """)
+                            }.class("code-error-message")
+                        }.class("code-error")
+                    }.class("col order-1 g-lg-0 position-relative")
+                }.class("row row-cols-1 row-cols-lg-2 align-items-center")
+
+                Div {
+                    Div {
+                        FeatureContainer(title: "Full integration with your entire stack", description: "Vapor’s mature ecosystem includes over a hundred official and community maintained server-first Swift packages to make building your applications easy and efficient.", url: "https://docs.vapor.codes/", iconString: "Integrations")
+                    }.class("col")
+
+                    // Div {
+                    //     Div {
+                    //         Div {
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //         }.class("row")
+                    //         Div {
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //         }.class("row")
+                    //         Div {
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //             Div {
+                    //                 Span().class("vapor-icon icon-integration-01")
+                    //             }.class("col")
+                    //         }.class("row")
+                    //     }.class("container")
+                    // }.class("col")
+
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
             }.class("main-site-features")
         }.class("container")

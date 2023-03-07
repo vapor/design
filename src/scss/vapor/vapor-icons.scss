@@ -29,7 +29,13 @@ $icon-names: (
     'john-lewis',
     'allegro',
     'transeo',
-    'brackets-check'
+    'brackets-check',
+    'key-01',
+    'database-03',
+    'code-browser',
+    'integrations-01',
+    'integrations-09',
+    'alert-octagon'
 );
 
 @each $name in $icon-names {
