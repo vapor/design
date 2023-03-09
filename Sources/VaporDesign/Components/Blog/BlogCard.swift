@@ -27,7 +27,7 @@ public struct BlogCard<Site: Website>: Component {
                     BlogPostAuthorComponent(blogPostData: blogPostData, postPage: false)
                     Div {
                         BlogTags(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
-                    }.class("col-lg blog-tags pt-4 pt-lg-0")
+                    }.class("col-lg blog-tags pt-4 pt-lg-0 d-flex align-items-center")
                 }.class("row")
             }.class("card-body")
         }.class("card blog-card")

@@ -44,7 +44,7 @@ public struct BlogPost<Site: Website>: Component {
                 BlogPostAuthorComponent(blogPostData: blogPostData, postPage: true)
                 Div {
                     buildBlogPostShareList()
-                }.id("blog-top-share").class("ms-auto blog-share col-lg-6 mt-4 mt-lg-0")
+                }.id("blog-top-share").class("ms-auto blog-share col-lg-6 mt-4 mt-lg-0 d-flex align-items-center")
             }.class("row")
         }.class("blog-post-header")
     }
@@ -63,7 +63,7 @@ public struct BlogPost<Site: Website>: Component {
         Div {
             Div {
                 BlogTags(blogPostData: blogPostData, item: item, site: site, isDemo: isDemo)
-            }.id("blog-bottom-tags").class("blog-tags col-lg-6")
+            }.id("blog-bottom-tags").class("blog-tags col-lg-6 d-flex")
             Div {
                 buildBlogPostShareList()
             }.class("ms-auto blog-share col-lg-6").id("blog-bottom-share")

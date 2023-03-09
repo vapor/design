@@ -43,6 +43,6 @@ public struct BlogTags<Site: Website>: Component {
                     }
                 }
             }
-        }
+        }.class("mx-auto mx-lg-0")
     }
 }
