@@ -17,12 +17,15 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         let isDemo = true
         let currentSite: CurrentSite = .blog
         let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), publishedDate: "3rd January 2023")
+        let anotherBlogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), contributingAuthors: [.init(name: "Gwynne Raskind", imageURL: "/images/author-image-placeholder.png")], publishedDate: "5th March 2023")
+        let oneMoreBlogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), contributingAuthors: [.init(name: "Gwynne Raskind", imageURL: "/images/author-image-placeholder.png"), .init(name: "Some Really Incredibly Long Name", imageURL: "/images/author-image-placeholder.png")], publishedDate: "5th March 2023")
         let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
             SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: nil, isDemo: isDemo)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
-            buildComponentDemo(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
+            BlogPost(blogPostData: oneMoreBlogPostData, item: item, site: context.site, isDemo: isDemo)
+            buildComponentDemo(blogPostData: blogPostData, anotherBlogPostData: anotherBlogPostData, oneMoreBlogPostData: oneMoreBlogPostData, item: item, site: context.site, isDemo: isDemo)
             SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
         }
         
@@ -60,7 +63,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         return builder.buildHTML(for: page, context: context, body: .body())
     }
     
-    func buildComponentDemo(blogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) -> Component {
+    func buildComponentDemo(blogPostData: BlogPostExtraData, anotherBlogPostData: BlogPostExtraData, oneMoreBlogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) -> Component {
         Div {
             H1("Component Guide")
             
@@ -91,10 +94,10 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
-                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                    BlogCard(blogPostData: anotherBlogPostData, item: item, site: site, isDemo: true)
                 }.class("col")
                 Div {
-                    BlogCard(blogPostData: blogPostData, item: item, site: site, isDemo: true)
+                    BlogCard(blogPostData: oneMoreBlogPostData, item: item, site: site, isDemo: true)
                 }.class("col")
             }.class("row row-cols-1 row-cols-lg-2 g-4")
             

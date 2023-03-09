@@ -87,6 +87,10 @@
     display: inline-block;
 }
 
+.blog-post-author {
+    align-items: center;
+}
+
 .blog-post-author-image {
     width: 48px;
     height: 48px;
@@ -96,6 +100,7 @@
 
 .blog-post-author-name {
     color: $grey-700;
+    white-space: nowrap;
 }
 
 .blog-post-publish-date {
