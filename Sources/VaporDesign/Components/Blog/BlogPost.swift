@@ -44,7 +44,7 @@ public struct BlogPost<Site: Website>: Component {
                 BlogPostAuthorComponent(blogPostData: blogPostData, postPage: true)
                 Div {
                     buildBlogPostShareList()
-                }.id("blog-top-share").class("ms-auto blog-share col-lg-6 mt-4 mt-lg-0 d-flex align-items-center")
+                }.id("blog-top-share").class("ms-auto blog-share col-lg-6 mt-4 mt-lg-0 d-flex align-items-center justify-content-center")
             }.class("row")
         }.class("blog-post-header")
     }
