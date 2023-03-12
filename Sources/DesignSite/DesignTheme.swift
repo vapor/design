@@ -266,12 +266,12 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             Div {
                                 Span().class("vapor-icon icon-alert-octagon")
                             }.class("code-error-sidebar")
-                            Div {
-                                Text("""
+                            Span(
+                                """
                                 Binary operator '==' cannot be applied to operands of type 'KeyPath<Todo, 
                                 FieldProperty<Todo, Int>>* and 'String'
-                                """)
-                            }.class("code-error-message")
+                                """
+                            ).class("code-error-message")
                         }.class("code-error")
                     }.class("col order-1 g-lg-0 position-relative")
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")

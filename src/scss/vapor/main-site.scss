@@ -275,24 +275,31 @@
         position: absolute;
         background: rgba(128, 25, 68, 0.2);
         border: 1px solid rgba(221, 214, 254, 0.1);
+        backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 24px;
-        height: 47%;
+        height: fit-content;
         width: 48%;
         display: flex;
-        align-items: flex-start;
-        right: 0%;
         bottom: -20%;
         text-align: left;
         justify-content: center;
+        right: 15%;
+
+        @include media-breakpoint-down(md) {
+            width: 65%;
+        }
+
+        @include media-breakpoint-up(md) {
+            right: 0%;
+        }
 
         .code-error-sidebar {
-            width: 45%;
-            height: 100%;
             background: rgba(128, 25, 68, 0.3);
             border-top-left-radius: 24px;
             border-bottom-left-radius: 24px;
             text-align: center;
+            width: 15%;
 
             .vapor-icon {
                 height: 22px;
@@ -310,6 +317,7 @@
             line-height: 24px;
             /* or 150% */
             padding: 3%;
+            width: 85%;
         }
     }
 
@@ -324,6 +332,7 @@
     }
 
     .code-example {
+        backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
 
         @include media-breakpoint-down(lg) {
