@@ -24,7 +24,7 @@ public struct BlogTags<Site: Website>: Component {
                         } else {
                             Link(tag.string, url: site.path(for: tag).absoluteString)
                         }
-                    }.class("ms-auto")
+                    }.class("my-1")
                 } else if index == item.tags.count - 1 {
                     ListItem {
                         if isDemo {
@@ -32,7 +32,7 @@ public struct BlogTags<Site: Website>: Component {
                         } else {
                             Link(tag.string, url: site.path(for: tag).absoluteString)
                         }
-                    }.class("me-auto me-lg-0")
+                    }.class("my-1")
                 } else {
                     ListItem {
                         if isDemo {
@@ -40,9 +40,9 @@ public struct BlogTags<Site: Website>: Component {
                         } else {
                             Link(tag.string, url: site.path(for: tag).absoluteString)
                         }
-                    }
+                    }.class("my-1")
                 }
             }
-        }.class("mx-auto mx-lg-0")
+        }.class("mx-auto mx-lg-0 flex-wrap")
     }
 }
