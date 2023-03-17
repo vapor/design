@@ -20,7 +20,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         let anotherBlogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), contributingAuthors: [.init(name: "Gwynne Raskind", imageURL: "/images/author-image-placeholder.png")], publishedDate: "5th March 2023")
         let oneMoreBlogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), contributingAuthors: [.init(name: "Gwynne Raskind", imageURL: "/images/author-image-placeholder.png"), .init(name: "Some Really Incredibly Long Name", imageURL: "/images/author-image-placeholder.png")], publishedDate: "5th March 2023")
         let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
-        let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: itemContent)
+        let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "No tag is this absurdly long", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
             SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: nil, isDemo: isDemo)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
@@ -94,7 +94,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
-                    BlogCard(blogPostData: anotherBlogPostData, item: item, site: site, isDemo: true)
+                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "What we're working on", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                    BlogCard(blogPostData: anotherBlogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
                     BlogCard(blogPostData: oneMoreBlogPostData, item: item, site: site, isDemo: true)
