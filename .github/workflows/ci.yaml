@@ -10,17 +10,17 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18.12.1
-          cache: npm
-      - name: NPM Install
-        run: npm install
-      - name: Setup cloudformation lint
-        uses: ScottBrenner/cfn-lint-action@v2
-      - name: Run cloudformation lint
-        run: cfn-lint -t stack.yaml
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18.12.1
+        cache: npm
+    - name: NPM Install
+      run: npm install
+    - name: Setup cloudformation lint
+      uses: ScottBrenner/cfn-lint-action@v2
+    - name: Run cloudformation lint
+      run: cfn-lint -t stack.yaml
   build:
     if: ${{ github.actor != 'dependabot[bot]' }}
     name: Build and Deploy
