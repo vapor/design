@@ -22,6 +22,7 @@ jobs:
     - name: Run cloudformation lint
       run: cfn-lint -t stack.yaml
   build:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Build and Deploy
     runs-on: ubuntu-latest
     env:
