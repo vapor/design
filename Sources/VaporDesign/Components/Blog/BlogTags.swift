@@ -16,33 +16,15 @@ public struct BlogTags<Site: Website>: Component {
     
     public var body: Component {
         List {
-            for (index, tag) in item.tags.enumerated() {
-                if index == 0 {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
-                    }.class("ms-auto")
-                } else if index == item.tags.count - 1 {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
-                    }.class("me-auto me-lg-0")
-                } else {
-                    ListItem {
-                        if isDemo {
-                            Link(tag.string, url: "#")
-                        } else {
-                            Link(tag.string, url: site.path(for: tag).absoluteString)
-                        }
+            for (tag) in item.tags {
+                ListItem {
+                    if isDemo {
+                        Link(tag.string, url: "#")
+                    } else {
+                        Link(tag.string, url: site.path(for: tag).absoluteString)
                     }
-                }
+                }.class("my-1")
             }
-        }.class("mx-auto mx-lg-0")
+        }.class("mx-auto mx-lg-0 flex-wrap")
     }
 }
