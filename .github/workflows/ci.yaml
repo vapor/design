@@ -22,7 +22,6 @@ jobs:
     - name: Run cloudformation lint
       run: cfn-lint -t stack.yaml
   build:
-    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Build and Deploy
     runs-on: ubuntu-latest
     env:
@@ -43,7 +42,7 @@ jobs:
         run: npm run build
       - name: Deploy S3 Website
         uses: danburtenshaw/s3-website-pr-action@v2
-        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }}
+        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }} && ${{ github.actor != 'dependabot[bot]' }}
         with:
           bucket-prefix: "vapor-design-pulls"
           folder-to-copy: "./Output"
