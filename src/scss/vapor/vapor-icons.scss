@@ -33,9 +33,13 @@ $icon-names: (
     'key-01',
     'database-03',
     'code-browser',
-    'integrations-01',
-    'integrations-09',
-    'alert-octagon'
+    // 'integration-01',
+    'integration-09',
+    'alert-octagon',
+    'arrow-narrow-up-right',
+    'arrow-right',
+    'arrow-left',
+    'check-circle'
 );
 
 @each $name in $icon-names {

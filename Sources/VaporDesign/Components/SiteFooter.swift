@@ -46,7 +46,7 @@ public struct SiteFooter: Component {
                                         }
                                     }
                                     ListItem {
-                                        Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank)
+                                        Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank).class("nav-link")
                                     }
                                     ListItem {
                                         if isDemo {
@@ -87,28 +87,28 @@ public struct SiteFooter: Component {
                                         if currentSite == .blog {
                                             Link("Blog", url: "/")
                                         } else {
-                                            Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank)
+                                            Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank).class("nav-link")
                                         }
                                     }
                                     ListItem {
                                         if currentSite == .docs {
                                             Link("Framework Docs", url: "/")
                                         } else {
-                                            Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank)
+                                            Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank).class("nav-link")
                                         }
                                     }
                                     ListItem {
                                         if currentSite == .apiDocs {
-                                            Link("API Docs", url: "/")
+                                            Link("API Docs", url: "/").class("nav-link")
                                         } else {
-                                            Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank)
+                                            Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank).class("nav-link")
                                         }
                                     }
                                     ListItem {
-                                        Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil)
+                                        Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil).class("nav-link")
                                     }
                                     ListItem {
-                                        Link("Help", url: "https://vapor.team").linkTarget(.blank)
+                                        Link("Help", url: "https://vapor.team").linkTarget(.blank).class("nav-link")
                                     }
                                 }
                             }.id("footer-resources-links").class("col-6")

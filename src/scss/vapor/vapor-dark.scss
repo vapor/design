@@ -10,7 +10,13 @@
         background-image: url(../../images/main-background-dark.webp);
         background-position: top;
         background-repeat: no-repeat;
-        background-size: 100% 500px;
+        background-position-y: 250px;
+    }
+
+    .hljs {
+        background: rgba(38, 38, 56, 0.8);
+        border: 1px solid rgba(221, 214, 254, 0.2);
+        border-radius: 24px;
     }
 
     #theme-switch-icon {
@@ -282,13 +288,13 @@
             background-color: $nav-link-action-color-dark;
         }
     }
-    
+
     #documentation-dropdown-link:active {
         .vapor-icon {
             background-color: $nav-link-action-color-dark;
         }
     }
-    
+
     #documentation-dropdown-link:focus {
         .vapor-icon {
             background-color: $nav-link-action-color-dark;
@@ -347,7 +353,7 @@
         .card-title {
             color: $grey-300;
         }
-    
+
         .card-text {
             color: $grey-500;
         }
@@ -356,7 +362,7 @@
             .blog-post-publish-date {
                 color: $grey-700;
             }
-    
+
             .blog-post-author-name {
                 color: $grey-500;
             }
@@ -372,19 +378,21 @@
             .tag-list-tag {
                 .tag-link {
                     color: $grey-500;
-        
+
                     .badge {
                         color: $grey-300;
                         background-color: $grey-800;
                     }
                 }
             }
-        
+
             .tag-list-tag {
-                .tag-link:hover, .tag-link.active {
+
+                .tag-link:hover,
+                .tag-link.active {
                     color: $grey-100;
                     background-color: $grey-800;
-        
+
                     .badge {
                         background-color: $grey-700;
                         color: $blue-300;
@@ -398,17 +406,18 @@
         background-color: $off-black;
         border: 1px solid $grey-800;
         color: $grey-500;
-    
+
         .vapor-icon {
             background-color: $grey-500;
         }
     }
-    
-    .vapor-molecule:active, .vapor-molecule:hover {
+
+    .vapor-molecule:active,
+    .vapor-molecule:hover {
         background-color: $grey-800;
         border: 1px solid $grey-700;
         color: $grey-400;
-    
+
         .vapor-icon {
             background-color: $grey-400;
         }
@@ -418,12 +427,14 @@
         @include media-breakpoint-down(lg) {
             background: $off-black;
             border: 1px solid $grey-800;
-    
+
             li a {
                 color: $grey-500;
             }
 
-            li a.active, a:hover, li a:active {
+            li a.active,
+            a:hover,
+            li a:active {
                 color: $blue-300;
             }
         }
@@ -435,11 +446,11 @@
 
     .btn-link {
         color: $grey-200;
-    
+
         a {
             color: $grey-200;
         }
-    
+
         a:hover {
             color: $grey-100;
 
@@ -451,11 +462,11 @@
 
     .btn-secondary-link {
         color: $grey-500;
-    
+
         a {
             color: $grey-500;
         }
-    
+
         a:hover {
             color: $grey-400;
 
@@ -489,19 +500,131 @@
         background-color: rgba($grey-800, 0.3);
     }
 
-    .main-site-learn-more-link {
+    .learn-more-link {
         color: $grey-200;
 
         .vapor-icon {
             background-color: $grey-200;
         }
     }
-    
-    .main-site-learn-more-link:hover {
+
+    .learn-more-link:hover {
         color: $grey-100;
 
         .vapor-icon {
             background-color: $grey-100;
+        }
+    }
+
+    .main-site-features {
+        .code-outline-right {
+            background: linear-gradient($grey-900, $grey-900) padding-box,
+                linear-gradient(90deg, rgba(148, 168, 178, 0.03) 0%, #F6F7F7 4.21%, rgba(148, 168, 178, 0.888453) 7.98%, #94A8B2 37.5%, rgba(148, 168, 178, 0.117173) 90.41%, rgba(148, 168, 178, 0) 100%) border-box;
+        }
+
+        .code-outline-left {
+            background: linear-gradient($grey-900, $grey-900) padding-box,
+                linear-gradient(90deg, rgba(148, 168, 178, 0.01) 0%, #F6F7F7 4.21%, rgba(148, 168, 178, 0.888453) 9.96%, #94A8B2 60.32%, rgba(148, 168, 178, 0.117173) 90.41%, rgba(148, 168, 178, 0.03) 100%) border-box;
+        }
+
+        .code-error {
+            background: rgba(128, 25, 68, 0.2);
+            border: 1px solid rgba(221, 214, 254, 0.1);
+
+            .code-error-sidebar {
+                background: rgba(128, 25, 68, 0.3);
+            }
+
+            .code-error-message {
+                color: $grey-300;
+            }
+        }
+    }
+
+    #showcase {
+        .showcase-header {
+            .btn {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(223, 62, 251, 0.1);
+            }
+
+            .btn:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(223, 62, 251, 0.2);
+            }
+        }
+
+        .card {
+            background: rgba(55, 57, 83, 0.3);
+            color: $grey-500;
+
+            .btn {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(223, 62, 251, 0.1);
+            }
+
+            .btn:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(223, 62, 251, 0.2);
+            }
+        }
+
+        .arrow-button {
+            background: rgba(55, 57, 83, 0.3);
+            border: 1px solid #373953;
+
+            span {
+                background-color: $grey-200;
+            }
+        }
+
+        .arrow-button:hover {
+            background: rgba(55, 57, 83, 0.5);
+        }
+
+        #sambot-card-image {
+            content: url(../../../static/images/sambot-card-dark.png);
+        }
+    }
+
+    #discord {
+        .contribute-link {
+            color: $grey-200;
+
+            .vapor-icon {
+                background-color: $grey-200;
+            }
+        }
+
+        #discord-chat-image {
+            content: url(../../../static/images/discord-chat-dark.png);
+        }
+    }
+
+    #sponsors {
+        .card {
+            background: rgba(55, 57, 83, 0.30);
+
+            h5 {
+                color: $grey-200;
+            }
+        }
+    }
+
+    #api-docs {
+        background: url('../../images/api-docs-background-dark.png') 50% 50% no-repeat;
+        border: none;
+
+        span {
+            color: $grey-100;
+        }
+    }
+
+    #integrations {
+        background-image: url("../../images/integrations-background-dark.png") repeat;
+
+        #integrations-image {
+            content: url('../../../static/images/integrations-dark.png');
         }
     }
 }

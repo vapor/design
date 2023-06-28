@@ -23,7 +23,7 @@ public struct PackageCard: Component {
                 Link(url: url) {
                     Text("Learn More")
                     Span().class("vapor-icon icon-chevron-right")
-                }.linkTarget(.blank).class("main-site-learn-more-link")
+                }.linkTarget(.blank).class("learn-more-link")
             }
         }.class("card h-100 vapor-feature-card")
     }

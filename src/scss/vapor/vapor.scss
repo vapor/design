@@ -290,7 +290,9 @@ h3 {
             text-decoration: none;
         }
 
-        li a.active, a:hover, li a:active {
+        li a.active,
+        a:hover,
+        li a:active {
             color: $blue-300;
         }
 
@@ -324,7 +326,7 @@ h3 {
         width: 48px;
         background-color: $blue-300;
     }
-    
+
     .card-title {
         font-style: normal;
         font-weight: 500;
@@ -342,27 +344,5 @@ h3 {
         font-weight: 400;
         font-size: 16px;
         line-height: 150%;
-    }
-}
-
-.main-site-learn-more-link {
-    text-decoration: none;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-}
-
-.main-site-learn-more-link:hover {
-    text-decoration: none;
-}
-
-.main-site-learn-more-link {
-    display: inline-flex;
-    .vapor-icon {
-        width: 16px;
-        height: 16px;
-        margin-left: 13px;
-        margin-top: 4px;
     }
 }

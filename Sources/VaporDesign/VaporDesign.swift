@@ -29,7 +29,8 @@ public struct VaporDesign<Site: Website> {
                 Path(VaporDesignUtilities.buildResourceLink(for: "/main.css", isLocal: isLocal))
             ],
             scripts: [
-                Path(VaporDesignUtilities.buildResourceLink(for: "/js/detectColorScheme.js", isLocal: isLocal))
+                Path(VaporDesignUtilities.buildResourceLink(for: "/js/detectColorScheme.js", isLocal: isLocal)),
+                Path(VaporDesignUtilities.buildResourceLink(for: "/js/scrollMainSiteShowcase.js", isLocal: isLocal))
             ],
             isLocal: isLocal)
         return head

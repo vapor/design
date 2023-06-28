@@ -206,7 +206,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     let fluent = PackageCard(title: "Fluent", description: "Create models and interact with your database in native, safe Swift code without needing to write any SQL", icon: "database-03", url: "https://docs.vapor.codes/fluent/overview/")
                     let JWT = PackageCard(title: "JWT", description: "Create, sign and verify JSON Web Tokens in Swift. Built on top of SwiftNIO", icon: "key-01", url: "https://docs.vapor.codes/security/jwt/")
                     let leaf = PackageCard(title: "Leaf", description: "A templating engine written in Swift. Generate HTML for both web apps and emails with a simple syntax anyone can use", icon: "code-browser", url: "https://docs.vapor.codes/4.0/leaf/overview/")
-                    return ComponentGroup(members: [vapor, fluent, JWT, leaf].map { card in
+                    ComponentGroup(members: [vapor, fluent, JWT, leaf].map { card in
                         Div { card }.class("col")
                     })
                 }.class("main-site-packages-grid row row-cols-1 row-cols-lg-2 gx-5")
@@ -221,7 +221,6 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         Div {
                             let html = """
                             func search (req: Request) async throws -> [Todo] {
-
                                let searchTerm =
                                  try req.query.get(String.self, at: "term")
 
@@ -235,10 +234,9 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
                         }.class("code-example")
-                        Div {}.class("grey-outline-border-wrap-right")
+                        Div {}.class("code-outline-right")
                     }.class("col order-1 order-lg-2 g-lg-0 position-relative")
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
-                
                 Div {
                     Div {
                         FeatureContainer(title: "Ship with confidence, even on Fridays", description: "With Vapor's expressive, protocol oriented design, you'll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.", url: "https://docs.vapor.codes/", icon: "icon-brackets-check")
@@ -247,13 +245,12 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         Div {
                             let html = """
                             func search (req: Request) async throws -> [Todo] {
-
                                let searchTerm =
                                  try req.query.get(String.self, at: "term")
 
                                let results = try await
                                Todo.query(on: req.db)
-                                 .filter(\\.$number == searchTerm).all
+                                 .filter(\\.$number == searchTerm).all()
 
                                return results
                             }
@@ -261,7 +258,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
                         }.class("code-example errored")
-                        Div {}.class("grey-outline-border-wrap-left")
+                        Div {}.class("code-outline-left")
                         Div {
                             Div {
                                 Span().class("vapor-icon icon-alert-octagon")
@@ -275,52 +272,181 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         }.class("code-error")
                     }.class("col order-1 g-lg-0 position-relative")
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
-
+            }.class("main-site-features")
+            Div {
                 Div {
                     Div {
-                        FeatureContainer(title: "Full integration with your entire stack", description: "Vapor’s mature ecosystem includes over a hundred official and community maintained server-first Swift packages to make building your applications easy and efficient.", url: "https://docs.vapor.codes/", iconString: "Integrations")
-                    }.class("col")
+                        Div {
+                            Span("Integrations").style("color: #DF3FEB")
+                            H2("Full integration with your entire stack").style("margin-top: 8px;")
+                            Paragraph {
+                                Text("Vapor's mature ecosystem includes over a hundred official and community maintained server-first Swift packages to make building your applications easy and efficient.")
+                            }
+                            Button {
+                                Link(url: "https://docs.vapor.codes/") {
+                                    Text("Get Started")
+                                    Span().class("vapor-icon icon-chevron-right")
+                                }.linkTarget(.blank)
+                            }.class("btn btn-primary w-mobile-100")
+                        }.class("code-example-explainer")
+                    }.class("col order-2 order-lg-1 g-lg-0")
+                }.class("col order-2 order-lg-1 mt-5 mt-lg-0")
+                Div {
+                    Image(url: "/images/integrations.png", description: "Vapor Integrations")
+                        .class("img-fluid").id("integrations-image")
+                }.class("col order-1 order-lg-2")
+            }.class("row row-cols-1 row-cols-lg-2 align-items-center").id("integrations")
+            Div {
+                Div {
+                    H3("Used by the teams behind these amazing apps")
+                    Link(url: "") {
+                        Text("See full list")
+                        Span().class("vapor-icon icon-chevron-right")
+                    }.class("btn btn-primary")
+                }.class("showcase-header")
+                Div {
+                    Div {
+                        Image(url: "/images/sambot-card.png", description: "Sambot Card")
+                            .class("card-img-top").id("sambot-card-image")
+                        Div {
+                            H5("Sambot").class("card-title")
+                            Paragraph("Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services").class("card-text")
+                            Link(url: "") {
+                                Text("See it in action")
+                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
+                            }.class("btn btn-primary mt-auto")
+                        }.class("card-body d-flex flex-column")
+                    }.class("card").style("width: 18rem;")
+                    Div {
+                        Image(url: "/images/underway-nyc-dark.png", description: "Sambot Card").class("card-img-top")
+                        Div {
+                            H5("Underway NYC").class("card-title")
+                            Paragraph("Quickly locate yourself on the official MTA map of NYC and get real-time train arrivals at that subway stop").class("card-text")
+                            Link(url: "") {
+                                Text("See it in action")
+                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
+                            }.class("btn btn-primary mt-auto")
+                        }.class("card-body d-flex flex-column")
+                    }.class("card").style("width: 18rem;")
+                    Div {
+                        Image(url: "/images/swiftfiddle-card-dark.png", description: "Sambot Card").class("card-img-top")
+                        Div {
+                            H5("SwiftFiddle").class("card-title")
+                            Paragraph("SwiftFiddle is an online playground for creating, sharing and embedding Swift fiddles").class("card-text")
+                            Link(url: "") {
+                                Text("See it in action")
+                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
+                            }.class("btn btn-primary mt-auto")
+                        }.class("card-body d-flex flex-column")
+                    }.class("card").style("width: 18rem;")
+                    Div {
+                        Image(url: "/images/sambot-card.png", description: "Sambot Card").class("card-img-top")
+                        Div {
+                            H5("Transeo").class("card-title")
+                            Paragraph("Transeo is an educational readiness platform that helps students determine what they want to do after high school").class("card-text")
+                            Link(url: "") {
+                                Text("See it in action")
+                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
+                            }.class("btn btn-primary mt-auto")
+                        }.class("card-body d-flex flex-column")
+                    }.class("card").style("width: 18rem;")
+                    Div {
+                        Image(url: "/images/sambot-card.png", description: "Sambot Card").class("card-img-top")
+                        Div {
+                            H5("Sambot").class("card-title")
+                            Paragraph("Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services").class("card-text")
+                            Link(url: "") {
+                                Text("See it in action")
+                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
+                            }.class("btn btn-primary mt-auto")
+                        }.class("card-body d-flex flex-column")
+                    }.class("card").style("width: 18rem;")
+                }.class("showcase-cards scrolling-wrapper").id("showcase-scrolling-wrapper")
+                Div {
+                    Button {
+                        Span().class("vapor-icon icon-arrow-left")
+                    }.class("arrow-button").onclick("scrollToLeft()")
+                    Button {
+                        Span().class("vapor-icon icon-arrow-right")
+                    }.class("arrow-button").onclick("scrollToRight()")
+                }.class("btn-group")
+            }.class("row row-cols-1 row-cols-lg-2").id("showcase")
 
-                    // Div {
-                    //     Div {
-                    //         Div {
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //         }.class("row")
-                    //         Div {
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //         }.class("row")
-                    //         Div {
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //             Div {
-                    //                 Span().class("vapor-icon icon-integration-01")
-                    //             }.class("col")
-                    //         }.class("row")
-                    //     }.class("container")
-                    // }.class("col")
+            Div {
+                Div {
+                    Image(url: "/images/discord-chat.png", description: "Vapor Discord server")
+                        .class("img-fluid").id("discord-chat-image")
+                }.class("col")
+                Div {
+                    Div {
+                        Div {
+                            H2("Join the largest community of Swift backend developers")
+                            Paragraph {
+                                Text("Vapor's 13k+ Discord community will be at your side to support you along the way. Ask questions, contribute and be a part of a thriving, wholesome corner of the internet.")
+                            }
+                            Button {
+                                Link(url: "https://docs.vapor.codes/") {
+                                    Text("Join our Discord")
+                                }.linkTarget(.blank)
+                            }.class("btn btn-primary w-mobile-100")
+                            Link(url: "https://github.com/vapor/vapor") {
+                                Text("Contribute")
+                                Span().class("vapor-icon icon-chevron-right")
+                            }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3")
+                        }
+                    }.class("col order-2 order-lg-1 g-lg-0")
+                }.class("col")
+            }.class("row row-cols-1 row-cols-lg-2").id("discord")
 
-                }.class("row row-cols-1 row-cols-lg-2 align-items-center")
-            }.class("main-site-features")
+            Div {
+                Div {
+                    Div {
+                        H2("Get all the tools you need to build with Swift")
+                        Button {
+                            Link(url: "https://docs.vapor.codes/") {
+                                Text("Get Started")
+                            }.linkTarget(.blank)
+                        }.class("btn btn-primary w-mobile-100")
+                        Link(url: "https://api.vapor.codes/") {
+                            Text("Go to API Docs")
+                            Span().class("vapor-icon icon-chevron-right")
+                        }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3")
+                    }
+                }.class("col d-flex justify-content-center")
+                Div {
+                    List {
+                        ListItem {
+                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                            Span("Easily create new projects with the Vapor Toolbox").class("align-middle")
+                        }
+                        ListItem {
+                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                            Span("Expansive documentation and API reference").class("align-middle")
+                        }
+                        ListItem {
+                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                            Span("Everything you need to build backends and APIs").class("align-middle")
+                        }
+                        ListItem {
+                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                            Span("Full support for Swift's concurrency model").class("align-middle")
+                        }
+                    }
+                }.class("col items-list d-flex justify-content-center align-items-center")
+            }.class("row row-cols-1 row-cols-lg-2").id("api-docs")
+            Div {
+                Div {
+                    H3("Supported by our incredible sponsors and backers")
+                    Link(url: "") {
+                        Text("Become a supporter")
+                    }.class("btn btn-secondary")
+                }.id("sponsors-header")
+                Div {
+                    SponsorCard(name: "Broken Hands", url: "https://www.brokenhands.io/", logo: "/images/brokenhands.png", description: "Providing Vapor training and consulting for clients around the world.")
+                    SponsorCard(name: "omrd", url: "https://omrd.com", logo: "/images/omrd.png", description: "omrd provides consultation services for dental elated scans.")
+                    SponsorCard(name: "Transeo", url: "https://gotranseo.com", logo: "/images/transeo.png", description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis.")
+                }.class("sponsors-list")
+            }.class("row").id("sponsors")
         }.class("container")
     }
 }
