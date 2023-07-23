@@ -215,8 +215,13 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 Div {
                     Div {
-                        FeatureContainer(title: "High-performant APIs and servers", description: "Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift’s Concurrency model, you can write clear, maintainable code that’s efficient and easy to read.", url: "https://docs.vapor.codes/", icon: "icon-dataflow-03")
-                    }.class("col order-2 order-lg-1 g-lg-0")
+                        FeatureContainer(
+                            title: "High-performant APIs and servers", 
+                            description: "Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift's Concurrency model, you can write clear, maintainable code that's efficient and easy to read.", 
+                            url: "https://docs.vapor.codes/", 
+                            icon: "icon-dataflow-03"
+                        )
+                    }.class("col order-2 order-lg-1 g-lg-0").id("performance")
                     Div {
                         Div {
                             let html = """
@@ -239,7 +244,12 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
                 Div {
                     Div {
-                        FeatureContainer(title: "Ship with confidence, even on Fridays", description: "With Vapor's expressive, protocol oriented design, you'll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.", url: "https://docs.vapor.codes/", icon: "icon-brackets-check")
+                        FeatureContainer(
+                            title: "Ship with confidence, even on Fridays", 
+                            description: "With Vapor's expressive, protocol oriented design, you'll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.", 
+                            url: "https://docs.vapor.codes/",
+                            icon: "icon-brackets-check"
+                        )
                     }.class("col order-2 g-lg-0")
                     Div {
                         Div {
@@ -276,20 +286,18 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 Div {
                     Div {
-                        Div {
-                            Span("Integrations").style("color: #DF3FEB")
-                            H2("Full integration with your entire stack").style("margin-top: 8px;")
-                            Paragraph {
-                                Text("Vapor's mature ecosystem includes over a hundred official and community maintained server-first Swift packages to make building your applications easy and efficient.")
-                            }
-                            Button {
-                                Link(url: "https://docs.vapor.codes/") {
-                                    Text("Get Started")
-                                    Span().class("vapor-icon icon-chevron-right")
-                                }.linkTarget(.blank)
-                            }.class("btn btn-primary w-mobile-100")
-                        }.class("code-example-explainer")
-                    }.class("col order-2 order-lg-1 g-lg-0")
+                        Span("Integrations").style("color: #DF3FEB")
+                        H2("Full integration with your entire stack").style("margin-top: 8px;")
+                        Paragraph {
+                            Text("Vapor's mature ecosystem includes over a hundred official and community maintained server-first Swift packages to make building your applications easy and efficient.")
+                        }
+                        Button {
+                            Link(url: "https://docs.vapor.codes/") {
+                                Text("Get Started")
+                                Span().class("vapor-icon icon-chevron-right")
+                            }.linkTarget(.blank)
+                        }.class("btn btn-primary w-mobile-100")
+                    }.class("code-example-explainer")
                 }.class("col order-2 order-lg-1 mt-5 mt-lg-0")
                 Div {
                     Image(url: "/images/integrations.png", description: "Vapor Integrations")
@@ -302,7 +310,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     Link(url: "") {
                         Text("See full list")
                         Span().class("vapor-icon icon-chevron-right")
-                    }.class("btn btn-primary")
+                    }.class("btn btn-primary").class("d-none d-lg-block")
                 }.class("showcase-header")
                 Div {
                     Div {
@@ -371,7 +379,6 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("arrow-button").onclick("scrollToRight()")
                 }.class("btn-group")
             }.class("row row-cols-1 row-cols-lg-2").id("showcase")
-
             Div {
                 Div {
                     Image(url: "/images/discord-chat.png", description: "Vapor Discord server")
@@ -393,7 +400,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                                 Text("Contribute")
                                 Span().class("vapor-icon icon-chevron-right")
                             }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3")
-                        }
+                        }.class("px-4 px-lg-0")
                     }.class("col order-2 order-lg-1 g-lg-0")
                 }.class("col")
             }.class("row row-cols-1 row-cols-lg-2").id("discord")
@@ -401,7 +408,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 Div {
                     Div {
-                        H2("Get all the tools you need to build with Swift")
+                        H2("Get all the tools you need to build with Swift").class("d-none d-lg-block")
                         Button {
                             Link(url: "https://docs.vapor.codes/") {
                                 Text("Get Started")
@@ -410,30 +417,33 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         Link(url: "https://api.vapor.codes/") {
                             Text("Go to API Docs")
                             Span().class("vapor-icon icon-chevron-right")
-                        }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3")
+                        }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3").linkTarget(.blank)
                     }
-                }.class("col d-flex justify-content-center")
+                }.class("col order-2 order-lg-1 mt-5 mt-lg-0")
                 Div {
-                    List {
-                        ListItem {
-                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
-                            Span("Easily create new projects with the Vapor Toolbox").class("align-middle")
-                        }
-                        ListItem {
-                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
-                            Span("Expansive documentation and API reference").class("align-middle")
-                        }
-                        ListItem {
-                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
-                            Span("Everything you need to build backends and APIs").class("align-middle")
-                        }
-                        ListItem {
-                            Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
-                            Span("Full support for Swift's concurrency model").class("align-middle")
-                        }
+                    Div {
+                        H2("Get all the tools you need to build with Swift").class("d-lg-none px-4")
+                        List {
+                            ListItem {
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span("Easily create new projects with the Vapor Toolbox").class("align-middle")
+                            }
+                            ListItem {
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span("Expansive documentation and API reference").class("align-middle")
+                            }
+                            ListItem {
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span("Everything you need to build backends and APIs").class("align-middle")
+                            }
+                            ListItem {
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span("Full support for Swift's concurrency model").class("align-middle")
+                            }
+                        }.class("px-4 p-lg-0")
                     }
-                }.class("col items-list d-flex justify-content-center align-items-center")
-            }.class("row row-cols-1 row-cols-lg-2").id("api-docs")
+                }.class("col items-list order-1 order-lg-2")
+            }.class("row row-cols-1 row-cols-lg-2 align-items-center").id("api-docs")
             Div {
                 Div {
                     H3("Supported by our incredible sponsors and backers")

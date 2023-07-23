@@ -612,8 +612,9 @@
     }
 
     #api-docs {
-        background: url('../../images/api-docs-background-dark.png') 50% 50% no-repeat;
-        border: none;
+        &::before {
+            background: url("../../images/api-docs-background-gradient.svg") no-repeat right, #1C1C1F;
+        }
 
         span {
             color: $grey-100;

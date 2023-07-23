@@ -1,3 +1,8 @@
+html,
+body {
+    overflow-x: hidden;
+}
+
 .main-title {
     font-size: 72px;
     text-align: center;
@@ -34,6 +39,13 @@
 .main-code-demo {
     margin-top: 64px;
     max-width: 900px;
+
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+            color-stop(0.00, rgba(0, 0, 0, 1)),
+            color-stop(0.35, rgba(0, 0, 0, 1)),
+            color-stop(0.50, rgba(0, 0, 0, 0.5)),
+            color-stop(0.65, rgba(0, 0, 0, 0)),
+            color-stop(1.00, rgba(0, 0, 0, 0)));
 }
 
 .main-site-main-page {
@@ -210,6 +222,12 @@ h2 {
 }
 
 .main-site-features {
+    #performance {
+        position: relative;
+        overflow: hidden;
+        left: 0;
+    }
+
     .row {
         margin-top: 271px;
 
@@ -372,6 +390,16 @@ h2 {
     }
 
     .code-example-explainer {
+        h2 {
+            font-size: 48px;
+            margin-top: 24px;
+            margin-bottom: 24px;
+
+            @include media-breakpoint-down(lg) {
+                font-size: 30px;
+            }
+        }
+
         @include media-breakpoint-up(lg) {
             margin-left: 48px;
             margin-right: 48px;
@@ -414,14 +442,14 @@ h2 {
 #integrations {
     &::before {
         content: "";
-        background: linear-gradient(230.51deg, #23ACF0 27.41%, #DF3EFB 67%, #701980 80.12%);
-        opacity: 0.15;
-        filter: blur(100px);
         background-size: cover;
         position: absolute;
         height: 100%;
         width: 100%;
         z-index: -1;
+        overflow-x: hidden;
+        left: 0;
+        background-image: url("../../images/background-gradient.svg");
     }
 
     margin-top: 271px;
@@ -603,49 +631,86 @@ h2 {
 }
 
 #api-docs {
-    border-top: 1px solid $grey-300;
-    border-bottom: 1px solid $grey-300;
-    position: relative;
-    overflow: hidden;
-    padding: 144px 0px;
+    &::before {
+        content: "";
+        background-size: cover;
+        position: absolute;
+        height: 45%;
+        width: 100%;
+        z-index: -1;
+        overflow-x: hidden;
+        left: 0;
+        background: url("../../images/api-docs-background-gradient.svg") no-repeat right, (var(--neutrals-grey-100, #FAFAFD));
+        max-height: 550px;
+        min-height: 400px;
+
+        @include media-breakpoint-down(lg) {
+            height: 55%;
+            max-height: 100%;
+        }
+    }
+
+    padding: 144px 16px;
     margin-top: 100px;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+
+    @include media-breakpoint-down(lg) {
+        padding: 96px 16px;
+    }
 
     h2 {
         margin-top: 0;
         font-size: 48px;
         margin-bottom: 40px;
-    }
 
-    background: url('../../images/api-docs-background-dark.png') 50% 50% no-repeat;
-    height: 100%;
-
-    .items-list ul {
-        list-style: none;
-        margin-bottom: 0;
-
-        li:not(:last-child) {
-            margin-bottom: 20px;
+        @include media-breakpoint-down(lg) {
+            font-size: 30px;
         }
     }
 
-    span {
-        font-size: 20px;
-    }
+    .items-list {
+        ul {
+            list-style: none;
+            margin-bottom: 0;
+            padding-left: 0;
 
-    .icon-check-circle {
-        height: 28px;
-        width: 28px;
-        background-color: $blue-300;
+            li:not(:last-child) {
+                margin-bottom: 20px;
+            }
+
+            @include media-breakpoint-down(lg) {
+                li span {
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 150%;
+                }
+            }
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        .icon-check-circle {
+            height: 28px;
+            width: 28px;
+            background-color: $blue-300;
+        }
     }
 }
 
 #discord {
-    margin-top: 200px
+    margin-top: 200px;
+
+    h2 {
+        margin-top: 0;
+        margin-bottom: 24px;
+        font-size: 48px;
+
+        @include media-breakpoint-down(lg) {
+            font-size: 30px;
+        }
+    }
 }
 
 #sponsors {
