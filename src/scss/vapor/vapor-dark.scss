@@ -582,8 +582,20 @@
             background: rgba(55, 57, 83, 0.5);
         }
 
-        #sambot-card-image {
+        #sambot-card img {
             content: url(../../../static/images/sambot-card-dark.png);
+        }
+
+        #underway-nyc-card img {
+            content: url(../../../static/images/underway-nyc-card-dark.png);
+        }
+
+        #swiftfiddle-card img {
+            content: url(../../../static/images/swiftfiddle-card-dark.png);
+        }
+
+        #transeo-card img {
+            content: url(../../../static/images/transeo-card-dark.png);
         }
     }
 

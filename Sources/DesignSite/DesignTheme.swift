@@ -307,68 +307,19 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 Div {
                     H3("Used by the teams behind these amazing apps")
-                    Link(url: "") {
-                        Text("See full list")
-                        Span().class("vapor-icon icon-chevron-right")
+                    Button {
+                        Link(url: "") {
+                            Text("See full list")
+                            Span().class("ms-2 vapor-icon icon-chevron-right")
+                        }.linkTarget(.blank)
                     }.class("btn btn-primary").class("d-none d-lg-block")
                 }.class("showcase-header")
                 Div {
-                    Div {
-                        Image(url: "/images/sambot-card.png", description: "Sambot Card")
-                            .class("card-img-top").id("sambot-card-image")
-                        Div {
-                            H5("Sambot").class("card-title")
-                            Paragraph("Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services").class("card-text")
-                            Link(url: "") {
-                                Text("See it in action")
-                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
-                            }.class("btn btn-primary mt-auto")
-                        }.class("card-body d-flex flex-column")
-                    }.class("card").style("width: 18rem;")
-                    Div {
-                        Image(url: "/images/underway-nyc-dark.png", description: "Sambot Card").class("card-img-top")
-                        Div {
-                            H5("Underway NYC").class("card-title")
-                            Paragraph("Quickly locate yourself on the official MTA map of NYC and get real-time train arrivals at that subway stop").class("card-text")
-                            Link(url: "") {
-                                Text("See it in action")
-                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
-                            }.class("btn btn-primary mt-auto")
-                        }.class("card-body d-flex flex-column")
-                    }.class("card").style("width: 18rem;")
-                    Div {
-                        Image(url: "/images/swiftfiddle-card-dark.png", description: "Sambot Card").class("card-img-top")
-                        Div {
-                            H5("SwiftFiddle").class("card-title")
-                            Paragraph("SwiftFiddle is an online playground for creating, sharing and embedding Swift fiddles").class("card-text")
-                            Link(url: "") {
-                                Text("See it in action")
-                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
-                            }.class("btn btn-primary mt-auto")
-                        }.class("card-body d-flex flex-column")
-                    }.class("card").style("width: 18rem;")
-                    Div {
-                        Image(url: "/images/sambot-card.png", description: "Sambot Card").class("card-img-top")
-                        Div {
-                            H5("Transeo").class("card-title")
-                            Paragraph("Transeo is an educational readiness platform that helps students determine what they want to do after high school").class("card-text")
-                            Link(url: "") {
-                                Text("See it in action")
-                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
-                            }.class("btn btn-primary mt-auto")
-                        }.class("card-body d-flex flex-column")
-                    }.class("card").style("width: 18rem;")
-                    Div {
-                        Image(url: "/images/sambot-card.png", description: "Sambot Card").class("card-img-top")
-                        Div {
-                            H5("Sambot").class("card-title")
-                            Paragraph("Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services").class("card-text")
-                            Link(url: "") {
-                                Text("See it in action")
-                                Span("").class("vapor-icon icon-arrow-narrow-up-right")
-                            }.class("btn btn-primary mt-auto")
-                        }.class("card-body d-flex flex-column")
-                    }.class("card").style("width: 18rem;")
+                    ShowcaseCard(name: "Sambot", url: "", image: "/images/sambot-card.png", description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services")
+                    ShowcaseCard(name: "Underway NYC", url: "", image: "/images/underway-nyc-card.png", description: "Quickly locate yourself on the official MTA map of NYC and get real-time train arrivals at that subway stop")
+                    ShowcaseCard(name: "SwiftFiddle", url: "", image: "/images/swiftfiddle-card.png", description: "SwiftFiddle is an online playground for creating, sharing and embedding Swift fiddles")
+                    ShowcaseCard(name: "Transeo", url: "", image: "/images/transeo-card.png", description: "Transeo is an educational readiness platform that helps students determine what they want to do after high school")
+                    ShowcaseCard(name: "Sambot", url: "", image: "/images/sambot-card.png", description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services")
                 }.class("showcase-cards scrolling-wrapper").id("showcase-scrolling-wrapper")
                 Div {
                     Button {
@@ -407,18 +358,16 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
 
             Div {
                 Div {
-                    Div {
-                        H2("Get all the tools you need to build with Swift").class("d-none d-lg-block")
-                        Button {
-                            Link(url: "https://docs.vapor.codes/") {
-                                Text("Get Started")
-                            }.linkTarget(.blank)
-                        }.class("btn btn-primary w-mobile-100")
-                        Link(url: "https://api.vapor.codes/") {
-                            Text("Go to API Docs")
-                            Span().class("vapor-icon icon-chevron-right")
-                        }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3").linkTarget(.blank)
-                    }
+                    H2("Get all the tools you need to build with Swift").class("d-none d-lg-block")
+                    Button {
+                        Link(url: "https://docs.vapor.codes/") {
+                            Text("Get Started")
+                        }.linkTarget(.blank)
+                    }.class("btn btn-primary w-mobile-100")
+                    Link(url: "https://api.vapor.codes/") {
+                        Text("Go to API Docs")
+                        Span().class("vapor-icon icon-chevron-right")
+                    }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3").linkTarget(.blank)
                 }.class("col order-2 order-lg-1 mt-5 mt-lg-0")
                 Div {
                     Div {

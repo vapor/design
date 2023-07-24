@@ -504,7 +504,6 @@ h2 {
             }
 
             box-sizing: border-box;
-            /* Auto layout */
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -513,15 +512,8 @@ h2 {
             gap: 8px;
             background: $grey-200;
             border: 1px solid rgba(223, 62, 251, 0.1);
-            border-radius: 16px;
-            font-family: 'Genera Grotesk';
             font-style: normal;
             font-weight: 500;
-            font-size: 16px;
-            line-height: 150%;
-            /* identical to box height, or 24px */
-            font-feature-settings: 'salt' on;
-            /* Accent / pink / pink-300 */
             color: $pink-300;
 
             .vapor-icon {
@@ -635,7 +627,7 @@ h2 {
         content: "";
         background-size: cover;
         position: absolute;
-        height: 45%;
+        height: 40%;
         width: 100%;
         z-index: -1;
         overflow-x: hidden;
@@ -647,6 +639,20 @@ h2 {
         @include media-breakpoint-down(lg) {
             height: 55%;
             max-height: 100%;
+        }
+
+        @include media-breakpoint-down(md) {
+            height: 55%;
+            max-height: 100%;
+            backdrop-filter: blur(100px);
+            -webkit-backdrop-filter: blur(100px);
+            filter: blur(100px);
+        }
+
+        @include media-breakpoint-down(sm) {
+            height: 75%;
+            max-height: 100%;
+            filter: blur(100px);
         }
     }
 
