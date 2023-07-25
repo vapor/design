@@ -87,6 +87,10 @@
     display: inline-block;
 }
 
+.blog-post-author {
+    align-items: center;
+}
+
 .blog-post-author-image {
     width: 48px;
     height: 48px;
@@ -96,6 +100,7 @@
 
 .blog-post-author-name {
     color: $grey-700;
+    white-space: nowrap;
 }
 
 .blog-post-publish-date {
@@ -138,7 +143,7 @@
             padding-right: 16px;
             padding-top: 32px;
         }
-        
+
         @include media-breakpoint-up(lg) {
             padding-left: 24px;
             padding-right: 24px;
@@ -250,4 +255,10 @@
 .blog-post-link:hover {
     text-decoration: none !important;
     color: $blue-300;
+}
+
+.blog-content {
+    img {
+        max-width: 100%;
+    }
 }
