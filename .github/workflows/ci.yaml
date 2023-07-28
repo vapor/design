@@ -48,7 +48,7 @@ jobs:
             aws s3 mb s3://vapor-design-pull-pr${{ github.event.number }}
             aws s3api delete-public-access-block --bucket vapor-design-pull-pr${{ github.event.number }}
             aws s3api delete-bucket-ownership-controls --bucket vapor-design-pull-pr${{ github.event.number }}
-            aws s3api put-public-access-block --bucket vapor-design-pull-pr${{ github.event.number }} \
+            aws s3api put-bucket-website --bucket vapor-design-pull-pr${{github.event.number}}  \
               --website-configuration '{"IndexDocument":{"Suffix":"index.html"},"ErrorDocument":{"Key":"404.html"}}'
           fi
       - name: Deploy S3 Website
