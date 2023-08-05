@@ -15,4 +15,3 @@ function scrollToLeft() {
         behavior: 'smooth'
     });
 }
-

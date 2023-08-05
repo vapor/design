@@ -498,6 +498,10 @@
 
     .vapor-feature-card {
         background-color: rgba($grey-800, 0.3);
+
+        .card-text {
+            color: $grey-500;
+        }
     }
 
     .learn-more-link {

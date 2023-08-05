@@ -50,7 +50,10 @@ body {
 
 .main-site-main-page {
     #vapor-navbar {
-        display: none;
+        position: fixed;
+        top: -80px;
+        width: 100%;
+        transition: top 0.3s;
     }
 }
 
