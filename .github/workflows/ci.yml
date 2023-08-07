@@ -1,0 +1,50 @@
+name: Pull Request Testing
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
+    name: Test, Build, and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+      - uses: ScottBrenner/cfn-lint-action@v2
+      - run: swift run
+      - run: npm install
+      - run: cfn-lint -t stack.yml
+      - run: npm run build
+      - name: Create S3 Bucket
+        env:
+          BUCKET: ${{ format('vapor-design-pulls-pr{0}', github.event.number) }}
+        run: |
+            if aws s3api head-bucket --bucket ${BUCKET} 2>/dev/null; then
+              echo "Bucket already exists"
+            else
+              aws s3 mb s3://${BUCKET}
+              aws s3api delete-public-access-block --bucket ${BUCKET}
+              aws s3api delete-bucket-ownership-controls --bucket ${BUCKET}
+              aws s3api put-bucket-website --bucket ${BUCKET}  \
+                --website-configuration '{"IndexDocument":{"Suffix":"index.html"},"ErrorDocument":{"Key":"404.html"}}'
+            fi
+      - name: Deploy S3 Website
+        uses: danburtenshaw/s3-website-pr-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          bucket-prefix: "vapor-design-pulls"
+          folder-to-copy: "./Output"

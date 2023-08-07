@@ -3,7 +3,10 @@
 .hljs {
     display: block;
     overflow-x: auto;
-    padding: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
     background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba(35, 172, 240, 0.052) 0%, rgba(35, 172, 240, 0) 100%), #FAFAFD;
     /* Neutrals/grey-300 */
     border: 1px solid $grey-300;
@@ -11,6 +14,22 @@
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 24px;
     color: #8194F7;
+
+    tr:first-child td {
+        padding-top: 48px;
+        
+        @include media-breakpoint-down(lg) {
+            padding-top: 24px;
+        }
+    }
+
+    tr:last-child td {
+        padding-bottom: 48px;
+        
+        @include media-breakpoint-down(lg) {
+            padding-bottom: 24px;
+        }
+    }
 }
 
 

@@ -12,6 +12,7 @@ $icon-names: (
     'x-close',
     'menu-04',
     'github-fill',
+    'github-line',
     'twitter-fill',
     'copy-06',
     'reddit-fill',
@@ -23,6 +24,22 @@ $icon-names: (
     'chevron-right',
     'chevron-down',
     'mastodon-fill',
+    'swift-package-index',
+    'spotify',
+    'john-lewis',
+    'allegro',
+    'transeo',
+    'brackets-check',
+    'key-01',
+    'database-03',
+    'code-browser',
+    // 'integration-01',
+    'integration-09',
+    'alert-octagon',
+    'arrow-narrow-up-right',
+    'arrow-right',
+    'arrow-left',
+    'check-circle'
 );
 
 @each $name in $icon-names {

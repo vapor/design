@@ -160,7 +160,7 @@ public struct SiteNavigation<Site: Website>: Component {
                         ListItem {
                             Link(url: "https://github.com/vapor") {
                                 Span().class("vapor-icon icon-github-fill")
-                            }.linkTarget(.blank).class("nav-link")
+                            }.linkTarget(.blank).class("nav-link").attribute(named: "rel", value: "me")
                         }.class("nav-item")
                         ListItem {
                             Link(url: "#") {
