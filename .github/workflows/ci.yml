@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
     name: Test, Build, and Deploy
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +28,7 @@ jobs:
       - run: cfn-lint -t stack.yml
       - run: npm run build
       - name: Create S3 Bucket
+　　    if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
         env:
           BUCKET: ${{ format('vapor-design-pulls-pr{0}', github.event.number) }}
         run: |
@@ -42,6 +42,7 @@ jobs:
                 --website-configuration '{"IndexDocument":{"Suffix":"index.html"},"ErrorDocument":{"Key":"404.html"}}'
             fi
       - name: Deploy S3 Website
+　　    if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
         uses: danburtenshaw/s3-website-pr-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
