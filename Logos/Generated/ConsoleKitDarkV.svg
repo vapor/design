@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280px" height="640px" viewBox="0 0 1280 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ConsoleKitDarkV</title>
+    <defs>
+        <linearGradient x1="100%" y1="37.5%" x2="0%" y2="62.5%" id="linearGradient-1">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="1" y="0" width="1280" height="640"></rect>
+        <polygon id="path-3" points="149.791653 149.673412 150.67278 149.673412 150.67278 181.368958 149.791653 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-4" points="149.791653 181.368958 150.67278 180.488526 150.67278 211.303641 149.791653 212.184073 0 94.2062065 0 63.3910922"></polygon>
+        <polygon id="path-5" points="149.311927 149.673412 149.311927 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-6" points="149.311927 181.368958 149.311927 212.184073 0 95.0866383 1.32615631e-13 63.3910922"></polygon>
+        <linearGradient x1="522.233919%" y1="228.481033%" x2="-571.580449%" y2="-9.49298576%" id="linearGradient-7">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M590.689539,138.018383 C582.97432,137.625432 577.333719,143.57936 578.06354,151.345737 L583.582026,208.269739 C584.358268,216.038621 591.218649,222.666903 598.938397,223.106577 L689.310461,227.981617 C697.02568,228.374568 702.666281,222.42064 701.93646,214.654263 L696.417974,157.730261 C695.641732,149.961379 688.781351,143.333097 681.061603,142.893423 L590.689539,138.018383 Z M633.132532,184.199781 L611.59526,200.926901 C610.859667,201.454979 609.946786,201.717616 608.977645,201.680497 C607.590819,201.615668 606.215321,200.895794 605.260822,199.734791 C604.444405,198.744315 604.009116,197.521279 604.052121,196.33869 C604.095126,195.156102 604.612843,194.112417 605.489709,193.440609 L622.763865,180.061309 L602.704806,164.664647 C601.342718,163.616294 600.533253,161.989848 600.581328,160.397976 C600.629404,158.806104 601.527715,157.49065 602.937878,156.947131 C604.348041,156.403613 606.055818,156.714605 607.417906,157.762959 L632.436306,177.00579 C633.63496,177.915256 634.421005,179.283397 634.557969,180.698622 C634.694933,182.113848 634.166829,183.410976 633.132532,184.199781 Z M669.113074,206.691114 L643.528271,205.329848 C641.219432,205.207004 639.135898,202.952057 638.874568,200.293283 C638.613238,197.634509 640.273073,195.578732 642.581912,195.701576 L668.166715,197.062842 C670.475554,197.185686 672.559088,199.440633 672.820418,202.099407 C673.081747,204.758181 671.421913,206.813958 669.113074,206.691114 Z" id="path-8"></path>
+    </defs>
+    <g id="ConsoleKitDarkV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="1280" height="640"></rect>
+        <g id="Rectangle">
+            <use fill="#000000" xlink:href="#path-2"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+        </g>
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(491, 61)">
+            <polygon id="Path-2" fill="#FFFFFF" points="0 122.690909 145.494118 0 298 122.690909 298 123.567273 149 241 0 123.567273"></polygon>
+            <g id="left" transform="translate(0, 123)">
+                <path d="M149.791653,117.977866 L150.67278,117.977866 C150.863028,132.661552 150.863028,143.520212 150.67278,150.553844 C150.482532,157.587476 150.188823,157.587476 149.791653,150.553844 L0,32.5759779 L0,0 L149.791653,117.977866 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(223, 229.5) scale(-1, 1) translate(-223, -229.5)translate(148, 123)">
+                <polygon id="Path" fill="#E040FB" points="149.311927 117.977866 149.311927 150.553844 6.63078155e-14 32.5759779 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-5"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-5"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-6"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-6"></use>
+                </g>
+            </g>
+        </g>
+        <text id="ConsoleKit" font-family="Roboto-Black, Roboto" font-size="128" font-weight="800" fill="#FFFFFF">
+            <tspan x="328.75" y="548">Console</tspan>
+            <tspan x="799.125" y="548" font-family="Roboto-Regular, Roboto" font-weight="normal">Kit</tspan>
+        </text>
+        <g id="Shape" fill-rule="nonzero" transform="translate(640, 183) rotate(-43) translate(-640, -183)">
+            <use fill="#000000" xlink:href="#path-8"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-7)" xlink:href="#path-8"></use>
+        </g>
+    </g>
+</svg>

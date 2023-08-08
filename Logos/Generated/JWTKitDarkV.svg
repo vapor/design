@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280px" height="640px" viewBox="0 0 1280 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>JWTKitDarkV</title>
+    <defs>
+        <linearGradient x1="100%" y1="37.5%" x2="0%" y2="62.5%" id="linearGradient-1">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="1280" height="640"></rect>
+        <polygon id="path-3" points="149.791653 149.673412 150.67278 149.673412 150.67278 181.368958 149.791653 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-4" points="149.791653 181.368958 150.67278 180.488526 150.67278 211.303641 149.791653 212.184073 0 94.2062065 0 63.3910922"></polygon>
+        <polygon id="path-5" points="149.311927 149.673412 149.311927 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-6" points="149.311927 181.368958 149.311927 212.184073 0 95.0866383 1.32615631e-13 63.3910922"></polygon>
+        <linearGradient x1="498.68868%" y1="285.992281%" x2="-546.660863%" y2="-27.5569351%" id="linearGradient-7">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M616.943608,197.464785 L585.9593,208 L578.166282,189.697778 L608.163726,179.498115 L576,169.221239 L579.929078,151 L613.649988,161.650442 L624.597311,174.867257 L611.197447,179.494779 L625.566316,184.026667 L617.717083,196.820771 L632.409842,192 L634.123388,208.197101 L616.621893,236 L599.877411,224.776812 L616.943608,197.464785 Z M705.166282,189.697778 L701.245772,208 L667.934886,197.433869 L690.877411,224.776812 L676.451847,236 L653.123388,208.197101 L651.409842,192 L667.146676,196.849936 L656.566316,184.026667 L669.976298,179.494779 L655.597311,174.867257 L663.748132,161.650442 L695.21555,151 L703,169.221239 L673.010725,179.498115 L705.166282,189.697778 Z M646.965098,149.986559 L638.904748,163 L628.090926,149.986559 L624.369546,116 L643.243718,116 L646.965098,149.986559 Z M634.20606,208.978552 L642.333015,196 L653.20606,208.978552 L656.805304,243 L637.805304,243 L634.20606,208.978552 Z M627.945668,149.802899 L629.659214,166 L613.447293,161.026087 L590.191645,133.223188 L604.561449,122 L627.945668,149.802899 Z M663.745911,161.026087 L648.659214,166 L646.945668,149.802899 L664.391403,122 L681.191645,133.223188 L663.745911,161.026087 Z" id="path-8"></path>
+    </defs>
+    <g id="JWTKitDarkV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="1280" height="640"></rect>
+        <g id="Rectangle">
+            <use fill="#000000" xlink:href="#path-2"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+        </g>
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(491, 61)">
+            <polygon id="Path-2" fill="#FFFFFF" points="0 122.690909 145.494118 0 298 122.690909 298 123.567273 149 241 0 123.567273"></polygon>
+            <g id="left" transform="translate(0, 123)">
+                <path d="M149.791653,117.977866 L150.67278,117.977866 C150.863028,132.661552 150.863028,143.520212 150.67278,150.553844 C150.482532,157.587476 150.188823,157.587476 149.791653,150.553844 L0,32.5759779 L0,0 L149.791653,117.977866 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(223, 229.5) scale(-1, 1) translate(-223, -229.5)translate(148, 123)">
+                <polygon id="Path" fill="#E040FB" points="149.311927 117.977866 149.311927 150.553844 6.63078155e-14 32.5759779 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-5"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-5"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-6"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-6"></use>
+                </g>
+            </g>
+        </g>
+        <text id="JWTKit" font-family="Roboto-Black, Roboto" font-size="128" font-weight="800" fill="#FFFFFF">
+            <tspan x="432" y="548">JWT</tspan>
+            <tspan x="695.875" y="548" font-family="Roboto-Regular, Roboto" font-weight="normal">Kit</tspan>
+        </text>
+        <g id="Combined-Shape" fill-rule="nonzero" transform="translate(640.5831, 179.5) rotate(-43) translate(-640.5831, -179.5)">
+            <use fill="#000000" xlink:href="#path-8"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-7)" xlink:href="#path-8"></use>
+        </g>
+    </g>
+</svg>

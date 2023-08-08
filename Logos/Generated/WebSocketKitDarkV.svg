@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280px" height="640px" viewBox="0 0 1280 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>WebSocketKitDarkV</title>
+    <defs>
+        <linearGradient x1="100%" y1="37.5%" x2="0%" y2="62.5%" id="linearGradient-1">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="1" y="0" width="1280" height="640"></rect>
+        <polygon id="path-3" points="149.791653 149.673412 150.67278 149.673412 150.67278 181.368958 149.791653 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-4" points="149.791653 181.368958 150.67278 180.488526 150.67278 211.303641 149.791653 212.184073 0 94.2062065 0 63.3910922"></polygon>
+        <polygon id="path-5" points="149.311927 149.673412 149.311927 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-6" points="149.311927 181.368958 149.311927 212.184073 0 95.0866383 1.32615631e-13 63.3910922"></polygon>
+        <linearGradient x1="434.725226%" y1="202.799179%" x2="-459.700528%" y2="-0.798428326%" id="linearGradient-7">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M694.383157,212.179469 L688.789342,169.685974 L666.854961,148.179469 L656.383157,159.709704 L672.61545,175.625711 L677.244169,210.787844 L694.383157,212.179469 Z M696.629919,219.418438 L636.725769,214.511617 L620.52251,198.902369 L625.796103,193.277844 L639.178677,206.1706 L663.511699,208.163747 L636.381631,181.986658 L641.694105,176.32004 L668.818272,202.451907 L665.616742,177.917346 L652.285534,165.074076 L657.519095,159.491011 L623.813904,126.899428 L564,122 L583.381954,140.672552 L583.387926,140.718319 L618.913662,143.628275 L633.116862,157.311622 L617.179439,174.311475 L602.976239,160.628128 L601.694489,150.805586 L584.520655,149.398857 L586.738405,166.394339 L620.374926,198.799724 L609.8677,210.006768 L631.762288,231.099988 L716,238 L696.629919,219.418438 Z" id="path-8"></path>
+    </defs>
+    <g id="WebSocketKitDarkV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="1280" height="640"></rect>
+        <g id="Rectangle">
+            <use fill="#000000" xlink:href="#path-2"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+        </g>
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(491, 61)">
+            <polygon id="Path-2" fill="#FFFFFF" points="0 122.690909 145.494118 0 298 122.690909 298 123.567273 149 241 0 123.567273"></polygon>
+            <g id="left" transform="translate(0, 123)">
+                <path d="M149.791653,117.977866 L150.67278,117.977866 C150.863028,132.661552 150.863028,143.520212 150.67278,150.553844 C150.482532,157.587476 150.188823,157.587476 149.791653,150.553844 L0,32.5759779 L0,0 L149.791653,117.977866 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(223, 229.5) scale(-1, 1) translate(-223, -229.5)translate(148, 123)">
+                <polygon id="Path" fill="#E040FB" points="149.311927 117.977866 149.311927 150.553844 6.63078155e-14 32.5759779 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-5"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-5"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-6"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-6"></use>
+                </g>
+            </g>
+        </g>
+        <text id="WebSocketKit" font-family="Roboto-Black, Roboto" font-size="128" font-weight="800" fill="#FFFFFF">
+            <tspan x="236.375" y="548">WebSocket</tspan>
+            <tspan x="891.5" y="548" font-family="Roboto-Regular, Roboto" font-weight="normal">Kit</tspan>
+        </text>
+        <g id="Shape" fill-rule="nonzero" transform="translate(640, 180) rotate(-43) translate(-640, -180)">
+            <use fill="#000000" xlink:href="#path-8"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-7)" xlink:href="#path-8"></use>
+        </g>
+    </g>
+</svg>
