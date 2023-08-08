@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="724px" height="342px" viewBox="0 0 724 342" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>APIDocsDarkV</title>
+    <defs>
+        <polygon id="path-1" points="86.9767442 86.7634855 87.4883721 86.7634855 87.4883721 105.136929 86.9767442 105.647303 0 37.2572614 0 18.373444"></polygon>
+        <polygon id="path-2" points="86.9767442 105.136929 87.4883721 104.626556 87.4883721 122.489627 86.9767442 123 0 54.6099585 0 36.746888"></polygon>
+        <polygon id="path-3" points="87 86.7634855 87 105.647303 0 37.2572614 0 18.373444"></polygon>
+        <polygon id="path-4" points="87 105.136929 87 123 0 55.120332 7.72715225e-14 36.746888"></polygon>
+    </defs>
+    <g id="APIDocsDarkV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="724" height="342"></rect>
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(276, 0)">
+            <polygon id="Path-2" fill="#FFFFFF" points="0 71.2727273 84.4647059 0 173 71.2727273 173 71.7818182 86.5 140 0 71.7818182"></polygon>
+            <g id="left" transform="translate(0, 71)">
+                <path d="M86.9767442,68.3900415 L87.4883721,68.3900415 C87.5988401,76.9019594 87.5988401,83.1965653 87.4883721,87.2738589 C87.3779041,91.3511526 87.2073615,91.3511526 86.9767442,87.2738589 L0,18.8838174 L0,0 L86.9767442,68.3900415 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(129.5, 132.5) scale(-1, 1) translate(-129.5, -132.5)translate(86, 71)">
+                <polygon id="Path" fill="#E040FB" points="87 68.3900415 87 87.2738589 3.86357613e-14 18.8838174 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+            <path d="M81.7601339,104.732609 C81.7601339,104.732609 106.732003,73.170425 106.727111,59.2319361 C106.722218,45.2934473 95.5509865,33.9901501 81.7754663,33.9853138 C67.9999462,33.9804806 56.8366468,45.2759391 56.8415378,59.2144279 C56.846432,73.1529168 81.7601339,104.732609 81.7601339,104.732609 Z" id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(81.7843, 69.359) scale(-1, 1) rotate(-130) translate(-81.7843, -69.359)"></path>
+        </g>
+        <text id="API-Docs" font-family="Roboto-Bold, Roboto" font-size="128" font-weight="bold" fill="#FFFFFF">
+            <tspan x="99.09375" y="337">API</tspan>
+            <tspan x="305.09375" y="337" font-family="Roboto-Regular, Roboto" font-weight="normal"> </tspan>
+            <tspan x="336.78125" y="337">Docs</tspan>
+        </text>
+    </g>
+</svg>

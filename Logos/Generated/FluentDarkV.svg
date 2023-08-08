@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280px" height="640px" viewBox="0 0 1280 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>FluentDarkV</title>
+    <defs>
+        <linearGradient x1="100%" y1="37.5%" x2="0%" y2="62.5%" id="linearGradient-1">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="1280" height="640"></rect>
+        <polygon id="path-3" points="149.791653 149.673412 150.67278 149.673412 150.67278 181.368958 149.791653 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-4" points="149.791653 181.368958 150.67278 180.488526 150.67278 211.303641 149.791653 212.184073 0 94.2062065 0 63.3910922"></polygon>
+        <polygon id="path-5" points="149.311927 149.673412 149.311927 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-6" points="149.311927 181.368958 149.311927 212.184073 0 95.0866383 1.32615631e-13 63.3910922"></polygon>
+        <linearGradient x1="511.871382%" y1="301.805869%" x2="-565.392548%" y2="-34.2414529%" id="linearGradient-7">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M690.113658,199.213936 L660.469758,181.287318 L685.386023,167.902773 C690.075106,165.384991 690.849457,159.005636 687.11283,153.654404 C683.378906,148.303397 676.547012,146.009929 671.85928,148.527824 L646.943218,161.913713 L642.214029,130.601094 C641.324199,124.709404 635.79852,119.531625 629.86845,119.037953 C623.939731,118.544394 619.85591,122.922193 620.74574,128.813883 L625.474727,160.125159 L595.829476,142.198429 C590.24921,138.824408 583.94783,140.025872 581.755738,144.883545 C579.562091,149.739761 582.306312,156.412033 587.886578,159.786054 L617.531829,177.712784 L592.615565,191.09733 C587.926684,193.616455 587.152333,199.99581 590.887406,205.345586 C593.392866,208.934614 597.289619,211.148246 600.998786,211.45703 C602.820927,211.608721 604.596242,211.300126 606.139604,210.472053 L631.058369,197.086389 L635.787558,228.399009 C636.677592,234.292042 642.204419,239.46859 648.131786,239.962036 C654.060505,240.455596 658.144528,236.079141 657.254495,230.186107 L652.525306,198.873487 L682.170557,216.800218 C684.008093,217.911073 685.922817,218.525533 687.743607,218.677111 C691.452774,218.985895 694.772945,217.373064 696.244295,214.115102 C698.438145,209.260228 695.692775,202.589188 690.113658,199.213936 Z" id="path-8"></path>
+    </defs>
+    <g id="FluentDarkV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="1280" height="640"></rect>
+        <g id="Rectangle">
+            <use fill="#000000" xlink:href="#path-2"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+        </g>
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(491, 61)">
+            <polygon id="Path-2" fill="#FFFFFF" points="0 122.690909 145.494118 0 298 122.690909 298 123.567273 149 241 0 123.567273"></polygon>
+            <g id="left" transform="translate(0, 123)">
+                <path d="M149.791653,117.977866 L150.67278,117.977866 C150.863028,132.661552 150.863028,143.520212 150.67278,150.553844 C150.482532,157.587476 150.188823,157.587476 149.791653,150.553844 L0,32.5759779 L0,0 L149.791653,117.977866 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(223, 229.5) scale(-1, 1) translate(-223, -229.5)translate(148, 123)">
+                <polygon id="Path" fill="#E040FB" points="149.311927 117.977866 149.311927 150.553844 6.63078155e-14 32.5759779 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-5"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-5"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-6"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-6"></use>
+                </g>
+            </g>
+        </g>
+        <text id="Fluent" font-family="Roboto-Bold, Roboto" font-size="128" font-weight="bold" fill="#FFFFFF">
+            <tspan x="460.59375" y="548">Fluent</tspan>
+        </text>
+        <g id="Shape" fill-rule="nonzero" transform="translate(639, 179.5) rotate(-43) translate(-639, -179.5)">
+            <use fill="#000000" xlink:href="#path-8"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-7)" xlink:href="#path-8"></use>
+        </g>
+    </g>
+</svg>
