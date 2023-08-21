@@ -290,8 +290,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             Div {
                 Div {
                     Div {
-                        Span("Integrations").style("color: #DF3FEB")
-                        H2("Full integration with your entire stack").style("margin-top: 8px;")
+                        Span("Integrations")
+                        H2("Full integration with your entire stack")
                         Paragraph {
                             Text("Vapor's mature ecosystem includes over a hundred official and community maintained server-first Swift packages to make building your applications easy and efficient.")
                         }
