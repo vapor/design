@@ -18,6 +18,6 @@ jobs:
 
     steps:
       - name: Delete Website Bucket
-        uses: danburtenshaw/s3-website-pr-action@v2
+        uses: rishabhrao/s3-website-https-pr-action@v1
         with:
           bucket-prefix: "vapor-design-pulls"
