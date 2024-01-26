@@ -44,7 +44,7 @@ jobs:
             fi
       - name: Deploy S3 Website
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
-        uses: danburtenshaw/s3-website-pr-action@v2
+        uses: rishabhrao/s3-website-https-pr-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
