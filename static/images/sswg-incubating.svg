@@ -13,12 +13,12 @@
   <rect width="121" height="18" fill="url(#s)"/>
 </g>
 <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="110">
-  <svg x="5" y="2" width="14" height="14" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <svg x="5" y="2" width="14" height="14" viewBox="0 0 256 256">
     <linearGradient id="b" x1=".8" x2=".2" y1=".2" y2=".8">
       <stop stop-color="#e01595"/>
       <stop stop-color="#a53f8a" offset=".7"/>
     </linearGradient>
-    <path d="
+    <path fill="#fff" stroke-width="7" stroke="url(#b)" d="
              m 44,44 v 168.5 h 168.5 v -168.5 z
              m 24.5-19-5,19 h 76 z
              m 144,38.5 v 76 l 19-71 z
@@ -40,8 +40,8 @@
              m -143.5,38.5-19,5,5,19,14-8 z
              m 182.5,105-14,8 v 16 l 19-5 z
              m -163,44,5,19,19-5-8-14 z
-      " fill="#fff" stroke-width="7" stroke="url(#b)"/>
-    <path d="
+      "/>
+    <path fill="url(#b)" d="
              m 140,68
              c 19.0,26.0 15.8,49.8 11.5,60.5  -22.5,-14.5 -42.5,-31.7 -61.5,-50.3
                -0.7,-0.7 16.5,24.8 36.0,45.3   -9.2, -5.3 -34.9,-24.0 -51.0,-39.0
@@ -49,7 +49,7 @@
                21.2,34.1 66.2,50.0 95.0,33.0    7.2, -3.0  21.4, -7.7  29.0,  7.3
                 1.8, 3.5 5.7,-15.2 -8.5, -33    6.0,-36.0  -8.9,-59.6 -38.5,-79.4
              z
-      " fill="url(#b)"/>
+      "/>
   </svg>
   <text aria-hidden="true" x="365" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="270">sswg</text>
   <text aria-hidden="true" x="865" y="140" fill="#ccc" fill-opacity=".3" transform="scale(.1)" textLength="570">incubating</text>
