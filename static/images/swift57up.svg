@@ -32,8 +32,8 @@
     z" fill="#fff"/>
   </svg>
   <text aria-hidden="true" x="355" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="250">swift</text>
-  <text x="355" y="130" transform="scale(.1)" fill="#fff" textLength="250">swift</text>
   <text aria-hidden="true" x="695" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="270">5.7+</text>
+  <text x="355" y="130" transform="scale(.1)" fill="#fff" textLength="250">swift</text>
   <text x="695" y="130" transform="scale(.1)" fill="#fff" textLength="270">5.7+</text>
 </g>
 </svg>

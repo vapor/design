@@ -34,9 +34,9 @@
       c -2.3,0-5.7-.7-5.7,2.3
       z"/>
   </svg>
-  <text x="465" y="130" transform="scale(.1)" fill="#fff" textLength="470">read the</text>
-  <text x="905" y="130" transform="scale(.1)" fill="#fff" textLength="250">docs</text>
   <text aria-hidden="true" x="465" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="470">read the</text>
   <text aria-hidden="true" x="905" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="250">docs</text>
+  <text x="465" y="130" transform="scale(.1)" fill="#fff" textLength="470">read the</text>
+  <text x="905" y="130" transform="scale(.1)" fill="#fff" textLength="250">docs</text>
 </g>
 </svg>

@@ -51,9 +51,9 @@
              z
       " fill="url(#b)"/>
   </svg>
-  <text x="365" y="130" transform="scale(.1)" fill="#fff" textLength="270">sswg</text>
-  <text x="815" y="130" transform="scale(.1)" fill="#333" textLength="470">sandbox</text>
   <text aria-hidden="true" x="365" y="140" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="270">sswg</text>
   <text aria-hidden="true" x="815" y="140" fill="#ccc" fill-opacity=".3" transform="scale(.1)" textLength="470">sandbox</text>
+  <text x="365" y="130" transform="scale(.1)" fill="#fff" textLength="270">sswg</text>
+  <text x="815" y="130" transform="scale(.1)" fill="#333" textLength="470">sandbox</text>
 </g>
 </svg>
