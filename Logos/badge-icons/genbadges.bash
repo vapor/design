@@ -19,6 +19,15 @@ curl -o "${REPO}/../../static/images/readthedocs.svg" \
 curl -o "${REPO}/../../static/images/swift57up.svg" \
      "https://img.shields.io/badge/swift-5.7%2B-white?style=plastic&logoColor=%23f07158&labelColor=gray&color=%23f07158&logo=$(logo swift57up)"
 
+curl -o "${REPO}/../../static/images/swift58up.svg" \
+     "https://img.shields.io/badge/swift-5.8%2B-white?style=plastic&logoColor=%23f07158&labelColor=gray&color=%23f07158&logo=$(logo swift57up)"
+
+curl -o "${REPO}/../../static/images/swift59up.svg" \
+     "https://img.shields.io/badge/swift-5.9%2B-white?style=plastic&logoColor=%23f07158&labelColor=gray&color=%23f07158&logo=$(logo swift57up)"
+
+curl -o "${REPO}/../../static/images/swift510up.svg" \
+     "https://img.shields.io/badge/swift-5.10%2B-white?style=plastic&logoColor=%23f07158&labelColor=gray&color=%23f07158&logo=$(logo swift57up)"
+
 curl -o "${REPO}/../../static/images/sswg-graduated.svg" \
      "https://img.shields.io/badge/sswg-graduated-white?style=plastic&labelColor=gray&color=%23e01595&logo=$(logo sswg)"
 
