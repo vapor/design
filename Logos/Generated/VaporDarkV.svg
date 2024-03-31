@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280px" height="640px" viewBox="0 0 1280 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>VaporDarkV</title>
+    <defs>
+        <linearGradient x1="100%" y1="37.5%" x2="0%" y2="62.5%" id="linearGradient-1">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="1" y="0" width="1280" height="640"></rect>
+        <polygon id="path-3" points="149.791653 149.673412 150.67278 149.673412 150.67278 181.368958 149.791653 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-4" points="149.791653 181.368958 150.67278 180.488526 150.67278 211.303641 149.791653 212.184073 0 94.2062065 0 63.3910922"></polygon>
+        <polygon id="path-5" points="149.311927 149.673412 149.311927 182.24939 0 64.2715241 0 31.6955461"></polygon>
+        <polygon id="path-6" points="149.311927 181.368958 149.311927 212.184073 0 95.0866383 1.32615631e-13 63.3910922"></polygon>
+        <linearGradient x1="-374.95494%" y1="206.085407%" x2="354.390262%" y2="-254.362339%" id="linearGradient-7">
+            <stop stop-color="#E040FB" offset="0%"></stop>
+            <stop stop-color="#3DC3FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M638.429952,241 C638.429952,241 682,185.665059 682,161.234834 C682,136.80461 662.524387,117 638.5,117 C614.475613,117 595,136.80461 595,161.234834 C595,185.665059 638.429952,241 638.429952,241 Z" id="path-8"></path>
+    </defs>
+    <g id="VaporDarkV" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#000000" x="0" y="0" width="1280" height="640"></rect>
+        <g id="Rectangle">
+            <use fill="#000000" xlink:href="#path-2"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+        </g>
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(491, 61)">
+            <polygon id="Path-2" fill="#FFFFFF" points="0 122.690909 145.494118 0 298 122.690909 298 123.567273 149 241 0 123.567273"></polygon>
+            <g id="left" transform="translate(0, 123)">
+                <path d="M149.791653,117.977866 L150.67278,117.977866 C150.863028,132.661552 150.863028,143.520212 150.67278,150.553844 C150.482532,157.587476 150.188823,157.587476 149.791653,150.553844 L0,32.5759779 L0,0 L149.791653,117.977866 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(223, 229.5) scale(-1, 1) translate(-223, -229.5)translate(148, 123)">
+                <polygon id="Path" fill="#E040FB" points="149.311927 117.977866 149.311927 150.553844 6.63078155e-14 32.5759779 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-5"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-5"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-6"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-6"></use>
+                </g>
+            </g>
+        </g>
+        <text id="Vapor" font-family="Roboto-Black, Roboto" font-size="128" font-weight="800" fill="#FFFFFF">
+            <tspan x="468.03125" y="548">Vapor</tspan>
+        </text>
+        <g id="Shape" fill-rule="nonzero" transform="translate(638.5, 179) scale(-1, 1) rotate(-130) translate(-638.5, -179)">
+            <use fill="#000000" xlink:href="#path-8"></use>
+            <use fill-opacity="0.15" fill="url(#linearGradient-7)" xlink:href="#path-8"></use>
+        </g>
+    </g>
+</svg>

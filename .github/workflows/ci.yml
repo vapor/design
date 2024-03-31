@@ -9,17 +9,17 @@ on:
 
 jobs:
   build:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
     name: Test, Build, and Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: aws-actions/configure-aws-credentials@v2
+      - uses: aws-actions/configure-aws-credentials@v4
+        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
         with:
           aws-access-key-id: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
           aws-region: 'us-east-1'
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -29,6 +29,7 @@ jobs:
       - run: cfn-lint -t stack.yml
       - run: npm run build
       - name: Create S3 Bucket
+        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
         env:
           BUCKET: ${{ format('vapor-design-pulls-pr{0}', github.event.number) }}
         run: |
@@ -42,7 +43,8 @@ jobs:
                 --website-configuration '{"IndexDocument":{"Suffix":"index.html"},"ErrorDocument":{"Key":"404.html"}}'
             fi
       - name: Deploy S3 Website
-        uses: danburtenshaw/s3-website-pr-action@v2
+        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
+        uses: rishabhrao/s3-website-https-pr-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

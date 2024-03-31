@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="340px" height="381px" viewBox="0 0 340 381" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Vapor 4 Logo Dark</title>
+    <defs>
+        <polygon id="path-1" points="170 170 171 170 171 206 170 207 0 73 0 36"></polygon>
+        <polygon id="path-2" points="170 206 171 205 171 240 170 241 0 107 0 72"></polygon>
+        <polygon id="path-3" points="170 170 170 207 0 73 0 36"></polygon>
+        <polygon id="path-4" points="170 206 170 241 0 108 1.50990331e-13 72"></polygon>
+    </defs>
+    <g id="Vapor-4-Logo-Dark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blue-left-/-pink-right-/-black-top">
+            <path d="M166,2.84217094e-13 L340,140 L340,141 L170,275 L1.13686838e-13,141 L1.13686838e-13,140 L166,2.84217094e-13 Z M107.445874,91.5966223 L107.46507,91.688342 C108.090671,94.6666048 123.936299,169.295686 144.495234,186.546681 C165.473739,204.149737 196.581683,201.614314 213.97677,180.883655 C231.371858,160.152997 228.466925,129.077381 207.48842,111.474325 C186.509914,93.8712694 107.445874,91.5966223 107.445874,91.5966223 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            <g id="left" transform="translate(0, 140)">
+                <path d="M170,134 L171,134 C171.215915,150.677823 171.215915,163.011156 171,171 C170.784085,178.988844 170.450752,178.988844 170,171 L0,37 L0,0 L170,134 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(255, 260.5) scale(-1, 1) translate(-255, -260.5)translate(170, 140)">
+                <polygon id="Path" fill="#E040FB" points="170 134 170 171 7.54951657e-14 37 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

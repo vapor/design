@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Vapor 4 Logo Small</title>
+    <defs>
+        <polygon id="path-1" points="57.3255814 56.4315353 57.6627907 56.4315353 57.6627907 68.3817427 57.3255814 68.7136929 0 24.2323651 0 11.9502075"></polygon>
+        <polygon id="path-2" points="57.3255814 68.3817427 57.6627907 68.0497925 57.6627907 79.6680498 57.3255814 80 0 35.5186722 0 23.9004149"></polygon>
+        <polygon id="path-3" points="58 56.4315353 58 68.7136929 0 24.2323651 0 11.9502075"></polygon>
+        <polygon id="path-4" points="58 68.3817427 58 80 0 35.8506224 5.15143483e-14 23.9004149"></polygon>
+    </defs>
+    <g id="Vapor-4-Logo-Small" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(7, 0)">
+            <polygon id="Path-2" fill="#333333" points="0 46.8363636 55.6588235 0 114 46.8363636 114 47.1709091 57 92 0 47.1709091"></polygon>
+            <g id="left" transform="translate(0, 48)">
+                <path d="M57.3255814,44.4813278 L57.6627907,44.4813278 C57.7355991,50.0175346 57.7355991,54.1115872 57.6627907,56.7634855 C57.5899823,59.4153838 57.4775792,59.4153838 57.3255814,56.7634855 L0,12.2821577 L0,0 L57.3255814,44.4813278 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(85, 88) scale(-1, 1) translate(-85, -88)translate(56, 48)">
+                <polygon id="Path" fill="#E040FB" points="58 44.4813278 58 56.7634855 2.57571742e-14 12.2821577 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+            <path d="M53.8926355,69.0878076 C53.8926355,69.0878076 70.3473468,48.2889841 70.3383981,39.0992772 C70.3294421,29.9095704 62.9579399,22.4526696 53.8736834,22.4438151 C44.7894269,22.4349764 37.4324393,29.8775342 37.4413834,39.067241 C37.4503439,48.2569478 53.8926355,69.0878076 53.8926355,69.0878076 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(53.8899, 45.7658) scale(-1, 1) rotate(-130) translate(-53.8899, -45.7658)"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="178px" height="200px" viewBox="0 0 178 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Vapor Logo Light Cropped</title>
+    <defs>
+        <polygon id="path-1" points="88.9534884 89.5850622 89.4767442 89.5850622 89.4767442 108.556017 88.9534884 109.082988 0 38.4688797 0 18.9709544"></polygon>
+        <polygon id="path-2" points="88.9534884 108.556017 89.4767442 108.029046 89.4767442 126.473029 88.9534884 127 0 56.3858921 0 37.9419087"></polygon>
+        <polygon id="path-3" points="89 89.5850622 89 109.082988 0 38.4688797 0 18.9709544"></polygon>
+        <polygon id="path-4" points="89 108.556017 89 127 0 56.9128631 7.90478794e-14 37.9419087"></polygon>
+    </defs>
+    <g id="Vapor-Logo-Light-Cropped" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blue-left-/-pink-right-/-black-top">
+            <path d="M86.9058824,0 L178,73.3090909 L178,73.8327273 L89,144 L0,73.8327273 L0,73.3090909 L86.9058824,0 Z M56.263421,48.0825815 L56.2510751,48.0822164 C56.2510751,48.0822164 64.6646402,88.6843175 75.6474897,97.9247848 C86.6303692,107.165216 102.916293,105.834286 112.02315,94.9520646 C121.129973,84.0698146 119.609155,67.7571556 108.626297,58.5166982 C97.6434257,49.2762569 56.2510751,48.0822164 56.2510751,48.0822164 Z" id="Combined-Shape" fill="#333333"></path>
+            <g id="left" transform="translate(0, 73)">
+                <path d="M88.9534884,70.6141079 L89.4767442,70.6141079 C89.5897228,79.4028362 89.5897228,85.9021446 89.4767442,90.1120332 C89.3637656,94.3219218 89.189347,94.3219218 88.9534884,90.1120332 L0,19.4979253 L0,0 L88.9534884,70.6141079 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(133.5, 136.5) scale(-1, 1) translate(-133.5, -136.5)translate(89, 73)">
+                <polygon id="Path" fill="#E040FB" points="89 70.6141079 89 90.1120332 3.95239397e-14 19.4979253 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

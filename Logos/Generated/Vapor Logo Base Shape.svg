@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Vapor Logo Base Shape</title>
+    <g id="Vapor-Logo-Base-Shape" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blue-left-/-pink-right-/-black-top" transform="translate(1, 0)">
+            <polygon id="Path-2" fill="#333333" points="-5.68434189e-14 5.78008299 6.83529412 0 14 6 7 11.560166"></polygon>
+            <g id="left" transform="translate(0, 5)" fill="#3DC4FF">
+                <polygon id="Path" points="7 6.56016598 7 11 0 5.43983402 0 0.780082988"></polygon>
+            </g>
+            <g id="right" transform="translate(10.5, 11) scale(-1, 1) translate(-10.5, -11)translate(7, 6)" fill="#E040FB">
+                <polygon id="Path" points="7 5.56016598 7 10 0 4.4813278 3.97903932e-13 6.48370246e-14"></polygon>
+            </g>
+            <path d="M6.64621081,8.61160509 C6.64621081,8.61160509 8.66568105,6.05628639 8.65464677,4.91938956 C8.64361249,3.78249273 7.72080173,2.85201637 6.59349124,2.84111246 C5.46618076,2.83020854 4.5612601,3.74300615 4.57229438,4.87990298 C4.58332866,6.01679981 6.64621081,8.61160509 6.64621081,8.61160509 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(6.6134, 5.7263) scale(-1, 1) rotate(-130) translate(-6.6134, -5.7263)"></path>
+        </g>
+    </g>
+</svg>

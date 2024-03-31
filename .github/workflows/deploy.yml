@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: 18.12.1
         cache: npm
@@ -21,7 +21,7 @@ jobs:
       run: swift run && npm install && npm run build
     - name: Configure AWS credentials
       id: cred
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-access-key-id: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
@@ -31,7 +31,7 @@ jobs:
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
         name: vapor-design-stack
-        template: stack.yaml
+        template: stack.yml
         no-fail-on-empty-changeset: "1"
         parameter-overrides: >-
           DomainName=design.vapor.codes,

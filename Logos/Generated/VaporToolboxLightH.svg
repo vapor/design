@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="766px" height="128px" viewBox="0 0 766 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>VaporToolboxLightH</title>
+    <defs>
+        <polygon id="path-1" points="57.3255814 57.1369295 57.6627907 57.1369295 57.6627907 69.2365145 57.3255814 69.5726141 0 24.5352697 0 12.0995851"></polygon>
+        <polygon id="path-2" points="57.3255814 69.2365145 57.6627907 68.9004149 57.6627907 80.6639004 57.3255814 81 0 35.9626556 0 24.1991701"></polygon>
+        <polygon id="path-3" points="57 57.1369295 57 69.5726141 0 24.5352697 0 12.0995851"></polygon>
+        <polygon id="path-4" points="57 69.2365145 57 81 0 36.2987552 5.06261699e-14 24.1991701"></polygon>
+    </defs>
+    <g id="VaporToolboxLightH" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blue-left-/-pink-right-/-black-top">
+            <polygon id="Path-2" fill="#333333" points="0 46.8363636 55.6588235 0 114 46.8363636 114 47.1709091 57 92 0 47.1709091"></polygon>
+            <g id="left" transform="translate(0, 47)">
+                <path d="M57.3255814,45.0373444 L57.6627907,45.0373444 C57.7355991,50.6427538 57.7355991,54.787982 57.6627907,57.473029 C57.5899823,60.1580761 57.4775792,60.1580761 57.3255814,57.473029 L0,12.4356846 L0,0 L57.3255814,45.0373444 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(85.5, 87.5) scale(-1, 1) translate(-85.5, -87.5)translate(57, 47)">
+                <polygon id="Path" fill="#E040FB" points="57 45.0373444 57 57.473029 2.5313085e-14 12.4356846 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+        </g>
+        <path d="M54.7399317,66.0454917 C54.7399317,66.0454917 69.6098764,47.2560632 69.6247873,38.9723603 C69.6396481,30.6886574 63.0199892,23.9853142 54.83934,24 C46.6586909,24.0147342 40.0148971,30.741927 40,39.0256299 C39.9851254,47.3093329 54.7399317,66.0454917 54.7399317,66.0454917 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(54.8124, 45.0227) scale(-1, 1) rotate(-130) translate(-54.8124, -45.0227)"></path>
+        <text id="VaporToolbox" font-family="Roboto-Black, Roboto" font-size="100" font-weight="800" fill="#262626">
+            <tspan x="135" y="104">Vapor</tspan>
+            <tspan x="404.482422" y="104" font-family="Roboto-Regular, Roboto" font-weight="normal">Toolbox</tspan>
+        </text>
+    </g>
+</svg>

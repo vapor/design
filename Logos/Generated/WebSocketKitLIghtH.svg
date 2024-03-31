@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="767px" height="128px" viewBox="0 0 767 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>WebSocketKitLIghtH</title>
+    <defs>
+        <polygon id="path-1" points="57.3255814 57.1369295 57.6627907 57.1369295 57.6627907 69.2365145 57.3255814 69.5726141 0 24.5352697 0 12.0995851"></polygon>
+        <polygon id="path-2" points="57.3255814 69.2365145 57.6627907 68.9004149 57.6627907 80.6639004 57.3255814 81 0 35.9626556 0 24.1991701"></polygon>
+        <polygon id="path-3" points="57 57.1369295 57 69.5726141 0 24.5352697 0 12.0995851"></polygon>
+        <polygon id="path-4" points="57 69.2365145 57 81 0 36.2987552 5.06261699e-14 24.1991701"></polygon>
+    </defs>
+    <g id="WebSocketKitLIghtH" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blue-left-/-pink-right-/-black-top">
+            <polygon id="Path-2" fill="#333333" points="0 46.8363636 55.6588235 0 114 46.8363636 114 47.1709091 57 92 0 47.1709091"></polygon>
+            <g id="left" transform="translate(0, 47)">
+                <path d="M57.3255814,45.0373444 L57.6627907,45.0373444 C57.7355991,50.6427538 57.7355991,54.787982 57.6627907,57.473029 C57.5899823,60.1580761 57.4775792,60.1580761 57.3255814,57.473029 L0,12.4356846 L0,0 L57.3255814,45.0373444 Z" id="Path" fill="#40C4FF"></path>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#3DC4FF" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <g id="right" transform="translate(85.5, 87.5) scale(-1, 1) translate(-85.5, -87.5)translate(57, 47)">
+                <polygon id="Path" fill="#E040FB" points="57 45.0373444 57 57.473029 2.5313085e-14 12.4356846 0 0"></polygon>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.25" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+                <g id="Path">
+                    <use fill="#E040FB" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.5" fill="#FFFFFF" xlink:href="#path-4"></use>
+                </g>
+            </g>
+        </g>
+        <text id="WebSocketKit" font-family="Roboto-Black, Roboto" font-size="100" font-weight="800" fill="#262626">
+            <tspan x="135" y="104">WebSocket</tspan>
+            <tspan x="646.816406" y="104" font-family="Roboto-Regular, Roboto" font-weight="normal">Kit</tspan>
+        </text>
+        <path d="M77.4515223,59.2378003 L75.2434376,42.6387792 L66.585129,34.2378003 L62.4515223,38.7417984 L68.8590064,44.9589888 L70.6861324,58.694197 L77.4515223,59.2378003 Z M78.4813503,61.7916354 L55.2290814,59.8881274 L48.9396584,53.8328154 L50.9866454,51.6508878 L56.1811971,56.6523881 L65.6262514,57.4255916 L55.0955014,47.2706862 L57.1575803,45.0724293 L67.6860397,55.2097915 L66.4433407,45.6920741 L61.2687269,40.7097708 L63.3001749,38.5439268 L50.217239,25.9006403 L27,24 L34.5232584,31.2436624 L34.5255766,31.261417 L48.3151713,32.390279 L53.8282557,37.698474 L47.6420192,44.2932447 L42.1289347,38.9850498 L41.6314136,35.174581 L34.9652542,34.628867 L35.8260916,41.2219418 L48.8823724,53.7929962 L44.8039099,58.1405564 L53.302467,66.3232713 L86,69 L78.4813503,61.7916354 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(56.5, 46.5) rotate(-43) translate(-56.5, -46.5)"></path>
+    </g>
+</svg>
