@@ -51,6 +51,10 @@ body {
             color-stop(0.50, rgba(0, 0, 0, 0.5)),
             color-stop(0.65, rgba(0, 0, 0, 0)),
             color-stop(1.00, rgba(0, 0, 0, 0)));
+
+    @include media-breakpoint-down(md) {
+        margin-bottom: -40%;
+    }
 }
 
 .main-site-main-page {
@@ -332,12 +336,8 @@ h2 {
         right: 15%;
 
         @include media-breakpoint-down(md) {
-            bottom: -35%;
-            width: 65%;
-        }
-
-        @include media-breakpoint-down(sm) {
-            bottom: -30%;
+            width: 80%;
+            right: 10%;
         }
 
         @include media-breakpoint-up(md) {
@@ -368,6 +368,10 @@ h2 {
             /* or 150% */
             padding: 3%;
             width: 85%;
+
+            @include media-breakpoint-down(md) {
+                font-size: 14px;
+            }
         }
     }
 
@@ -502,6 +506,10 @@ h2 {
 
         @include media-breakpoint-down(lg) {
             margin-top: 128px;
+        }
+
+        @include media-breakpoint-down(md) {
+            margin-top: 64px;
         }
 
         h3 {
@@ -659,7 +667,6 @@ h2 {
         content: "";
         background-size: cover;
         position: absolute;
-        height: 40%;
         width: 100%;
         z-index: -1;
         overflow-x: hidden;
@@ -682,7 +689,7 @@ h2 {
         }
 
         @include media-breakpoint-down(sm) {
-            height: 75%;
+            height: 100%;
             max-height: 100%;
             filter: blur(100px);
         }
@@ -693,6 +700,12 @@ h2 {
 
     @include media-breakpoint-down(lg) {
         padding: 96px 16px;
+    }
+
+    @include media-breakpoint-down(md) {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 48px 16px;
     }
 
     h2 {
@@ -740,6 +753,10 @@ h2 {
 #discord {
     margin-top: 200px;
 
+    @include media-breakpoint-down(md) {
+        margin-top: 48px;
+    }
+
     h2 {
         margin-top: 0;
         margin-bottom: 24px;
@@ -753,6 +770,10 @@ h2 {
 
 #sponsors {
     margin-top: 100px;
+
+    @include media-breakpoint-down(md) {
+        margin-top: 0;
+    }
 
     .sponsors-list {
         display: flex !important;
