@@ -9,7 +9,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-          { from: 'static' }
+        { from: 'static' }
       ]
     }),
     new miniCssExtractPlugin()
@@ -17,6 +17,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'Output'),
+    publicPath: '/',
     library: {
       name: 'Vapor',
       type: 'var',
@@ -48,13 +49,16 @@ module.exports = {
         test: /\.(scss)$/,
         use: [
           {
-            loader: miniCssExtractPlugin.loader
+            loader: miniCssExtractPlugin.loader,
+            options: {
+              publicPath: '/'
+            }
           },
           {
             loader: 'css-loader',
             options: {
               sourceMap: true
-            }
+            },
           },
           {
             loader: 'postcss-loader',
