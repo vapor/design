@@ -44,9 +44,10 @@ jobs:
             fi
       - name: Deploy S3 Website
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
-        uses: rishabhrao/s3-website-https-pr-action@v1.1.9
+        uses: reggionick/s3-deploy@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          bucket-prefix: "vapor-design-pulls"
-          folder-to-copy: "./Output"
+          folder: "./Output"
+          bucket: ${{ format('vapor-design-pulls-pr{0}', github.event.number) }}
+          bucket-region: 'eu-west-1'

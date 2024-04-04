@@ -17,7 +17,6 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'Output'),
-    publicPath: '/',
     library: {
       name: 'Vapor',
       type: 'var',
