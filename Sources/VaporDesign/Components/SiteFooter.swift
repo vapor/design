@@ -142,7 +142,7 @@ public struct SiteFooter: Component {
                 }.id("footer-bottom")
             }.class("container mt-5")
         }.class("mt-5")
-        let jsScript = Script(url: VaporDesignUtilities.buildResourceLink(for: "main.js", isLocal: isLocal))
+        let jsScript = Script(url: VaporDesignUtilities.buildResourceLink(for: "/main.js", isLocal: isLocal))
         return ComponentGroup {
             footer
             jsScript

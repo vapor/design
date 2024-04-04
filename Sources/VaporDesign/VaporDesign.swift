@@ -25,12 +25,12 @@ public struct VaporDesign<Site: Website> {
             for: page,
             on: context.site,
             stylesheetPaths: [
-                Path(VaporDesignUtilities.buildResourceLink(for: "main.css", isLocal: isLocal)),
+                Path(VaporDesignUtilities.buildResourceLink(for: "/main.css", isLocal: isLocal)),
             ],
             scripts: [
-                Path(VaporDesignUtilities.buildResourceLink(for: "js/detectColorScheme.js", isLocal: isLocal)),
-                Path(VaporDesignUtilities.buildResourceLink(for: "js/scrollMainSiteShowcase.js", isLocal: isLocal)),
-                Path(VaporDesignUtilities.buildResourceLink(for: "js/mainSiteScrollNavbar.js", isLocal: isLocal)),
+                Path(VaporDesignUtilities.buildResourceLink(for: "/js/detectColorScheme.js", isLocal: isLocal)),
+                Path(VaporDesignUtilities.buildResourceLink(for: "/js/scrollMainSiteShowcase.js", isLocal: isLocal)),
+                Path(VaporDesignUtilities.buildResourceLink(for: "/js/mainSiteScrollNavbar.js", isLocal: isLocal)),
             ],
             isLocal: isLocal
         )
