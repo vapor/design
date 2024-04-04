@@ -1,18 +1,17 @@
-import Plot
 import Foundation
+import Plot
 
 public struct SiteFooter: Component {
-    
     let isLocal: Bool
     let isDemo: Bool
     let currentSite: CurrentSite
-    
+
     public init(isLocal: Bool = false, isDemo: Bool = false, currentSite: CurrentSite) {
         self.isLocal = isLocal
         self.isDemo = isDemo
         self.currentSite = currentSite
     }
-    
+
     public var body: Component {
         guard let year = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year else {
             fatalError("Unable to get the current year")
@@ -120,7 +119,7 @@ public struct SiteFooter: Component {
                     Div {
                         Text("&copy; QuTheory, LLC \(year)")
                     }.id("footer-copyright").class("my-auto")
-                    
+
                     Div {
                         List {
                             ListItem {
@@ -143,7 +142,7 @@ public struct SiteFooter: Component {
                 }.id("footer-bottom")
             }.class("container mt-5")
         }.class("mt-5")
-        let jsScript = Script(url: VaporDesignUtilities.buildResourceLink(for: "/main.js", isLocal: isLocal))
+        let jsScript = Script(url: VaporDesignUtilities.buildResourceLink(for: "main.js", isLocal: isLocal))
         return ComponentGroup {
             footer
             jsScript
