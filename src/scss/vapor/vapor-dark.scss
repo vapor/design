@@ -7,13 +7,15 @@
     body {
         background: $grey-900;
         color: $grey-500;
+        background-image: url(../../images/main-background-dark.jpg);
         background-position: top;
         background-repeat: no-repeat;
-        background-position-y: 250px;
+        background-size: 100% 500px;
+    }
 
-        @include media-breakpoint-up(md) {
-            background-image: url(../../images/main-background-dark.webp);
-        }
+    body.main-site-main-page {
+        background-position-y: 250px;
+        background-size: initial;
     }
 
     .hljs {

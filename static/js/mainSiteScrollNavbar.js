@@ -1,8 +1,13 @@
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-    const navbar = document.querySelector(".navbar");
-    if (document.body.scrollTop > 1200 || document.documentElement.scrollTop > 1200) {
+    const navbar = document.querySelector(".main-site-main-page .navbar");
+
+    if (navbar === null) {
+        return;
+    }
+
+    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
         navbar.style.top = "0";
     } else {
         navbar.style.top = "-80px";
