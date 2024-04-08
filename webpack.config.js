@@ -20,7 +20,6 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'Output'),
-    publicPath: process.env.PR_NAME ? `/${process.env.PR_NAME}/` : '',
     library: {
       name: 'Vapor',
       type: 'var',

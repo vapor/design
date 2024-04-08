@@ -27,10 +27,7 @@ jobs:
       - run: swift run
       - run: npm install
       - run: cfn-lint -t stack.yml
-      - name: Build Website
-        env:
-          PR_NAME: ${{ format('vapor-design-pulls-pr{0}', github.event.number) }}
-        run: npm run build --env.PR_NAME=${PR_NAME}
+      - run: npm run build
       - name: Create S3 Bucket
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
         env:
