@@ -48,6 +48,7 @@ $grey-100: #FAFAFD;
 $off-black: #1C1C1F;
 $off-light-grey: #EAECF0;
 $off-black-2: #101828;
+$code-error-sidebar-background-red: #b2235f1a;
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica, sans-serif;
@@ -120,14 +121,13 @@ body {
 
 .btn {
     font-size: 16px;
-    line-height: 150%;
+    line-height: 100%;
     --#{$prefix}btn-border-radius: 16px;
     --#{$prefix}btn-border-color: transparent;
     padding-top: 16px;
     padding-bottom: 16px;
     padding-left: 24px;
     padding-right: 24px;
-
 }
 
 .btn-small {
@@ -145,10 +145,24 @@ body {
     background: linear-gradient(180deg, $pink-300 0%, $pink-500 100%);
     --#{$prefix}btn-color: white;
     color: white;
+    border: none;
+
+    a {
+        color: white;
+        display: inline-flex;
+    }
+
+
+    a:hover {
+        color: white;
+        text-decoration: none;
+    }
 
     .vapor-icon {
         background-color: white;
-
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;
     }
 }
 
@@ -178,6 +192,12 @@ h3 {
 @include media-breakpoint-up(lg) {
     .w-lg-50 {
         width: 50% !important;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .w-mobile-100 {
+        width: 100%;
     }
 }
 
@@ -271,7 +291,9 @@ h3 {
             text-decoration: none;
         }
 
-        li a.active, a:hover, li a:active {
+        li a.active,
+        a:hover,
+        li a:active {
             color: $blue-300;
         }
 
@@ -282,5 +304,46 @@ h3 {
         li:last-child {
             margin-bottom: 0;
         }
+    }
+}
+
+.btn-icon {
+    height: 21px;
+    width: 21px;
+}
+
+.vapor-feature-card {
+    border-radius: 24px;
+    padding: 48px;
+    gap: 24px;
+    border: none;
+
+    @include media-breakpoint-down(lg) {
+        padding: 24px;
+    }
+
+    .feature-card-icon {
+        height: 48px;
+        width: 48px;
+        background-color: $blue-300;
+    }
+
+    .card-title {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 125%;
+        margin-top: 28px;
+
+        @include media-breakpoint-down(lg) {
+            font-size: 24px;
+        }
+    }
+
+    .card-text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
     }
 }

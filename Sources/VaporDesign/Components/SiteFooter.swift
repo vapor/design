@@ -1,18 +1,17 @@
-import Plot
 import Foundation
+import Plot
 
 public struct SiteFooter: Component {
-    
     let isLocal: Bool
     let isDemo: Bool
     let currentSite: CurrentSite
-    
+
     public init(isLocal: Bool = false, isDemo: Bool = false, currentSite: CurrentSite) {
         self.isLocal = isLocal
         self.isDemo = isDemo
         self.currentSite = currentSite
     }
-    
+
     public var body: Component {
         guard let year = Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year else {
             fatalError("Unable to get the current year")
@@ -21,9 +20,7 @@ public struct SiteFooter: Component {
             Div {
                 Div {
                     Div {
-                        Span {
-                            
-                        }.class("d-inline-block align-text-top")
+                        Span().class("d-inline-block align-text-top")
                             .accessibilityLabel("Vapor Logo")
                             .id("vapor-logo-footer")
                             .width(197)
@@ -48,7 +45,7 @@ public struct SiteFooter: Component {
                                         }
                                     }
                                     ListItem {
-                                        Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank)
+                                        Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank).class("nav-link")
                                     }
                                     ListItem {
                                         if isDemo {
@@ -89,28 +86,28 @@ public struct SiteFooter: Component {
                                         if currentSite == .blog {
                                             Link("Blog", url: "/")
                                         } else {
-                                            Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank)
+                                            Link("Blog", url: "https://blog.vapor.codes").linkTarget(.blank).class("nav-link")
                                         }
                                     }
                                     ListItem {
                                         if currentSite == .docs {
                                             Link("Framework Docs", url: "/")
                                         } else {
-                                            Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank)
+                                            Link("Framework Docs", url: "https://docs.vapor.codes").linkTarget(.blank).class("nav-link")
                                         }
                                     }
                                     ListItem {
                                         if currentSite == .apiDocs {
-                                            Link("API Docs", url: "/")
+                                            Link("API Docs", url: "/").class("nav-link")
                                         } else {
-                                            Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank)
+                                            Link("API Docs", url: "https://api.vapor.codes").linkTarget(.blank).class("nav-link")
                                         }
                                     }
                                     ListItem {
-                                        Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil)
+                                        Link("Press Kit", url: "https://design.vapor.codes/VaporPressKit.zip").attribute(named: "download", value: nil).class("nav-link")
                                     }
                                     ListItem {
-                                        Link("Help", url: "https://vapor.team").linkTarget(.blank)
+                                        Link("Help", url: "https://vapor.team").linkTarget(.blank).class("nav-link")
                                     }
                                 }
                             }.id("footer-resources-links").class("col-6")
@@ -122,18 +119,23 @@ public struct SiteFooter: Component {
                     Div {
                         Text("&copy; QuTheory, LLC \(year)")
                     }.id("footer-copyright").class("my-auto")
-                    
+
                     Div {
                         List {
                             ListItem {
                                 Link(url: "https://twitter.com/codevapor") {
                                     Span().class("vapor-icon icon-twitter-fill")
-                                }.linkTarget(.blank)
+                                }.linkTarget(.blank).attribute(named: "rel", value: "me")
+                            }.class("me-4")
+                            ListItem {
+                                Link(url: "https://hachyderm.io/@codevapor") {
+                                    Span().class("vapor-icon icon-mastodon-fill")
+                                }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }.class("me-4")
                             ListItem {
                                 Link(url: "https://github.com/vapor") {
                                     Span().class("vapor-icon icon-github-fill")
-                                }.linkTarget(.blank)
+                                }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }
                         }.class("d-flex")
                     }.id("footer-social-links").class("ms-auto")

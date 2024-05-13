@@ -224,3 +224,83 @@ hr {
 code {
     color: $pink-300;
 }
+
+.main-page-caption {
+    color: $grey-700;
+}
+
+.btn-link {
+    color: $grey-800;
+
+    a {
+        color: $grey-800;
+    }
+
+    a:hover {
+        color: $grey-900;
+
+        .vapor-icon {
+            background-color: $grey-900;
+        }
+    }
+}
+
+.btn-secondary-link {
+    color: $grey-600;
+
+    a {
+        color: $grey-600;
+    }
+
+    a:hover {
+        color: $grey-700;
+
+        .vapor-icon {
+            background-color: $grey-700;
+        }
+    }
+}
+
+.icon-secondary {
+    background-color: $grey-600;
+}
+
+#vapor-hero-logo {
+    background-image: url(../../images/logo-main-black.svg);
+}
+
+.main-site-main-page {
+    background-image: url(../../images/main-site-homepage-hero-light.svg);
+}
+
+.used-by-caption {
+    color: $grey-600;
+}
+
+.used-by-icon {
+    background-color: $grey-700;
+}
+
+.vapor-feature-card {
+    background-color: $grey-100;
+
+    .feature-card-icon {
+        background-color: $blue-300;
+    }
+}
+
+.main-site-learn-more-link {
+    color: $grey-800;
+
+    .vapor-icon {
+        background-color: $grey-800;
+    }
+}
+
+.main-site-learn-more-link:hover {
+    color: $grey-900;
+
+    .vapor-icon {
+        background-color: $grey-900;
+    }
+}
