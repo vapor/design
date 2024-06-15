@@ -14,10 +14,11 @@
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 24px;
     color: #8194F7;
+    white-space: pre-wrap;
 
     tr:first-child td {
         padding-top: 48px;
-        
+
         @include media-breakpoint-down(lg) {
             padding-top: 24px;
         }
@@ -25,7 +26,7 @@
 
     tr:last-child td {
         padding-bottom: 48px;
-        
+
         @include media-breakpoint-down(lg) {
             padding-bottom: 24px;
         }
@@ -149,7 +150,7 @@
     border-collapse: collapse;
 
     .hljs-ln-n:before {
-        content:attr(data-line-number);
+        content: attr(data-line-number);
     }
 }
 

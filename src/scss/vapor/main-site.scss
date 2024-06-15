@@ -37,35 +37,33 @@ body {
 }
 
 .main-code-demo {
-    .hljs {
-        font-size: large;
+    @include media-breakpoint-up(md) {
+        .hljs {
+            font-size: large;
+        }
     }
 
     margin-top: 64px;
     max-width: 900px;
-    mask-image: -webkit-gradient(
-        linear,
+    mask-image: -webkit-gradient(linear,
         left top,
         left bottom,
         color-stop(0, rgb(0, 0, 0)),
         color-stop(0.4, rgb(0, 0, 0)),
         color-stop(0.6, rgba(0, 0, 0, 0.5)),
         color-stop(0.7, rgba(0, 0, 0, 0)),
-        color-stop(1, rgba(0, 0, 0, 0))
-    );
-    -webkit-mask-image: -webkit-gradient(
-        linear,
+        color-stop(1, rgba(0, 0, 0, 0)));
+    -webkit-mask-image: -webkit-gradient(linear,
         left top,
         left bottom,
         color-stop(0, rgb(0, 0, 0)),
         color-stop(0.4, rgb(0, 0, 0)),
         color-stop(0.6, rgba(0, 0, 0, 0.5)),
         color-stop(0.7, rgba(0, 0, 0, 0)),
-        color-stop(1, rgba(0, 0, 0, 0))
-    );
+        color-stop(1, rgba(0, 0, 0, 0)));
 
     @include media-breakpoint-down(md) {
-        margin-bottom: -40%;
+        margin-bottom: -20%;
     }
 }
 
@@ -280,17 +278,21 @@ h2 {
     }
 
     .blurry-background {
-        background: linear-gradient(
-            230.51deg,
-            #23acf040 27.41%,
-            #df3efb40 67%,
-            #70198040 80.12%
-        );
+        background: linear-gradient(230.51deg,
+                #23acf040 27.41%,
+                #df3efb40 67%,
+                #70198040 80.12%);
         filter: blur(100px);
     }
 
     span {
         color: $pink-300;
+    }
+
+    .col.order-2 {
+        @include media-breakpoint-down(md) {
+            margin-top: 64px;
+        }
     }
 
     .code-outline-right {
@@ -305,16 +307,13 @@ h2 {
         opacity: 0.8;
         background:
             linear-gradient(white, white) padding-box,
-            linear-gradient(
-                    90deg,
-                    rgba(148, 168, 178, 0.03) 0%,
-                    #f6f7f7 4.21%,
-                    rgba(148, 168, 178, 0.888453) 7.98%,
-                    #94a8b2 37.5%,
-                    rgba(148, 168, 178, 0.117173) 90.41%,
-                    rgba(148, 168, 178, 0) 100%
-                )
-                border-box;
+            linear-gradient(90deg,
+                rgba(148, 168, 178, 0.03) 0%,
+                #f6f7f7 4.21%,
+                rgba(148, 168, 178, 0.888453) 7.98%,
+                #94a8b2 37.5%,
+                rgba(148, 168, 178, 0.117173) 90.41%,
+                rgba(148, 168, 178, 0) 100%) border-box;
 
         @include media-breakpoint-down(lg) {
             height: 120%;
@@ -335,16 +334,13 @@ h2 {
         transform: matrix(-1, 0, 0, 1, 0, 0);
         background:
             linear-gradient(white, white) padding-box,
-            linear-gradient(
-                    90deg,
-                    rgba(148, 168, 178, 0.01) 0%,
-                    #f6f7f7 4.21%,
-                    rgba(148, 168, 178, 0.888453) 9.96%,
-                    #94a8b2 60.32%,
-                    rgba(148, 168, 178, 0.117173) 90.41%,
-                    rgba(148, 168, 178, 0.03) 100%
-                )
-                border-box;
+            linear-gradient(90deg,
+                rgba(148, 168, 178, 0.01) 0%,
+                #f6f7f7 4.21%,
+                rgba(148, 168, 178, 0.888453) 9.96%,
+                #94a8b2 60.32%,
+                rgba(148, 168, 178, 0.117173) 90.41%,
+                rgba(148, 168, 178, 0.03) 100%) border-box;
 
         @include media-breakpoint-down(lg) {
             height: 120%;
@@ -354,8 +350,8 @@ h2 {
 
     .code-error {
         position: absolute;
-        background: rgba(179, 35, 95, 0.21);
-        border: 1px solid rgba(221, 214, 254, 0.1);
+        background: $code-error-background;
+        border: 1px solid $code-error-border;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 24px;
@@ -377,7 +373,7 @@ h2 {
         }
 
         .code-error-sidebar {
-            background-color: $code-error-sidebar-background-red;
+            background-color: $code-error-background;
             border-top-left-radius: 24px;
             border-bottom-left-radius: 24px;
             text-align: center;
@@ -440,7 +436,7 @@ h2 {
 
     .errored table {
         tr:nth-child(5) {
-            background: rgba(128, 25, 68, 0.3);
+            background: $code-error-background;
         }
     }
 
