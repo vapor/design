@@ -12,9 +12,7 @@ extension Theme where Site == DesignSite {
 private struct VaporThemeHTMLFactory: HTMLFactory {
     typealias Site = DesignSite
 
-    func makeIndexHTML(for index: Index,
-                       context: PublishingContext<Site>) throws -> HTML
-    {
+    func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
         let isDemo = true
         let currentSite: CurrentSite = .blog
         let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), publishedDate: "3rd January 2023")
@@ -34,9 +32,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         return builder.buildHTML(for: index, context: context, body: body)
     }
 
-    func makeSectionHTML(for section: Section<Site>,
-                         context: PublishingContext<Site>) throws -> HTML
-    {
+    func makeSectionHTML(for section: Section<Site>, context: PublishingContext<Site>) throws -> HTML {
         if section.title == "Mainpagedemo" {
             let body: Node<HTML.DocumentContext> = .body {
                 let isDemo = true
@@ -55,35 +51,34 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         }
     }
 
-    func makeItemHTML(for item: Item<Site>,
-                      context: PublishingContext<Site>) throws -> HTML
-    {
+    func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: item, context: context, body: .body())
     }
 
-    func makePageHTML(for page: Page,
-                      context: PublishingContext<Site>) throws -> HTML
-    {
+    func makePageHTML(for page: Page, context: PublishingContext<Site>) throws -> HTML {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: page, context: context, body: .body())
     }
 
-    func makeTagListHTML(for page: TagListPage,
-                         context: PublishingContext<Site>) throws -> HTML?
-    {
+    func makeTagListHTML(for page: TagListPage, context: PublishingContext<Site>) throws -> HTML? {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: page, context: context, body: .body())
     }
 
-    func makeTagDetailsHTML(for page: TagDetailsPage,
-                            context: PublishingContext<Site>) throws -> HTML?
-    {
+    func makeTagDetailsHTML(for page: TagDetailsPage, context: PublishingContext<Site>) throws -> HTML? {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: page, context: context, body: .body())
     }
 
-    func buildComponentDemo(blogPostData: BlogPostExtraData, anotherBlogPostData: BlogPostExtraData, oneMoreBlogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) -> Component {
+    func buildComponentDemo(
+        blogPostData: BlogPostExtraData,
+        anotherBlogPostData: BlogPostExtraData,
+        oneMoreBlogPostData: BlogPostExtraData,
+        item: Item<Site>,
+        site: Site,
+        isDemo: Bool
+    ) -> Component {
         Div {
             H1("Component Guide")
 
@@ -110,11 +105,31 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
 
             Div {
                 Div {
-                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                    let item2 = Item<Site>(
+                        path: "/demo",
+                        sectionID: .posts,
+                        metadata: .init(),
+                        tags: ["Vapor", "Swift", "Framework"],
+                        content: Content(
+                            title: "This is a longer post",
+                            description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.",
+                            body: .init(html: demoPostHTML)
+                        )
+                    )
                     BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
-                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "What we're working on", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                    let item2 = Item<Site>(
+                        path: "/demo",
+                        sectionID: .posts,
+                        metadata: .init(),
+                        tags: ["Vapor", "What we're working on", "Framework"],
+                        content: Content(
+                            title: "This is a longer post",
+                            description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.",
+                            body: .init(html: demoPostHTML)
+                        )
+                    )
                     BlogCard(blogPostData: anotherBlogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
@@ -321,11 +336,36 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("btn btn-primary").class("d-none d-lg-block")
                 }.class("showcase-header")
                 Div {
-                    ShowcaseCard(name: "Sambot", url: "", image: "/images/sambot-card.png", description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services")
-                    ShowcaseCard(name: "Underway NYC", url: "", image: "/images/underway-nyc-card.png", description: "Quickly locate yourself on the official MTA map of NYC and get real-time train arrivals at that subway stop")
-                    ShowcaseCard(name: "SwiftFiddle", url: "", image: "/images/swiftfiddle-card.png", description: "SwiftFiddle is an online playground for creating, sharing and embedding Swift fiddles")
-                    ShowcaseCard(name: "Transeo", url: "", image: "/images/transeo-card.png", description: "Transeo is an educational readiness platform that helps students determine what they want to do after high school")
-                    ShowcaseCard(name: "Sambot", url: "", image: "/images/sambot-card.png", description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services")
+                    ShowcaseCard(
+                        name: "Sambot",
+                        url: "",
+                        image: "/images/sambot-card.png",
+                        description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services"
+                    )
+                    ShowcaseCard(
+                        name: "Underway NYC",
+                        url: "",
+                        image: "/images/underway-nyc-card.png",
+                        description: "Quickly locate yourself on the official MTA map of NYC and get real-time train arrivals at that subway stop"
+                    )
+                    ShowcaseCard(
+                        name: "SwiftFiddle",
+                        url: "",
+                        image: "/images/swiftfiddle-card.png",
+                        description: "SwiftFiddle is an online playground for creating, sharing and embedding Swift fiddles"
+                    )
+                    ShowcaseCard(
+                        name: "Transeo",
+                        url: "",
+                        image: "/images/transeo-card.png",
+                        description: "Transeo is an educational readiness platform that helps students determine what they want to do after high school"
+                    )
+                    ShowcaseCard(
+                        name: "Sambot",
+                        url: "",
+                        image: "/images/sambot-card.png",
+                        description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services"
+                    )
                 }.class("showcase-cards scrolling-wrapper").id("showcase-scrolling-wrapper")
                 Div {
                     Button {
@@ -407,9 +447,24 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("btn btn-secondary")
                 }.id("sponsors-header")
                 Div {
-                    SponsorCard(name: "Broken Hands", url: "https://www.brokenhands.io/", logo: "/images/brokenhands.png", description: "Providing Vapor training and consulting for clients around the world.")
-                    SponsorCard(name: "omrd", url: "https://omrd.com", logo: "/images/omrd.png", description: "omrd provides consultation services for dental elated scans.")
-                    SponsorCard(name: "Transeo", url: "https://gotranseo.com", logo: "/images/transeo.png", description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis.")
+                    SponsorCard(
+                        name: "Broken Hands",
+                        url: "https://www.brokenhands.io/",
+                        logo: "/images/brokenhands.png",
+                        description: "Providing Vapor training and consulting for clients around the world."
+                    )
+                    SponsorCard(
+                        name: "omrd",
+                        url: "https://omrd.com",
+                        logo: "/images/omrd.png",
+                        description: "omrd provides consultation services for dental elated scans."
+                    )
+                    SponsorCard(
+                        name: "Transeo",
+                        url: "https://gotranseo.com",
+                        logo: "/images/transeo.png",
+                        description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
+                    )
                 }.class("sponsors-list")
             }.class("row").id("sponsors")
         }.class("container")
