@@ -37,23 +37,33 @@ body {
 }
 
 .main-code-demo {
+    @include media-breakpoint-up(md) {
+        .hljs {
+            font-size: large;
+        }
+    }
+
     margin-top: 64px;
     max-width: 900px;
-    mask-image: -webkit-gradient(linear, left top, left bottom,
-            color-stop(0.00, rgba(0, 0, 0, 1)),
-            color-stop(0.35, rgba(0, 0, 0, 1)),
-            color-stop(0.50, rgba(0, 0, 0, 0.5)),
-            color-stop(0.65, rgba(0, 0, 0, 0)),
-            color-stop(1.00, rgba(0, 0, 0, 0)));
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
-            color-stop(0.00, rgba(0, 0, 0, 1)),
-            color-stop(0.35, rgba(0, 0, 0, 1)),
-            color-stop(0.50, rgba(0, 0, 0, 0.5)),
-            color-stop(0.65, rgba(0, 0, 0, 0)),
-            color-stop(1.00, rgba(0, 0, 0, 0)));
+    mask-image: -webkit-gradient(linear,
+        left top,
+        left bottom,
+        color-stop(0, rgb(0, 0, 0)),
+        color-stop(0.4, rgb(0, 0, 0)),
+        color-stop(0.6, rgba(0, 0, 0, 0.5)),
+        color-stop(0.7, rgba(0, 0, 0, 0)),
+        color-stop(1, rgba(0, 0, 0, 0)));
+    -webkit-mask-image: -webkit-gradient(linear,
+        left top,
+        left bottom,
+        color-stop(0, rgb(0, 0, 0)),
+        color-stop(0.4, rgb(0, 0, 0)),
+        color-stop(0.6, rgba(0, 0, 0, 0.5)),
+        color-stop(0.7, rgba(0, 0, 0, 0)),
+        color-stop(1, rgba(0, 0, 0, 0)));
 
     @include media-breakpoint-down(md) {
-        margin-bottom: -40%;
+        margin-bottom: -20%;
     }
 }
 
@@ -71,7 +81,6 @@ body {
 
 .main-page-callout-buttons {
     margin-top: 48px;
-
 }
 
 #vapor-hero-logo {
@@ -257,10 +266,6 @@ h2 {
         }
     }
 
-    .col.order-2 {
-        margin-top: 64px;
-    }
-
     pre,
     code {
         white-space: pre-wrap;
@@ -273,12 +278,21 @@ h2 {
     }
 
     .blurry-background {
-        background: linear-gradient(230.51deg, #23acf040 27.41%, #df3efb40 67%, #70198040 80.12%);
+        background: linear-gradient(230.51deg,
+                #23acf040 27.41%,
+                #df3efb40 67%,
+                #70198040 80.12%);
         filter: blur(100px);
     }
 
     span {
         color: $pink-300;
+    }
+
+    .col.order-2 {
+        @include media-breakpoint-down(md) {
+            margin-top: 64px;
+        }
     }
 
     .code-outline-right {
@@ -291,8 +305,15 @@ h2 {
         border: 1px solid transparent;
         position: absolute;
         opacity: 0.8;
-        background: linear-gradient(white, white) padding-box,
-            linear-gradient(90deg, rgba(148, 168, 178, 0.03) 0%, #F6F7F7 4.21%, rgba(148, 168, 178, 0.888453) 7.98%, #94A8B2 37.5%, rgba(148, 168, 178, 0.117173) 90.41%, rgba(148, 168, 178, 0) 100%) border-box;
+        background:
+            linear-gradient(white, white) padding-box,
+            linear-gradient(90deg,
+                rgba(148, 168, 178, 0.03) 0%,
+                #f6f7f7 4.21%,
+                rgba(148, 168, 178, 0.888453) 7.98%,
+                #94a8b2 37.5%,
+                rgba(148, 168, 178, 0.117173) 90.41%,
+                rgba(148, 168, 178, 0) 100%) border-box;
 
         @include media-breakpoint-down(lg) {
             height: 120%;
@@ -311,8 +332,15 @@ h2 {
         position: absolute;
         opacity: 0.8;
         transform: matrix(-1, 0, 0, 1, 0, 0);
-        background: linear-gradient(white, white) padding-box,
-            linear-gradient(90deg, rgba(148, 168, 178, 0.01) 0%, #F6F7F7 4.21%, rgba(148, 168, 178, 0.888453) 9.96%, #94A8B2 60.32%, rgba(148, 168, 178, 0.117173) 90.41%, rgba(148, 168, 178, 0.03) 100%) border-box;
+        background:
+            linear-gradient(white, white) padding-box,
+            linear-gradient(90deg,
+                rgba(148, 168, 178, 0.01) 0%,
+                #f6f7f7 4.21%,
+                rgba(148, 168, 178, 0.888453) 9.96%,
+                #94a8b2 60.32%,
+                rgba(148, 168, 178, 0.117173) 90.41%,
+                rgba(148, 168, 178, 0.03) 100%) border-box;
 
         @include media-breakpoint-down(lg) {
             height: 120%;
@@ -322,15 +350,15 @@ h2 {
 
     .code-error {
         position: absolute;
-        background: rgba(179, 35, 95, 0.21);
-        border: 1px solid rgba(221, 214, 254, 0.1);
+        background: $code-error-background;
+        border: 1px solid $code-error-border;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 24px;
         height: fit-content;
         width: 48%;
         display: flex;
-        bottom: -20%;
+        bottom: -15%;
         text-align: left;
         justify-content: center;
         right: 15%;
@@ -345,7 +373,7 @@ h2 {
         }
 
         .code-error-sidebar {
-            background: code-error-sidebar-background-red;
+            background-color: $code-error-background;
             border-top-left-radius: 24px;
             border-bottom-left-radius: 24px;
             text-align: center;
@@ -361,11 +389,11 @@ h2 {
 
         .code-error-message {
             color: $grey-700;
-            font-family: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono', Menlo, Consolas, monospace;
+            font-family: "SF Mono", SFMono-Regular, ui-monospace,
+                "DejaVu Sans Mono", Menlo, Consolas, monospace;
             font-weight: 200;
             font-size: 16px;
             line-height: 24px;
-            /* or 150% */
             padding: 3%;
             width: 85%;
 
@@ -392,20 +420,23 @@ h2 {
         @include media-breakpoint-down(lg) {
             margin-top: 60px;
         }
+    }
 
+    .code-example.code-example-right {
         @include media-breakpoint-up(lg) {
             margin-left: 48px;
-            margin-right: 48px;
+        }
+    }
+
+    .code-example.code-example-left {
+        @include media-breakpoint-up(lg) {
+            margin-right: 64px;
         }
     }
 
     .errored table {
-        tr:nth-child(7) {
-            background: rgba(128, 25, 68, 0.3);
-        }
-
-        tr:nth-child(8) {
-            background: rgba(128, 25, 68, 0.3);
+        tr:nth-child(5) {
+            background: $code-error-background;
         }
     }
 
@@ -430,7 +461,7 @@ h2 {
     }
 
     .code-example-explainer-title {
-        color: #DF3FEB;
+        color: $code-explainer-title;
     }
 
     @include media-breakpoint-up(lg) {
@@ -513,7 +544,7 @@ h2 {
         }
 
         h3 {
-            font-family: 'Genera Grotesk';
+            font-family: "Genera Grotesk";
             font-style: normal;
             font-weight: 500;
             font-size: 48px;
@@ -522,7 +553,7 @@ h2 {
             margin: 0;
             /* or 50px */
             letter-spacing: -0.02em;
-            font-feature-settings: 'salt' on;
+            font-feature-settings: "salt" on;
 
             @include media-breakpoint-down(md) {
                 font-size: 30px;
@@ -602,12 +633,12 @@ h2 {
                 background: $grey-100;
                 border: 1px solid rgba($pink-300, 0.1);
                 border-radius: 12px;
-                font-family: 'Genera Grotesk';
+                font-family: "Genera Grotesk";
                 font-style: normal;
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 150%;
-                font-feature-settings: 'salt' on;
+                font-feature-settings: "salt" on;
                 color: $pink-300;
             }
 
@@ -671,7 +702,9 @@ h2 {
         z-index: -1;
         overflow-x: hidden;
         left: 0;
-        background: url("../../images/api-docs-background-gradient.svg") no-repeat right, $grey-100;
+        background:
+            url("../../images/api-docs-background-gradient.svg") no-repeat right,
+            $grey-100;
         max-height: 550px;
         min-height: 400px;
 
@@ -842,7 +875,7 @@ h2 {
             width: 60%;
             margin: 0;
             letter-spacing: -0.02em;
-            font-feature-settings: 'salt' on;
+            font-feature-settings: "salt" on;
 
             @include media-breakpoint-down(md) {
                 font-size: 30px;

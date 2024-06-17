@@ -1,6 +1,6 @@
+import Foundation
 import Plot
 import Publish
-import Foundation
 import VaporDesign
 
 extension Theme where Site == DesignSite {
@@ -11,9 +11,8 @@ extension Theme where Site == DesignSite {
 
 private struct VaporThemeHTMLFactory: HTMLFactory {
     typealias Site = DesignSite
-    
-    func makeIndexHTML(for index: Index,
-                       context: PublishingContext<Site>) throws -> HTML {
+
+    func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
         let isDemo = true
         let currentSite: CurrentSite = .blog
         let blogPostData = BlogPostExtraData(length: "15 mins read", author: .init(name: "Tim Condon", imageURL: "/images/author-image-placeholder.png"), publishedDate: "3rd January 2023")
@@ -28,13 +27,12 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             buildComponentDemo(blogPostData: blogPostData, anotherBlogPostData: anotherBlogPostData, oneMoreBlogPostData: oneMoreBlogPostData, item: item, site: context.site, isDemo: isDemo)
             SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
         }
-        
+
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: index, context: context, body: body)
     }
 
-    func makeSectionHTML(for section: Section<Site>,
-                         context: PublishingContext<Site>) throws -> HTML {
+    func makeSectionHTML(for section: Section<Site>, context: PublishingContext<Site>) throws -> HTML {
         if section.title == "Mainpagedemo" {
             let body: Node<HTML.DocumentContext> = .body {
                 let isDemo = true
@@ -43,7 +41,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 buildMainSiteDemo()
                 SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
             }
-            
+
             let bodyWithClass = body.class("main-site-main-page")
             let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
             return builder.buildHTML(for: section, context: context, body: bodyWithClass.convertToNode())
@@ -53,86 +51,109 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         }
     }
 
-    func makeItemHTML(for item: Item<Site>,
-                      context: PublishingContext<Site>) throws -> HTML {
+    func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: item, context: context, body: .body())
     }
 
-    func makePageHTML(for page: Page,
-                      context: PublishingContext<Site>) throws -> HTML {
+    func makePageHTML(for page: Page, context: PublishingContext<Site>) throws -> HTML {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: page, context: context, body: .body())
     }
 
-    func makeTagListHTML(for page: TagListPage,
-                         context: PublishingContext<Site>) throws -> HTML? {
+    func makeTagListHTML(for page: TagListPage, context: PublishingContext<Site>) throws -> HTML? {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: page, context: context, body: .body())
     }
 
-    func makeTagDetailsHTML(for page: TagDetailsPage,
-                            context: PublishingContext<Site>) throws -> HTML? {
+    func makeTagDetailsHTML(for page: TagDetailsPage, context: PublishingContext<Site>) throws -> HTML? {
         let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
         return builder.buildHTML(for: page, context: context, body: .body())
     }
-    
-    func buildComponentDemo(blogPostData: BlogPostExtraData, anotherBlogPostData: BlogPostExtraData, oneMoreBlogPostData: BlogPostExtraData, item: Item<Site>, site: Site, isDemo: Bool) -> Component {
+
+    func buildComponentDemo(
+        blogPostData: BlogPostExtraData,
+        anotherBlogPostData: BlogPostExtraData,
+        oneMoreBlogPostData: BlogPostExtraData,
+        item: Item<Site>,
+        site: Site,
+        isDemo: Bool
+    ) -> Component {
         Div {
             H1("Component Guide")
-            
+
             H2("Typography")
-            
+
             H1("Header 1")
             H2("Header 2")
             H3("Header 3")
             H4("Header 4")
             H5("Header 5")
             H6("Header 6")
-            
+
             H2("Pagination")
 
             Pagination(activePage: 1, numberOfPages: 15, pageURL: { pageNumber in
-                return "/\(pageNumber)"
+                "/\(pageNumber)"
             }, isDemo: isDemo)
-            
+
             H2("HR")
-            
+
             Node.hr()
-            
+
             H2("Blog Post Cards")
-            
+
             Div {
                 Div {
-                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "Swift", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                    let item2 = Item<Site>(
+                        path: "/demo",
+                        sectionID: .posts,
+                        metadata: .init(),
+                        tags: ["Vapor", "Swift", "Framework"],
+                        content: Content(
+                            title: "This is a longer post",
+                            description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.",
+                            body: .init(html: demoPostHTML)
+                        )
+                    )
                     BlogCard(blogPostData: blogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
-                    let item2 = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "What we're working on", "Framework"], content: Content(title: "This is a longer post", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.", body: .init(html: demoPostHTML)))
+                    let item2 = Item<Site>(
+                        path: "/demo",
+                        sectionID: .posts,
+                        metadata: .init(),
+                        tags: ["Vapor", "What we're working on", "Framework"],
+                        content: Content(
+                            title: "This is a longer post",
+                            description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.",
+                            body: .init(html: demoPostHTML)
+                        )
+                    )
                     BlogCard(blogPostData: anotherBlogPostData, item: item2, site: site, isDemo: true)
                 }.class("col")
                 Div {
                     BlogCard(blogPostData: oneMoreBlogPostData, item: item, site: site, isDemo: true)
                 }.class("col")
             }.class("row row-cols-1 row-cols-lg-2 g-4")
-            
+
             H2("Blog Site Title")
-            
+
             H1("Articles, tools & resources for Vapor devs").class("vapor-blog-page-heading")
-            
+
             H2("Blog Tag List")
-            
+
             H4("This is a list on desktop and a drop down menu on mobile")
-            
+
             Div {
                 Div {
                     let tags: [Tag] = [Tag("Vapor"), Tag("Swift"), Tag("DevOps"), Tag("API"), Tag("Announcements")]
-                    let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2)}
+                    let tagsWithPostCount = tags.map { TagWithPostCount(tag: $0, postCount: 2) }
                     return ComponentGroup(BlogTagList(tags: tagsWithPostCount, site: site, selectedTag: nil, totalPosts: 72, isDemo: true))
                 }.class("col-lg-3")
                 Div().class("col")
             }.class("row")
-            
+
         }.class("container")
     }
 
@@ -164,25 +185,21 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 let html = """
                 import Vapor
 
-                let app = try Application(.detect())
-                defer { app.shutdown() }
+                let app = try await Application.make(.detect())
 
                 app.get("hello") { req in
                     return "Hello, world!"
                 }
 
-                try app.run()
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                try await app.execute()
+
+
+
+
+
+
+
+
                 """
                 let code = Node.code(.text(html)).class("language-swift")
                 Node.pre(.component(code))
@@ -198,13 +215,13 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     CompanyCard(name: "Allegro", url: "https://allegro.pl", logo: "icon-allegro")
                 }.class("d-flex flex-row flex-wrap align-items-center justify-content-center used-by-companies-items")
             }.class("used-by-companies")
-            
+
             Div {
                 H2("Build server side with the tooling you already understand").class("main-site-section-header")
                 Paragraph {
                     Text("No need to learn a language from scratch (or assemble a different team) just for your backend. Vapor is built on Apple’s SwiftNIO so you’ll get to use the language you already know and love.")
                 }.class("caption")
-                
+
                 Div {
                     let vapor = PackageCard(title: "Vapor", description: "Build efficient APIs in a language you love. Create routes, send and receive JSON and build HTTP servers.", icon: "server-04", url: "https://docs.vapor.codes/")
                     let fluent = PackageCard(title: "Fluent", description: "Create models and interact with your database in native, safe Swift code without needing to write any SQL", icon: "database-03", url: "https://docs.vapor.codes/fluent/overview/")
@@ -215,42 +232,43 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     })
                 }.class("main-site-packages-grid row row-cols-1 row-cols-lg-2 gx-5")
             }.class("main-site-packages-list")
-            
+
             Div {
                 Div {
                     Div {
                         FeatureContainer(
-                            title: "High-performant APIs and servers", 
-                            description: "Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift's Concurrency model, you can write clear, maintainable code that's efficient and easy to read.", 
-                            url: "https://docs.vapor.codes/", 
+                            title: "High-performant APIs and servers",
+                            description: "Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift's Concurrency model, you can write clear, maintainable code that's efficient and easy to read.",
+                            url: "https://docs.vapor.codes/",
                             icon: "icon-dataflow-03"
                         )
                     }.class("col order-2 order-lg-1 g-lg-0").id("performance")
                     Div {
                         Div {
                             let html = """
-                            func search (req: Request) async throws -> [Todo] {
-                               let searchTerm =
-                                 try req.query.get(String.self, at: "term")
+                            app.get("todos", ":id") { req async throws -> Todo in
+                              let id: UUID = try req.parameters.require("id")
 
-                               let results = try await
-                               Todo.query(on: req.db)
-                                 .filter(\\.$title == searchTerm).all
+                              guard
+                                let todo = try await Todo.find(id, on: req.db)
+                              else {
+                                throw Abort(.notFound)
+                              }
 
-                               return results
+                              return todo
                             }
                             """
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
-                        }.class("code-example")
+                        }.class("code-example code-example-right")
                         Div {}.class("code-outline-right")
                     }.class("col order-1 order-lg-2 g-lg-0 position-relative")
                 }.class("row row-cols-1 row-cols-lg-2 align-items-center")
                 Div {
                     Div {
                         FeatureContainer(
-                            title: "Ship with confidence, even on Fridays", 
-                            description: "With Vapor's expressive, protocol oriented design, you'll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.", 
+                            title: "Ship with confidence, even on Fridays",
+                            description: "With Vapor's expressive, protocol oriented design, you'll have peace of mind when shipping your code. With our strong type-safety focus, many errors and problems are caught early on by the compiler.",
                             url: "https://docs.vapor.codes/",
                             icon: "icon-brackets-check"
                         )
@@ -258,20 +276,19 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     Div {
                         Div {
                             let html = """
-                            func search (req: Request) async throws -> [Todo] {
-                               let searchTerm =
-                                 try req.query.get(String.self, at: "term")
+                            func search(req: Request) async throws -> [Todo] {
+                               let name: String = try req.query.get(at: "name")
 
-                               let results = try await
-                               Todo.query(on: req.db)
-                                 .filter(\\.$number == searchTerm).all()
+                               let results = try await Todo.query(on: req.db)
+                                 .filter(\\.$number == name)
+                                 .all()
 
                                return results
                             }
                             """
                             let code = Node.code(.text(html)).class("language-swift")
                             Node.pre(.component(code))
-                        }.class("code-example errored")
+                        }.class("code-example errored code-example-left")
                         Div {}.class("code-outline-left")
                         Div {
                             Div {
@@ -279,7 +296,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             }.class("code-error-sidebar")
                             Span(
                                 """
-                                Binary operator '==' cannot be applied to operands of type 'KeyPath<Todo, 
+                                Binary operator '==' cannot be applied to operands of type 'KeyPath<Todo,
                                 FieldProperty<Todo, Int>>* and 'String'
                                 """
                             ).class("code-error-message")
@@ -319,11 +336,36 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("btn btn-primary").class("d-none d-lg-block")
                 }.class("showcase-header")
                 Div {
-                    ShowcaseCard(name: "Sambot", url: "", image: "/images/sambot-card.png", description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services")
-                    ShowcaseCard(name: "Underway NYC", url: "", image: "/images/underway-nyc-card.png", description: "Quickly locate yourself on the official MTA map of NYC and get real-time train arrivals at that subway stop")
-                    ShowcaseCard(name: "SwiftFiddle", url: "", image: "/images/swiftfiddle-card.png", description: "SwiftFiddle is an online playground for creating, sharing and embedding Swift fiddles")
-                    ShowcaseCard(name: "Transeo", url: "", image: "/images/transeo-card.png", description: "Transeo is an educational readiness platform that helps students determine what they want to do after high school")
-                    ShowcaseCard(name: "Sambot", url: "", image: "/images/sambot-card.png", description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services")
+                    ShowcaseCard(
+                        name: "Sambot",
+                        url: "",
+                        image: "/images/sambot-card.png",
+                        description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services"
+                    )
+                    ShowcaseCard(
+                        name: "Underway NYC",
+                        url: "",
+                        image: "/images/underway-nyc-card.png",
+                        description: "Quickly locate yourself on the official MTA map of NYC and get real-time train arrivals at that subway stop"
+                    )
+                    ShowcaseCard(
+                        name: "SwiftFiddle",
+                        url: "",
+                        image: "/images/swiftfiddle-card.png",
+                        description: "SwiftFiddle is an online playground for creating, sharing and embedding Swift fiddles"
+                    )
+                    ShowcaseCard(
+                        name: "Transeo",
+                        url: "",
+                        image: "/images/transeo-card.png",
+                        description: "Transeo is an educational readiness platform that helps students determine what they want to do after high school"
+                    )
+                    ShowcaseCard(
+                        name: "Sambot",
+                        url: "",
+                        image: "/images/sambot-card.png",
+                        description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services"
+                    )
                 }.class("showcase-cards scrolling-wrapper").id("showcase-scrolling-wrapper")
                 Div {
                     Button {
@@ -405,9 +447,24 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("btn btn-secondary")
                 }.id("sponsors-header")
                 Div {
-                    SponsorCard(name: "Broken Hands", url: "https://www.brokenhands.io/", logo: "/images/brokenhands.png", description: "Providing Vapor training and consulting for clients around the world.")
-                    SponsorCard(name: "omrd", url: "https://omrd.com", logo: "/images/omrd.png", description: "omrd provides consultation services for dental elated scans.")
-                    SponsorCard(name: "Transeo", url: "https://gotranseo.com", logo: "/images/transeo.png", description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis.")
+                    SponsorCard(
+                        name: "Broken Hands",
+                        url: "https://www.brokenhands.io/",
+                        logo: "/images/brokenhands.png",
+                        description: "Providing Vapor training and consulting for clients around the world."
+                    )
+                    SponsorCard(
+                        name: "omrd",
+                        url: "https://omrd.com",
+                        logo: "/images/omrd.png",
+                        description: "omrd provides consultation services for dental elated scans."
+                    )
+                    SponsorCard(
+                        name: "Transeo",
+                        url: "https://gotranseo.com",
+                        logo: "/images/transeo.png",
+                        description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
+                    )
                 }.class("sponsors-list")
             }.class("row").id("sponsors")
         }.class("container")
@@ -472,7 +529,7 @@ struct CreateTodoTitleIndex: AsyncMigration {
         <p>
           And finally a list:
         </p>
-        
+
 
         <ol>
           <li>Lectus id duis vitae porttitor enim gravida morbi.</li>
