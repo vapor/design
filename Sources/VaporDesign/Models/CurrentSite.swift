@@ -6,6 +6,7 @@ public enum CurrentSite {
 }
 
 public enum CurrentPage {
+    case home
     case team
     case contributors
     case evangelists

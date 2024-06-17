@@ -7,7 +7,7 @@ public struct SiteNavigation<Site: Website>: Component {
     let currentSite: CurrentSite
     let currentMainSitePage: CurrentPage?
     let isDemo: Bool
-    
+
     public init(context: PublishingContext<Site>, selectedSelectionID: Site.SectionID?, currentSite: CurrentSite, currentMainSitePage: CurrentPage?, isDemo: Bool = false) {
         self.context = context
         self.selectedSelectionID = selectedSelectionID
@@ -15,14 +15,14 @@ public struct SiteNavigation<Site: Website>: Component {
         self.currentMainSitePage = currentMainSitePage
         self.isDemo = isDemo
     }
-    
+
     public var body: Component {
         Navigation {
             Div {
                 Link(url: "/") {
                     Span().id("vapor-logo").class("d-inline-block align-text-top").accessibilityLabel("Vapor Logo").width(130).height(50)
                 }.class("navbar-brand ms-3")
-                
+
                 Button {
                     Span().id("vapor-navbar-toggler-icon").class("vapor-icon icon-menu-04")
                 }.class("navbar-toggler")
@@ -32,14 +32,17 @@ public struct SiteNavigation<Site: Website>: Component {
                     .attribute(named: "data-bs-target", value: "#navbarSupportedContent")
                     .attribute(named: "aria-controls", value: "navbarSupportedContent")
                     .attribute(named: "aria-expanded", value: "false")
-                
+
                 Div {
                     List {
                         ListItem {
                             if isDemo {
                                 return ComponentGroup(members: [Link("Home", url: "#").class("nav-link")])
                             } else if currentSite == .main {
-                                let classList = "nav-link"
+                                var classList = "nav-link"
+                                if currentMainSitePage == .home {
+                                    classList += " active"
+                                }
                                 let link = Link("Home", url: "/").class(classList)
                                 return ComponentGroup(members: [link])
                             } else {
@@ -70,19 +73,18 @@ public struct SiteNavigation<Site: Website>: Component {
                                 Text("Documentation")
                                 Span().class("vapor-icon icon-chevron-down ms-auto ms-lg-3").id("documentation-navbar-chevron")
                             }
-                                .class(classList)
-                                .id("documentation-dropdown-link")
-                                .role("button")
-                                .onclick("Vapor.toggleDocumentationDropdown(); return true;")
-                                .attribute(named: "data-bs-toggle", value: "dropdown")
-                                .attribute(named: "aria-expanded", value: "false")
-                            
+                            .class(classList)
+                            .id("documentation-dropdown-link")
+                            .role("button")
+                            .attribute(named: "data-bs-toggle", value: "dropdown")
+                            .attribute(named: "aria-expanded", value: "false")
+
                             if currentSite == .docs || currentSite == .apiDocs {
                                 docsLink = docsLink.attribute(named: "aria-current", value: "page")
                             }
                             return ComponentGroup {
                                 docsLink
-                                
+
                                 List {
                                     ListItem {
                                         let linkBody = Div {
@@ -96,7 +98,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-caption d-none d-lg-block")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
-                                        
+
                                         if currentSite == .docs {
                                             Link(url: "/") {
                                                 linkBody
@@ -107,7 +109,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                             }.class("dropdown-item").linkTarget(.blank)
                                         }
                                     }.class("m-lg-2")
-                                    
+
                                     ListItem {
                                         let linkBody = Div {
                                             Span().class("vapor-icon icon-dataflow-03")
@@ -120,7 +122,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                                 }.class("nav-dropdown-container-caption d-none d-lg-block")
                                             }.class("ms-3")
                                         }.class("nav-dropdown-container d-flex")
-                                        
+
                                         if currentSite == .apiDocs {
                                             Link(url: "/") {
                                                 linkBody
@@ -155,7 +157,7 @@ public struct SiteNavigation<Site: Website>: Component {
                             } else {
                                 Link("Blog", url: "https://blog.vapor.codes").class("nav-link").linkTarget(.blank)
                             }
-                            
+
                         }.class("nav-item")
                         ListItem {
                             Link(url: "https://github.com/vapor") {
