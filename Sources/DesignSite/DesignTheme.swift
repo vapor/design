@@ -37,7 +37,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             let body: Node<HTML.DocumentContext> = .body {
                 let isDemo = true
                 let currentSite: CurrentSite = .main
-                SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: nil, isDemo: isDemo)
+                SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: .home, isDemo: isDemo)
                 buildMainSiteDemo()
                 SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
             }
@@ -188,7 +188,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 let app = try await Application.make(.detect())
 
                 app.get("hello") { req in
-                    return "Hello, world!"
+                    "Hello, world!"
                 }
 
                 try await app.execute()

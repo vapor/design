@@ -36,28 +36,35 @@ public struct SiteNavigation<Site: Website>: Component {
                 Div {
                     List {
                         ListItem {
-                            if isDemo {
-                                return ComponentGroup(members: [Link("Home", url: "#").class("nav-link")])
-                            } else if currentSite == .main {
+                            if currentSite == .main {
                                 var classList = "nav-link"
-                                if currentMainSitePage == .home {
+                                if currentMainSitePage! == .home {
                                     classList += " active"
                                 }
-                                let link = Link("Home", url: "/").class(classList)
+                                let link = if isDemo {
+                                    Link("Home", url: "#").class(classList)
+                                } else {
+                                    Link("Home", url: "/").class(classList)
+                                }
+
                                 return ComponentGroup(members: [link])
                             } else {
                                 return ComponentGroup(members: [Link("Home", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
                             }
-                        }
+                        }.class("nav-item")
                         ListItem {
-                            if isDemo {
-                                return ComponentGroup(members: [Link("Showcase", url: "#").class("nav-link")])
-                            } else if currentSite == .main {
+                            if currentSite == .main {
                                 var classList = "nav-link"
                                 if currentMainSitePage! == .showcase {
                                     classList += " active"
                                 }
-                                let link = Link("Showcase", url: "/showcase").class(classList)
+
+                                let link = if isDemo {
+                                    Link("Showcase", url: "#").class(classList)
+                                } else {
+                                    Link("Showcase", url: "/showcase").class(classList)
+                                }
+
                                 return ComponentGroup(members: [link])
                             } else {
                                 #warning("Fix link")
@@ -137,14 +144,17 @@ public struct SiteNavigation<Site: Website>: Component {
                             }
                         }.class("nav-item dropdown")
                         ListItem {
-                            if isDemo {
-                                return ComponentGroup(members: [Link("Team", url: "#").class("nav-link")])
-                            } else if currentSite == .main {
+                            if currentSite == .main {
                                 var classList = "nav-link"
                                 if currentMainSitePage! == .team {
                                     classList += " active"
                                 }
-                                let link = Link("Team", url: "/team").class(classList)
+                                let link = if isDemo {
+                                    Link("Team", url: "#").class(classList)
+                                } else {
+                                    Link("Team", url: "/team").class(classList)
+                                }
+
                                 return ComponentGroup(members: [link])
                             } else {
                                 #warning("Fix link")
