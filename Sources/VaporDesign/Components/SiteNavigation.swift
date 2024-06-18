@@ -38,7 +38,7 @@ public struct SiteNavigation<Site: Website>: Component {
                         ListItem {
                             if currentSite == .main {
                                 var classList = "nav-link"
-                                if currentMainSitePage! == .home {
+                                if currentMainSitePage == .home {
                                     classList += " active"
                                 }
                                 let link = if isDemo {
@@ -55,7 +55,7 @@ public struct SiteNavigation<Site: Website>: Component {
                         ListItem {
                             if currentSite == .main {
                                 var classList = "nav-link"
-                                if currentMainSitePage! == .showcase {
+                                if currentMainSitePage == .showcase {
                                     classList += " active"
                                 }
 
@@ -146,7 +146,7 @@ public struct SiteNavigation<Site: Website>: Component {
                         ListItem {
                             if currentSite == .main {
                                 var classList = "nav-link"
-                                if currentMainSitePage! == .team {
+                                if currentMainSitePage == .team {
                                     classList += " active"
                                 }
                                 let link = if isDemo {
