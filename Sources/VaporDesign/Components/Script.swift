@@ -12,7 +12,7 @@ public struct Script: Component {
         self.url = url
     }
 
-    var body: Component {
+    public var body: Component {
         Node<HTML.BodyContext>.script(.src(url))
     }
 }
