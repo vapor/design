@@ -1,4 +1,4 @@
-name: Pull Request Testing
+name: PR
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -8,26 +8,34 @@ on:
       - main
 
 jobs:
-  build:
-    name: Test, Build, and Deploy
+  deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: aws-actions/configure-aws-credentials@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
         with:
           aws-access-key-id: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
           aws-region: 'us-east-1'
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node 
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: npm
-      - uses: ScottBrenner/cfn-lint-action@v2
-      - run: swift run
-      - run: npm install
-      - run: cfn-lint -t stack.yml
-      - run: npm run build
+      - name: Set up CloudFormation Lint
+        uses: ScottBrenner/cfn-lint-action@v2
+      - name: Run CloudFormation Lint
+        run: cfn-lint -t stack.yml
+      - name: Build Publish website
+        run: swift run
+      - name: Install dependencies
+        run: npm install
+      - name: Build Node website
+        run: npm run build
       - name: Create S3 Bucket
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
         env:
