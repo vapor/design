@@ -1,7 +1,5 @@
-window.onscroll = function () { scrollFunction() };
-
-function scrollFunction() {
-    const navbar = document.querySelector(".main-site-main-page .navbar");
+window.onscroll = function () {
+    const navbar = document.querySelector(".navbar");
 
     if (navbar === null) {
         return;
