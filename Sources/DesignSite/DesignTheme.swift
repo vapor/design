@@ -40,9 +40,12 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: .home, isDemo: isDemo)
                 buildMainSiteDemo()
                 SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
+                Script(url: VaporDesignUtilities.buildResourceLink(for: "/js/mainSiteUpdateStarsCount.js", isLocal: true))
+                Script(url: VaporDesignUtilities.buildResourceLink(for: "/js/mainSiteScrollNavbar.js", isLocal: true))
+                Script(url: VaporDesignUtilities.buildResourceLink(for: "/js/mainSiteScrollShowcase.js", isLocal: true))
             }
 
-            let bodyWithClass = body.class("main-site-main-page")
+            let bodyWithClass = body.id("main-page-body").class("main-site-faded-background")
             let builder = VaporDesign<Site>(siteLanguage: context.site.language, isLocal: true)
             return builder.buildHTML(for: section, context: context, body: bodyWithClass.convertToNode())
         } else {
@@ -175,8 +178,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     Button {
                         Link(url: "https://github.com/vapor/vapor") {
                             Span().class("vapor-icon icon-github-line icon-secondary btn-icon me-2")
-                            Text("22k stars on GitHub")
-                        }.class(" d-flex align-items-center")
+                            Span("22k stars on GitHub").id("main-page-callout-stars-count")
+                        }.class("d-flex align-items-center")
                     }.class("btn btn-link btn-secondary-link")
                 }.class("d-flex align-items-center ms-lg-5")
             }.class("main-page-callout-buttons d-flex align-items-center justify-content-center flex-column flex-lg-row")

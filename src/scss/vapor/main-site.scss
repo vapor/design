@@ -67,16 +67,14 @@ body {
     }
 }
 
-.main-site-main-page {
+#main-page-body {
     #vapor-navbar {
-        position: fixed;
         top: -80px;
-        width: 100%;
-        transition: top 0.3s;
-        z-index: 9999;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
     }
+}
+
+.main-content {
+    margin-top: 124px;
 }
 
 .main-page-callout-buttons {
@@ -101,7 +99,7 @@ body {
     }
 }
 
-.main-site-main-page {
+.main-site-faded-background {
     background-position-x: center;
     background-position-y: 320px;
     background-repeat: no-repeat;
@@ -263,6 +261,12 @@ h2 {
 
         @include media-breakpoint-down(lg) {
             margin-top: 128px;
+        }
+    }
+
+    .col {
+        @include media-breakpoint-down(lg) {
+            margin-top: 32px;
         }
     }
 
