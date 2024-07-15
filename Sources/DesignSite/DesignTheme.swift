@@ -369,15 +369,15 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         image: "/images/sambot-card.png",
                         description: "Sambot helps all members of a Mobile App Dev Team to be more productive, reactive and efficient while using Bitrise CI services"
                     )
-                }.class("showcase-cards scrolling-wrapper").id("showcase-scrolling-wrapper")
+                }.class("showcase-cards scrollable").id("home-page-showcase-cards-list")
                 Div {
                     Button {
                         Span().class("vapor-icon icon-arrow-left")
-                    }.class("arrow-button").onclick("scrollToLeft()")
+                    }.class("arrow-button left-scroll-button")
                     Button {
                         Span().class("vapor-icon icon-arrow-right")
-                    }.class("arrow-button").onclick("scrollToRight()")
-                }.class("btn-group")
+                    }.class("arrow-button right-scroll-button")
+                }.class("btn-group scroll-button-group").attribute(named: "data-scrollable", value: "home-page-showcase-cards-list")
             }.class("row row-cols-1 row-cols-lg-2").id("showcase")
             Div {
                 Div {
@@ -468,7 +468,27 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         logo: "/images/transeo.png",
                         description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
                     )
-                }.class("sponsors-list")
+                    SponsorCard(
+                        name: "Transeo",
+                        url: "https://gotranseo.com",
+                        logo: "/images/transeo.png",
+                        description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
+                    )
+                    SponsorCard(
+                        name: "Transeo",
+                        url: "https://gotranseo.com",
+                        logo: "/images/transeo.png",
+                        description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
+                    )
+                }.class("sponsors-list").id("home-page-sponsors-list")
+                Div {
+                    Button {
+                        Span().class("vapor-icon icon-arrow-left")
+                    }.class("arrow-button left-scroll-button")
+                    Button {
+                        Span().class("vapor-icon icon-arrow-right")
+                    }.class("arrow-button right-scroll-button")
+                }.class("btn-group scroll-button-group").attribute(named: "data-scrollable", value: "home-page-sponsors-list")
             }.class("row").id("sponsors")
         }.class("container")
     }

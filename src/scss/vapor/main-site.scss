@@ -658,19 +658,13 @@ h2 {
             }
         }
     }
+}
 
-    .btn-group {
-        margin-top: 32px;
-        display: flex;
-        justify-content: center; // center align horizontally
-        flex-wrap: wrap; // allow buttons to wrap to next line if necessary
-    }
-
-    @media (min-width: 768px) {
-        .btn-group {
-            justify-content: flex-start; // align to left on larger screens
-        }
-    }
+.row>.scroll-button-group {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center; // center align horizontally
+    flex-wrap: wrap; // allow buttons to wrap to next line if necessary
 
     .arrow-button {
         display: flex;
@@ -694,6 +688,12 @@ h2 {
 
     .arrow-button:hover {
         background: $grey-300;
+    }
+}
+
+@media (min-width: 768px) {
+    .row>.scroll-button-group {
+        justify-content: flex-start; // align to left on larger screens
     }
 }
 

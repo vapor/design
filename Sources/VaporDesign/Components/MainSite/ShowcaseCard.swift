@@ -26,7 +26,6 @@ public struct ShowcaseCard: Component {
                 }.class("btn btn-primary mt-auto")
             }.class("card-body d-flex flex-column")
         }.class("card")
-        .style("width: 18rem;")
         .id("\(name.lowercased().replacingOccurrences(of: " ", with: "-"))-card")
     }
 }
