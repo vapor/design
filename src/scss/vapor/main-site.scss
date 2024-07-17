@@ -81,6 +81,10 @@ body {
     margin-top: 48px;
 }
 
+.main-page-callout-stars-count {
+    text-decoration: none;
+}
+
 #vapor-hero-logo {
     background-position: center;
     background-repeat: no-repeat;
@@ -555,7 +559,6 @@ h2 {
             line-height: 105%;
             width: 65%;
             margin: 0;
-            /* or 50px */
             letter-spacing: -0.02em;
             font-feature-settings: "salt" on;
 
@@ -583,20 +586,27 @@ h2 {
             font-weight: 500;
             color: $pink-300;
 
+            a {
+                display: inline-flex;
+                align-items: center;
+                position: relative;
+            }
+
             .vapor-icon {
                 height: 16px;
-                width: 18px;
+                width: 16px;
                 background-color: $pink-300;
-                margin-left: 0;
+                margin-left: 8px;
+                transition: transform 0.1s ease-in-out;
             }
 
-            .vapor-icon:hover {
-                background-color: $pink-300;
+            &:hover {
+                background: $grey-300;
             }
-        }
 
-        .btn:hover {
-            background: $grey-300;
+            &:hover a .vapor-icon {
+                transform: translateX(4px);
+            }
         }
     }
 
@@ -644,10 +654,10 @@ h2 {
                 line-height: 150%;
                 font-feature-settings: "salt" on;
                 color: $pink-300;
-            }
 
-            .btn:hover {
-                background: $grey-300;
+                &:hover {
+                    background: $grey-300;
+                }
             }
 
             .vapor-icon {
@@ -678,6 +688,7 @@ h2 {
         border-radius: 61px;
         width: 56px;
         height: 56px;
+        transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 
         &:hover {
             background: $grey-300;
@@ -700,6 +711,7 @@ h2 {
             background-color: $grey-800;
             width: 24px;
             height: 24px;
+            transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         }
     }
 }

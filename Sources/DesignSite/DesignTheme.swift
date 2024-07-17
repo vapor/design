@@ -336,7 +336,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             Text("See full list")
                             Span().class("ms-2 vapor-icon icon-chevron-right")
                         }.linkTarget(.blank)
-                    }.class("btn btn-primary").class("d-none d-lg-block")
+                    }.class("btn").class("d-none d-lg-block")
                 }.class("showcase-header")
                 Div {
                     ShowcaseCard(
