@@ -679,15 +679,28 @@ h2 {
         width: 56px;
         height: 56px;
 
+        &:hover {
+            background: $grey-300;
+        }
+
+        &.disabled {
+            background: $grey-100;
+            border: 1px solid $grey-200;
+
+            span {
+                background-color: $grey-400;
+            }
+
+            &:hover {
+                background: $grey-100;
+            }
+        }
+
         span {
             background-color: $grey-800;
             width: 24px;
             height: 24px;
         }
-    }
-
-    .arrow-button:hover {
-        background: $grey-300;
     }
 }
 
