@@ -23,10 +23,9 @@ public struct ShowcaseCard: Component {
                 Link(url: url) {
                     Text("See it in action")
                     Span("").class("vapor-icon icon-arrow-narrow-up-right")
-                }.class("btn btn-primary mt-auto")
+                }.class("btn mt-auto")
             }.class("card-body d-flex flex-column")
         }.class("card")
-        .style("width: 18rem;")
         .id("\(name.lowercased().replacingOccurrences(of: " ", with: "-"))-card")
     }
 }

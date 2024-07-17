@@ -48,10 +48,21 @@ $grey-100: #fafafd;
 $off-black: #1c1c1f;
 $off-light-grey: #eaecf0;
 $off-black-2: #101828;
+// these colours are used in the code error blocks on the main page
 $code-error-sidebar-background-red: #b2235f1a;
 $code-explainer-title: #df3feb;
 $code-error-background: rgba(179, 35, 95, 0.21);
 $code-error-border: rgba(221, 214, 254, 0.1);
+// these colours are used in code blocks
+$variable-blue: #3f6e74;
+$code-text-blue: #8194f7;
+$code-link-blue: #6699ff;
+$code-section-heading-red: #643820;
+$code-substring: #000;
+$code-formula: #eee;
+$code-addition: #baeeba;
+$code-deletion: #ffc8bd;
+$code-selector: #9b703f;
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica,
@@ -147,27 +158,52 @@ body {
 }
 
 .btn-primary {
+    position: relative;
     --#{$prefix}btn-bg: linear-gradient(180deg, $pink-300 0%, $pink-500 100%);
     background: linear-gradient(180deg, $pink-300 0%, $pink-500 100%);
     --#{$prefix}btn-color: white;
     color: white;
     border: none;
+    z-index: 1;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.4s;
+        z-index: -1;
+        border-radius: 16px;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
 
     a {
         color: white;
         display: inline-flex;
+        align-items: center;
+        position: relative;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        .vapor-icon {
+            background-color: white;
+            width: 16px;
+            height: 16px;
+            margin-left: 8px;
+            transition: transform 0.1s ease-in-out;
+        }
     }
 
-    a:hover {
-        color: white;
-        text-decoration: none;
-    }
-
-    .vapor-icon {
-        background-color: white;
-        width: 16px;
-        height: 16px;
-        margin-left: 10px;
+    &:hover a .vapor-icon {
+        transform: translateX(4px);
     }
 }
 

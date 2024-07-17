@@ -19,7 +19,7 @@ $nav-link-color-light: $grey-600;
     background-color: $nav-link-action-color-light;
 }
 
-a:hover {
+.navbar a:hover {
     .vapor-icon {
         background-color: $nav-link-action-color-light;
     }
@@ -47,7 +47,7 @@ body {
     background: white;
     color: $grey-700;
     background-image: url(../../images/main-background-light.jpg);
-    background-position: top; 
+    background-position: top;
     background-repeat: no-repeat;
     background-size: 100% 500px;
 }
@@ -89,7 +89,7 @@ footer {
         a {
             color: $nav-link-color-light;
         }
-        
+
         a:hover {
             color: $nav-link-action-color-light;
         }
@@ -127,12 +127,13 @@ hr {
     --#{$prefix}btn-bg: $grey-300;
     --#{$prefix}btn-border-color: 1px solid rgba($pink-400, 0.1);
     border: 1px solid rgba($pink-400, 0.1);
+
     .vapor-icon {
         background-color: $pink-400;
     }
 }
 
-.btn-primary:hover {
+.btn-primary::before {
     --#{$prefix}btn-hover-bg: linear-gradient(180deg, $pink-400 0%, $pink-500 100%);
     --#{$prefix}btn-hover-border-color: transparent;
     background: linear-gradient(180deg, $pink-400 0%, $pink-500 100%);
@@ -174,7 +175,9 @@ hr {
         }
 
         .tag-list-tag {
-            .tag-link:hover, .tag-link.active {
+
+            .tag-link:hover,
+            .tag-link.active {
                 color: $grey-800;
                 background-color: $grey-200;
 
@@ -196,7 +199,8 @@ hr {
     }
 }
 
-.vapor-molecule:active, .vapor-molecule:hover {
+.vapor-molecule:active,
+.vapor-molecule:hover {
     background-color: $grey-200;
     border: 1px solid $grey-300;
     color: $grey-700;
@@ -215,7 +219,9 @@ hr {
             color: $grey-700;
         }
 
-        li a.active, a:hover, li a:active {
+        li a.active,
+        a:hover,
+        li a:active {
             color: $blue-300;
         }
     }
@@ -248,12 +254,17 @@ code {
 .btn-secondary-link {
     color: $grey-600;
 
+    &:hover {
+        text-decoration: none;
+    }
+
     a {
         color: $grey-600;
     }
 
     a:hover {
         color: $grey-700;
+        text-decoration: none;
 
         .vapor-icon {
             background-color: $grey-700;

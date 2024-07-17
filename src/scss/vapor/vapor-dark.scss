@@ -3,6 +3,13 @@
 .dark {
     $heading-color-dark: $grey-100;
     $nav-link-action-color-dark: $blue-300;
+    $code-error-sidebar-background-red: rgba(128, 25, 68, 0.3);
+    $code-error-background: rgba(128, 25, 68, 0.2);
+    $code-error-border: rgba(221, 214, 254, 0.1);
+    $sponsor-card-background: rgba(55, 57, 83, 0.3);
+    $showcase-button-background: rgba(255, 255, 255, 0.05);
+    $showcase-button-background-hover: rgba(255, 255, 255, 0.1);
+    $arrow-button-background: rgba(55, 57, 83, 0.3);
 
     body {
         background: $grey-900;
@@ -56,7 +63,7 @@
         background-size: cover;
     }
 
-    a:hover {
+    .navbar a:hover {
         .vapor-icon {
             background-color: $nav-link-action-color-dark;
         }
@@ -197,18 +204,10 @@
         }
     }
 
-    .btn-primary:hover {
+    .btn-primary::before {
         --#{$prefix}btn-hover-bg: linear-gradient(180deg, $pink-300 0%, $pink-400 100%);
         --#{$prefix}btn-hover-border-color: transparent;
         background: linear-gradient(180deg, $pink-300 0%, $pink-400 100%);
-    }
-
-    .btn-primary {
-        a:hover {
-            .vapor-icon {
-                background-color: white;
-            }
-        }
     }
 
     .blog-tags {
@@ -468,12 +467,17 @@
     .btn-secondary-link {
         color: $grey-500;
 
+        &:hover {
+            text-decoration: none;
+        }
+
         a {
             color: $grey-500;
         }
 
         a:hover {
             color: $grey-400;
+            text-decoration: none;
 
             .vapor-icon {
                 background-color: $grey-400;
@@ -539,11 +543,11 @@
         }
 
         .code-error {
-            background: rgba(128, 25, 68, 0.2);
-            border: 1px solid rgba(221, 214, 254, 0.1);
+            background: $code-error-background;
+            border: 1px solid $code-error-border;
 
             .code-error-sidebar {
-                background: rgba(128, 25, 68, 0.3);
+                background: $code-error-sidebar-background-red;
             }
 
             .code-error-message {
@@ -552,45 +556,53 @@
         }
     }
 
+    .row>.scroll-button-group .arrow-button {
+        background: rgba($grey-800, 0.3);
+        border: 1px solid $grey-800;
+
+        &:hover {
+            background: rgba($grey-800, $alpha: 0.6);
+        }
+
+        &.disabled {
+            background: rgba($grey-800, $alpha: 0.3);
+
+            span {
+                background-color: $grey-800;
+            }
+        }
+
+        span {
+            background-color: $grey-200;
+        }
+    }
+
     #showcase {
         .showcase-header {
             .btn {
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(223, 62, 251, 0.1);
+                background: $showcase-button-background;
+                border: 1px solid rgba($pink-300, 0.1);
             }
 
             .btn:hover {
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(223, 62, 251, 0.2);
+                background: $showcase-button-background-hover;
+                border: 1px solid rgba($pink-300, 0.2);
             }
         }
 
         .card {
-            background: rgba(55, 57, 83, 0.3);
+            background: $sponsor-card-background;
             color: $grey-500;
 
             .btn {
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(223, 62, 251, 0.1);
+                background: $showcase-button-background;
+                border: 1px solid rgba($pink-300, 0.1);
             }
 
             .btn:hover {
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(223, 62, 251, 0.2);
+                background: $showcase-button-background-hover;
+                border: 1px solid rgba($pink-300, 0.2);
             }
-        }
-
-        .arrow-button {
-            background: rgba(55, 57, 83, 0.3);
-            border: 1px solid #373953;
-
-            span {
-                background-color: $grey-200;
-            }
-        }
-
-        .arrow-button:hover {
-            background: rgba(55, 57, 83, 0.5);
         }
 
         #sambot-card img {
@@ -626,7 +638,7 @@
 
     #sponsors {
         .card {
-            background: rgba(55, 57, 83, 0.30);
+            background: $sponsor-card-background;
 
             h5 {
                 color: $grey-200;

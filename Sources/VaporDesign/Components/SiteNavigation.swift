@@ -78,7 +78,7 @@ public struct SiteNavigation<Site: Website>: Component {
                             }
                             var docsLink = Link(url: "#") {
                                 Text("Documentation")
-                                Span().class("vapor-icon icon-chevron-down ms-auto ms-lg-3").id("documentation-navbar-chevron")
+                                Span().class("vapor-icon icon-chevron-down ms-auto ms-sm-1").id("documentation-navbar-chevron")
                             }
                             .class(classList)
                             .id("documentation-dropdown-link")

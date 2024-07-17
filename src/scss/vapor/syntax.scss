@@ -13,7 +13,7 @@
     backdrop-filter: blur(20px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 24px;
-    color: #8194F7;
+    color: $code-text-blue;
     white-space: pre-wrap;
 
     tr:first-child td {
@@ -59,7 +59,7 @@
 
 .hljs-variable,
 .hljs-template-variable {
-    color: #3F6E74;
+    color: $variable-blue;
 }
 
 .hljs-code,
@@ -70,7 +70,7 @@
 
 .hljs-regexp,
 .hljs-link {
-    color: #6699FF;
+    color: $code-link-blue;
 }
 
 .hljs-title,
@@ -82,7 +82,7 @@
 
 .hljs-section,
 .hljs-meta {
-    color: #643820;
+    color: $code-section-heading-red;
 }
 
 
@@ -102,25 +102,25 @@
 }
 
 .hljs-subst {
-    color: #000;
+    color: $code-substring;
 }
 
 .hljs-formula {
-    background-color: #eee;
+    background-color: $code-formula;
     font-style: italic;
 }
 
 .hljs-addition {
-    background-color: #baeeba;
+    background-color: $code-addition;
 }
 
 .hljs-deletion {
-    background-color: #ffc8bd;
+    background-color: $code-deletion;
 }
 
 .hljs-selector-id,
 .hljs-selector-class {
-    color: #9b703f;
+    color: $code-selector;
 }
 
 .hljs-doctag,
@@ -167,7 +167,7 @@
     .hljs {
         background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba(35, 172, 240, 0.052) 0%, rgba(35, 172, 240, 0) 100%), rgba(55, 57, 83, 0.3);
         border: 1px solid rgba(221, 214, 254, 0.1);
-        color: #8194F7;
+        color: $code-text-blue;
     }
 
     //   /* Gray DOCTYPE selectors like WebKit */
