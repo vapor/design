@@ -468,18 +468,6 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         logo: "/images/transeo.png",
                         description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
                     )
-                    SponsorCard(
-                        name: "Transeo",
-                        url: "https://gotranseo.com",
-                        logo: "/images/transeo.png",
-                        description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
-                    )
-                    SponsorCard(
-                        name: "Transeo",
-                        url: "https://gotranseo.com",
-                        logo: "/images/transeo.png",
-                        description: "Transeo is an educational technology company that builds tracking tools for student planning and data analysis."
-                    )
                 }.class("sponsors-list").id("home-page-sponsors-list")
                 Div {
                     Button {

@@ -552,6 +552,19 @@
         }
     }
 
+    .row>.scroll-button-group .arrow-button {
+        background: rgba(55, 57, 83, 0.3);
+        border: 1px solid #373953;
+
+        span {
+            background-color: $grey-200;
+        }
+    }
+
+    .row>.scroll-button-group .arrow-button:hover {
+        background: rgba(55, 57, 83, 0.5);
+    }
+
     #showcase {
         .showcase-header {
             .btn {
@@ -578,19 +591,6 @@
                 background: rgba(255, 255, 255, 0.1);
                 border: 1px solid rgba(223, 62, 251, 0.2);
             }
-        }
-
-        .arrow-button {
-            background: rgba(55, 57, 83, 0.3);
-            border: 1px solid #373953;
-
-            span {
-                background-color: $grey-200;
-            }
-        }
-
-        .arrow-button:hover {
-            background: rgba(55, 57, 83, 0.5);
         }
 
         #sambot-card img {
