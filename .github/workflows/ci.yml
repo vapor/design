@@ -12,13 +12,6 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
-        with:
-          aws-access-key-id: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-1'
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Set up Node 
@@ -36,25 +29,13 @@ jobs:
         run: npm install
       - name: Build Node website
         run: npm run build
-      - name: Create S3 Bucket
-        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
-        env:
-          BUCKET: ${{ format('vapor-design-pulls-pr{0}', github.event.number) }}
-        run: |
-            if aws s3api head-bucket --bucket ${BUCKET} 2>/dev/null; then
-              echo "Bucket already exists"
-            else
-              aws s3 mb s3://${BUCKET}
-              aws s3api delete-public-access-block --bucket ${BUCKET}
-              aws s3api delete-bucket-ownership-controls --bucket ${BUCKET}
-              aws s3api put-bucket-website --bucket ${BUCKET}  \
-                --website-configuration '{"IndexDocument":{"Suffix":"index.html"},"ErrorDocument":{"Key":"404.html"}}'
-            fi
       - name: Deploy S3 Website
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
-        uses: brokenhandsio/s3-website-https-pr-action@1.0.0
+        uses: brokenhandsio/s3-website-pr-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
         with:
           bucket-prefix: "vapor-design-pulls"
           folder-to-copy: "./Output"
