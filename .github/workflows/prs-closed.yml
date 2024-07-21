@@ -18,6 +18,8 @@ jobs:
 
     steps:
       - name: Delete Website Bucket
-        uses: rishabhrao/s3-website-https-pr-action@v1
+        uses: brokenhandsio/s3-website-https-pr-action@v2
         with:
           bucket-prefix: "vapor-design-pulls"
+          bucket-region: "us-east-1"
+
