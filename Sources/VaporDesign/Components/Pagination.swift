@@ -32,7 +32,7 @@ public struct Pagination: Component {
                     }
                     return ComponentGroup {
                         Link(url: link) {
-                            Span().class("vapor-icon icon-chevron-left")
+                            Span().class("vapor-icon icon-chevron-left").attribute(named: "aria-hidden", value: "true")
                             Div {
                                 Text("Previous")
                             }.class("d-none d-lg-block")
@@ -91,7 +91,7 @@ public struct Pagination: Component {
                             Div {
                                 Text("Next")
                             }.class("d-none d-lg-block")
-                            Span().class("vapor-icon icon-chevron-right")
+                            Span().class("vapor-icon icon-chevron-right").attribute(named: "aria-hidden", value: "true")
                         }.class("page-link page-link-next-previous d-flex page-link-next").accessibilityLabel("Next")
                     }
                 }.class(nextClassList)
