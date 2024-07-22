@@ -177,7 +177,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 Div {
                     Button {
                         Link(url: "https://github.com/vapor/vapor") {
-                            Span().class("vapor-icon icon-github-line icon-secondary btn-icon me-2")
+                            Span().class("vapor-icon icon-github-line icon-secondary btn-icon me-2").attribute(named: "aria-hidden", value: "true")
                             Span("22k stars on GitHub").id("main-page-callout-stars-count")
                         }.class("d-flex align-items-center")
                     }.class("btn btn-link btn-secondary-link")
@@ -295,7 +295,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         Div {}.class("code-outline-left")
                         Div {
                             Div {
-                                Span().class("vapor-icon icon-alert-octagon")
+                                Span().class("vapor-icon icon-alert-octagon").attribute(named: "aria-hidden", value: "true")
                             }.class("code-error-sidebar")
                             Span(
                                 """
@@ -318,7 +318,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         Button {
                             Link(url: "https://docs.vapor.codes/") {
                                 Text("Get Started")
-                                Span().class("vapor-icon icon-chevron-right")
+                                Span().class("vapor-icon icon-chevron-right").attribute(named: "aria-hidden", value: "true")
                             }.linkTarget(.blank)
                         }.class("btn btn-primary w-mobile-100")
                     }.class("code-example-explainer")
@@ -334,7 +334,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     Button {
                         Link(url: "") {
                             Text("See full list")
-                            Span().class("ms-2 vapor-icon icon-chevron-right")
+                            Span().class("ms-2 vapor-icon icon-chevron-right").attribute(named: "aria-hidden", value: "true")
                         }.linkTarget(.blank)
                     }.class("btn").class("d-none d-lg-block")
                 }.class("showcase-header")
@@ -372,10 +372,14 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }.class("showcase-cards scrollable").id("home-page-showcase-cards-list")
                 Div {
                     Button {
-                        Span().class("vapor-icon icon-arrow-left")
+                        Span {
+                            Span("Previous").class("visually-hidden")
+                        }.class("vapor-icon icon-arrow-left").accessibilityLabel("Previous showcase card")
                     }.class("arrow-button left-scroll-button")
                     Button {
-                        Span().class("vapor-icon icon-arrow-right")
+                        Span {
+                            Span("Next").class("visually-hidden")
+                        }.class("vapor-icon icon-arrow-right").accessibilityLabel("Next showcase card")
                     }.class("arrow-button right-scroll-button")
                 }.class("btn-group scroll-button-group").attribute(named: "data-scrollable", value: "home-page-showcase-cards-list")
             }.class("row row-cols-1 row-cols-lg-2").id("showcase")
@@ -398,7 +402,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                             }.class("btn btn-primary w-mobile-100")
                             Link(url: "https://github.com/vapor/vapor") {
                                 Text("Contribute")
-                                Span().class("vapor-icon icon-chevron-right")
+                                Span().class("vapor-icon icon-chevron-right").attribute(named: "aria-hidden", value: "true")
                             }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3")
                         }.class("px-4 px-lg-0")
                     }.class("col order-2 order-lg-1 g-lg-0")
@@ -415,7 +419,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                     }.class("btn btn-primary w-mobile-100")
                     Link(url: "https://api.vapor.codes/") {
                         Text("Go to API Docs")
-                        Span().class("vapor-icon icon-chevron-right")
+                        Span().class("vapor-icon icon-chevron-right").attribute(named: "aria-hidden", value: "true")
                     }.class("ms-3 learn-more-link mt-lg-0 mt-3 mb-lg-0 mb-3").linkTarget(.blank)
                 }.class("col order-2 order-lg-1 mt-5 mt-lg-0")
                 Div {
@@ -423,19 +427,19 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                         H2("Get all the tools you need to build with Swift").class("d-lg-none px-4")
                         List {
                             ListItem {
-                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block").attribute(named: "aria-hidden", value: "true")
                                 Span("Easily create new projects with the Vapor Toolbox").class("align-middle")
                             }
                             ListItem {
-                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block").attribute(named: "aria-hidden", value: "true")
                                 Span("Expansive documentation and API reference").class("align-middle")
                             }
                             ListItem {
-                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block").attribute(named: "aria-hidden", value: "true")
                                 Span("Everything you need to build backends and APIs").class("align-middle")
                             }
                             ListItem {
-                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block")
+                                Span().class("align-middle vapor-icon icon-check-circle icon-secondary me-2 d-inline-block").attribute(named: "aria-hidden", value: "true")
                                 Span("Full support for Swift's concurrency model").class("align-middle")
                             }
                         }.class("px-4 p-lg-0")

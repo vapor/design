@@ -120,17 +120,17 @@ public struct SiteFooter: Component {
                         List {
                             ListItem {
                                 Link(url: "https://twitter.com/codevapor") {
-                                    Span().class("vapor-icon icon-twitter-fill")
+                                    Span().class("vapor-icon icon-twitter-fill").accessibilityLabel("Twitter")
                                 }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }.class("me-4")
                             ListItem {
                                 Link(url: "https://hachyderm.io/@codevapor") {
-                                    Span().class("vapor-icon icon-mastodon-fill")
+                                    Span().class("vapor-icon icon-mastodon-fill").accessibilityLabel("Mastodon")
                                 }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }.class("me-4")
                             ListItem {
                                 Link(url: "https://github.com/vapor") {
-                                    Span().class("vapor-icon icon-github-fill")
+                                    Span().class("vapor-icon icon-github-fill").accessibilityLabel("GitHub")
                                 }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }
                         }.class("d-flex")
