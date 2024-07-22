@@ -40,8 +40,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Team", url: "/team").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Team", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Team", url: "https://www.vapor.codes/team").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                     ListItem {
@@ -53,8 +52,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Evangelists", url: "/evangelists").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Evangelists", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Evangelists", url: "https://www.vapor.codes/evangelists").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                     ListItem {
@@ -63,8 +61,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Showcase", url: "/showcase").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Showcase", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Showcase", url: "https://www.vapor.codes/showcase").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                     ListItem {
@@ -73,8 +70,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Supporters", url: "/supporters").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Supporters", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Supporters", url: "https://www.vapor.codes/supporters").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                 }.class("ps-lg-5")
@@ -124,17 +120,23 @@ public struct SiteFooter: Component {
                         List {
                             ListItem {
                                 Link(url: "https://twitter.com/codevapor") {
-                                    Span().class("vapor-icon icon-twitter-fill")
+                                    Span {
+                                        Span("Twitter").class("visually-hidden")
+                                    }.class("vapor-icon icon-twitter-fill").accessibilityLabel("Twitter")
                                 }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }.class("me-4")
                             ListItem {
                                 Link(url: "https://hachyderm.io/@codevapor") {
-                                    Span().class("vapor-icon icon-mastodon-fill")
+                                    Span {
+                                        Span("Mastodon").class("visually-hidden")
+                                    }.class("vapor-icon icon-mastodon-fill").accessibilityLabel("Mastodon")
                                 }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }.class("me-4")
                             ListItem {
                                 Link(url: "https://github.com/vapor") {
-                                    Span().class("vapor-icon icon-github-fill")
+                                    Span {
+                                        Span("GitHub").class("visually-hidden")
+                                    }.class("vapor-icon icon-github-fill").accessibilityLabel("GitHub")
                                 }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }
                         }.class("d-flex")

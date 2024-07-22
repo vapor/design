@@ -15,8 +15,11 @@ public struct CompanyCard: Component {
     public var body: Component {
         Div {
             Link(url: url) {
-                Span().class("used-by-icon \(logo)").attribute(named: "title", value: name)
-            }.class("used-by-logo")
+                Span {
+                    Span(name).class("visually-hidden")
+                }.class("used-by-icon \(logo)").attribute(named: "title", value: name).accessibilityLabel(name)
+            }.linkTarget(.blank)
+            .class("used-by-logo")
         }.class("used-by-item")
     }
 }

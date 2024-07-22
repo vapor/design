@@ -20,11 +20,15 @@ public struct SiteNavigation<Site: Website>: Component {
         Navigation {
             Div {
                 Link(url: "/") {
-                    Span().id("vapor-logo").class("d-inline-block align-text-top").accessibilityLabel("Vapor Logo").width(130).height(50)
+                    Span {
+                        Span("Vapor").class("visually-hidden")
+                    }.id("vapor-logo").class("d-inline-block align-text-top").accessibilityLabel("Vapor Logo").width(130).height(50)
                 }.class("navbar-brand ms-3")
 
                 Button {
-                    Span().id("vapor-navbar-toggler-icon").class("vapor-icon icon-menu-04")
+                    Span {
+                        Span("Toggle Navigation").class("visually-hidden")
+                    }.id("vapor-navbar-toggler-icon").class("vapor-icon icon-menu-04")
                 }.class("navbar-toggler")
                     .attribute(named: "type", value: "button")
                     .accessibilityLabel("Toggle navigation")
@@ -67,8 +71,7 @@ public struct SiteNavigation<Site: Website>: Component {
 
                                 return ComponentGroup(members: [link])
                             } else {
-                                #warning("Fix link")
-                                return ComponentGroup(members: [Link("Showcase", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
+                                return ComponentGroup(members: [Link("Showcase", url: "https://www.vapor.codes/showcase").class("nav-link").linkTarget(.blank)])
                             }
                         }.class("nav-item")
                         ListItem {
@@ -119,7 +122,7 @@ public struct SiteNavigation<Site: Website>: Component {
 
                                     ListItem {
                                         let linkBody = Div {
-                                            Span().class("vapor-icon icon-dataflow-03")
+                                            Span().class("vapor-icon icon-dataflow-03").attribute(named: "aria-hidden", value: "true")
                                             Div {
                                                 Div {
                                                     Text("API Docs")
@@ -157,8 +160,7 @@ public struct SiteNavigation<Site: Website>: Component {
 
                                 return ComponentGroup(members: [link])
                             } else {
-                                #warning("Fix link")
-                                return ComponentGroup(members: [Link("Team", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
+                                return ComponentGroup(members: [Link("Team", url: "https://www.vapor.codes/team").class("nav-link").linkTarget(.blank)])
                             }
                         }.class("nav-item")
                         ListItem {
@@ -171,7 +173,9 @@ public struct SiteNavigation<Site: Website>: Component {
                         }.class("nav-item")
                         ListItem {
                             Link(url: "https://github.com/vapor") {
-                                Span().class("vapor-icon icon-github-fill")
+                                Span {
+                                    Span("GitHub").class("visually-hidden")
+                                }.class("vapor-icon icon-github-fill").accessibilityLabel("GitHub")
                             }.linkTarget(.blank).class("nav-link").attribute(named: "rel", value: "me")
                         }.class("nav-item")
                         ListItem {
