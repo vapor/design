@@ -16,7 +16,8 @@ public struct CompanyCard: Component {
         Div {
             Link(url: url) {
                 Span().class("used-by-icon \(logo)").attribute(named: "title", value: name)
-            }.class("used-by-logo")
+            }.linkTarget(.blank)
+            .class("used-by-logo")
         }.class("used-by-item")
     }
 }
