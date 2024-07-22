@@ -40,8 +40,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Team", url: "/team").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Team", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Team", url: "https://www.vapor.codes/team").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                     ListItem {
@@ -53,8 +52,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Evangelists", url: "/evangelists").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Evangelists", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Evangelists", url: "https://www.vapor.codes/evangelists").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                     ListItem {
@@ -63,8 +61,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Showcase", url: "/showcase").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Showcase", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Showcase", url: "https://www.vapor.codes/showcase").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                     ListItem {
@@ -73,8 +70,7 @@ public struct SiteFooter: Component {
                                         } else if currentSite == .main {
                                             Link("Supporters", url: "/supporters").class("nav-link")
                                         } else {
-                                            #warning("Fix link")
-                                            Link("Supporters", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)
+                                            Link("Supporters", url: "https://www.vapor.codes/supporters").class("nav-link").linkTarget(.blank)
                                         }
                                     }
                                 }.class("ps-lg-5")

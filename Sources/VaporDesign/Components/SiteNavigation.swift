@@ -67,8 +67,7 @@ public struct SiteNavigation<Site: Website>: Component {
 
                                 return ComponentGroup(members: [link])
                             } else {
-                                #warning("Fix link")
-                                return ComponentGroup(members: [Link("Showcase", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
+                                return ComponentGroup(members: [Link("Showcase", url: "https://www.vapor.codes/showcase").class("nav-link").linkTarget(.blank)])
                             }
                         }.class("nav-item")
                         ListItem {
@@ -157,8 +156,7 @@ public struct SiteNavigation<Site: Website>: Component {
 
                                 return ComponentGroup(members: [link])
                             } else {
-                                #warning("Fix link")
-                                return ComponentGroup(members: [Link("Team", url: "https://www.vapor.codes/").class("nav-link").linkTarget(.blank)])
+                                return ComponentGroup(members: [Link("Team", url: "https://www.vapor.codes/team").class("nav-link").linkTarget(.blank)])
                             }
                         }.class("nav-item")
                         ListItem {
