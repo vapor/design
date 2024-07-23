@@ -51,8 +51,12 @@
                 color: $grey-600;
                 text-decoration: none;
             }
+        }
 
-            a:hover {
+        li:hover {
+            background: $grey-300;
+
+            a {
                 color: $grey-800;
             }
         }
@@ -67,6 +71,7 @@
     font-size: 12px;
     color: $grey-600;
     padding-right: 12px;
+    padding-left: 12px;
 
     ul {
         margin-left: 4px;
@@ -79,6 +84,10 @@
             a {
                 color: $grey-800;
             }
+        }
+
+        li:hover {
+            background: $grey-300;
         }
     }
 }
