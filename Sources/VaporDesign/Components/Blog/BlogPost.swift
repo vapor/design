@@ -81,23 +81,29 @@ public struct BlogPost<Site: Website>: Component {
             ListItem {
                 Link(url: "#") {
                     Text("&nbsp;")
-                    Span().class("vapor-icon icon-twitter-fill share-icon-empty")
+                    Span {
+                        Span("Share on Twitter").class("visually-hidden")
+                    }.class("vapor-icon icon-twitter-fill share-icon-empty")
                     Text("&nbsp;")
-                }.class("btn btn-secondary btn-small d-flex twitter-share-button")
+                }.class("btn btn-secondary btn-small d-flex twitter-share-button").accessibilityLabel("Share on Twitter")
             }
             ListItem {
                 Link(url: "#") {
                     Text("&nbsp;")
-                    Span().class("vapor-icon icon-reddit-fill share-icon-empty")
+                    Span {
+                        Span("Share on Reddit").class("visually-hidden")
+                    }.class("vapor-icon icon-reddit-fill share-icon-empty")
                     Text("&nbsp;")
-                }.class("btn btn-secondary btn-small d-flex reddit-share-button")
+                }.class("btn btn-secondary btn-small d-flex reddit-share-button").accessibilityLabel("Share on Reddit")
             }
             ListItem {
                 Link(url: "#") {
                     Text("&nbsp;")
-                    Span().class("vapor-icon icon-mastodon-fill share-icon-empty")
+                    Span {
+                        Span("Share on Mastodon").class("visually-hidden")
+                    }.class("vapor-icon icon-mastodon-fill share-icon-empty")
                     Text("&nbsp;")
-                }.class("btn btn-secondary btn-small d-flex mastodon-share-button")
+                }.class("btn btn-secondary btn-small d-flex mastodon-share-button").accessibilityLabel("Share on Mastodon")
             }.class("me-auto")
         }
     }

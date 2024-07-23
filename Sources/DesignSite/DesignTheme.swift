@@ -475,11 +475,15 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 }.class("sponsors-list").id("home-page-sponsors-list")
                 Div {
                     Button {
-                        Span().class("vapor-icon icon-arrow-left")
-                    }.class("arrow-button left-scroll-button")
+                        Span {
+                            Span("Previous").class("visually-hidden")
+                        }.class("vapor-icon icon-arrow-left")
+                    }.class("arrow-button left-scroll-button").accessibilityLabel("Previous sponsor")
                     Button {
-                        Span().class("vapor-icon icon-arrow-right")
-                    }.class("arrow-button right-scroll-button")
+                        Span {
+                            Span("Next").class("visually-hidden")
+                        }.class("vapor-icon icon-arrow-right")
+                    }.class("arrow-button right-scroll-button").accessibilityLabel("Next sponsor")
                 }.class("btn-group scroll-button-group").attribute(named: "data-scrollable", value: "home-page-sponsors-list")
             }.class("row").id("sponsors")
         }.class("container")
