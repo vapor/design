@@ -51,8 +51,12 @@
                 color: $grey-600;
                 text-decoration: none;
             }
+        }
 
-            a:hover {
+        li:hover {
+            background: $grey-300;
+
+            a {
                 color: $grey-800;
             }
         }
@@ -80,6 +84,10 @@
             a {
                 color: $grey-800;
             }
+        }
+
+        li:hover {
+            background: $grey-300;
         }
     }
 }
