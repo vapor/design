@@ -220,8 +220,12 @@
                 a {
                     color: $grey-100;
                 }
+            }
 
-                a:hover {
+            li:hover {
+                background: $grey-600;
+
+                a {
                     color: white;
                 }
             }
@@ -238,6 +242,10 @@
                 a {
                     color: white;
                 }
+            }
+
+            li:hover {
+                background: $grey-600;
             }
         }
     }
