@@ -70,6 +70,8 @@ body {
 #main-page-body {
     #vapor-navbar {
         top: -80px;
+        position: fixed;
+        transition: top 0.3s;
     }
 }
 
