@@ -14,9 +14,7 @@ $navbar-light-active-color: $blue-300;
 
 #vapor-navbar {
     height: 80px;
-    position: fixed;
     width: 100%;
-    transition: top 0.3s;
     z-index: 9999;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
