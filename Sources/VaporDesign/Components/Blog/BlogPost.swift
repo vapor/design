@@ -55,7 +55,7 @@ public struct BlogPost<Site: Website>: Component {
     
     func buildBlogPostContent() -> Component {
         Div {
-            item.content.body
+            item.bodyWithoutTitle
         }.class("blog-content")
     }
     
@@ -106,5 +106,11 @@ public struct BlogPost<Site: Website>: Component {
                 }.class("btn btn-secondary btn-small d-flex mastodon-share-button").accessibilityLabel("Share on Mastodon")
             }.class("me-auto")
         }
+    }
+}
+
+extension Item {
+    var bodyWithoutTitle: Content.Body {
+        Content.Body(html: body.html.replacingOccurrences(of: "<h1>\(title)</h1>", with: ""))
     }
 }
