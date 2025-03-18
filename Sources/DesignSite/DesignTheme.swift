@@ -240,8 +240,8 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
                 Div {
                     Div {
                         FeatureContainer(
-                            title: "High-performant APIs and servers",
-                            description: "Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performant, scalable APIs and HTTP servers. Using Swift's Concurrency model, you can write clear, maintainable code that's efficient and easy to read.",
+                            title: "High-performance APIs and servers",
+                            description: "Built with a non-blocking, event-driven architecture, Vapor allows you to build high-performance, scalable APIs and HTTP servers. Using Swift's Concurrency model, you can write clear, maintainable code that's efficient and easy to read.",
                             url: "https://docs.vapor.codes/",
                             icon: "icon-dataflow-03"
                         )
