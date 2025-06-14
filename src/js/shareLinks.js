@@ -19,6 +19,13 @@ function setMastodonShareLink() {
     });
 }
 
+function setBskyShareLink() {
+	const bskyShareLinks = document.querySelectorAll('.bsky-share-button');
+	mastodonShareLinks.forEach((link) => {
+		link.href = `https://bsky.app/intent/compose?text=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`;
+	});
+}
+
 setTwitterShareLink();
 setRedditShareLink();
 setMastodonShareLink();
