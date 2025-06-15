@@ -132,6 +132,13 @@ public struct SiteFooter: Component {
                                     }.class("vapor-icon icon-mastodon-fill").accessibilityLabel("Mastodon")
                                 }.linkTarget(.blank).attribute(named: "rel", value: "me")
                             }.class("me-4")
+							ListItem {
+								Link(url: "https://bsky.app/profile/vapor.codes") {
+									Span {
+										Span("Bsky").class("visually-hidden")
+									}.class("vapor-icon icon-bsky-fill").accessibilityLabel("Bluesky")
+								}.linkTarget(.blank).attribute(named: "rel", value: "me")
+							}.class("me-4")
                             ListItem {
                                 Link(url: "https://github.com/vapor") {
                                     Span {
