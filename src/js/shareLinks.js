@@ -29,3 +29,4 @@ function setBskyShareLink() {
 setTwitterShareLink();
 setRedditShareLink();
 setMastodonShareLink();
+setBskyShareLink();
