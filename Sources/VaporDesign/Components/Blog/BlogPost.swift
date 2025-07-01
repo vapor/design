@@ -105,15 +105,15 @@ public struct BlogPost<Site: Website>: Component {
                     Text("&nbsp;")
                 }.class("btn btn-secondary btn-small d-flex mastodon-share-button").accessibilityLabel("Share on Mastodon")
             }.class("me-auto")
-			ListItem {
-				Link(url: "#") {
-					Text("&nbsp;")
+            ListItem {
+                Link(url: "#") {
+                    Text("&nbsp;")
 					Span {
-						Span("Share on Bsky").class("visually-hidden")
-					}.class("vapor-icon icon-bsky-fill share-icon-empty")
-					Text("&nbsp;")
-				}.class("btn btn-secondary btn-small d-flex bsky-share-button").accessibilityLabel("Share on Bluesky")
-			}.class("me-auto")
+                        Span("Share on Bsky").class("visually-hidden")
+                    }.class("vapor-icon icon-bsky-fill share-icon-empty")
+                    Text("&nbsp;")
+                }.class("btn btn-secondary btn-small d-flex bsky-share-button").accessibilityLabel("Share on Bluesky")
+            }.class("me-auto")
         }
     }
 }
