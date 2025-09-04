@@ -21,7 +21,7 @@ jobs:
       run: swift run && npm install && npm run build
     - name: Configure AWS credentials
       id: cred
-      uses: aws-actions/configure-aws-credentials@v4
+      uses: aws-actions/configure-aws-credentials@v5
       with:
         aws-access-key-id: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.DESIGN_DEPLOYER_AWS_SECRET_ACCESS_KEY }}
