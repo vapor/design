@@ -47,13 +47,7 @@ public struct SiteFooter: Component {
                                         Link("Join our Discord", url: "https://vapor.team").linkTarget(.blank).class("nav-link")
                                     }
                                     ListItem {
-                                        if isDemo {
-                                            Link("Evangelists", url: "#").class("nav-link")
-                                        } else if currentSite == .main {
-                                            Link("Evangelists", url: "/evangelists").class("nav-link")
-                                        } else {
-                                            Link("Evangelists", url: "https://www.vapor.codes/evangelists").class("nav-link").linkTarget(.blank)
-                                        }
+                                        Link("Store", url: "https://store.vapor.codes").linkTarget(.blank).class("nav-link")
                                     }
                                     ListItem {
                                         if isDemo {
