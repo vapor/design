@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "type": "lldb",
+            "type": "swift",
             "request": "launch",
             "name": "Debug DesignSite",
             "program": "${workspaceFolder:design}/.build/debug/DesignSite",
@@ -10,7 +10,7 @@
             "preLaunchTask": "swift: Build Debug DesignSite"
         },
         {
-            "type": "lldb",
+            "type": "swift",
             "request": "launch",
             "name": "Release DesignSite",
             "program": "${workspaceFolder:design}/.build/release/DesignSite",
