@@ -10,6 +10,9 @@ jobs:
   delete-s3:
     name: Delete S3 Website
     runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+      contents: read
     if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]' }}
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.DESIGN_DEPLOYER_AWS_ACCESS_KEY_ID }}

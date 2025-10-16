@@ -57,6 +57,11 @@ public struct SiteNavigation<Site: Website>: Component {
                             }
                         }.class("nav-item")
                         ListItem {
+                            ComponentGroup {
+                                Link("Store", url: "https://store.vapor.codes").class("nav-link").linkTarget(.blank)
+                            }
+                        }
+                        ListItem {
                             if currentSite == .main {
                                 var classList = "nav-link"
                                 if currentMainSitePage == .showcase {
