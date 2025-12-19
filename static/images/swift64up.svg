@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="89" height="18" role="img" aria-label="swift: 6.2+">
-<title>swift: 6.2+</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="89" height="18" role="img" aria-label="swift: 6.4+">
+<title>swift: 6.4+</title>
 <linearGradient id="s" x2="0" y2="100%">
   <stop offset="0" stop-color="#fff" stop-opacity=".7"/>
   <stop offset=".1" stop-color="#aaa" stop-opacity=".1"/>
@@ -29,8 +29,8 @@
     "/>
   </svg>
   <text aria-hidden="true" x="35.5" y="14" fill="#010101" fill-opacity=".3" textLength="25">swift</text>
-  <text aria-hidden="true" x="69.5" y="14" fill="#010101" fill-opacity=".3" textLength="27">6.2+</text>
+  <text aria-hidden="true" x="69.5" y="14" fill="#010101" fill-opacity=".3" textLength="27">6.4+</text>
   <text x="35.5" y="13" fill="#fff" textLength="25">swift</text>
-  <text x="69.5" y="13" fill="#fff" textLength="27">6.2+</text>
+  <text x="69.5" y="13" fill="#fff" textLength="27">6.4+</text>
 </g>
 </svg>
