@@ -23,13 +23,11 @@ jobs:
     - name: Build site
       run: swift run && npm ci && npm run build
     - name: Configure AWS credentials
-      id: cred
       uses: aws-actions/configure-aws-credentials@v6
       with:
         role-to-assume: ${{ vars.OIDC_ROLE_ARN }}
         aws-region: ${{ vars.OIDC_ROLE_REGION }}
     - name: Deploy to AWS Cloudformation
-      id: clouddeploy
       uses: aws-actions/aws-cloudformation-github-deploy@v2
       env:
         AWS_REGION: 'eu-west-2'
@@ -40,19 +38,15 @@ jobs:
           DomainName=design.vapor.codes,
           S3BucketName=vapor-design-site,
           AcmCertificateArn=${{ secrets.CERTIFICATE_ARN }}
-      if: steps.cred.outcome == 'success'
     - name: Deploy to S3
-      run: >
-        aws s3 sync
-        ./Output
-        s3://vapor-design-site/
-        --acl public-read --follow-symlinks --delete
       env:
+        S3_BUCKET_URL: ${{ secrets.VAPOR_API_DOCS_S3_BUCKET_URL }}
         AWS_REGION: 'eu-west-2'
-      if: steps.clouddeploy.outcome == 'success'
+      run: |
+        aws s3 sync ./Output s3://vapor-design-site --no-progress --acl public-read
     - name: Invalidate CloudFront
-      uses: awact/cloudfront-action@master
       env:
-        SOURCE_PATH: '/*'
-        AWS_REGION: 'eu-west-2'
         DISTRIBUTION_ID: ${{ secrets.VAPOR_DESIGN_DISTRIBUTION_ID }}
+        AWS_REGION: 'eu-west-2'
+      run: |
+        aws cloudfront create-invalidation --distribution-id "${DISTRIBUTION_ID}" --paths ${INPUT_INVALIDATE_PATHS}
