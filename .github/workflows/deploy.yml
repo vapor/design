@@ -49,4 +49,4 @@ jobs:
         DISTRIBUTION_ID: ${{ secrets.VAPOR_DESIGN_DISTRIBUTION_ID }}
         AWS_REGION: 'eu-west-2'
       run: |
-        aws cloudfront create-invalidation --distribution-id "${DISTRIBUTION_ID}" --paths ${INPUT_INVALIDATE_PATHS}
+        aws cloudfront create-invalidation --distribution-id "${DISTRIBUTION_ID}" --paths '/*'
