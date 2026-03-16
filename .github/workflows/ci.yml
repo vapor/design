@@ -22,6 +22,9 @@ jobs:
         with:
           app-id: ${{ vars.PENNY_APP_ID }}
           private-key: ${{ secrets.PENNY_APP_PRIVATE_KEY }}
+          permission-contents: read
+          permission-deployments: write
+          permission-environments: read
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
