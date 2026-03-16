@@ -14,8 +14,7 @@ jobs:
       deployments: write
       id-token: write
       contents: read
-    if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' && github.event.pull_request.user.login != 'dependabot[bot]' }}
-
+    if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }}
     steps:
       - name: Create penny-bot token
         id: get-token
@@ -29,10 +28,8 @@ jobs:
           role-to-assume: ${{ vars.OIDC_ROLE_ARN }}
           aws-region: ${{ vars.OIDC_ROLE_REGION }}
       - name: Delete Website Bucket
-        uses: brokenhandsio/s3-website-pr-action@v2
-        env:
-          GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
+        uses: brokenhandsio/s3-website-pr-action@v3
         with:
           bucket-prefix: "vapor-design-pulls"
           bucket-region: "us-east-1"
-
+          token: ${{ steps.get-token.outputs.token }}
