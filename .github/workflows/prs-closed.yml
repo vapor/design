@@ -28,7 +28,7 @@ jobs:
           role-to-assume: ${{ vars.OIDC_ROLE_ARN }}
           aws-region: ${{ vars.OIDC_ROLE_REGION }}
       - name: Delete Website Bucket
-        uses: brokenhandsio/s3-website-pr-action@v3
+        uses: brokenhandsio/s3-website-pr-action@v3.0.0
         with:
           bucket-prefix: "vapor-design-pulls"
           bucket-region: "us-east-1"
