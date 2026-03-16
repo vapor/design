@@ -48,7 +48,7 @@ jobs:
         run: npm run build
       - name: Deploy S3 Website
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }}
-        uses: brokenhandsio/s3-website-pr-action@v3
+        uses: brokenhandsio/s3-website-pr-action@v3.0.0
         with:
           bucket-prefix: vapor-design-pulls
           folder-to-copy: "./Output"
