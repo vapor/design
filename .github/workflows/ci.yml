@@ -47,7 +47,7 @@ jobs:
       - name: Build Node website
         run: npm run build
       - name: Deploy S3 Website
-        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
+        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }}
         uses: brokenhandsio/s3-website-pr-action@v3
         with:
           bucket-prefix: vapor-design-pulls
