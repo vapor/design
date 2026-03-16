@@ -30,7 +30,7 @@ jobs:
     - name: Deploy to AWS Cloudformation
       uses: aws-actions/aws-cloudformation-github-deploy@v2
       env:
-        AWS_REGION: 'eu-west-2'
+        AWS_REGION: eu-west-2
       with:
         name: vapor-design-stack
         template: stack.yml
@@ -40,13 +40,12 @@ jobs:
           AcmCertificateArn=${{ secrets.CERTIFICATE_ARN }}
     - name: Deploy to S3
       env:
-        S3_BUCKET_URL: ${{ secrets.VAPOR_API_DOCS_S3_BUCKET_URL }}
-        AWS_REGION: 'eu-west-2'
+        AWS_REGION: eu-west-2
       run: |
         aws s3 sync ./Output s3://vapor-design-site --no-progress --acl public-read
     - name: Invalidate CloudFront
       env:
         DISTRIBUTION_ID: ${{ secrets.VAPOR_DESIGN_DISTRIBUTION_ID }}
-        AWS_REGION: 'eu-west-2'
+        AWS_REGION: eu-west-2
       run: |
         aws cloudfront create-invalidation --distribution-id "${DISTRIBUTION_ID}" --paths '/*'
