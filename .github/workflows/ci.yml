@@ -22,9 +22,6 @@ jobs:
         with:
           app-id: ${{ vars.PENNY_APP_ID }}
           private-key: ${{ secrets.PENNY_APP_PRIVATE_KEY }}
-          permission-contents: read
-          permission-deployments: write
-          permission-environments: read
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -51,10 +48,9 @@ jobs:
         run: npm run build
       - name: Deploy S3 Website
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
-        uses: brokenhandsio/s3-website-pr-action@v2
-        env:
-          GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
+        uses: brokenhandsio/s3-website-pr-action@v3
         with:
-          bucket-prefix: "vapor-design-pulls"
+          bucket-prefix: vapor-design-pulls
           folder-to-copy: "./Output"
-          bucket-region: "us-east-1"
+          bucket-region: us-east-1
+          token: ${{ steps.get-token.outputs.token }}
