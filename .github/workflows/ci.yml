@@ -37,7 +37,7 @@ jobs:
           node-version: 24
           cache: npm
       - name: Set up CloudFormation Lint
-        uses: ScottBrenner/cfn-lint-action@v2
+        uses: ScottBrenner/cfn-lint-action@v2.6.0
       - name: Run CloudFormation Lint
         run: cfn-lint -t stack.yml
       - name: Build Publish website
