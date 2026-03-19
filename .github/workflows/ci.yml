@@ -22,9 +22,6 @@ jobs:
         with:
           app-id: ${{ vars.PENNY_APP_ID }}
           private-key: ${{ secrets.PENNY_APP_PRIVATE_KEY }}
-          permission-contents: read
-          permission-deployments: write
-          permission-environments: read
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -40,7 +37,7 @@ jobs:
           node-version: 24
           cache: npm
       - name: Set up CloudFormation Lint
-        uses: ScottBrenner/cfn-lint-action@v2
+        uses: ScottBrenner/cfn-lint-action@v2.6.0
       - name: Run CloudFormation Lint
         run: cfn-lint -t stack.yml
       - name: Build Publish website
@@ -50,11 +47,10 @@ jobs:
       - name: Build Node website
         run: npm run build
       - name: Deploy S3 Website
-        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' && github.actor != 'dependabot[bot]' }}
-        uses: brokenhandsio/s3-website-pr-action@v2
-        env:
-          GITHUB_TOKEN: ${{ steps.get-token.outputs.token }}
+        if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }}
+        uses: brokenhandsio/s3-website-pr-action@v3.0.1
         with:
-          bucket-prefix: "vapor-design-pulls"
+          bucket-prefix: vapor-design-pulls
           folder-to-copy: "./Output"
-          bucket-region: "us-east-1"
+          bucket-region: us-east-1
+          token: ${{ steps.get-token.outputs.token }}
