@@ -184,13 +184,52 @@ public struct SiteNavigation<Site: Website>: Component {
                             }.linkTarget(.blank).class("nav-link").attribute(named: "rel", value: "me")
                         }.class("nav-item")
                         ListItem {
+                            // Theme picker (Light / Dark / System). Replaces the old
+                            // single #theme-switch toggle; behaviour is in themePicker.js.
+                            // The toggle shows the current choice's icon (mirrored from
+                            // the active option by JS); no chevron on desktop.
                             Link(url: "#") {
-                                Span().class("vapor-icon").id("theme-switch-icon")
-                            }.class("nav-link").id("theme-switch").accessibilityLabel("Toggle dark mode")
-                        }.class("nav-item")
+                                Span().class("theme-toggle-icon").attribute(named: "aria-hidden", value: "true")
+                            }
+                            .class("nav-link dropdown-no-outline d-flex align-items-center theme-picker-toggle")
+                            .id("theme-picker-toggle")
+                            .role("button")
+                            .attribute(named: "data-bs-toggle", value: "dropdown")
+                            .attribute(named: "aria-expanded", value: "false")
+                            .accessibilityLabel("Select theme")
+
+                            List {
+                                themeOption(value: "light", label: "Light", svg: Self.sunSVG)
+                                themeOption(value: "dark", label: "Dark", svg: Self.moonSVG)
+                                themeOption(value: "system", label: "System", svg: Self.monitorSVG)
+                            }.class("dropdown-menu dropdown-menu-end animate slideIn")
+                        }.class("nav-item dropdown theme-picker")
                     }.class("navbar-nav ms-auto mb-2 mb-lg-0")
                 }.class("collapse navbar-collapse me-lg-3").id("navbarSupportedContent")
             }.class("container-fluid")
         }.class("navbar navbar-expand-lg").id("vapor-navbar")
     }
+
+    // MARK: - Theme picker
+
+    private func themeOption(value: String, label: String, svg: String) -> Component {
+        ListItem {
+            Link(url: "#") {
+                Span {
+                    Node<HTML.BodyContext>.raw(svg)
+                }.class("theme-opt-icon").attribute(named: "aria-hidden", value: "true")
+                Text(label)
+            }
+            .class("dropdown-item d-flex align-items-center")
+            .attribute(named: "data-theme", value: value)
+        }
+    }
+
+    // Inline SVGs (sun / moon / monitor) so they inherit `currentColor` and don't
+    // depend on the icon-font / mask set. themePicker.js mirrors the active
+    // option's icon onto the toggle.
+    // Computed (not stored) so they're allowed on this generic type.
+    private static var sunSVG: String { #"<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>"# }
+    private static var moonSVG: String { #"<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>"# }
+    private static var monitorSVG: String { #"<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>"# }
 }

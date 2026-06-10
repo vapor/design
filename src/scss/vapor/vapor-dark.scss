@@ -45,6 +45,43 @@
         background-color: $nav-link-action-color-dark;
     }
 
+    /* Theme picker (Light / Dark / System) in dark mode. */
+    .theme-toggle-icon {
+        color: $grey-600;
+    }
+
+    .theme-picker-toggle:hover .theme-toggle-icon,
+    .theme-picker-toggle:focus .theme-toggle-icon,
+    .theme-picker-toggle[aria-expanded="true"] .theme-toggle-icon {
+        color: $nav-link-action-color-dark;
+    }
+
+    .theme-opt-icon {
+        color: $grey-600;
+    }
+
+    .theme-picker .dropdown-item {
+        color: $grey-100;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+    }
+
+    .theme-picker .dropdown-item.active {
+        &,
+        .theme-opt-icon {
+            color: $blue-300;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        .theme-picker .dropdown-menu {
+            background: $off-black;
+            border: 1px solid $grey-800;
+        }
+    }
+
     .navbar {
         background: linear-gradient(180deg, $grey-900 0%, rgba($grey-900, 0) 100%);
     }
