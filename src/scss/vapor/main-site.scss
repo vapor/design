@@ -87,21 +87,42 @@ body {
     text-decoration: none;
 }
 
+/* Homepage hero lockup: big teardrop mark + "Vapor" wordmark text (replaces the
+ * old single-colour lockup image). Mark is full-colour; text colour per theme. */
 #vapor-hero-logo {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 233px;
-    height: 90px;
+    align-items: center;
+    justify-content: center;
 
     @include media-breakpoint-down(lg) {
         margin-top: 16px;
-        width: 100px;
-        height: 38px;
     }
 
     @include media-breakpoint-up(lg) {
         margin-top: 64px;
+    }
+}
+
+#vapor-hero-logo-mark {
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    background: url(../../images/vapor-mark.svg) center / contain no-repeat;
+
+    @include media-breakpoint-down(lg) {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+#vapor-hero-logo-text {
+    margin-left: 0.7rem;
+    font-size: 3.5rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+
+    @include media-breakpoint-down(lg) {
+        font-size: 2rem;
     }
 }
 

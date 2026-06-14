@@ -20,9 +20,9 @@ $navbar-light-active-color: $blue-300;
     -webkit-backdrop-filter: blur(20px);
 }
 
+/* Footer brand wrapper now sizes to its content (mark + "Vapor" text). */
 #vapor-logo-footer {
-    width: 197px;
-    height: 76px;
+    align-items: center;
 }
 
 $footer-font-size: 16px;

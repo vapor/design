@@ -123,9 +123,37 @@ body {
     font-feature-settings: "salt" on;
 }
 
-#vapor-logo {
-    width: 130px;
-    height: 50px;
+/* Brand lockup: new teardrop mark + "Vapor" wordmark text (replaces the old
+ * single-colour lockup image). The mark is full-colour so it works on both
+ * themes; only the wordmark text colour changes per theme (see light/dark). */
+#vapor-logo-mark {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background: url(../../images/vapor-mark.svg) center / contain no-repeat;
+}
+
+#vapor-logo-text {
+    margin-left: 0.55rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+#vapor-logo-footer-mark {
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    background: url(../../images/vapor-mark.svg) center / contain no-repeat;
+}
+
+#vapor-logo-footer-text {
+    margin-left: 0.7rem;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
 }
 
 .dropdown-no-outline {

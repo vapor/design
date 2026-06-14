@@ -20,10 +20,11 @@ public struct SiteNavigation<Site: Website>: Component {
         Navigation {
             Div {
                 Link(url: "/") {
-                    Span {
-                        Span("Vapor").class("visually-hidden")
-                    }.id("vapor-logo").class("d-inline-block align-text-top").accessibilityLabel("Vapor Logo").width(130).height(50)
-                }.class("navbar-brand ms-3")
+                    // New teardrop mark (colour, theme-agnostic) + "Vapor" wordmark
+                    // as text. Replaces the old single-colour lockup image.
+                    Span().id("vapor-logo-mark").attribute(named: "aria-hidden", value: "true")
+                    Span("Vapor").id("vapor-logo-text")
+                }.class("navbar-brand ms-3 d-inline-flex align-items-center").accessibilityLabel("Vapor")
 
                 Button {
                     Span {

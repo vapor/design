@@ -86,18 +86,11 @@
         background: linear-gradient(180deg, $grey-900 0%, rgba($grey-900, 0) 100%);
     }
 
-    #vapor-logo {
-        background: url(../../images/logo-main-white.svg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    #vapor-logo-footer {
-        background: url(../../images/logo-main-white.svg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+    // Wordmark text colour for the brand lockup (mark stays full-colour).
+    #vapor-logo-text,
+    #vapor-logo-footer-text,
+    #vapor-hero-logo-text {
+        color: white;
     }
 
     .navbar a:hover {
@@ -540,9 +533,6 @@
         }
     }
 
-    #vapor-hero-logo {
-        background-image: url(../../images/logo-main-white.svg);
-    }
 
     .used-by-caption {
         color: $grey-400;

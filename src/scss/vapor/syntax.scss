@@ -4,7 +4,7 @@
     display: block;
     overflow-x: auto;
     padding-left: 0.5em;
-    padding-right: 40px;
+    padding-right: 18px;
     padding-top: 0;
     padding-bottom: 0;
     background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba(35, 172, 240, 0.052) 0%, rgba(35, 172, 240, 0) 100%), #FAFAFD;
@@ -12,24 +12,21 @@
     border: 1px solid $grey-300;
     backdrop-filter: blur(20px);
     /* Note: backdrop-filter has minimal browser support */
-    border-radius: 24px;
+    // 16px reads consistently on both short (single-line) and tall (multiline)
+    // blocks; 24px made short blocks look pill-shaped vs taller ones.
+    border-radius: 16px;
     color: $code-text-blue;
     white-space: pre-wrap;
 
+    // Vertical breathing room for the code (the line-number table's first/last
+    // row). Was 48/24px, which was excessive — especially on single-line blocks
+    // where the top + bottom both apply to the one row.
     tr:first-child td {
-        padding-top: 48px;
-
-        @include media-breakpoint-down(lg) {
-            padding-top: 24px;
-        }
+        padding-top: 16px;
     }
 
     tr:last-child td {
-        padding-bottom: 48px;
-
-        @include media-breakpoint-down(lg) {
-            padding-bottom: 24px;
-        }
+        padding-bottom: 16px;
     }
 }
 
@@ -157,7 +154,7 @@
 @include media-breakpoint-up(lg) {
     .hljs-ln-n {
         color: $grey-600;
-        padding-left: 40px;
+        padding-left: 20px;
         padding-right: 16px;
     }
 }
@@ -221,6 +218,22 @@
     .hljs-class .hljs-title,
     .hljs-type {
         color: $blue-200;
+    }
+
+    // These tokens fall back to their light-mode colours (attr #701980,
+    // section/meta #643820, subst near-black) which are far too dark on the dark
+    // code background — lighten them for dark mode.
+    .hljs-attr {
+        color: $pink-200;
+    }
+
+    .hljs-section,
+    .hljs-meta {
+        color: #d2a8ff;
+    }
+
+    .hljs-subst {
+        color: #c5cbf5;
     }
 
     //   .hljs-built_in,

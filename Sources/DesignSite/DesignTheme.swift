@@ -162,8 +162,11 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
 
     func buildMainSiteDemo() -> Component {
         Div {
-            Span().class("d-flex mx-auto")
-                .accessibilityLabel("Vapor Logo")
+            Div {
+                Span().id("vapor-hero-logo-mark").attribute(named: "aria-hidden", value: "true")
+                Span("Vapor").id("vapor-hero-logo-text")
+            }.class("d-flex mx-auto align-items-center justify-content-center")
+                .accessibilityLabel("Vapor")
                 .id("vapor-hero-logo")
             H1("Swift, but on a server").class("main-title")
             H3("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift").class("main-page-caption d-flex mx-auto")
