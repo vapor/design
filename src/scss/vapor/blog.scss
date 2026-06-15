@@ -286,7 +286,20 @@
     color: $blue-300;
 }
 
+// Blog posts use a slightly wider 800px shell so the header and footer rows
+// (tags, title, author + share controls) have more room. The article body
+// itself is pulled back to the 720px reading measure below.
+.vapor-container.blog-container {
+    max-width: 800px;
+}
+
 .blog-content {
+    // Keep the prose at the 720px reading measure, centred within the wider
+    // 800px post shell above.
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+
     img {
         max-width: 100%;
     }
