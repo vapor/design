@@ -1,5 +1,5 @@
-@import "vapor";
-
+// Variables + Bootstrap mixins come from vapor/vapor (imported first in main.scss);
+// importing it here would re-emit the whole Bootstrap framework.
 nav {
     .vapor-icon {
         width: 22px;

@@ -1,4 +1,7 @@
-@import "bootstrap-overrides";
+// vapor/vapor sets the variable overrides, emits Bootstrap's CSS once, then
+// Vapor's base CSS. It must come first so its variables/mixins are in scope for
+// the partials below (which no longer @import it themselves — that's what caused
+// Bootstrap to be duplicated ~18× in the output).
 @import "vapor/vapor";
 @import "vapor/vapor-icons";
 @import "vapor/syntax";

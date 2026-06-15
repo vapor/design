@@ -1,5 +1,5 @@
-@import "vapor";
-
+// Variables come from vapor/vapor (imported first in main.scss); importing it
+// here would re-emit the whole Bootstrap framework.
 .hljs {
     display: block;
     overflow-x: auto;

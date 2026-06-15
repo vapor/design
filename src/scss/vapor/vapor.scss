@@ -1,32 +1,14 @@
-@use "sass:map";
-@import "../bootstrap-overrides";
-
-// Create the Vapor color map
-$custom-colors: (
-    "blue-500": #135b80,
-    "blue-400": #1e92cc,
-    "blue-300": #40c4ff,
-    "blue-200": #a6e3ff,
-    "blue-100": #e8f6fd,
-    "pink-500": #701980,
-    "pink-400": #b11fcc,
-    "pink-300": #df3efb,
-    "pink-200": #ea7efc,
-    "pink-100": #f9ecfb,
-    "grey-900": #141416,
-    "grey-800": #373953,
-    "grey-700": #666880,
-    "grey-600": #8385a3,
-    "grey-500": #9fa1bf,
-    "grey-400": #c1c2d6,
-    "grey-300": #dfe0eb,
-    "grey-200": #f0f0f7,
-    "grey-100": #fafafd,
-);
-
-// Merge the maps
-$theme-colors: map.merge($theme-colors, $custom-colors);
-
+// Vapor variable overrides — defined *before* Bootstrap (imported further down)
+// so Bootstrap's CSS picks them up (fonts, link colour, etc.).
+//
+// NOTE: this file no longer imports Bootstrap at the top. Bootstrap's full CSS is
+// now emitted exactly ONCE (the @import below). Previously each partial pulled in
+// the full framework via `@import "vapor"`, and Sass @import doesn't dedupe, so
+// Bootstrap's CSS was duplicated ~18× (≈1.5 MB output).
+//
+// The old $custom-colors -> $theme-colors map-merge was also removed: it only
+// generated unused .text-grey-* / .bg-grey-* / --bs-grey-* utility classes (the
+// $grey-*/$blue-*/$pink-* Sass variables below are what's actually used).
 $blue-500: #135b80;
 $blue-400: #1e92cc;
 $blue-300: #40c4ff;
@@ -119,6 +101,12 @@ $link-decoration: none;
 $link-hover-color: $blue-300;
 $link-hover-decoration: underline;
 $card-height: 100%;
+
+// Bootstrap's CSS — emitted ONCE here, after the variable overrides above so it
+// picks them up. Everything below this line is Vapor's own CSS (and can use
+// Bootstrap's mixins/$prefix). The partials rely on the variables/mixins above
+// being in the global scope (main.scss imports this file first).
+@import "../bootstrap-overrides";
 
 body {
     font-feature-settings: "salt" on;

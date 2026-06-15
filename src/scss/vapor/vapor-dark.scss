@@ -1,5 +1,5 @@
-@import "vapor";
-
+// Variables come from vapor/vapor (imported first in main.scss); importing it
+// here would re-emit the whole Bootstrap framework.
 .dark {
     $heading-color-dark: $grey-100;
     $nav-link-action-color-dark: $blue-300;
