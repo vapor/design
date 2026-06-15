@@ -30,23 +30,35 @@
     }
 }
 
-// Copy-to-clipboard button (injected by copyCode.js). The <pre> is the
-// positioning context; the button floats in the top-right corner of the code
-// box and swaps to a checkmark + "Copied" for a moment after a successful copy.
-pre.code-block {
+// Copy-to-clipboard button — provided by the highlightjs-copy plugin
+// (registered in startSyntaxHighlighting.js). The plugin adds .hljs-copy-wrapper
+// to the <pre>, a .hljs-copy-container > .hljs-copy-button, and an sr-only
+// .hljs-copy-alert live region. We don't import the plugin's shipped CSS; the
+// styling below matches the Vapor design. The button label ("Copy" / "Copied!")
+// is localised by the plugin from <html lang>.
+.hljs-copy-wrapper {
     position: relative;
 }
 
-.code-copy-btn {
+// Sits inside the code box, tucked into the top-right corner.
+.hljs-copy-container {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 12px;
     z-index: 2;
+}
+
+.hljs-copy-button {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    font-size: 13px;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 34px;
+    min-width: 34px;
+    padding: 0 8px;
+    // Icon-only to start: collapse the plugin's "Copy" text label (font-size 0)
+    // while the masked icon below keeps its fixed px size.
+    font-size: 0;
     line-height: 1;
     color: $grey-600;
     background: $grey-100;
@@ -55,14 +67,16 @@ pre.code-block {
     cursor: pointer;
     transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 
-    .vapor-icon {
-        width: 15px;
-        height: 15px;
+    // Copy glyph — the same icon as the Copy Link button, masked so it follows
+    // the button's text colour.
+    &::before {
+        content: "";
+        flex: none;
+        width: 16px;
+        height: 16px;
         background-color: currentColor;
-    }
-
-    .code-copied-icon {
-        display: none;
+        -webkit-mask: url(../../images/copy-06.svg) center / contain no-repeat;
+        mask: url(../../images/copy-06.svg) center / contain no-repeat;
     }
 
     &:hover,
@@ -77,19 +91,31 @@ pre.code-block {
         outline-offset: 1px;
     }
 
-    &.copied {
+    // After a successful copy the plugin swaps the label to "Copied!" — reveal
+    // the text and drop the icon (height stays fixed so the button doesn't jump).
+    &[data-copied="true"] {
+        padding: 0 11px;
+        font-size: 13px;
         color: $blue-300;
         background: $blue-100;
         border-color: $blue-200;
 
-        .code-copy-icon {
+        &::before {
             display: none;
         }
-
-        .code-copied-icon {
-            display: inline-block;
-        }
     }
+}
+
+// Screen-reader-only live region the plugin appends on copy (we don't load the
+// plugin's CSS, so reproduce its visually-hidden treatment here).
+.hljs-copy-alert {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 
@@ -333,7 +359,7 @@ pre.code-block {
         border-right: 1px solid rgba($code-border-purple, 0.1);
     }
 
-    .code-copy-btn {
+    .hljs-copy-button {
         color: $grey-400;
         background: rgba(255, 255, 255, 0.06);
         border-color: rgba($code-border-purple, 0.15);
@@ -345,7 +371,7 @@ pre.code-block {
             border-color: rgba($code-border-purple, 0.25);
         }
 
-        &.copied {
+        &[data-copied="true"] {
             color: $blue-300;
             background: rgba($blue-300, 0.12);
             border-color: rgba($blue-300, 0.3);

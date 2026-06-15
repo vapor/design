@@ -27,7 +27,8 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "highlightjs-copy": "^1.0.6"
   },
   "_comment_overrides": "uuid is forced to a patched (>=11.1.1) release — the vulnerable 8.x is pulled transitively via sockjs <- webpack-dev-server (dev-only). This avoids `npm audit fix --force`, which would downgrade webpack-dev-server v5 -> v1.",
   "overrides": {
