@@ -75,11 +75,11 @@
         }
     }
 
-    @include media-breakpoint-up(lg) {
-        .theme-picker .dropdown-menu {
-            background: $off-black;
-            border: 1px solid $grey-800;
-        }
+    // All widths so the inline mobile-panel dropdown is dark too (not just the
+    // desktop overlay) — otherwise it falls back to the light Bootstrap default.
+    .theme-picker .dropdown-menu {
+        background: $off-black;
+        border: 1px solid $grey-800;
     }
 
     .navbar {

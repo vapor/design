@@ -203,6 +203,9 @@ public struct SiteNavigation<Site: Website>: Component {
                             Span("Theme").class("vapor-nav-label").attribute(named: "aria-hidden", value: "true")
                             Link(url: "#") {
                                 Span().class("theme-toggle-icon").attribute(named: "aria-hidden", value: "true")
+                                // Name + chevron only show in the mobile panel; desktop is icon-only.
+                                Span("System").class("theme-name")
+                                Span().class("vapor-icon icon-chevron-down ms-1 theme-chevron").attribute(named: "aria-hidden", value: "true")
                             }
                             .class("nav-link dropdown-no-outline d-flex align-items-center theme-picker-toggle")
                             .id("theme-picker-toggle")

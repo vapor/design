@@ -33,6 +33,8 @@
 
     function refresh() {
         var c = current();
+        var label = c.charAt(0).toUpperCase() + c.slice(1);
+        document.querySelectorAll(".theme-name").forEach(function (el) { el.textContent = label; });
         items.forEach(function (a) {
             a.classList.toggle("active", a.getAttribute("data-theme") === c);
         });
