@@ -26,6 +26,11 @@ module.exports = {
     },
   },
 
+  // The bundle intentionally ships all of Bootstrap + highlight.js and is loaded
+  // once from the CDN by every site, so webpack's generic 244 KiB asset-size hint
+  // doesn't apply here.
+  performance: { hints: false },
+
   devServer: {
     static: path.resolve(__dirname, 'Output'),
     port: 8001,
@@ -71,7 +76,19 @@ module.exports = {
           'resolve-url-loader',
           {
             loader: 'sass-loader',
-            options: { sourceMap: true },
+            options: {
+              sourceMap: true,
+              sassOptions: {
+                // Most build warnings come from Bootstrap's own SCSS (deprecated
+                // global colour functions, @import) which isn't ours to change —
+                // silence deprecations originating in dependencies.
+                quietDeps: true,
+                // Our SCSS still uses @import (that's how Bootstrap shares its
+                // vars/mixins with the partials); silence the @import deprecation
+                // until a proper @use/@forward migration.
+                silenceDeprecations: ['import'],
+              },
+            },
           }
         ]
       }

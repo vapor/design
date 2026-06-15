@@ -1,3 +1,4 @@
+@use "sass:map";
 @import "../bootstrap-overrides";
 
 // Create the Vapor color map
@@ -24,7 +25,7 @@ $custom-colors: (
 );
 
 // Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors);
+$theme-colors: map.merge($theme-colors, $custom-colors);
 
 $blue-500: #135b80;
 $blue-400: #1e92cc;
