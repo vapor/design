@@ -46,6 +46,20 @@
     top: 12px;
     right: 12px;
     z-index: 2;
+    transition: opacity 0.15s ease;
+}
+
+// The plugin's `autohide` option drives this via the data-autohide attribute:
+// keep the button hidden until the code block is hovered (or focused within,
+// for keyboard users), and leave it up while the "Copied!" confirmation shows.
+.hljs-copy-container[data-autohide="true"] {
+    opacity: 0;
+}
+
+.hljs-copy-wrapper:hover .hljs-copy-container,
+.hljs-copy-wrapper:focus-within .hljs-copy-container,
+.hljs-copy-container:has(.hljs-copy-button[data-copied="true"]) {
+    opacity: 1;
 }
 
 .hljs-copy-button {
@@ -361,20 +375,20 @@
 
     .hljs-copy-button {
         color: $grey-400;
-        background: rgba(255, 255, 255, 0.06);
+        background: $grey-800;
         border-color: rgba($code-border-purple, 0.15);
 
         &:hover,
         &:focus-visible {
             color: $grey-100;
-            background: rgba(255, 255, 255, 0.12);
+            background: $grey-700;
             border-color: rgba($code-border-purple, 0.25);
         }
 
         &[data-copied="true"] {
             color: $blue-300;
-            background: rgba($blue-300, 0.12);
-            border-color: rgba($blue-300, 0.3);
+            background: $grey-800;
+            border-color: $blue-300;
         }
     }
 }
