@@ -3,13 +3,13 @@
 .dark {
     $heading-color-dark: $grey-100;
     $nav-link-action-color-dark: $blue-300;
-    $code-error-sidebar-background-red: rgba(128, 25, 68, 0.3);
-    $code-error-background: rgba(128, 25, 68, 0.2);
-    $code-error-border: rgba(221, 214, 254, 0.1);
-    $sponsor-card-background: rgba(55, 57, 83, 0.3);
+    $code-error-sidebar-background-red: rgba($code-error-red, 0.3);
+    $code-error-background: rgba($code-error-red, 0.2);
+    $code-error-border: rgba($code-border-purple, 0.1);
+    $sponsor-card-background: rgba($grey-800, 0.3);
     $showcase-button-background: rgba(255, 255, 255, 0.05);
     $showcase-button-background-hover: rgba(255, 255, 255, 0.1);
-    $arrow-button-background: rgba(55, 57, 83, 0.3);
+    $arrow-button-background: rgba($grey-800, 0.3);
 
     body {
         background: $grey-900;
@@ -27,7 +27,7 @@
 
     .hljs {
         background: rgba(38, 38, 56, 0.8);
-        border: 1px solid rgba(221, 214, 254, 0.2);
+        border: 1px solid rgba($code-border-purple, 0.2);
         border-radius: 24px;
     }
 
@@ -333,7 +333,7 @@
 
     @include media-breakpoint-up(lg) {
         #framework-dropdown-menu {
-            box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+            box-shadow: 0px 12px 16px -4px rgba($off-black-2, 0.08), 0px 4px 6px -2px rgba($off-black-2, 0.03);
             border: 1px solid $grey-800;
         }
     }
@@ -582,12 +582,12 @@
     .main-site-features {
         .code-outline-right {
             background: linear-gradient($grey-900, $grey-900) padding-box,
-                linear-gradient(90deg, rgba(148, 168, 178, 0.03) 0%, #F6F7F7 4.21%, rgba(148, 168, 178, 0.888453) 7.98%, #94A8B2 37.5%, rgba(148, 168, 178, 0.117173) 90.41%, rgba(148, 168, 178, 0) 100%) border-box;
+                linear-gradient(90deg, rgba($code-outline-grey, 0.03) 0%, $code-outline-light 4.21%, rgba($code-outline-grey, 0.888453) 7.98%, $code-outline-grey 37.5%, rgba($code-outline-grey, 0.117173) 90.41%, rgba($code-outline-grey, 0) 100%) border-box;
         }
 
         .code-outline-left {
             background: linear-gradient($grey-900, $grey-900) padding-box,
-                linear-gradient(90deg, rgba(148, 168, 178, 0.01) 0%, #F6F7F7 4.21%, rgba(148, 168, 178, 0.888453) 9.96%, #94A8B2 60.32%, rgba(148, 168, 178, 0.117173) 90.41%, rgba(148, 168, 178, 0.03) 100%) border-box;
+                linear-gradient(90deg, rgba($code-outline-grey, 0.01) 0%, $code-outline-light 4.21%, rgba($code-outline-grey, 0.888453) 9.96%, $code-outline-grey 60.32%, rgba($code-outline-grey, 0.117173) 90.41%, rgba($code-outline-grey, 0.03) 100%) border-box;
         }
 
         .code-error {

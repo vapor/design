@@ -7,7 +7,7 @@
     padding-right: 18px;
     padding-top: 0;
     padding-bottom: 0;
-    background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba(35, 172, 240, 0.052) 0%, rgba(35, 172, 240, 0) 100%), #FAFAFD;
+    background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba($gradient-blue, 0.052) 0%, rgba($gradient-blue, 0) 100%), $grey-100;
     /* Neutrals/grey-300 */
     border: 1px solid $grey-300;
     backdrop-filter: blur(20px);
@@ -27,6 +27,68 @@
 
     tr:last-child td {
         padding-bottom: 16px;
+    }
+}
+
+// Copy-to-clipboard button (injected by copyCode.js). The <pre> is the
+// positioning context; the button floats in the top-right corner of the code
+// box and swaps to a checkmark + "Copied" for a moment after a successful copy.
+pre.code-block {
+    position: relative;
+}
+
+.code-copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    line-height: 1;
+    color: $grey-600;
+    background: $grey-100;
+    border: 1px solid $grey-300;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+
+    .vapor-icon {
+        width: 15px;
+        height: 15px;
+        background-color: currentColor;
+    }
+
+    .code-copied-icon {
+        display: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+        color: $grey-800;
+        background: $grey-200;
+        border-color: $grey-400;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $blue-200;
+        outline-offset: 1px;
+    }
+
+    &.copied {
+        color: $blue-300;
+        background: $blue-100;
+        border-color: $blue-200;
+
+        .code-copy-icon {
+            display: none;
+        }
+
+        .code-copied-icon {
+            display: inline-block;
+        }
     }
 }
 
@@ -162,8 +224,8 @@
 // DARK MODE
 .dark {
     .hljs {
-        background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba(35, 172, 240, 0.052) 0%, rgba(35, 172, 240, 0) 100%), rgba(55, 57, 83, 0.3);
-        border: 1px solid rgba(221, 214, 254, 0.1);
+        background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba($gradient-blue, 0.052) 0%, rgba($gradient-blue, 0) 100%), rgba($grey-800, 0.3);
+        border: 1px solid rgba($code-border-purple, 0.1);
         color: $code-text-blue;
     }
 
@@ -268,6 +330,25 @@
     }
 
     .hljs-ln-numbers {
-        border-right: 1px solid rgba(221, 214, 254, 0.1);
+        border-right: 1px solid rgba($code-border-purple, 0.1);
+    }
+
+    .code-copy-btn {
+        color: $grey-400;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba($code-border-purple, 0.15);
+
+        &:hover,
+        &:focus-visible {
+            color: $grey-100;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba($code-border-purple, 0.25);
+        }
+
+        &.copied {
+            color: $blue-300;
+            background: rgba($blue-300, 0.12);
+            border-color: rgba($blue-300, 0.3);
+        }
     }
 }

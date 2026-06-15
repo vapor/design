@@ -5,6 +5,7 @@ import '../scss/main.scss'
 import * as bootstrap from 'bootstrap'
 
 import './startSyntaxHighlighting.js'
+import './copyCode.js'
 import './toggleDarkMode.js'
 import './themePicker.js'
 import './mobileNav.js'

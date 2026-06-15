@@ -35,7 +35,12 @@ $off-black-2: #101828;
 $code-error-sidebar-background-red: #b2235f1a;
 $code-explainer-title: #df3feb;
 $code-error-background: rgba(179, 35, 95, 0.21);
-$code-error-border: rgba(221, 214, 254, 0.1);
+// Light-purple border tint shared by the code blocks (syntax, dark mode) and
+// the code-error box — defined once so the rgb isn't repeated across files.
+$code-border-purple: #ddd6fe;
+$code-error-border: rgba($code-border-purple, 0.1);
+// Dark-mode code-error red (the sidebar/background tints in vapor-dark).
+$code-error-red: #801944;
 // these colours are used in code blocks
 $variable-blue: #3f6e74;
 $code-text-blue: #8194f7;
@@ -46,6 +51,12 @@ $code-formula: #eee;
 $code-addition: #baeeba;
 $code-deletion: #ffc8bd;
 $code-selector: #9b703f;
+// Bright blue for the code-block radial glow (syntax) and the main-site brand
+// "blurry-background" gradient.
+$gradient-blue: #23acf0;
+// Decorative "code outline" gradient on the main-site features section.
+$code-outline-grey: #94a8b2;
+$code-outline-light: #f6f7f7;
 
 // Define the fonts:
 $font-family-sans-serif: "Genera Grotesk", "Inter", system-ui, helvetica,
@@ -154,6 +165,16 @@ body {
 
 .dropdown-no-outline {
     outline: 0;
+
+    // Bootstrap also draws a blue focus-ring box-shadow on .nav-link:focus-visible,
+    // which shows as a blue box around the Documentation / theme toggles when
+    // clicked. .dropdown-no-outline only cleared the outline, so drop the
+    // box-shadow too (ported from the docs site). Marketing links keep their ring.
+    &:focus,
+    &:focus-visible {
+        outline: 0;
+        box-shadow: none;
+    }
 }
 
 .vapor-container {
