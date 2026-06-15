@@ -102,6 +102,13 @@ $link-hover-color: $blue-300;
 $link-hover-decoration: underline;
 $card-height: 100%;
 
+// Navbar nav-link colours. These are Bootstrap navbar *variables*, so they must
+// be set before the import below. The base colour is used in both light and dark
+// (dark only overrides hover/active in vapor-dark.scss).
+$navbar-light-color: $grey-600;
+$navbar-light-hover-color: $blue-300;
+$navbar-light-active-color: $blue-300;
+
 // Bootstrap's CSS — emitted ONCE here, after the variable overrides above so it
 // picks them up. Everything below this line is Vapor's own CSS (and can use
 // Bootstrap's mixins/$prefix). The partials rely on the variables/mixins above

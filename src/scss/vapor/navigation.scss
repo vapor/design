@@ -8,9 +8,8 @@ nav {
     }
 }
 
-$navbar-light-color: $grey-600;
-$navbar-light-hover-color: $blue-300;
-$navbar-light-active-color: $blue-300;
+// $navbar-light-* moved to vapor/vapor (they must be set before Bootstrap's CSS
+// is emitted, which now happens once, before this file).
 
 #vapor-navbar {
     height: 80px;
