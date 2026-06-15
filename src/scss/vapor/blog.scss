@@ -10,6 +10,24 @@
         margin-right: -2px;
     }
 
+    // "Copy Link" must stay on a single line. At lg the five share controls sit
+    // in a ~360px col-lg-6 column; with the default .btn-small side padding the
+    // buttons overflowed and only the text button collapsed, wrapping the label
+    // to two lines (so it rendered taller than the icon buttons next to it).
+    .btn {
+        white-space: nowrap;
+    }
+
+    // The icon-only share buttons don't need the wide .btn-small side padding —
+    // tightening them to a near-square footprint lets all five fit on one row.
+    .twitter-share-button,
+    .reddit-share-button,
+    .mastodon-share-button,
+    .bsky-share-button {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
     ul {
         display: flex;
         list-style: none;
@@ -24,8 +42,10 @@
         }
 
         @include media-breakpoint-up(lg) {
+            // No leading gap: the row is centred (justify-content-center) and the
+            // five controls need every pixel of the ~360px col-lg-6 to fit.
             li:first-child {
-                margin-left: 12px;
+                margin-left: 0;
             }
         }
     }
