@@ -26,19 +26,29 @@ public struct SiteNavigation<Site: Website>: Component {
                     Span("Vapor").id("vapor-logo-text")
                 }.class("navbar-brand ms-3 d-inline-flex align-items-center").accessibilityLabel("Vapor")
 
+                // Custom off-canvas trigger (mobileNav.js) — replaces the Bootstrap
+                // collapse so the menu can slide in as a right-side panel.
                 Button {
                     Span {
                         Span("Toggle Navigation").class("visually-hidden")
                     }.id("vapor-navbar-toggler-icon").class("vapor-icon icon-menu-04")
                 }.class("navbar-toggler")
                     .attribute(named: "type", value: "button")
+                    .id("vapor-navmenu-toggle")
                     .accessibilityLabel("Toggle navigation")
-                    .attribute(named: "data-bs-toggle", value: "collapse")
-                    .attribute(named: "data-bs-target", value: "#navbarSupportedContent")
-                    .attribute(named: "aria-controls", value: "navbarSupportedContent")
+                    .attribute(named: "aria-controls", value: "vapor-navmenu")
                     .attribute(named: "aria-expanded", value: "false")
 
                 Div {
+                    // Off-canvas close (X) — only visible inside the mobile panel.
+                    Button {
+                        Span().class("vapor-icon icon-x-close").attribute(named: "aria-hidden", value: "true")
+                    }
+                    .class("vapor-navmenu-close")
+                    .id("vapor-navmenu-close")
+                    .attribute(named: "type", value: "button")
+                    .accessibilityLabel("Close menu")
+
                     List {
                         ListItem {
                             if currentSite == .main {
@@ -61,7 +71,7 @@ public struct SiteNavigation<Site: Website>: Component {
                             ComponentGroup {
                                 Link("Store", url: "https://store.vapor.codes").class("nav-link").linkTarget(.blank)
                             }
-                        }
+                        }.class("nav-item")
                         ListItem {
                             if currentSite == .main {
                                 var classList = "nav-link"
@@ -151,7 +161,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                     }.class("m-lg-2")
                                 }.class("dropdown-menu animate slideIn").id("framework-dropdown-menu")
                             }
-                        }.class("nav-item dropdown")
+                        }.class("nav-item dropdown vapor-doc-nav")
                         ListItem {
                             if currentSite == .main {
                                 var classList = "nav-link"
@@ -183,12 +193,14 @@ public struct SiteNavigation<Site: Website>: Component {
                                     Span("GitHub").class("visually-hidden")
                                 }.class("vapor-icon icon-github-fill").accessibilityLabel("GitHub")
                             }.linkTarget(.blank).class("nav-link").attribute(named: "rel", value: "me")
-                        }.class("nav-item")
+                        }.class("nav-item vapor-github-nav")
                         ListItem {
                             // Theme picker (Light / Dark / System). Replaces the old
                             // single #theme-switch toggle; behaviour is in themePicker.js.
                             // The toggle shows the current choice's icon (mirrored from
                             // the active option by JS); no chevron on desktop.
+                            // The "Theme" label only shows in the mobile panel.
+                            Span("Theme").class("vapor-nav-label").attribute(named: "aria-hidden", value: "true")
                             Link(url: "#") {
                                 Span().class("theme-toggle-icon").attribute(named: "aria-hidden", value: "true")
                             }
@@ -206,7 +218,10 @@ public struct SiteNavigation<Site: Website>: Component {
                             }.class("dropdown-menu dropdown-menu-end animate slideIn")
                         }.class("nav-item dropdown theme-picker")
                     }.class("navbar-nav ms-auto mb-2 mb-lg-0")
-                }.class("collapse navbar-collapse me-lg-3").id("navbarSupportedContent")
+                }.class("vapor-navmenu").id("vapor-navmenu")
+
+                // Backdrop behind the mobile panel (tap to close).
+                Div().class("vapor-nav-backdrop").id("vapor-nav-backdrop")
             }.class("container-fluid")
         }.class("navbar navbar-expand-lg").id("vapor-navbar")
     }

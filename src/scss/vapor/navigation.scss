@@ -242,12 +242,154 @@ nav {
     border: none;
 }
 
+/* ------------------------------------------------- Mobile nav (off-canvas) -- */
+/* Desktop (lg+): .vapor-navmenu is the inline horizontal nav. Below lg it becomes
+ * a right-side sliding panel (replaces the old Bootstrap collapse menu), driven
+ * by mobileNav.js. The "Theme" label and the close (X) only show in the panel. */
+.vapor-nav-label { display: none; }
+.vapor-navmenu-close { display: none; }
+
+.vapor-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s;
+    z-index: 10000;
+
+    &.vapor-nav-open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .vapor-navmenu {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: auto;
+        align-items: center;
+    }
+
+    .vapor-nav-backdrop {
+        display: none;
+    }
+}
+
 @include media-breakpoint-down(lg) {
-    #navbarSupportedContent {
+    // The navbar's backdrop-filter establishes a containing block that would trap
+    // the fixed panel/backdrop — drop it on mobile so they position to the viewport.
+    #vapor-navbar {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .vapor-navmenu {
+        position: fixed;
+        top: 0.75rem;
+        right: 0;
+        bottom: 0;
+        width: 20rem;
+        max-width: 86vw;
+        border-radius: 24px 0 0 24px;
         background: white;
-        box-shadow: -20px 0px 40px rgba(0, 0, 0, 0.07);
-        border-radius: 24px 0px 0px 24px;
-        padding: 1em;
-        z-index: 1;
+        transform: translateX(100%);
+        // Hidden when closed so the drop-shadow doesn't bleed onto the page from
+        // off-screen; visibility holds through the slide-out, then snaps hidden.
+        visibility: hidden;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s;
+        box-shadow: -24px 0 60px rgba(0, 0, 0, 0.2);
+        z-index: 10001;
+        overflow-y: auto;
+        padding: 3.5rem 1.5rem 2rem;
+
+        &.vapor-navmenu-open {
+            transform: translateX(0);
+            visibility: visible;
+        }
+    }
+
+    .vapor-navmenu-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0.75rem;
+        right: 0.9rem;
+        width: 2.25rem;
+        height: 2.25rem;
+        padding: 0;
+        background: none;
+        border: 0;
+        cursor: pointer;
+
+        .vapor-icon {
+            width: 24px;
+            height: 24px;
+            background-color: $grey-900;
+        }
+    }
+
+    // Vertical list, larger tap targets.
+    .vapor-navmenu .navbar-nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .vapor-navmenu .nav-item {
+        width: 100%;
+    }
+    .vapor-navmenu .nav-link {
+        font-size: 1.25rem;
+        padding: 0.55rem 0;
+    }
+
+    // Panel order: Documentation, marketing links, Theme, GitHub.
+    .vapor-navmenu .vapor-doc-nav { order: 1; }
+    .vapor-navmenu .nav-item:not(.vapor-doc-nav):not(.theme-picker):not(.vapor-github-nav) { order: 2; }
+    .vapor-navmenu .theme-picker { order: 3; }
+    .vapor-navmenu .vapor-github-nav { order: 4; }
+
+    // Documentation dropdown expands inline, full-width, within the panel.
+    .vapor-navmenu #framework-dropdown-menu {
+        margin: 0.5rem 0 0.25rem;
+    }
+
+    // Theme row: "Theme" label (left) + picker pill (right); the options expand
+    // inline below. A divider separates the settings from the links above.
+    .vapor-navmenu .vapor-nav-label {
+        display: inline;
+        color: $grey-600;
+        font-size: 1.1rem;
+    }
+    .vapor-navmenu .theme-picker {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid $grey-200;
+    }
+    .vapor-navmenu .theme-picker-toggle {
+        gap: 0.4rem;
+        border: 1px solid $grey-200;
+        border-radius: 999px;
+        padding: 0.45rem 0.9rem;
+    }
+    .vapor-navmenu .theme-picker .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    // GitHub centered at the bottom of the panel.
+    .vapor-navmenu .vapor-github-nav {
+        margin-top: 1.5rem;
+    }
+    .vapor-navmenu .vapor-github-nav .nav-link {
+        display: flex;
+        justify-content: center;
     }
 }
