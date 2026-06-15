@@ -403,11 +403,19 @@ nav {
     // Show the current theme name + chevron in the panel pill (icon-only elsewhere).
     .vapor-navmenu .theme-name { display: inline; }
     .vapor-navmenu .theme-chevron { display: inline-block; }
+    // Float the theme options on top of the panel content (matching the docs
+    // site) instead of expanding inline and pushing the GitHub link below down.
+    // Anchored to the theme row — .theme-picker is position:relative via
+    // Bootstrap's .dropdown — and raised above the panel items.
     .vapor-navmenu .theme-picker .dropdown-menu {
-        position: static !important;
+        position: absolute !important;
+        inset: auto auto auto 0 !important;
+        top: 100% !important;
+        right: 0 !important;
         transform: none !important;
         width: 100%;
         margin-top: 0.5rem;
+        z-index: 10002;
     }
 
     // GitHub centered at the bottom of the panel.
