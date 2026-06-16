@@ -36,6 +36,17 @@ $nav-link-color-light: $grey-600;
     background: linear-gradient(180deg, $grey-100 0%, rgba($grey-100, 0) 100%);
 }
 
+// On the main-site homepage the navbar is fixed (sticky). It gets its readable
+// background from backdrop-filter, but that's dropped on mobile (it would trap
+// the fixed off-canvas panel), leaving only the gradient — which fades to
+// transparent, so content scrolling under the sticky bar is unreadable. Give it
+// a solid background on mobile.
+@include media-breakpoint-down(lg) {
+    #main-page-body .navbar {
+        background: $grey-100;
+    }
+}
+
 body {
     background: white;
     color: $grey-700;

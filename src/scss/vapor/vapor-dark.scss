@@ -86,6 +86,14 @@
         background: linear-gradient(180deg, $grey-900 0%, rgba($grey-900, 0) 100%);
     }
 
+    // Solid background for the fixed homepage navbar on mobile (see vapor-light
+    // for why backdrop-filter can't cover this on mobile).
+    @include media-breakpoint-down(lg) {
+        #main-page-body .navbar {
+            background: $grey-900;
+        }
+    }
+
     // Wordmark text colour for the brand lockup (mark stays full-colour).
     #vapor-logo-text,
     #vapor-logo-footer-text,
