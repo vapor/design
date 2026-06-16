@@ -6,6 +6,8 @@ import * as bootstrap from 'bootstrap'
 
 import './startSyntaxHighlighting.js'
 import './toggleDarkMode.js'
+import './themePicker.js'
+import './mobileNav.js'
 import './styleHelpers.js'
 import './shareLinks.js'
 

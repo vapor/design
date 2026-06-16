@@ -20,11 +20,13 @@ public struct SiteFooter: Component {
             Div {
                 Div {
                     Div {
-                        Span().class("d-inline-block align-text-top")
-                            .accessibilityLabel("Vapor Logo")
-                            .id("vapor-logo-footer")
-                            .width(197)
-                            .height(76)
+                        Span {
+                            Span().id("vapor-logo-footer-mark").attribute(named: "aria-hidden", value: "true")
+                            Span("Vapor").id("vapor-logo-footer-text")
+                        }
+                        .id("vapor-logo-footer")
+                        .class("d-inline-flex align-items-center")
+                        .accessibilityLabel("Vapor")
                         Div {
                             Text("Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift")
                         }.class("w-lg-50 mt-4")

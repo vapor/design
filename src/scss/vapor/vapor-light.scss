@@ -1,5 +1,5 @@
-@import "vapor";
-
+// Variables come from vapor/vapor (imported first in main.scss); importing it
+// here would re-emit the whole Bootstrap framework.
 $nav-link-action-color-light: $grey-800;
 $heading-color-light: $grey-900;
 $nav-link-color-light: $grey-600;
@@ -25,18 +25,11 @@ $nav-link-color-light: $grey-600;
     }
 }
 
-#vapor-logo {
-    background: url(../../images/logo-main-black.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#vapor-logo-footer {
-    background: url(../../images/logo-main-black.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+// Wordmark text colour for the brand lockup (mark stays full-colour).
+#vapor-logo-text,
+#vapor-logo-footer-text,
+#vapor-hero-logo-text {
+    color: $grey-900;
 }
 
 .navbar {
@@ -274,10 +267,6 @@ code {
 
 .icon-secondary {
     background-color: $grey-600;
-}
-
-#vapor-hero-logo {
-    background-image: url(../../images/logo-main-black.svg);
 }
 
 .main-site-main-page {

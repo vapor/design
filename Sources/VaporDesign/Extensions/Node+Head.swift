@@ -102,7 +102,7 @@ public extension Node where Context == HTML.HeadContext {
         
         let msApplicationTileMeta = Node<HTML.HeadContext>.meta(
             .name("msapplication-TileColor"),
-            .content("#da532c")
+            .content("#141416")
         )
         
         let msApplicationURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/browserconfig.xml", isLocal: isLocal)
@@ -115,13 +115,36 @@ public extension Node where Context == HTML.HeadContext {
             .name("theme-color"),
             .content("#ffffff")
         )
-        
+
+        let svgIconURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/favicon.svg", isLocal: isLocal)
+        let svgIconLink = Node<HTML.HeadContext>.link(
+            .rel(.icon),
+            .href(svgIconURL),
+            .attribute(named: "type", value: "image/svg+xml")
+        )
+
+        let icon96URL = VaporDesignUtilities.buildResourceLink(for: "/favicons/favicon-96x96.png", isLocal: isLocal)
+        let icon96Link = Node<HTML.HeadContext>.link(
+            .rel(.icon),
+            .sizes("96x96"),
+            .href(icon96URL),
+            .attribute(named: "type", value: "image/png")
+        )
+
+        let appleTitleMeta = Node<HTML.HeadContext>.meta(
+            .name("apple-mobile-web-app-title"),
+            .content("Vapor")
+        )
+
         return .group(
+            svgIconLink,
             touchIconLink,
             icon32Link,
+            icon96Link,
             icon16Link,
             manifestLink,
             shortcutLink,
+            appleTitleMeta,
             msApplicationTileMeta,
             msApplicationConfig,
             themeColor

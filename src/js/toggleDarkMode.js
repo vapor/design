@@ -17,4 +17,13 @@ function switchTheme(e) {
 }
 
 // listener for changing themes
-toggleSwitch.addEventListener('click', switchTheme, false);
+//
+// Backwards compatibility: the legacy #theme-switch toggle has been replaced by
+// the Light/Dark/System picker (see themePicker.js + SiteNavigation). Sites that
+// haven't rebuilt against the new design package yet still render #theme-switch,
+// so keep handling it — but guard for its absence on updated sites (where this
+// becomes a no-op). Both paths share the same localStorage "theme" key and the
+// `.dark` class, so they interoperate during the rollout window.
+if (toggleSwitch) {
+    toggleSwitch.addEventListener('click', switchTheme, false);
+}
