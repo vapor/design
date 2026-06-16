@@ -37,7 +37,7 @@ Resources:
           CustomOriginConfig:
             OriginProtocolPolicy: 'http-only'
         Enabled: true
-        HttpVersion: 'http2'
+        HttpVersion: 'http2and3'
         Aliases:
         - !Ref 'DomainName'
         CustomErrorResponses:
@@ -51,10 +51,8 @@ Resources:
           - OPTIONS
           Compress: true
           TargetOriginId: S3Origin
-          ForwardedValues:
-            QueryString: false
-            Cookies:
-              Forward: none
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
           ViewerProtocolPolicy: redirect-to-https
           ResponseHeadersPolicyId: !Ref WebsiteCloudFrontPolicies
         PriceClass: PriceClass_All
@@ -68,10 +66,10 @@ Resources:
         Name: Design-Security-Header-Policy
         Comment: The Vapor Design security header policy
         CorsConfig:
-          AccessControlAllowCredentials: true
+          AccessControlAllowCredentials: false
           AccessControlAllowHeaders:
             Items:
-              - "ORIGIN"
+              - "origin"
           AccessControlAllowMethods:
             Items:
               - "GET"
@@ -94,7 +92,7 @@ Resources:
               ContentSecurityPolicy: default-src 'none'; script-src 'self'; img-src 'self'; style-src 'self'; font-src 'self'; manifest-src 'self';
               Override: false
           ContentTypeOptions:
-            Override: false
+            Override: true
           FrameOptions:
             FrameOption: DENY
             Override: false
