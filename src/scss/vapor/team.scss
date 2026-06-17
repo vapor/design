@@ -1,0 +1,385 @@
+// Team page — core team & maintainer cards, a GitHub-driven contributors grid,
+// curated sponsor logos plus GitHub/OpenCollective backers, and a call-to-action.
+// The dynamic data (contributors, backers, pagination and the CTA cursor
+// spotlight) is wired up by the Website repo's JS; this file only styles the page.
+
+// Prevents the full-bleed sponsors band (which uses 100vw) from adding a
+// horizontal scrollbar.
+#team-page-body {
+    overflow-x: hidden;
+}
+
+.team-page {
+    padding-bottom: 96px;
+
+    .team-page-header {
+        text-align: center;
+        padding-top: 64px;
+        margin-bottom: 64px;
+
+        .main-page-caption {
+            max-width: 620px;
+            justify-content: center;
+        }
+    }
+
+    // Core team & maintainers
+    .team-core,
+    .team-maintainers {
+        margin-bottom: 96px;
+    }
+
+    .team-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 48px 32px;
+    }
+
+    .team-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 300px;
+        max-width: 100%;
+    }
+
+    .team-avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 3px solid $grey-200;
+    }
+
+    .team-name {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 2px;
+        color: $grey-900;
+    }
+
+    .team-handle {
+        color: $pink-300;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+
+    .team-bio {
+        color: $grey-700;
+        font-size: 15px;
+        line-height: 150%;
+        margin-bottom: 16px;
+    }
+
+    // Section headings. The shared design system caps h2 at max-width: 560px with
+    // no auto margins, which left-aligns the box; center it here.
+    .team-section-title {
+        text-align: center;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        margin: 0 auto 48px;
+    }
+
+    .team-subsection-title {
+        text-align: center;
+        font-weight: 500;
+        font-size: 22px;
+        letter-spacing: -0.01em;
+        max-width: none;
+        margin: 0 auto 28px;
+    }
+
+    // Contributors
+    .team-contributors {
+        margin-bottom: 96px;
+    }
+
+    .contributors-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 40px 32px;
+
+        @include media-breakpoint-down(lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include media-breakpoint-down(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .contributor-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contributor-avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 14px;
+        border: 2px solid $grey-200;
+    }
+
+    .contributor-name {
+        font-weight: 600;
+        font-size: 15px;
+        margin: 0;
+        color: $grey-900;
+    }
+
+    .contributors-empty {
+        text-align: center;
+        color: $grey-700;
+        font-size: 15px;
+    }
+
+    // Sponsors — a full-bleed band with a subtly different background. The
+    // negative margins break out of the centered container to the viewport edges.
+    .team-sponsors {
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        margin-bottom: 96px;
+        padding-top: 72px;
+        padding-bottom: 72px;
+        background-color: $grey-100;
+    }
+
+    .sponsors-group + .sponsors-group {
+        margin-top: 56px;
+    }
+
+    .sponsors-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 32px 24px;
+        margin-bottom: 32px;
+
+        @include media-breakpoint-down(lg) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include media-breakpoint-down(sm) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    // Curated sponsor logos (the README's 💛 section), shown in cards.
+    .sponsors-logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .sponsor-logo-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 120px;
+        width: 200px;
+        padding: 20px 24px;
+        background: #ffffff;
+        border: 1px solid $off-light-grey;
+        border-radius: 16px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba($grey-900, 0.1);
+        }
+    }
+
+    .sponsor-logo {
+        max-height: 80px;
+        max-width: 100%;
+        width: auto;
+        object-fit: contain;
+    }
+
+    // Backer avatars
+    .team-sponsor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        transition: transform 0.15s ease;
+    }
+
+    a.team-sponsor:hover {
+        transform: translateY(-3px);
+    }
+
+    .sponsor-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+        border: 2px solid $grey-200;
+    }
+
+    .sponsor-avatar-fallback {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 600;
+        color: #ffffff;
+        background: linear-gradient(135deg, $pink-300 0%, $pink-500 100%);
+    }
+
+    .sponsor-name {
+        font-size: 13px;
+        color: $grey-700;
+        margin: 0;
+    }
+
+    // Pagination (reuses the shared .pagination styling). The design system styles
+    // a disabled page button as a solid box, which reads as more active than the
+    // enabled arrow — fade it instead.
+    .team-pagination {
+        margin-top: 24px;
+
+        .page-item.disabled .page-link {
+            background-color: transparent;
+            border-color: transparent;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+    }
+
+    // Social links
+    .team-socials {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+
+        .vapor-icon {
+            width: 18px;
+            height: 18px;
+            background-color: $pink-300;
+            transition: background-color 0.15s ease;
+        }
+
+        a:hover .vapor-icon {
+            background-color: $pink-400;
+        }
+    }
+
+    // Call to action — gradient panel with a cursor-tracking spotlight and border
+    // glow (coordinates set by teamCta.js).
+    .team-cta {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 80px 32px;
+        border-radius: 24px;
+        text-align: center;
+        color: $grey-100;
+        background: linear-gradient(120deg, $pink-500 0%, #2a1a4a 52%, $blue-500 100%);
+
+        // Soft fill that follows the cursor.
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle 440px at var(--cta-x, 50%) var(--cta-y, 50%),
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0) 60%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        // Border ring — a radial gradient masked to just the 1.5px edge.
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1.5px;
+            background: radial-gradient(
+                circle 440px at var(--cta-x, 50%) var(--cta-y, 50%),
+                rgba(255, 255, 255, 0.75),
+                rgba(255, 255, 255, 0) 65%
+            );
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            opacity: 1;
+        }
+
+        > * {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    .team-cta-title {
+        color: #ffffff;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+    }
+
+    .team-cta-caption {
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 560px;
+        margin: 0 auto 28px;
+    }
+}
+
+// Dark theme. Nested under `.dark .team-page` so it out-specifies the light rules
+// above regardless of import order.
+.dark .team-page {
+    .team-name,
+    .contributor-name {
+        color: $grey-200;
+    }
+
+    .team-bio,
+    .sponsor-name {
+        color: $grey-500;
+    }
+
+    .team-avatar,
+    .contributor-avatar,
+    .sponsor-avatar {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .team-sponsors {
+        background-color: $off-black;
+    }
+
+    .sponsor-logo-link {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+
+        &:hover {
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+        }
+    }
+}
