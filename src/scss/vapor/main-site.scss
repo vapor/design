@@ -73,6 +73,30 @@ body {
         position: fixed;
         transition: top 0.3s;
     }
+
+    // The site-wide code blocks were tightened to match the docs/blog. The
+    // homepage design calls for more generous breathing room, so restore the
+    // looser padding and larger radius for code blocks on the main page only.
+    .hljs {
+        padding-right: 40px;
+        border-radius: 24px;
+
+        tr:first-child td {
+            padding-top: 48px;
+
+            @include media-breakpoint-down(lg) {
+                padding-top: 24px;
+            }
+        }
+
+        tr:last-child td {
+            padding-bottom: 48px;
+
+            @include media-breakpoint-down(lg) {
+                padding-bottom: 24px;
+            }
+        }
+    }
 }
 
 .main-content {
