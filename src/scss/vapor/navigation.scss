@@ -396,8 +396,18 @@ nav {
     }
 
     // Panel items follow source/DOM order, which is the same as the desktop
-    // order: Home, Store, Showcase, Documentation, Team, Blog, GitHub, Language,
-    // Theme. (The docs site reshuffles to a docs-first order in its own theme.)
+    // order: Home, Store, Showcase, Documentation, Team, Blog, Language, Theme.
+    // (The docs site reshuffles to a docs-first order in its own theme.)
+    // GitHub is the one exception: pinned to the bottom of the panel (centred),
+    // matching the docs. Everything else is `order: 0`, so `order: 1` sends it last.
+    .vapor-navmenu .vapor-github-nav {
+        order: 1;
+        margin-top: 1.5rem;
+    }
+    .vapor-navmenu .vapor-github-nav .nav-link {
+        display: flex;
+        justify-content: center;
+    }
 
     // Documentation dropdown expands inline, full-width, within the panel.
     .vapor-navmenu #framework-dropdown-menu {
