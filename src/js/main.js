@@ -8,6 +8,7 @@ import './startSyntaxHighlighting.js'
 import './toggleDarkMode.js'
 import './themePicker.js'
 import './mobileNav.js'
+import './pickerDropdown.js'
 import './styleHelpers.js'
 import './shareLinks.js'
 
