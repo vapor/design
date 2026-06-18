@@ -391,11 +391,12 @@ nav {
         padding: 0.55rem 0;
     }
 
-    // Panel order: Documentation, marketing links, Theme, Language, GitHub.
+    // Panel order: Documentation, marketing links, Language, Theme, GitHub
+    // (language before theme, matching the docs site).
     .vapor-navmenu .vapor-doc-nav { order: 1; }
     .vapor-navmenu .nav-item:not(.vapor-doc-nav):not(.theme-picker):not(.language-picker):not(.vapor-github-nav) { order: 2; }
-    .vapor-navmenu .theme-picker { order: 3; }
-    .vapor-navmenu .language-picker { order: 4; }
+    .vapor-navmenu .language-picker { order: 3; }
+    .vapor-navmenu .theme-picker { order: 4; }
     .vapor-navmenu .vapor-github-nav { order: 5; }
 
     // Documentation dropdown expands inline, full-width, within the panel.
@@ -410,6 +411,9 @@ nav {
         color: $grey-600;
         font-size: 1.1rem;
     }
+    // The first settings row carries the divider that separates the pickers from
+    // the links above. The theme picker is first by default (e.g. the blog, which
+    // has no language picker)…
     .vapor-navmenu .theme-picker {
         display: flex;
         align-items: center;
@@ -419,15 +423,21 @@ nav {
         padding-top: 1.25rem;
         border-top: 1px solid $grey-200;
     }
-    // Language row: same layout as the theme row but without the divider — it
-    // sits directly below the theme row, which already carries the divider and
-    // its own top spacing.
+    // …but when a language picker is present it comes first, so the divider moves
+    // to it and the theme row drops to a plain inter-row gap.
     .vapor-navmenu .language-picker {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid $grey-200;
+    }
+    .vapor-navmenu:has(.language-picker) .theme-picker {
         margin-top: 1rem;
+        padding-top: 0;
+        border-top: 0;
     }
     .vapor-navmenu .theme-picker-toggle,
     .vapor-navmenu .language-picker-toggle {

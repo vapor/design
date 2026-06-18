@@ -334,7 +334,8 @@
         .vapor-navmenu .vapor-nav-label {
             color: $grey-400;
         }
-        .vapor-navmenu .theme-picker {
+        .vapor-navmenu .theme-picker,
+        .vapor-navmenu .language-picker {
             border-top-color: $grey-800;
         }
         .vapor-navmenu .theme-picker-toggle,
