@@ -441,8 +441,11 @@ nav {
         padding-top: 0;
         border-top: 0;
     }
-    .navbar-nav .theme-picker-toggle,
-    .navbar-nav .language-picker-toggle {
+    // Note the `.theme-picker`/`.language-picker` ancestor: it lifts specificity to
+    // (0,3,0) so this beats a consumer's own `.<menu> .nav-link` sizing (e.g. the
+    // docs' 1.25rem mobile nav links), which otherwise ties and wins on load order.
+    .navbar-nav .theme-picker .theme-picker-toggle,
+    .navbar-nav .language-picker .language-picker-toggle {
         gap: 0.4rem;
         // Don't inherit the panel's larger 1.25rem nav-link size — keep the pill
         // compact (matches the docs theme selector).
