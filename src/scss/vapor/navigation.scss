@@ -220,9 +220,12 @@ footer {
     }
 }
 
-// Theme name + chevron — only shown in the mobile panel (icon-only on desktop).
+// Theme/language name + chevron — only shown in the mobile panel, so the desktop
+// navbar pickers are just their icon until opened.
 .theme-name,
-.theme-chevron {
+.theme-chevron,
+.language-name,
+.language-chevron {
     display: none;
 }
 
@@ -239,7 +242,6 @@ footer {
 
 // Language picker chevron — rotates when the dropdown opens, like the theme one.
 .language-chevron {
-    display: inline-block;
     transition: transform 0.35s;
 }
 
@@ -270,8 +272,10 @@ footer {
 }
 
 .language-icon svg {
-    width: 14px;
-    height: auto;
+    // Match the height of the other navbar icons (GitHub / theme = 22px) so the
+    // portrait translate glyph lines up with them; width follows its aspect.
+    height: 22px;
+    width: auto;
     display: block;
 }
 
@@ -391,13 +395,9 @@ nav {
         padding: 0.55rem 0;
     }
 
-    // Panel order: Documentation, marketing links, Language, Theme, GitHub
-    // (language before theme, matching the docs site).
-    .vapor-navmenu .vapor-doc-nav { order: 1; }
-    .vapor-navmenu .nav-item:not(.vapor-doc-nav):not(.theme-picker):not(.language-picker):not(.vapor-github-nav) { order: 2; }
-    .vapor-navmenu .language-picker { order: 3; }
-    .vapor-navmenu .theme-picker { order: 4; }
-    .vapor-navmenu .vapor-github-nav { order: 5; }
+    // Panel items follow source/DOM order, which is the same as the desktop
+    // order: Home, Store, Showcase, Documentation, Team, Blog, GitHub, Language,
+    // Theme. (The docs site reshuffles to a docs-first order in its own theme.)
 
     // Documentation dropdown expands inline, full-width, within the panel.
     .vapor-navmenu #framework-dropdown-menu {
@@ -457,6 +457,7 @@ nav {
     .vapor-navmenu .theme-name { display: inline; }
     .vapor-navmenu .language-name { display: inline; }
     .vapor-navmenu .theme-chevron { display: inline-block; }
+    .vapor-navmenu .language-chevron { display: inline-block; }
     // Float the theme options on top of the panel content (matching the docs
     // site) instead of expanding inline and pushing the GitHub link below down.
     // Anchored to the theme row — .theme-picker is position:relative via
@@ -473,12 +474,4 @@ nav {
         z-index: 10002;
     }
 
-    // GitHub centered at the bottom of the panel.
-    .vapor-navmenu .vapor-github-nav {
-        margin-top: 1.5rem;
-    }
-    .vapor-navmenu .vapor-github-nav .nav-link {
-        display: flex;
-        justify-content: center;
-    }
 }
