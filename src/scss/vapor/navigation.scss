@@ -204,12 +204,14 @@ footer {
     display: block;
 }
 
-.theme-picker .dropdown-item {
+.theme-picker .dropdown-item,
+.language-picker .dropdown-item {
     border-radius: 12px;
     padding: 0.5rem 0.7rem;
 }
 
-.theme-picker .dropdown-item.active {
+.theme-picker .dropdown-item.active,
+.language-picker .dropdown-item.active {
     background: transparent;
 
     &,
@@ -235,9 +237,20 @@ footer {
     transform: rotate(180deg);
 }
 
+// Language picker chevron — rotates when the dropdown opens, like the theme one.
+.language-chevron {
+    display: inline-block;
+    transition: transform 0.35s;
+}
+
+.language-picker-toggle[aria-expanded="true"] .language-chevron {
+    transform: rotate(180deg);
+}
+
 // Dropdown card — applies at all widths so its (dark) background reaches the
 // inline mobile-panel expansion too, not just the desktop overlay.
-.theme-picker .dropdown-menu {
+.theme-picker .dropdown-menu,
+.language-picker .dropdown-menu {
     padding: 0.4rem;
     min-width: 11rem;
     background: white;
@@ -246,6 +259,20 @@ footer {
     box-shadow:
         0px 12px 16px -4px rgba($off-black-2, 0.08),
         0px 4px 6px -2px rgba($off-black-2, 0.03);
+}
+
+/* Language picker — the toggle shows a static translate-icon SVG (inline in the
+ * markup) plus the current language name. Its panel layout mirrors the theme
+ * picker (see the mobile nav block below). */
+.language-icon {
+    display: inline-flex;
+    align-items: center;
+}
+
+.language-icon svg {
+    width: 14px;
+    height: auto;
+    display: block;
 }
 
 nav {
@@ -364,11 +391,12 @@ nav {
         padding: 0.55rem 0;
     }
 
-    // Panel order: Documentation, marketing links, Theme, GitHub.
+    // Panel order: Documentation, marketing links, Theme, Language, GitHub.
     .vapor-navmenu .vapor-doc-nav { order: 1; }
-    .vapor-navmenu .nav-item:not(.vapor-doc-nav):not(.theme-picker):not(.vapor-github-nav) { order: 2; }
+    .vapor-navmenu .nav-item:not(.vapor-doc-nav):not(.theme-picker):not(.language-picker):not(.vapor-github-nav) { order: 2; }
     .vapor-navmenu .theme-picker { order: 3; }
-    .vapor-navmenu .vapor-github-nav { order: 4; }
+    .vapor-navmenu .language-picker { order: 4; }
+    .vapor-navmenu .vapor-github-nav { order: 5; }
 
     // Documentation dropdown expands inline, full-width, within the panel.
     .vapor-navmenu #framework-dropdown-menu {
@@ -391,7 +419,18 @@ nav {
         padding-top: 1.25rem;
         border-top: 1px solid $grey-200;
     }
-    .vapor-navmenu .theme-picker-toggle {
+    // Language row: same layout as the theme row but without the divider — it
+    // sits directly below the theme row, which already carries the divider and
+    // its own top spacing.
+    .vapor-navmenu .language-picker {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    .vapor-navmenu .theme-picker-toggle,
+    .vapor-navmenu .language-picker-toggle {
         gap: 0.4rem;
         // Don't inherit the panel's larger 1.25rem nav-link size — keep the pill
         // compact (matches the docs theme selector).
@@ -406,12 +445,14 @@ nav {
     }
     // Show the current theme name + chevron in the panel pill (icon-only elsewhere).
     .vapor-navmenu .theme-name { display: inline; }
+    .vapor-navmenu .language-name { display: inline; }
     .vapor-navmenu .theme-chevron { display: inline-block; }
     // Float the theme options on top of the panel content (matching the docs
     // site) instead of expanding inline and pushing the GitHub link below down.
     // Anchored to the theme row — .theme-picker is position:relative via
     // Bootstrap's .dropdown — and raised above the panel items.
-    .vapor-navmenu .theme-picker .dropdown-menu {
+    .vapor-navmenu .theme-picker .dropdown-menu,
+    .vapor-navmenu .language-picker .dropdown-menu {
         position: absolute !important;
         inset: auto auto auto 0 !important;
         top: 100% !important;

@@ -60,7 +60,8 @@
         color: $grey-600;
     }
 
-    .theme-picker .dropdown-item {
+    .theme-picker .dropdown-item,
+    .language-picker .dropdown-item {
         color: $grey-100;
 
         &:hover {
@@ -68,7 +69,8 @@
         }
     }
 
-    .theme-picker .dropdown-item.active {
+    .theme-picker .dropdown-item.active,
+    .language-picker .dropdown-item.active {
         &,
         .theme-opt-icon {
             color: $blue-300;
@@ -77,7 +79,8 @@
 
     // All widths so the inline mobile-panel dropdown is dark too (not just the
     // desktop overlay) — otherwise it falls back to the light Bootstrap default.
-    .theme-picker .dropdown-menu {
+    .theme-picker .dropdown-menu,
+    .language-picker .dropdown-menu {
         background: $off-black;
         border: 1px solid $grey-800;
     }
@@ -334,7 +337,8 @@
         .vapor-navmenu .theme-picker {
             border-top-color: $grey-800;
         }
-        .vapor-navmenu .theme-picker-toggle {
+        .vapor-navmenu .theme-picker-toggle,
+        .vapor-navmenu .language-picker-toggle {
             border-color: $grey-800;
         }
     }

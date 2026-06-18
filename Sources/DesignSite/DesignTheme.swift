@@ -21,7 +21,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
         let itemContent = Content(title: "Vapor's Design Guide", description: "Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites", body: .init(html: demoPostHTML))
         let item = Item<Site>(path: "/demo", sectionID: .posts, metadata: .init(), tags: ["Vapor", "No tag is this absurdly long", "Framework"], content: itemContent)
         let body: Node<HTML.DocumentContext> = .body {
-            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: nil, isDemo: isDemo)
+            SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: nil, isDemo: isDemo, showLanguagePicker: true)
             BlogPost(blogPostData: blogPostData, item: item, site: context.site, isDemo: isDemo)
             BlogPost(blogPostData: oneMoreBlogPostData, item: item, site: context.site, isDemo: isDemo)
             buildComponentDemo(blogPostData: blogPostData, anotherBlogPostData: anotherBlogPostData, oneMoreBlogPostData: oneMoreBlogPostData, item: item, site: context.site, isDemo: isDemo)
@@ -37,7 +37,7 @@ private struct VaporThemeHTMLFactory: HTMLFactory {
             let body: Node<HTML.DocumentContext> = .body {
                 let isDemo = true
                 let currentSite: CurrentSite = .main
-                SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: .home, isDemo: isDemo)
+                SiteNavigation(context: context, selectedSelectionID: nil, currentSite: currentSite, currentMainSitePage: .home, isDemo: isDemo, showLanguagePicker: true)
                 buildMainSiteDemo()
                 SiteFooter(isLocal: true, isDemo: isDemo, currentSite: currentSite)
                 Script(url: VaporDesignUtilities.buildResourceLink(for: "/js/mainSiteUpdateStarsCount.js", isLocal: true))
