@@ -331,15 +331,15 @@
         .vapor-navmenu-close .vapor-icon {
             background-color: $grey-100;
         }
-        .vapor-navmenu .vapor-nav-label {
+        .navbar-nav .vapor-nav-label {
             color: $grey-400;
         }
-        .vapor-navmenu .theme-picker,
-        .vapor-navmenu .language-picker {
+        .navbar-nav .theme-picker,
+        .navbar-nav .language-picker {
             border-top-color: $grey-800;
         }
-        .vapor-navmenu .theme-picker-toggle,
-        .vapor-navmenu .language-picker-toggle {
+        .navbar-nav .theme-picker-toggle,
+        .navbar-nav .language-picker-toggle {
             border-color: $grey-800;
         }
     }

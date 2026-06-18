@@ -404,9 +404,11 @@ nav {
         margin: 0.5rem 0 0.25rem;
     }
 
-    // Theme row: "Theme" label (left) + picker pill (right); the options expand
-    // inline below. A divider separates the settings from the links above.
-    .vapor-navmenu .vapor-nav-label {
+    // Picker rows ("Theme"/"Language" label left + pill right). Scoped to
+    // `.navbar-nav` (not `.vapor-navmenu`) so the SAME rules style the pickers in
+    // the docs' `.kiln-navmenu` panel too — single source of truth. The off-canvas
+    // panel LAYOUT above stays site-specific; only the picker styling is shared.
+    .navbar-nav .vapor-nav-label {
         display: inline;
         color: $grey-600;
         font-size: 1.1rem;
@@ -414,7 +416,7 @@ nav {
     // The first settings row carries the divider that separates the pickers from
     // the links above. The theme picker is first by default (e.g. the blog, which
     // has no language picker)…
-    .vapor-navmenu .theme-picker {
+    .navbar-nav .theme-picker {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -425,7 +427,7 @@ nav {
     }
     // …but when a language picker is present it comes first, so the divider moves
     // to it and the theme row drops to a plain inter-row gap.
-    .vapor-navmenu .language-picker {
+    .navbar-nav .language-picker {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -434,13 +436,13 @@ nav {
         padding-top: 1.25rem;
         border-top: 1px solid $grey-200;
     }
-    .vapor-navmenu:has(.language-picker) .theme-picker {
+    .navbar-nav:has(.language-picker) .theme-picker {
         margin-top: 1rem;
         padding-top: 0;
         border-top: 0;
     }
-    .vapor-navmenu .theme-picker-toggle,
-    .vapor-navmenu .language-picker-toggle {
+    .navbar-nav .theme-picker-toggle,
+    .navbar-nav .language-picker-toggle {
         gap: 0.4rem;
         // Don't inherit the panel's larger 1.25rem nav-link size — keep the pill
         // compact (matches the docs theme selector).
@@ -449,21 +451,20 @@ nav {
         border-radius: 999px;
         padding: 0.45rem 0.9rem;
     }
-    .vapor-navmenu .theme-toggle-icon svg {
+    .navbar-nav .theme-toggle-icon svg {
         width: 18px;
         height: 18px;
     }
     // Show the current theme name + chevron in the panel pill (icon-only elsewhere).
-    .vapor-navmenu .theme-name { display: inline; }
-    .vapor-navmenu .language-name { display: inline; }
-    .vapor-navmenu .theme-chevron { display: inline-block; }
-    .vapor-navmenu .language-chevron { display: inline-block; }
-    // Float the theme options on top of the panel content (matching the docs
-    // site) instead of expanding inline and pushing the GitHub link below down.
-    // Anchored to the theme row — .theme-picker is position:relative via
-    // Bootstrap's .dropdown — and raised above the panel items.
-    .vapor-navmenu .theme-picker .dropdown-menu,
-    .vapor-navmenu .language-picker .dropdown-menu {
+    .navbar-nav .theme-name { display: inline; }
+    .navbar-nav .language-name { display: inline; }
+    .navbar-nav .theme-chevron { display: inline-block; }
+    .navbar-nav .language-chevron { display: inline-block; }
+    // Float the picker options on top of the panel content instead of expanding
+    // inline. Anchored to the row — .theme-picker/.language-picker is
+    // position:relative via Bootstrap's .dropdown — and raised above the items.
+    .navbar-nav .theme-picker .dropdown-menu,
+    .navbar-nav .language-picker .dropdown-menu {
         position: absolute !important;
         inset: auto auto auto 0 !important;
         top: 100% !important;
@@ -471,6 +472,8 @@ nav {
         transform: none !important;
         width: 100%;
         margin-top: 0.5rem;
+        max-height: 70vh;
+        overflow-y: auto;
         z-index: 10002;
     }
 
