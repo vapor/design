@@ -422,6 +422,8 @@ nav {
         display: inline;
         color: $grey-600;
         font-size: 1.1rem;
+        // The pill, not the label, absorbs the row; never squeeze the label.
+        flex-shrink: 0;
     }
     // The first settings row carries the divider that separates the pickers from
     // the links above. The theme picker is first by default (e.g. the blog, which
@@ -430,7 +432,10 @@ nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex-wrap: wrap;
+        // Keep the label + pill on one row — a long current value (e.g. the
+        // "Português (Brasil)" autonym) must not drop the pill to a second line.
+        flex-wrap: nowrap;
+        gap: 0.5rem;
         margin-top: 1.25rem;
         padding-top: 1.25rem;
         border-top: 1px solid $grey-200;
@@ -441,7 +446,8 @@ nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
         margin-top: 1.25rem;
         padding-top: 1.25rem;
         border-top: 1px solid $grey-200;
@@ -463,14 +469,28 @@ nav {
         border: 1px solid $grey-200;
         border-radius: 999px;
         padding: 0.45rem 0.9rem;
+        // Allow the pill to shrink below its content width on very narrow screens
+        // so the truncating name (below) can ellipsis instead of overflowing.
+        min-width: 0;
     }
     .navbar-nav .theme-toggle-icon svg {
         width: 18px;
         height: 18px;
     }
     // Show the current theme name + chevron in the panel pill (icon-only elsewhere).
-    .navbar-nav .theme-name { display: inline; }
-    .navbar-nav .language-name { display: inline; }
+    // Cap the name and ellipsis-truncate it so a long autonym (e.g. the
+    // "Português (Brasil)" language) stays a compact pill on one row rather than
+    // wrapping or stretching to the panel edge. `min-width: 0` lets it shrink below
+    // the cap on very narrow screens.
+    .navbar-nav .theme-name,
+    .navbar-nav .language-name {
+        display: inline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+        max-width: 7rem;
+    }
     .navbar-nav .theme-chevron { display: inline-block; }
     .navbar-nav .language-chevron { display: inline-block; }
     // Float the picker options on top of the panel content instead of expanding
