@@ -25,19 +25,19 @@ public extension Node where Context == HTML.DocumentContext {
         isLocal: Bool
     ) -> Node {
         var title = location.title
-        
+
         if title.isEmpty {
             title = site.name
         } else {
             title.append(titleSeparator + site.name)
         }
-        
+
         var description = location.description
-        
+
         if description.isEmpty {
             description = site.description
         }
-        
+
         return .head(
             .encoding(.utf8),
             .siteName(site.name),
@@ -60,60 +60,29 @@ public extension Node where Context == HTML.DocumentContext {
             })
         )
     }
-    
+
 }
 
 public extension Node where Context == HTML.HeadContext {
-    
+
     static func buildFavicons(isLocal: Bool) -> Node {
         let touchIconURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/apple-touch-icon.png", isLocal: isLocal)
-        let icon32URL = VaporDesignUtilities.buildResourceLink(for: "/favicons/favicon-32x32.png", isLocal: isLocal)
-        let icon16URL = VaporDesignUtilities.buildResourceLink(for: "/favicons/favicon-16x16.png", isLocal: isLocal)
         let touchIconLink = Node<HTML.HeadContext>.link(
             .rel(.appleTouchIcon),
             .sizes("180x180"),
             .href(touchIconURL)
         )
-        let icon32Link = Node<HTML.HeadContext>.link(
-            .rel(.icon),
-            .sizes("32x32"),
-            .href(icon32URL),
-            .attribute(named: "type", value: "image/png")
-        )
-        
-        let icon16Link = Node<HTML.HeadContext>.link(
-            .rel(.icon),
-            .sizes("16x16"),
-            .href(icon16URL),
-            .attribute(named: "type", value: "image/png")
-        )
-        
+
         let manifestURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/site.webmanifest", isLocal: isLocal)
         let manifestLink = Node<HTML.HeadContext>.link(
             .rel(.manifest),
             .href(manifestURL)
         )
-        
+
         let shortcutURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/favicon.ico", isLocal: isLocal)
         let shortcutLink = Node<HTML.HeadContext>.link(
             .rel(.shortcutIcon),
             .href(shortcutURL)
-        )
-        
-        let msApplicationTileMeta = Node<HTML.HeadContext>.meta(
-            .name("msapplication-TileColor"),
-            .content("#141416")
-        )
-        
-        let msApplicationURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/browserconfig.xml", isLocal: isLocal)
-        let msApplicationConfig = Node<HTML.HeadContext>.meta(
-            .name("msapplication-config"),
-            .content(msApplicationURL)
-        )
-        
-        let themeColor = Node<HTML.HeadContext>.meta(
-            .name("theme-color"),
-            .content("#ffffff")
         )
 
         let svgIconURL = VaporDesignUtilities.buildResourceLink(for: "/favicons/favicon.svg", isLocal: isLocal)
@@ -139,15 +108,10 @@ public extension Node where Context == HTML.HeadContext {
         return .group(
             svgIconLink,
             touchIconLink,
-            icon32Link,
             icon96Link,
-            icon16Link,
             manifestLink,
             shortcutLink,
-            appleTitleMeta,
-            msApplicationTileMeta,
-            msApplicationConfig,
-            themeColor
+            appleTitleMeta
         )
     }
 }
