@@ -35,6 +35,17 @@ footer {
         line-height: 21px;
     }
 
+    // Footer-column headings styled independently of the tag, so they can be a
+    // non-skipping heading level (e.g. <h2>) for accessibility while still
+    // looking like the small h6 above. `margin: 0` resets the heading default;
+    // the list items below carry their own top spacing.
+    .footer-heading {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        margin: 0;
+    }
+
     ul {
         padding-left: 0;
     }
