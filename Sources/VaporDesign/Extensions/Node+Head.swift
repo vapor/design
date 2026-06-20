@@ -105,13 +105,19 @@ public extension Node where Context == HTML.HeadContext {
             .content("Vapor")
         )
 
+        let themeColor = Node<HTML.HeadContext>.meta(
+            .name("theme-color"),
+            .content("#ffffff")
+        )
+
         return .group(
             svgIconLink,
             touchIconLink,
             icon96Link,
             manifestLink,
             shortcutLink,
-            appleTitleMeta
+            appleTitleMeta,
+            themeColor
         )
     }
 }
