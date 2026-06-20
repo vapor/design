@@ -1,5 +1,5 @@
 {
-  "name": "Vapor, the Swift on the Server Framework",
+  "name": "Vapor, the server-side Swift framework",
   "short_name": "Vapor",
   "icons": [
     {
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
+  "theme_color": "#141416",
   "background_color": "#ffffff",
   "display": "standalone"
 }
