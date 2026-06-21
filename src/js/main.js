@@ -11,6 +11,7 @@ import './mobileNav.js'
 import './pickerDropdown.js'
 import './styleHelpers.js'
 import './shareLinks.js'
+import './languageSuggestion.js'
 
 // Functions to export to HTML
 require('./copyLink.js');
