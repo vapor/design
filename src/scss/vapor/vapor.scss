@@ -230,6 +230,13 @@ body {
     color: white;
     border: none;
     z-index: 1;
+    // Lay the label + trailing icon out in a centred row. This used to live on
+    // an inner `<a>`, but the buttons are now `<a class="btn-primary">` directly
+    // (no nested interactive element) — keeping it on the button itself works for
+    // both shapes.
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     &::before {
         position: absolute;
@@ -248,6 +255,7 @@ body {
         opacity: 1;
     }
 
+    // Legacy nested markup (`<button class="btn-primary"><a>…</a></button>`).
     a {
         color: white;
         display: inline-flex;
@@ -257,17 +265,21 @@ body {
         &:hover {
             text-decoration: none;
         }
-
-        .vapor-icon {
-            background-color: white;
-            width: 16px;
-            height: 16px;
-            margin-left: 8px;
-            transition: transform 0.1s ease-in-out;
-        }
     }
 
-    &:hover a .vapor-icon {
+    // Trailing icon — matches whether it's nested in an `<a>` or a direct child.
+    // `&.btn` (the button always has both classes) raises specificity above the
+    // section label-icon rule (`.main-site-features .vapor-icon`) so the chevron
+    // stays white rather than picking up the 42px pink label styling.
+    &.btn .vapor-icon {
+        background-color: white;
+        width: 16px;
+        height: 16px;
+        margin-left: 8px;
+        transition: transform 0.1s ease-in-out;
+    }
+
+    &.btn:hover .vapor-icon {
         transform: translateX(4px);
     }
 }
