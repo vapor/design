@@ -18,17 +18,17 @@
     // Native name + copy, in the TARGET language, for each locale we ship. A
     // German visitor sees the prompt in German.
     var LOCALES = {
-        "en":    { name: "English",    msg: "This page is also available in English.",          go: "Switch",        no: "No thanks" },
-        "de":    { name: "Deutsch",    msg: "Diese Seite ist auch auf Deutsch verfügbar.",  go: "Wechseln",      no: "Nein danke" },
-        "es":    { name: "Español", msg: "Esta página también está disponible en español.", go: "Cambiar", no: "No, gracias" },
-        "fr":    { name: "Français", msg: "Cette page est aussi disponible en français.", go: "Changer",     no: "Non merci" },
-        "it":    { name: "Italiano",   msg: "Questa pagina è disponibile anche in italiano.", go: "Cambia",       no: "No, grazie" },
-        "ja":    { name: "日本語", msg: "このページは日本語でもご覧いただけます。", go: "切り替える", no: "結構です" },
-        "ko":    { name: "한국어", msg: "이 페이지는 한국어로도 제공됩니다.", go: "전환", no: "괜찮습니다" },
-        "nl":    { name: "Nederlands", msg: "Deze pagina is ook beschikbaar in het Nederlands.", go: "Overschakelen", no: "Nee, bedankt" },
-        "pl":    { name: "Polski",     msg: "Ta strona jest również dostępna w języku polskim.", go: "Przełącz", no: "Nie, dziękuję" },
-        "zh":    { name: "简体中文", msg: "本页面也提供简体中文版本。", go: "切换", no: "不用了" },
-        "pt-BR": { name: "Português", msg: "Esta página também está disponível em português.", go: "Mudar", no: "Não, obrigado" }
+        "en":    { name: "English",    msg: "This site is available in English.",            go: "Switch",        no: "No thanks" },
+        "de":    { name: "Deutsch",    msg: "Diese Website ist auf Deutsch verfügbar.",       go: "Wechseln",      no: "Nein danke" },
+        "es":    { name: "Español",    msg: "Este sitio está disponible en español.",          go: "Cambiar",       no: "No, gracias" },
+        "fr":    { name: "Français",   msg: "Ce site est disponible en français.",             go: "Changer",       no: "Non merci" },
+        "it":    { name: "Italiano",   msg: "Questo sito è disponibile in italiano.",          go: "Cambia",        no: "No, grazie" },
+        "ja":    { name: "日本語",      msg: "このサイトは日本語でご利用いただけます。",          go: "切り替える",     no: "結構です" },
+        "ko":    { name: "한국어",      msg: "이 사이트는 한국어로 제공됩니다.",                  go: "전환",          no: "괜찮습니다" },
+        "nl":    { name: "Nederlands", msg: "Deze site is beschikbaar in het Nederlands.",     go: "Overschakelen", no: "Nee, bedankt" },
+        "pl":    { name: "Polski",     msg: "Ta witryna jest dostępna w języku polskim.",      go: "Przełącz",      no: "Nie, dziękuję" },
+        "zh":    { name: "简体中文",    msg: "本网站提供简体中文版本。",                          go: "切换",          no: "不用了" },
+        "pt-BR": { name: "Português",  msg: "Este site está disponível em português.",         go: "Mudar",         no: "Não, obrigado" }
     };
 
     // Map a browser language tag ("en-GB", "zh-CN", "pt-PT", …) to a locale key

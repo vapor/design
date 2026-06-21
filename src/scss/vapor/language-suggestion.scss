@@ -5,9 +5,9 @@
 .vapor-lang-suggest {
     position: fixed;
     z-index: 1090; // above content + navbar, below the skip link (2000)
-    right: 1rem;
     bottom: 1rem;
-    left: auto;
+    left: 50%; // horizontally centred at the bottom
+    right: auto;
     max-width: 22rem;
     padding: 1rem 1.25rem;
     border-radius: 14px;
@@ -17,20 +17,27 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 
     // Slide up + fade in (the `.is-visible` class is added a frame after insert).
-    transform: translateY(140%);
+    // translateX(-50%) keeps it centred; translateY animates it in from below.
     opacity: 0;
+    transform: translate(-50%, 140%);
     transition: transform 0.28s ease, opacity 0.28s ease;
 
     &.is-visible {
-        transform: translateY(0);
         opacity: 1;
+        transform: translate(-50%, 0);
     }
 
+    // Full-width on small screens (no horizontal centring needed).
     @include media-breakpoint-down(sm) {
-        right: 0.75rem;
         left: 0.75rem;
+        right: 0.75rem;
         bottom: 0.75rem;
         max-width: none;
+        transform: translateY(140%);
+
+        &.is-visible {
+            transform: translateY(0);
+        }
     }
 }
 
