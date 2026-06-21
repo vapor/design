@@ -684,6 +684,12 @@ h2 {
                 border-top-left-radius: 24px;
             }
 
+            // The card title is now an <h4> (non-skipping under the <h3>
+            // section heading); pin its size to the previous bare-h5 value.
+            .card-title {
+                font-size: 1.25rem;
+            }
+
             .btn {
                 box-sizing: border-box;
                 display: flex;
@@ -910,7 +916,10 @@ h2 {
                 padding: 24px;
             }
 
-            h5 {
+            // Targets `.card-title` (not the `h5` tag) so the heading can be a
+            // non-skipping level (<h4> under the <h3> section heading) without
+            // losing its sizing.
+            .card-title {
                 margin-top: 24px;
                 color: $grey-800;
                 font-size: 24px;

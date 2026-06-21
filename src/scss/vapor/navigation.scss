@@ -8,6 +8,45 @@ nav {
     }
 }
 
+// ---- Accessibility (shared across all sites) ----
+
+// Skip-to-content link: visually hidden until focused, then slides into view so
+// keyboard / screen-reader users can jump past the navbar. Used by every site's
+// base template (`<a class="kiln-skip-link" href="#…">`).
+.kiln-skip-link {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2000;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background: $off-black;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-150%);
+    transition: transform 0.18s ease;
+
+    &:focus {
+        transform: translateY(0);
+        outline: 2px solid $blue-300;
+        outline-offset: 2px;
+    }
+}
+
+// Honour the OS "reduce motion" setting: neutralise animations, transitions and
+// smooth scrolling for users who ask for it.
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 // $navbar-light-* moved to vapor/vapor (they must be set before Bootstrap's CSS
 // is emitted, which now happens once, before this file).
 
