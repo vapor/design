@@ -211,10 +211,12 @@
 
 .hljs-addition {
     background-color: $code-addition;
+    color: $code-addition-text;
 }
 
 .hljs-deletion {
     background-color: $code-deletion;
+    color: $code-deletion-text;
 }
 
 .hljs-selector-id,
@@ -352,13 +354,18 @@
     //     background-color: #eee;
     //   }
 
-    //   .hljs-addition {
-    //     background-color: #baeeba;
-    //   }
+    // The pale light-mode add/remove backgrounds leave the light dark-mode code
+    // text at ~2:1 — unreadable. Use dark green/red tinted bands with light
+    // green/red text instead (≈9:1), keeping the git add/remove theme.
+    .hljs-addition {
+        background-color: $code-addition-dark-bg;
+        color: $code-addition-dark-text;
+    }
 
-    //   .hljs-deletion {
-    //     background-color: #ffc8bd;
-    //   }
+    .hljs-deletion {
+        background-color: $code-deletion-dark-bg;
+        color: $code-deletion-dark-text;
+    }
 
     //   .hljs-selector-id,
     //   .hljs-selector-class {

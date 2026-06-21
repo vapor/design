@@ -50,6 +50,18 @@ $code-substring: #000;
 $code-formula: #eee;
 $code-addition: #baeeba;
 $code-deletion: #ffc8bd;
+// Diff line text. The base code text (#8194f7) is far too light on the pale
+// add/remove backgrounds (≈2:1), so diff lines get their own readable text
+// colour per mode (all ≥7:1 vs their background — WCAG AA/AAA).
+// Light mode: dark green / dark red text on the pale bands.
+$code-addition-text: #0f5132;
+$code-deletion-text: #842029;
+// Dark mode: subtle dark green / red tinted bands (layered over the dark code
+// background) with light green / red text — keeps the git add/remove theme.
+$code-addition-dark-bg: rgba(63, 185, 80, 0.18);
+$code-deletion-dark-bg: rgba(248, 81, 73, 0.18);
+$code-addition-dark-text: #7ee787;
+$code-deletion-dark-text: #ffa198;
 $code-selector: #9b703f;
 // Bright blue for the code-block radial glow (syntax) and the main-site brand
 // "blurry-background" gradient.
