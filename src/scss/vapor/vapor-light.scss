@@ -232,7 +232,9 @@ hr {
 }
 
 code {
-    color: $pink-300;
+    // Inline code. $pink-300 (#df3efb) was 3.24:1 on the light bg; $pink-400 is
+    // 5.2:1. The .dark block keeps $pink-300 (5.4:1 on the dark code bg).
+    color: $pink-400;
 }
 
 .main-page-caption {

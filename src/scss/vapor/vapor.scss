@@ -47,6 +47,14 @@ $code-text-blue: #8194f7;
 $code-link-blue: #6699ff;
 $code-section-heading-red: #643820;
 $code-substring: #000;
+// Light-mode syntax token colours. The vibrant tokens above read fine on the
+// dark code background but fail WCAG AA on the near-white light code bg
+// (1.9–3.4:1). These darker, hue-preserving variants apply in light mode; the
+// `.dark` block restores the vibrant colours. (Tokens already dark enough —
+// string $pink-400, type $blue-500, attr $pink-500, variable — are unchanged.)
+$code-text-light: #3b3f8f;   // base text / operators (was #8194f7, 2.7:1 → 8.9:1)
+$code-title-light: #1b6fb3;  // titles / numbers (was #40c4ff, 1.9:1 → 5.2:1)
+$code-link-light: #2f54d4;   // regexp / links (was #6699ff, 2.7:1 → 6.1:1)
 $code-formula: #eee;
 $code-addition: #baeeba;
 $code-deletion: #ffc8bd;
@@ -119,7 +127,7 @@ $font-family-monospace: "Roboto Mono", ui-monospace, Menlo, Monaco,
 }
 
 // Global Overrides
-$link-color: $blue-300;
+$link-color: #15749f; // $blue-300 (#40c4ff) was 1.9:1 on white; darkened azure = 5.0:1
 $link-decoration: none;
 $link-hover-color: $blue-300;
 $link-hover-decoration: underline;

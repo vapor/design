@@ -11,6 +11,12 @@
     $showcase-button-background-hover: rgba(255, 255, 255, 0.1);
     $arrow-button-background: rgba($grey-800, 0.3);
 
+    // Inline code: light mode darkened this to $pink-400 for the light bg; keep
+    // the bright $pink-300 here — it's 5.4:1 on the dark code background.
+    code {
+        color: $pink-300;
+    }
+
     body {
         background: $grey-900;
         color: $grey-500;
@@ -701,8 +707,15 @@
         .card {
             background: $sponsor-card-background;
 
-            h5 {
+            // Title is now <h4 class="card-title"> (was <h5>, changed for the
+            // heading-level a11y fix); the body text is dark in light mode. Both
+            // need lifting against the dark card or they vanish (≈1.5:1 / 3:1).
+            .card-title {
                 color: $grey-200;
+            }
+
+            .card-text {
+                color: $grey-500;
             }
         }
     }

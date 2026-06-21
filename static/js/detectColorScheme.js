@@ -24,8 +24,12 @@ function detectColorScheme() {
 
     window.onload = function() {
         if (theme=="dark") {
+            // Not every page has a theme-color meta (e.g. the design demo site) —
+            // guard against it so this doesn't throw.
             var metaThemeColor = document.querySelector("meta[name=theme-color]");
-            metaThemeColor.setAttribute("content", "#141416");
+            if (metaThemeColor) {
+                metaThemeColor.setAttribute("content", "#141416");
+            }
         }
     };
 }

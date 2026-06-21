@@ -15,7 +15,7 @@
     // 16px reads consistently on both short (single-line) and tall (multiline)
     // blocks; 24px made short blocks look pill-shaped vs taller ones.
     border-radius: 16px;
-    color: $code-text-blue;
+    color: $code-text-light;
     white-space: pre-wrap;
 
     // Vertical breathing room for the code (the line-number table's first/last
@@ -140,7 +140,7 @@
 
 .hljs-comment,
 .hljs-quote {
-    color: $grey-600;
+    color: $grey-700;
 }
 
 .hljs-tag,
@@ -149,7 +149,7 @@
 .hljs-selector-tag,
 .hljs-literal,
 .hljs-name {
-    color: $pink-200;
+    color: $pink-500;
 }
 
 .hljs-keyword {
@@ -169,14 +169,14 @@
 
 .hljs-regexp,
 .hljs-link {
-    color: $code-link-blue;
+    color: $code-link-light;
 }
 
 .hljs-title,
 .hljs-symbol,
 .hljs-bullet,
 .hljs-number {
-    color: $blue-300;
+    color: $code-title-light;
 }
 
 .hljs-section,
@@ -193,7 +193,7 @@
 .hljs-built_in,
 .hljs-builtin-name,
 .hljs-params {
-    color: $blue-400;
+    color: $blue-500;
 }
 
 .hljs-attr {
@@ -276,19 +276,29 @@
     //     color: $blue-200;
     //   }
 
-    //   .hljs-comment,
-    //   .hljs-quote {
-    //     color: $grey-600;
-    //   }
+    // Base rules now use dark, light-mode-readable colours; the overrides below
+    // restore the vibrant tokens for dark mode (light-on-dark) so dark code looks
+    // as it did before the light-mode contrast fix.
+    .hljs-comment,
+    .hljs-quote {
+        color: $grey-500; // $grey-600 was 4.36:1 on the dark code bg
+    }
 
-    //   .hljs-tag,
-    //   .hljs-attribute,
-    //   .hljs-keyword,
-    //   .hljs-selector-tag,
-    //   .hljs-literal,
-    //   .hljs-name {
-    //     color: $pink-200;
-    //   }
+    // $variable-blue (#3f6e74) is only 2.75:1 on the dark code bg — use a light
+    // teal in dark mode.
+    .hljs-variable,
+    .hljs-template-variable {
+        color: #7ec5cd;
+    }
+
+    .hljs-tag,
+    .hljs-attribute,
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-literal,
+    .hljs-name {
+        color: $pink-200;
+    }
 
     //   .hljs-variable,
     //   .hljs-template-variable {
@@ -301,17 +311,17 @@
         color: $pink-100;
     }
 
-    //   .hljs-regexp,
-    //   .hljs-link {
-    //     color: #6699FF;
-    //   }
+    .hljs-regexp,
+    .hljs-link {
+        color: $code-link-blue;
+    }
 
-    //   .hljs-title,
-    //   .hljs-symbol,
-    //   .hljs-bullet,
-    //   .hljs-number {
-    //     color: $blue-300;
-    //   }
+    .hljs-title,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-number {
+        color: $blue-300;
+    }
 
     //   .hljs-section,
     //   .hljs-meta {
@@ -340,11 +350,11 @@
         color: #c5cbf5;
     }
 
-    //   .hljs-built_in,
-    //   .hljs-builtin-name,
-    //   .hljs-params {
-    //     color: $blue-400;
-    //   }
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-params {
+        color: $blue-400;
+    }
 
     //   .hljs-attr {
     //     color: $pink-500;
