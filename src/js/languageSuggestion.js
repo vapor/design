@@ -44,6 +44,14 @@
     function read() { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } }
     function write(v) { try { localStorage.setItem(STORAGE_KEY, v); } catch (e) { /* private mode etc. */ } }
 
+    // hreflang hrefs are absolute (e.g. https://vapor.codes/de/), which would send
+    // PR-preview / local visitors off to the production host. Re-base the path onto
+    // the current origin so "Switch" stays on whatever host serves the page.
+    function toRelative(href) {
+        try { var u = new URL(href, location.href); return u.pathname + u.search + u.hash; }
+        catch (e) { return href; }
+    }
+
     function run() {
         if (read()) return; // already switched or dismissed — don't ask again
 
@@ -91,7 +99,7 @@
         var go = document.createElement("a");
         // Reuse the site's primary button styling.
         go.className = "btn btn-primary vapor-lang-suggest-go";
-        go.href = url;
+        go.href = toRelative(url);
         go.textContent = copy.go;
         // Record the choice before the browser follows the link.
         go.addEventListener("click", function () { write(target); });
