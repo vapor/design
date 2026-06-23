@@ -1,0 +1,135 @@
+// Team-page / author-card design, shared by the website team page and the blog
+// author pages. Author pages wrap their content in `.team-page` to opt in.
+
+#team-page-body {
+    overflow-x: hidden;
+}
+
+.team-page {
+    padding-bottom: 96px;
+}
+
+.team-page-header {
+    text-align: center;
+    padding-top: 64px;
+    margin-bottom: 64px;
+}
+
+.team-page-header .main-page-caption {
+    max-width: 620px;
+    justify-content: center;
+}
+
+.team-core,
+.team-maintainers {
+    margin-bottom: 96px;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px 32px;
+}
+
+.team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    max-width: 100%;
+}
+
+.team-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid $grey-200;
+}
+
+.team-name {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 2px;
+    color: $grey-900;
+}
+
+// Linked author names keep the name colour, hinting interactivity on hover only.
+.team-name a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        color: $pink-300;
+    }
+}
+
+.team-avatar-link {
+    display: inline-block;
+}
+
+.team-handle {
+    color: $pink-300;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.team-bio {
+    color: $grey-700;
+    font-size: 15px;
+    line-height: 150%;
+    margin-bottom: 16px;
+}
+
+.team-section-title {
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 auto 48px;
+}
+
+// Blog author page header: the avatar + name + bio + socials, centred.
+.author-page-header .team-avatar {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.author-page-header .team-socials {
+    margin-top: 16px;
+}
+
+// Social links
+.team-socials {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-socials .vapor-icon {
+    width: 18px;
+    height: 18px;
+    background-color: $pink-300;
+    transition: background-color 0.15s ease;
+}
+
+.team-socials a:hover .vapor-icon {
+    background-color: darken($pink-300, 15%);
+}
+
+// Dark theme
+.dark .team-page .team-name {
+    color: $grey-100;
+}
+
+.dark .team-page .team-bio {
+    color: $grey-500;
+}
+
+.dark .team-page .team-avatar {
+    border-color: rgba(255, 255, 255, 0.08);
+}
