@@ -130,6 +130,17 @@
 .blog-post-author-name {
     color: $grey-700;
     white-space: nowrap;
+
+    // Linked bylines (authors with a profile URL) stay the byline colour —
+    // `inherit` tracks the light/dark value set above — and only underline on hover.
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .blog-post-publish-date {
