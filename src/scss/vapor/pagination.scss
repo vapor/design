@@ -27,14 +27,14 @@
             background: $grey-200;
             border-radius: 12px;
             border: 1px solid rgba($blue-300, 0.1);
-            color: $blue-300;
+            color: $blue-500;
             padding-top: 8px;
             padding-bottom: 8px;
             justify-content: center;
             align-items: center;
 
             .vapor-icon {
-                background-color: $blue-300;
+                background-color: $blue-500;
             }
         }
 
@@ -66,11 +66,11 @@
         }
 
         .page-link-next-previous:hover {
-            color: $blue-400;
+            color: $blue-500;
             border-radius: 12px;
 
             .vapor-icon {
-                background-color: $blue-400;
+                background-color: $blue-500;
             }
         }
     }

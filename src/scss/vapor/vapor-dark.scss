@@ -281,6 +281,9 @@
 
     #blog-time-tags {
         background: rgba($grey-800, 0.3);
+        // Light mode darkens this to $grey-700 for AA on the light badge; on the
+        // dark badge that would fail, so keep the lighter grey here.
+        color: $grey-600;
 
         ul {
             li {
@@ -295,6 +298,12 @@
                 background: $grey-600;
             }
         }
+    }
+
+    // The standalone post-page date; light mode uses $grey-700 for AA, which fails
+    // on dark, so keep $grey-600 here. (The card date is overridden separately below.)
+    .blog-post-publish-date {
+        color: $grey-600;
     }
 
     .blog-post-author-name {
@@ -393,10 +402,20 @@
                 background: rgba(white, 0.05);
                 border: 1px solid rgba($pink-300, 0.1);
                 color: $blue-300;
+
+                // Light mode darkens text + icon to $blue-500 for AA; on the dark
+                // button that fails, so keep the lighter $blue-300 here.
+                .vapor-icon {
+                    background-color: $blue-300;
+                }
             }
 
             .page-link-next-previous:hover {
                 color: $blue-400;
+
+                .vapor-icon {
+                    background-color: $blue-400;
+                }
             }
         }
 

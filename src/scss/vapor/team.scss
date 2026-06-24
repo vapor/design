@@ -58,7 +58,7 @@
 }
 
 .team-handle {
-    color: $pink-300;
+    color: $pink-400;
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 12px;
@@ -100,6 +100,12 @@
 // Dark theme
 .dark .team-page .team-name {
     color: $grey-100;
+}
+
+// Light mode darkens the handle to $pink-400 for AA on white; that fails on the
+// dark background, so keep the lighter $pink-300 in dark mode.
+.dark .team-page .team-handle {
+    color: $pink-300;
 }
 
 .dark .team-page .team-bio {
