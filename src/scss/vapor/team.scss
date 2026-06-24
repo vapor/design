@@ -1,5 +1,6 @@
 // Team-page / author-card design, shared by the website team page and the blog
 // author pages. Author pages wrap their content in `.team-page` to opt in.
+@use "sass:color";
 
 #team-page-body {
     overflow-x: hidden;
@@ -94,7 +95,7 @@
 }
 
 .team-socials a:hover .vapor-icon {
-    background-color: darken($pink-300, 15%);
+    background-color: color.adjust($pink-300, $lightness: -15%);
 }
 
 // Dark theme
