@@ -97,13 +97,13 @@ public struct SiteNavigation<Site: Website>: Component {
                             if currentSite == .docs || currentSite == .apiDocs {
                                 classList += " active"
                             }
-                            var docsLink = Link(url: "#") {
+                            var docsLink = Button {
                                 Text("Documentation")
                                 Span().class("vapor-icon icon-chevron-down ms-auto ms-sm-1").id("documentation-navbar-chevron")
                             }
                             .class(classList)
                             .id("documentation-dropdown-link")
-                            .role("button")
+                            .attribute(named: "type", value: "button")
                             .attribute(named: "data-bs-toggle", value: "dropdown")
                             .attribute(named: "aria-expanded", value: "false")
 
@@ -203,7 +203,7 @@ public struct SiteNavigation<Site: Website>: Component {
                             // The "Language" label only shows in the mobile panel.
                             ListItem {
                                 Span("Language").class("vapor-nav-label").attribute(named: "aria-hidden", value: "true")
-                                Link(url: "#") {
+                                Button {
                                     Span {
                                         Node<HTML.BodyContext>.raw(Self.translateSVG)
                                     }.class("language-icon me-1").attribute(named: "aria-hidden", value: "true")
@@ -212,7 +212,7 @@ public struct SiteNavigation<Site: Website>: Component {
                                 }
                                 .class("nav-link dropdown-no-outline d-flex align-items-center language-picker-toggle")
                                 .id("language-picker-toggle")
-                                .role("button")
+                                .attribute(named: "type", value: "button")
                                 .attribute(named: "data-bs-toggle", value: "dropdown")
                                 .attribute(named: "aria-expanded", value: "false")
                                 .accessibilityLabel("Select language")
@@ -234,7 +234,7 @@ public struct SiteNavigation<Site: Website>: Component {
                             // the active option by JS); no chevron on desktop.
                             // The "Theme" label only shows in the mobile panel.
                             Span("Theme").class("vapor-nav-label").attribute(named: "aria-hidden", value: "true")
-                            Link(url: "#") {
+                            Button {
                                 Span().class("theme-toggle-icon").attribute(named: "aria-hidden", value: "true")
                                 // Name + chevron only show in the mobile panel; desktop is icon-only.
                                 Span("System").class("theme-name")
@@ -242,7 +242,7 @@ public struct SiteNavigation<Site: Website>: Component {
                             }
                             .class("nav-link dropdown-no-outline d-flex align-items-center theme-picker-toggle")
                             .id("theme-picker-toggle")
-                            .role("button")
+                            .attribute(named: "type", value: "button")
                             .attribute(named: "data-bs-toggle", value: "dropdown")
                             .attribute(named: "aria-expanded", value: "false")
                             .accessibilityLabel("Select theme")

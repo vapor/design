@@ -186,13 +186,28 @@ body {
 .dropdown-no-outline {
     outline: 0;
 
-    // Bootstrap also draws a blue focus-ring box-shadow on .nav-link:focus-visible,
-    // which shows as a blue box around the Documentation / theme toggles when
-    // clicked. .dropdown-no-outline only cleared the outline, so drop the
-    // box-shadow too (ported from the docs site). Marketing links keep their ring.
-    &:focus,
-    &:focus-visible {
+    // These toggles are real <button>s (so Safari/WebKit don't paint a focus ring
+    // on click, unlike an <a> — its :focus-visible heuristic differs from Chrome).
+    // .nav-link doesn't strip native button chrome, so reset it to match a plain link.
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    text-align: inherit;
+
+    // Bootstrap draws a blue focus-ring box-shadow on .nav-link:focus-visible,
+    // which showed as a stray blue box around the Documentation / theme toggles
+    // when *clicked*. Suppress it for pointer focus only...
+    &:focus:not(:focus-visible) {
         outline: 0;
+        box-shadow: none;
+    }
+
+    // ...but keyboard users must keep a visible focus indicator (WCAG 2.4.7). Draw
+    // our own ring instead of Bootstrap's: $blue-400 clears 3:1 (1.4.11 non-text
+    // contrast) on both the white and dark navbar, so one colour works in both modes.
+    &:focus-visible {
+        outline: 2px solid $blue-400;
+        outline-offset: 2px;
         box-shadow: none;
     }
 }
