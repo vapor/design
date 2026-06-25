@@ -1,12 +1,3 @@
-<!--
-  Shared Vapor site footer. Ports VaporDesign's `SiteFooter` Publish component to
-  Leaf. Link targets branch on `customStrings.siteId` ("main"/"blog"/"docs"/
-  "apiDocs"): the owning site links internally, everyone else links to the
-  canonical absolute URL. Styled by design.vapor.codes/main.css.
-
-  Sites provide: site.copyright, and the custom strings footer.tagline,
-  footer.joinDiscord, footer.supporters, footer.frameworkDocs, footer.apiDocs.
--->
 <footer class="mt-5">
     <div class="container mt-5">
         <div class="row">
