@@ -35,7 +35,8 @@ let package = Package(
         // templates so consuming Kiln sites can pull them in as a theme layer.
         .target(
             name: "VaporDesignTheme",
-            resources: [.copy("Theme")]
+            exclude: ["README.md"],
+            resources: [.copy("Theme")],
         )
     ]
 )
