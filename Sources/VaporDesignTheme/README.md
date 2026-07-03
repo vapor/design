@@ -27,6 +27,12 @@ pressKit, home, theme, language, …); the rest are site-defined `customStrings`
 Language(.english, isDefault: true, customStrings: [
     "siteId": "main",            // "main" | "blog" | "docs" | "apiDocs"
 
+    // head.leaf — the shared <head>. See "Shared head" below.
+    "head.defaultOgType": "website",  // og:type for non-home, non-post pages
+    "head.homeSuffix": "",            // appended to site.name on the home page (blog: " Blog")
+    "head.titleSeparator": " | ",     // between page title and site.name (docs: " · ")
+    // "feedURL": "/feed.rss",        // set ONLY on sites with an RSS feed (blog)
+
     // footer.leaf
     "footer.tagline": "…",
     "footer.joinDiscord": "Join our Discord",
@@ -57,9 +63,55 @@ Also set `site.copyright` (rendered in the footer).
 | `partials/pagination.leaf` | Generic pagination (port of the Publish `Pagination`). Render with `#extend("partials/pagination", paginationContext)` where the context has `hasMultiplePages`, `hasPrevious`/`prevURL`, `hasNext`/`nextURL`, `currentPage`, `totalPages`, `links[]` (each `isEllipsis`/`isCurrent`/`page`/`url`), and the **localised** `previousLabel`/`nextLabel`. Used by the website team page and the blog. **Localisation note:** `#extend("…", obj)` *replaces* the template context with `obj`, so `strings.*`/`#localise` are NOT reachable inside — the prev/next labels must be resolved by the caller and passed in `previousLabel`/`nextLabel` (Kiln's blog feature does this from `strings.previousPage`/`nextPage`; the website team page passes its own localised values). |
 | `partials/blog-pagination.leaf` | One-line adapter (`#extend("partials/pagination")`) so Kiln's blog feature — which extends `partials/blog-pagination` — reuses the shared pagination. |
 | `partials/author-card.leaf` | Person card (avatar, name, handle, bio, socials) rendered with `team-card` styling. Used for blog author listings and the website team page. Context: `name`, `handle`, `pageURL`, `hasImage`/`imageURL`, `hasDescription`/`description`, `hasSocials`/`socials[]` (`url`/`label`/`icon`). |
-| `partials/head-preconnect.leaf` | The two `<link rel="preconnect">` hints to the `design.vapor.codes` CDN. Extend it near the **top** of `<head>` (right after `<meta charset>`) so the connection warms before the render-blocking CSS/fonts load. Static — no context needed. |
-| `partials/head-brand.leaf` | The shared favicon set, `apple-mobile-web-app-title`, and light/dark `theme-color` metas — identical across every Vapor site. Extend it inside `<head>`; reads `#(site.name)` from the inherited context (extend **without** a second argument so the parent context is available). |
+| `partials/head.leaf` | The **entire** shared `<head>` — charset, OpenGraph/Twitter cards, canonical, title, favicons, CSS/JS links, structured data. A site's `base.leaf` uses it as `<head>#extend("partials/head")</head>` (unscoped, so `#localise`/`customStrings`/`site.*`/`page.*` are all reachable). See "Shared head" below for the config contract. |
+| `partials/head-preconnect.leaf` | The two `<link rel="preconnect">` hints to the `design.vapor.codes` CDN. Consumed by `head.leaf` near the **top** of `<head>` so the connection warms before the render-blocking CSS/fonts load. Static — no context needed. |
+| `partials/head-brand.leaf` | The shared favicon set, `apple-mobile-web-app-title`, and light/dark `theme-color` metas — identical across every Vapor site. Consumed by `head.leaf`; reads `#(site.name)` from the inherited context. |
 
 `footer.leaf`, `header.leaf`, `pagination.leaf` and `author-card.leaf` are faithful
 Leaf ports of the Publish components in `Sources/VaporDesign/Components/`
 (`SiteFooter`, `SiteNavigation`, `Pagination`, blog author card).
+
+## Shared head
+
+`partials/head.leaf` is the whole `<head>`, shared by every site. A site's
+`base.leaf` uses it like this:
+
+```leaf
+<!DOCTYPE html>
+<html lang="#(language.locale)">
+<head>
+    #extend("partials/head")
+</head>
+<body>
+    …
+</body>
+</html>
+```
+
+All per-site variation is driven by **data**, not by editing the template:
+
+| Divergence | Driven by |
+| --- | --- |
+| `og:type` | Rule `blogPost ? article : (isHome ? website : head.defaultOgType)`. Set `head.defaultOgType` per site (`website` for the marketing/blog sites, `article` for docs). |
+| `<title>` / social title | `#if(page.isHome)` → `site.name` + `head.homeSuffix`; else the page title + `head.titleSeparator` + `site.name`. The page title honours a `page.frontMatter.titleKey` (localised) when present, else `page.title`. Titles longer than 50 chars drop the ` <sep> site.name` suffix (SEO). |
+| `twitter:site` / `twitter:creator` | `site.twitterSite` (`KilnSite(twitterSite:)`). Emitted only when set. |
+| Extra stylesheets | `KilnSite(extraCSS:)` — each entry is rendered as `<link rel="stylesheet" href="/…">` after the shared `main.css`. |
+| RSS feed `<link>` | Emitted only when a dot-free `feedURL` custom string is set (blog only). |
+| `og:image` / `article:*` / `markdownURL` / `author` / `noindex` / hreflang alternates | All gated on the relevant context (`page.imageURL`, `blogPost`, `markdownURL`, `site.author`, `noindex`, `count(languages) > 1`). Sites that don't provide them emit nothing — no per-site config needed. |
+
+**Every consuming site must set** `head.defaultOgType`, `head.homeSuffix`, and
+`head.titleSeparator` in each language's `customStrings` (a missing `#localise`
+key would otherwise render as an empty string, or the raw key). `feedURL` is
+optional and set only where a feed exists.
+
+> **Undefined-key safety.** LeafKit treats a missing variable in `#(x)` / `#if(x)`
+> as empty/false (no error), so the head can reference the *superset* of every
+> site's fields and each site fills only what it has. The one exception is
+> `#for(x in y)`, which **throws** if `y` is undefined — so every loop here is
+> either over an always-present array (`languages`, `site.extraCSS`) or wrapped in
+> an `#if` presence check (`#if(blogPost)`). Keep it that way when editing.
+
+> **CSS/JS live on the CDN.** `head.leaf` links `design.vapor.codes/main.css`,
+> `design.vapor.codes/js/theme-init.js` (the pre-paint colour-scheme script), and
+> `design.vapor.codes/main.js`. Those assets ship from this repo's `static/`
+> directory and must be deployed to the CDN before a site references a new one.
