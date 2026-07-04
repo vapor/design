@@ -30,6 +30,14 @@
     }
 }
 
+// Copy-button clearance for single-line / non-line-numbered blocks. The
+// line-numbers plugin only wraps MULTI-line code in a `.hljs-ln` table (whose
+// `.hljs-ln-code` cell reserves the room); a single-line block keeps its code
+// directly in `.hljs`, so without this its text ran under the copy button.
+.hljs:not(:has(.hljs-ln)) {
+    padding-right: 44px;
+}
+
 // Copy-to-clipboard button — provided by the highlightjs-copy plugin
 // (registered in startSyntaxHighlighting.js). The plugin adds .hljs-copy-wrapper
 // to the <pre>, a .hljs-copy-container > .hljs-copy-button, and an sr-only
@@ -245,6 +253,10 @@
 
 .hljs-ln-code {
     padding-left: 20px;
+    // Reserve room on the right for the copy button (absolute, top-right) so it
+    // never sits over the code. Without this, a single-line block's text ran
+    // under the button and looked cut off / scrolled out of view.
+    padding-right: 44px;
 }
 
 .hljs-ln {

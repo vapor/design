@@ -168,8 +168,8 @@
 }
 
 #blog-description {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 28px;
     font-weight: 400;
 }
 
@@ -313,5 +313,31 @@
 
     img {
         max-width: 100%;
+    }
+
+    // Article section headings. The global h2/h3 rules are sized for the main
+    // site's large section titles (48px), which overwhelmed a post — the section
+    // headers rendered LARGER than the post's own <h1> title and wrapped in the
+    // 720px column. Scope them back to a sensible article scale (comfortably
+    // below the ~40px title) with a little more breathing room above/below.
+    h2 {
+        font-size: 28px;
+        line-height: 1.35;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    h3 {
+        font-size: 22px;
+        line-height: 1.4;
+        margin-top: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    h4 {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 }

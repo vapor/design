@@ -22,7 +22,7 @@
     </div>
 </nav>
 
-<div class="container vapor-container">
+<div class="container">
     <h1 class="mb-4 mt-4">Vapor's Design Guide</h1>
     <p>A living style guide for Vapor's design system. Every component below is styled by the shared <code>main.css</code> that vapor.codes, blog.vapor.codes and docs.vapor.codes all load from this site.</p>
 
@@ -62,6 +62,8 @@ app.get("hello") { req in
 
 try await app.execute()
 </code></pre>
+    <p>And a single-line code block (long enough to reach the right edge — the copy button must not overlap or hide the code):</p>
+    <pre><code class="language-swift">let key = try MLDSA87PrivateKey(seedRepresentation: mldsa87PrivateKeySeedRepresentation)</code></pre>
     <p>And then we have some inline code: <code>let vaporIsAwesome = true</code></p>
 
     <hr>
@@ -69,6 +71,18 @@ try await app.execute()
     <h2>Blockquote</h2>
     <blockquote>
         “Hendrerit amet nibh dui ut in feugiat pellentesque. Sed consectetur blandit lectus arcu lacus libero diam. Nulla turpis etiam non et, adipiscing.”
+    </blockquote>
+
+    <hr>
+
+    <h2>Info block</h2>
+    <p>Info and warning callouts reuse the blockquote styling. With paragraph
+    content, the last child's bottom margin is collapsed so the spacing inside the
+    box stays balanced.</p>
+    <blockquote>
+        <p><strong>Note:</strong> Post-quantum signatures are much larger than
+        classical ones — an ML-DSA-87 signature is ~4.6&nbsp;KB versus ~0.1&nbsp;KB
+        for ES512.</p>
     </blockquote>
 
     <hr>

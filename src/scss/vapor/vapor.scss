@@ -305,6 +305,12 @@ blockquote {
     padding: 1em;
     margin-top: 2em;
     margin-bottom: 2em;
+
+    // The inner paragraph's bottom margin stacked on top of the blockquote's own
+    // bottom padding, leaving an extra blank line at the foot of every callout.
+    > :last-child {
+        margin-bottom: 0;
+    }
 }
 
 h1 {
