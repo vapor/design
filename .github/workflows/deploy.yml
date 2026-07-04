@@ -18,7 +18,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v6
       with:
-        node-version: 24
+        node-version: 26
         cache: npm
     - name: Build site
       # Kiln flow: webpack builds the CDN assets into ./Content first, then the
