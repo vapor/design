@@ -34,7 +34,7 @@ jobs:
       - name: Set up Node 
         uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: 26
           cache: npm
       - name: Set up CloudFormation Lint
         uses: ScottBrenner/cfn-lint-action@ed184e91f5085a2932501da8314e899e5e0ef5be # v2.7.1
