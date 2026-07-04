@@ -11,22 +11,31 @@ The repo also ships a `VaporDesignTheme` Swift library: the shared Leaf partials
 
 ## Running
 
-You'll need [npm](https://www.npmjs.com) (use [nvm](https://github.com/nvm-sh/nvm) to manage it) and a Swift toolchain.
+Local development uses the [Kiln CLI](https://github.com/brokenhandsio/kiln) (a Swift binary — install it once, see the Kiln README) plus [npm](https://www.npmjs.com) (use [nvm](https://github.com/nvm-sh/nvm) to manage it).
 
-The build is a two-step pipeline: webpack builds the CDN assets **into `./Content`**, then the Kiln generator copies them — along with the rendered HTML — into `./site`. `kiln.json` wires webpack in as a pre-build step, so:
+First install the npm dependencies. The Kiln CLI runs the webpack **build** for you (via the `kiln.json` pre-build step) but it does **not** run `npm install` — so do that yourself the first time, and whenever dependencies change:
 
 ```bash
 npm install
-kiln serve      # rebuilds webpack assets + the site on change, serves at :8080
 ```
 
-Or build once without the Kiln CLI:
+### Local dev
 
 ```bash
-npm install && npm run build && swift run DesignSite
+kiln serve
 ```
 
-The finished site is written to `./site` (deployed to the S3 bucket behind design.vapor.codes). Both `./Content`'s generated files and `./site` are git-ignored; only `Content/index.md` and the `Theme/` templates are source.
+`kiln serve` runs the `kiln.json` pre-build (`npm run build`) to compile the CDN assets into `./Content`, generates the site into `./site`, serves it at http://localhost:8080, and watches both `src/` (Sass/JS) and the `Theme/` templates — re-running webpack and regenerating the site on every change.
+
+### Build a deployable site
+
+```bash
+kiln build
+```
+
+The same pipeline, one-shot: webpack builds the CDN assets into `./Content`, then Kiln copies them — with the rendered HTML — into `./site`, ready to deploy to the S3 bucket behind design.vapor.codes.
+
+Both `./Content`'s generated files and `./site` are git-ignored; only `Content/index.md` and the `Theme/` templates are source. (CI, which has no Kiln CLI, runs the two steps manually: `npm run build && swift run DesignSite`.)
 
 ## Copyright
 
