@@ -15,10 +15,7 @@ let package = Package(
         .library(name: "VaporDesignTheme", targets: ["VaporDesignTheme"]),
     ],
     dependencies: [
-        // Local path dep while the shared-layer/head features are unreleased; swap
-        // back to the tagged release once Kiln is published.
-        // .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.3.1"),
-        .package(path: "../../BrokenHands/kiln"),
+        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.4.0"),
     ],
     targets: [
         .executableTarget(
