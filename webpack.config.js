@@ -17,9 +17,14 @@ module.exports = {
     }),
   ],
 
+  // Emit the CDN assets (main.css/js, fonts, icons) and the copied static/ files
+  // into Kiln's content directory. Kiln then copies them verbatim into ./site on
+  // build — so webpack never writes into ./site directly (which Kiln wipes each
+  // build). The generated files under Content/ are git-ignored; only Content's
+  // source pages (index.md) are tracked.
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'Output'),
+    path: path.resolve(__dirname, 'Content'),
     library: {
       name: 'Vapor',
       type: 'var',
@@ -32,7 +37,7 @@ module.exports = {
   performance: { hints: false },
 
   devServer: {
-    static: path.resolve(__dirname, 'Output'),
+    static: path.resolve(__dirname, 'Content'),
     port: 8001,
     hot: true
   },

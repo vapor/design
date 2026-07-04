@@ -1,0 +1,6 @@
+{
+  "preBuild": {
+    "command": "npm run build",
+    "watch": ["src"]
+  }
+}
