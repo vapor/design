@@ -4,19 +4,21 @@
             "type": "swift",
             "request": "launch",
             "name": "Debug DesignSite",
-            "program": "${workspaceFolder:design}/.build/debug/DesignSite",
             "args": [],
             "cwd": "${workspaceFolder:design}",
-            "preLaunchTask": "swift: Build Debug DesignSite"
+            "preLaunchTask": "swift: Build Debug DesignSite",
+            "target": "DesignSite",
+            "configuration": "debug"
         },
         {
             "type": "swift",
             "request": "launch",
             "name": "Release DesignSite",
-            "program": "${workspaceFolder:design}/.build/release/DesignSite",
             "args": [],
             "cwd": "${workspaceFolder:design}",
-            "preLaunchTask": "swift: Build Release DesignSite"
+            "preLaunchTask": "swift: Build Release DesignSite",
+            "target": "DesignSite",
+            "configuration": "release"
         }
     ]
 }

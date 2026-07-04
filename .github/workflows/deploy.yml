@@ -18,10 +18,12 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v6
       with:
-        node-version: 24
+        node-version: 26
         cache: npm
     - name: Build site
-      run: swift run && npm ci && npm run build
+      # Kiln flow: webpack builds the CDN assets into ./Content first, then the
+      # Kiln generator copies them (with the rendered HTML) into ./site.
+      run: npm ci && npm run build && swift run DesignSite
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@254c19bd240aabef8777f48595e9d2d7b972184b # v6.2.1
       with:
@@ -42,7 +44,7 @@ jobs:
       env:
         AWS_REGION: eu-west-2
       run: |
-        aws s3 sync ./Output s3://vapor-design-site --no-progress --acl public-read
+        aws s3 sync ./site s3://vapor-design-site --no-progress --acl public-read
     - name: Invalidate CloudFront
       env:
         DISTRIBUTION_ID: ${{ secrets.VAPOR_DESIGN_DISTRIBUTION_ID }}

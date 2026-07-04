@@ -1,32 +1,41 @@
 # Vapor Design
 
-This repo contains all of the materials used for building out Vapor's design across its many sites, built on top of Bootstrap. It contains the reference designs and files from designers in [Reference](/Reference/) and build pipelines and code to generate the necessary files to be included in Vapor's sites. These are automatically deployed to https://design.vapor.codes - hosted on our CDN - and then included in the different sites.
+This repo contains all of the materials used for building out Vapor's design across its many sites, built on top of Bootstrap. It contains the reference designs and files from designers in [Reference](/Reference/) and the build pipeline that generates the shared assets included in Vapor's sites. These are automatically deployed to https://design.vapor.codes — hosted on our CDN — and then included in the different sites.
 
-The repo also contains a `VaporDesign` Swift library that includes a number of components for working with [Publish](https://github.com/JohnSundell/Publish) and the design guide, such as a `SiteFooter` and `SiteNavigation` component.
+The repo produces two things:
+
+1. **The CDN assets** — `main.css` (compiled from Sass), `main.js` (Bootstrap + our scripts), fonts, icons and favicons. Every Vapor site (vapor.codes, blog.vapor.codes, docs.vapor.codes) loads these from design.vapor.codes. Built by webpack from [`src`](/src/) and [`static`](/static/).
+2. **The design guide** — a single-page style guide at design.vapor.codes showcasing every component (navbar, typography, buttons, code blocks, lists, pagination, cards, footer, …) styled by `main.css`. Built with [Kiln](https://github.com/brokenhandsio/kiln).
+
+The repo also ships a `VaporDesignTheme` Swift library: the shared Leaf partials (header/footer/head/pagination/author-card) that Vapor's Kiln sites pull in as a theme layer.
 
 ## Running
 
-To build the design files you'll need [NPM](https://www.npmjs.com) installed (you should probably use [nvm](https://github.com/nvm-sh/nvm) to manage this). Then, run:
+Local development uses the [Kiln CLI](https://github.com/brokenhandsio/kiln) (a Swift binary — install it once, see the Kiln README) plus [npm](https://www.npmjs.com) (use [nvm](https://github.com/nvm-sh/nvm) to manage it).
+
+First install the npm dependencies. The Kiln CLI runs the webpack **build** for you (via the `kiln.json` pre-build step) but it does **not** run `npm install` — so do that yourself the first time, and whenever dependencies change:
 
 ```bash
-npm install && npm run build
+npm install
 ```
 
-This compiles the JavaScript and CSS from Sass and copies over any other static files into the Output directory.
-
-To run the demo site, run:
+### Local dev
 
 ```bash
-swift run
-npm install && npm start
+kiln serve
 ```
 
-This generates the HTML for the site then copies over the additional files.
+`kiln serve` runs the `kiln.json` pre-build (`npm run build`) to compile the CDN assets into `./Content`, generates the site into `./site`, serves it at http://localhost:8080, and watches both `src/` (Sass/JS) and the `Theme/` templates — re-running webpack and regenerating the site on every change.
 
-> **Warning**
-> Currently Publish will empty the `Output` directory before regenerating the files meaning that all the CSS, JS and images will be removed. You **must** run `npm start` or `npm run build` after generating the HTML for the styles to work. Any changes to JS or CSS will automatically be picked up.
+### Build a deployable site
 
-Then open the site at http://localhost:8001
+```bash
+kiln build
+```
+
+The same pipeline, one-shot: webpack builds the CDN assets into `./Content`, then Kiln copies them — with the rendered HTML — into `./site`, ready to deploy to the S3 bucket behind design.vapor.codes.
+
+Both `./Content`'s generated files and `./site` are git-ignored; only `Content/index.md` and the `Theme/` templates are source. (CI, which has no Kiln CLI, runs the two steps manually: `npm run build && swift run DesignSite`.)
 
 ## Copyright
 

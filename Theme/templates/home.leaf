@@ -1,0 +1,188 @@
+#extend("base"):
+#export("content"):
+<nav class="navbar navbar-expand-lg" id="vapor-navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand ms-3"><span id="vapor-logo" class="d-inline-block align-text-top" aria-label="Vapor Logo" width="130" height="50"><span class="visually-hidden">Vapor</span></span></a>
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"><span id="vapor-navbar-toggler-icon" class="vapor-icon icon-menu-04"><span class="visually-hidden">Toggle Navigation</span></span></button>
+        <div class="collapse navbar-collapse me-lg-3" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a href="https://www.vapor.codes/" target="_blank" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="https://www.vapor.codes/showcase" target="_blank" class="nav-link">Showcase</a></li>
+                <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-no-outline d-flex" id="documentation-dropdown-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">Documentation<span class="vapor-icon icon-chevron-down ms-auto ms-sm-1" id="documentation-navbar-chevron"></span></a>
+                    <ul class="dropdown-menu animate slideIn" id="framework-dropdown-menu">
+                        <li class="m-lg-2"><a href="https://docs.vapor.codes" target="_blank" class="dropdown-item"><div class="nav-dropdown-container d-flex"><span class="vapor-icon icon-server-04"></span><div class="ms-3"><div class="nav-dropdown-container-title">Framework Docs</div><div class="nav-dropdown-container-caption d-none d-lg-block">Learn how to use Vapor</div></div></div></a></li>
+                        <li class="m-lg-2"><a href="https://api.vapor.codes" target="_blank" class="dropdown-item"><div class="nav-dropdown-container d-flex"><span class="vapor-icon icon-dataflow-03" aria-hidden="true"></span><div class="ms-3"><div class="nav-dropdown-container-title">API Docs</div><div class="nav-dropdown-container-caption d-none d-lg-block">Reference documentation for Vapor</div></div></div></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="https://www.vapor.codes/team" target="_blank" class="nav-link">Team</a></li>
+                <li class="nav-item"><a href="https://github.com/vapor" target="_blank" class="nav-link" rel="me"><span class="vapor-icon icon-github-fill" aria-label="GitHub"><span class="visually-hidden">GitHub</span></span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="theme-switch" aria-label="Toggle dark mode"><span class="vapor-icon" id="theme-switch-icon"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="mb-4 mt-4">Vapor's Design Guide</h1>
+    <p>A living style guide for Vapor's design system. Every component below is styled by the shared <code>main.css</code> that vapor.codes, blog.vapor.codes and docs.vapor.codes all load from this site.</p>
+
+    <hr>
+
+    <h2>Typography</h2>
+    <h1>Header 1</h1>
+    <h2>Header 2</h2>
+    <h3>Header 3</h3>
+    <h4>Header 4</h4>
+    <h5>Header 5</h5>
+    <h6>Header 6</h6>
+    <p>A standard paragraph of body text with a <a href="#">text link</a>, some <strong>bold</strong> and some <em>italic</em> emphasis to show the base typographic styles.</p>
+
+    <hr>
+
+    <h2>Buttons</h2>
+    <div class="d-flex flex-wrap gap-3 align-items-center">
+        <a href="#" class="btn btn-primary">Primary</a>
+        <a href="#" class="btn btn-secondary">Secondary</a>
+        <a href="#" class="btn btn-secondary btn-small">Secondary small</a>
+        <a href="#" class="btn btn-link btn-secondary-link d-flex align-items-center"><span class="vapor-icon icon-github-line icon-secondary btn-icon me-2" aria-hidden="true"></span>Link with icon</a>
+        <a href="#" class="btn btn-secondary btn-small d-flex"><span class="vapor-icon icon-copy-06 me-2"></span>Copy Link</a>
+    </div>
+
+    <hr>
+
+    <h2>Code blocks</h2>
+    <p>Here's an example of a code block:</p>
+    <pre><code class="language-swift">import Vapor
+
+let app = try await Application.make(.detect())
+
+app.get("hello") { req in
+    "Hello, world!"
+}
+
+try await app.execute()
+</code></pre>
+    <p>And a single-line code block (long enough to reach the right edge — the copy button must not overlap or hide the code):</p>
+    <pre><code class="language-swift">let key = try MLDSA87PrivateKey(seedRepresentation: mldsa87PrivateKeySeedRepresentation)</code></pre>
+    <p>And then we have some inline code: <code>let vaporIsAwesome = true</code></p>
+
+    <hr>
+
+    <h2>Blockquote</h2>
+    <blockquote>
+        “Hendrerit amet nibh dui ut in feugiat pellentesque. Sed consectetur blandit lectus arcu lacus libero diam. Nulla turpis etiam non et, adipiscing.”
+    </blockquote>
+
+    <hr>
+
+    <h2>Info block</h2>
+    <p>Info and warning callouts reuse the blockquote styling. With paragraph
+    content, the last child's bottom margin is collapsed so the spacing inside the
+    box stays balanced.</p>
+    <blockquote>
+        <p><strong>Note:</strong> Post-quantum signatures are much larger than
+        classical ones — an ML-DSA-87 signature is ~4.6&nbsp;KB versus ~0.1&nbsp;KB
+        for ES512.</p>
+    </blockquote>
+
+    <hr>
+
+    <h2>Lists</h2>
+    <p>An ordered list:</p>
+    <ol>
+        <li>Lectus id duis vitae porttitor enim gravida morbi.</li>
+        <li>Eu turpis posuere semper feugiat volutpat elit, ultrices suspendisse.</li>
+        <li>Suspendisse maecenas ac donec scelerisque diam sed est duis purus.</li>
+    </ol>
+    <p>An unordered list:</p>
+    <ul>
+        <li>Lectus id duis vitae porttitor enim gravida morbi.</li>
+        <li>Eu turpis posuere semper feugiat volutpat elit, ultrices suspendisse.</li>
+        <li>Suspendisse maecenas ac donec scelerisque diam sed est duis purus.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Pagination</h2>
+    <nav aria-label="Pagination">
+        <ul class="pagination justify-content-center">
+            <li class="page-item me-auto disabled"><a href="#" class="page-link page-link-next-previous d-flex page-link-previous" aria-label="Previous"><span class="vapor-icon icon-chevron-left" aria-hidden="true"></span><div class="d-none d-lg-block">Previous</div></a></li>
+            <li aria-current="page" class="page-item d-none d-lg-block active"><span class="page-link">1</span></li>
+            <li class="page-item d-none d-lg-block"><a href="#" class="page-link">2</a></li>
+            <li class="page-item d-none d-lg-block"><a href="#" class="page-link">3</a></li>
+            <li class="page-item pagination-ellipsis d-none d-lg-block ms-1 me-1">...</li>
+            <li class="page-item d-none d-lg-block"><a href="#" class="page-link">15</a></li>
+            <li class="page-item pagination-ellipsis d-lg-none">Page 1 of 15</li>
+            <li class="page-item ms-auto"><a href="#" class="page-link page-link-next-previous d-flex page-link-next" aria-label="Next"><div class="d-none d-lg-block">Next</div><span class="vapor-icon icon-chevron-right" aria-hidden="true"></span></a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <h2>Blog post cards</h2>
+    <div class="row row-cols-1 row-cols-lg-2 g-4">
+        <div class="col">
+            <div class="card blog-card">
+                <div class="card-body">
+                    <a href="#" class="blog-post-link"><h2 class="card-title">This is a longer post</h2></a>
+                    <p class="card-text">Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites. This description is much longer to test card heights and make sure the cards are the same height.</p>
+                    <div class="row">
+                        <div class="blog-post-author col-lg d-flex"><img src="/images/author-image-placeholder.png" alt="Tim Condon" class="blog-post-author-image me-2"><div class="blog-post-author-date-container "><div class="blog-post-author-name"><div>Tim Condon</div></div><div class="blog-post-publish-date">3rd January 2023</div></div></div>
+                        <div class="col-lg blog-tags pt-4 pt-lg-0 d-flex align-items-center"><ul class="mx-auto mx-lg-0 flex-wrap"><li class="my-1"><a href="#">Vapor</a></li><li class="my-1"><a href="#">Swift</a></li><li class="my-1"><a href="#">Framework</a></li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card blog-card">
+                <div class="card-body">
+                    <a href="#" class="blog-post-link"><h2 class="card-title">Vapor's Design Guide</h2></a>
+                    <p class="card-text">Welcome to Vapor's Design Guide which contains the designs for all of Vapor's websites.</p>
+                    <div class="row">
+                        <div class="blog-post-author col-lg d-flex"><img src="/images/author-image-placeholder.png" alt="Tim Condon" class="blog-post-author-image me-2"><div class="blog-post-author-date-container "><div class="blog-post-author-name"><div>Tim Condon</div></div><div class="blog-post-publish-date">5th March 2023</div></div></div>
+                        <div class="col-lg blog-tags pt-4 pt-lg-0 d-flex align-items-center"><ul class="mx-auto mx-lg-0 flex-wrap"><li class="my-1"><a href="#">Vapor</a></li><li class="my-1"><a href="#">Framework</a></li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Blog tag list</h2>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="blog-tag-list">
+                <h5 class="list-heading d-none d-lg-block">Blog Tags</h5>
+                <button class="d-lg-none vapor-molecule vapor-molecule-list" id="tag-list-mobile-button" type="button" data-bs-toggle="collapse" data-bs-target="#tagListCollapse" aria-expanded="false" aria-controls="tagListCollapse"><div class="d-flex flex-row align-items-center">View All<span class="ms-auto vapor-icon icon-chevron-down"></span></div></button>
+                <ul class="collapse tag-list-collapse mobile-drop-down-menu" id="tagListCollapse">
+                    <li class="tag-list-tag"><a href="#" class="tag-link d-flex align-items-center active">View All<span class="badge ms-2 d-none d-lg-block">72</span></a></li>
+                    <li class="tag-list-tag"><a href="#" class="tag-link d-flex align-items-center">Vapor<span class="badge ms-2 d-none d-lg-block">2</span></a></li>
+                    <li class="tag-list-tag"><a href="#" class="tag-link d-flex align-items-center">Swift<span class="badge ms-2 d-none d-lg-block">2</span></a></li>
+                    <li class="tag-list-tag"><a href="#" class="tag-link d-flex align-items-center">DevOps<span class="badge ms-2 d-none d-lg-block">2</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-5">
+    <div class="container mt-5">
+        <div class="row">
+            <div id="footer-callout" class="col-md"><span class="d-inline-block align-text-top" aria-label="Vapor Logo" id="vapor-logo-footer" width="197" height="76"></span><div class="w-lg-50 mt-4">Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift</div></div>
+            <div class="mt-4 mt-lg-0 col-md">
+                <div class="row">
+                    <div id="footer-community-links" class="col-6 ps-lg-5"><h6 class="ps-lg-5">Community</h6><ul class="ps-lg-5"><li><a href="https://www.vapor.codes/team" class="nav-link">Team</a></li><li><a href="https://vapor.team" target="_blank" class="nav-link">Join our Discord</a></li><li><a href="https://www.vapor.codes/showcase" class="nav-link">Showcase</a></li><li><a href="https://www.vapor.codes/supporters" class="nav-link">Supporters</a></li></ul></div>
+                    <div id="footer-resources-links" class="col-6"><h6>Resources</h6><ul><li><a href="https://blog.vapor.codes" class="nav-link">Blog</a></li><li><a href="https://docs.vapor.codes" target="_blank" class="nav-link">Framework Docs</a></li><li><a href="https://api.vapor.codes" target="_blank" class="nav-link">API Docs</a></li><li><a href="https://design.vapor.codes/VaporPressKit.zip" class="nav-link" download>Press Kit</a></li><li><a href="https://vapor.team" target="_blank" class="nav-link">Help</a></li></ul></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="footer-bottom">
+            <div id="footer-copyright" class="my-auto">© QuTheory, LLC 2026</div>
+            <div id="footer-social-links" class="ms-auto"><ul class="d-flex"><li class="me-4"><a href="https://twitter.com/codevapor" target="_blank" rel="me"><span class="vapor-icon icon-twitter-fill" aria-label="Twitter"><span class="visually-hidden">Twitter</span></span></a></li><li class="me-4"><a href="https://hachyderm.io/@codevapor" target="_blank" rel="me"><span class="vapor-icon icon-mastodon-fill" aria-label="Mastodon"><span class="visually-hidden">Mastodon</span></span></a></li><li><a href="https://bsky.app/profile/vapor.codes" target="_blank" rel="me"><span class="vapor-icon icon-bluesky-fill" aria-label="Bluesky"><span class="visually-hidden">Bluesky</span></span></a></li><li><a href="https://github.com/vapor" target="_blank" rel="me"><span class="vapor-icon icon-github-fill" aria-label="GitHub"><span class="visually-hidden">GitHub</span></span></a></li></ul></div>
+        </div>
+    </div>
+</footer>
+#endexport
+#endextend

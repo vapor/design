@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="#(language.locale)">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:site_name" content="#(site.name)">
+    <link rel="canonical" href="#(page.canonicalURL)">
+    <title>#(site.name)</title>
+    <meta name="description" content="#(site.description)">
+    <meta property="og:title" content="#(site.name)">
+    <meta property="og:description" content="#(site.description)">
+    <meta property="og:url" content="#(page.canonicalURL)">
+    <meta name="twitter:card" content="summary">
+    <!-- The design site hosts and serves its own CDN assets at the domain root. -->
+    <link rel="stylesheet" href="/main.css" type="text/css">
+    <script src="/js/theme-init.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" sizes="96x96" href="/favicons/favicon-96x96.png" type="image/png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="/favicons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="#(site.name)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+    #import("content")
+    <script src="/main.js"></script>
+</body>
+</html>

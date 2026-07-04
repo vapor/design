@@ -1,0 +1,8 @@
+<link rel="icon" href="https://design.vapor.codes/favicons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.vapor.codes/favicons/apple-touch-icon.png">
+<link rel="icon" sizes="96x96" href="https://design.vapor.codes/favicons/favicon-96x96.png" type="image/png">
+<link rel="manifest" href="https://design.vapor.codes/favicons/site.webmanifest">
+<link rel="shortcut icon" href="https://design.vapor.codes/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="#(site.name)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
