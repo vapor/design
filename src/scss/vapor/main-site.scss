@@ -284,7 +284,12 @@ body {
     }
 }
 
-h2 {
+// Marketing home-page section headings. Scoped to the home body wrapper so it no
+// longer leaks onto bare <h2> on other pages/sites (docs, blog, the design guide's
+// typography sample), where a 48px/30px h2 rendered LARGER than the Bootstrap-sized
+// <h1>. `:where()` contributes zero specificity, so the home page's own cascade
+// (e.g. `.code-example-explainer h2`, `#api-docs h2`) is preserved exactly.
+:where(#main-page-body) h2 {
     font-style: normal;
     font-weight: 500;
     font-size: 48px;
