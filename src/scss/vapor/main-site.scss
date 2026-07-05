@@ -78,7 +78,7 @@ body {
     // homepage design calls for more generous breathing room, so restore the
     // looser padding and larger radius for code blocks on the main page only.
     .hljs {
-        padding-right: 40px;
+        padding-inline-end: 40px;
         border-radius: 24px;
 
         tr:first-child td {
@@ -139,7 +139,7 @@ body {
 }
 
 #vapor-hero-logo-text {
-    margin-left: 0.7rem;
+    margin-inline-start: 0.7rem;
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
@@ -309,7 +309,7 @@ body {
     #performance {
         position: relative;
         overflow: hidden;
-        left: 0;
+        inset-inline-start: 0;
     }
 
     .row {
@@ -359,7 +359,7 @@ body {
         z-index: -1;
         width: 85%;
         height: 130%;
-        right: -35%;
+        inset-inline-end: -35%;
         border-radius: 40px;
         top: -15%;
         border: 1px solid transparent;
@@ -385,7 +385,7 @@ body {
         z-index: -1;
         width: 85%;
         height: 130%;
-        left: -35%;
+        inset-inline-start: -35%;
         border-radius: 40px;
         top: -15%;
         border: 1px solid transparent;
@@ -419,23 +419,23 @@ body {
         width: 48%;
         display: flex;
         bottom: -15%;
-        text-align: left;
+        text-align: start;
         justify-content: center;
-        right: 15%;
+        inset-inline-end: 15%;
 
         @include media-breakpoint-down(md) {
             width: 80%;
-            right: 10%;
+            inset-inline-end: 10%;
         }
 
         @include media-breakpoint-up(md) {
-            right: 0%;
+            inset-inline-end: 0%;
         }
 
         .code-error-sidebar {
             background-color: $code-error-background;
-            border-top-left-radius: 24px;
-            border-bottom-left-radius: 24px;
+            border-start-start-radius: 24px;
+            border-end-start-radius: 24px;
             text-align: center;
             width: 15%;
 
@@ -484,13 +484,13 @@ body {
 
     .code-example.code-example-right {
         @include media-breakpoint-up(lg) {
-            margin-left: 48px;
+            margin-inline-start: 48px;
         }
     }
 
     .code-example.code-example-left {
         @include media-breakpoint-up(lg) {
-            margin-right: 64px;
+            margin-inline-end: 64px;
         }
     }
 
@@ -525,8 +525,8 @@ body {
     }
 
     @include media-breakpoint-up(lg) {
-        margin-left: 48px;
-        margin-right: 48px;
+        margin-inline-start: 48px;
+        margin-inline-end: 48px;
     }
 }
 
@@ -542,9 +542,9 @@ body {
     .vapor-icon {
         width: 16px;
         height: 16px;
-        margin-left: 4px;
+        margin-inline-start: 4px;
         margin-top: 4px;
-        transition: margin-left 0.1s ease-in-out;
+        transition: margin-inline-start 0.1s ease-in-out;
     }
 
     &:hover {
@@ -552,8 +552,8 @@ body {
         color: $grey-800;
 
         .vapor-icon {
-            margin-left: 8px;
-            transition: margin-left 0.1s ease-in-out;
+            margin-inline-start: 8px;
+            transition: margin-inline-start 0.1s ease-in-out;
         }
     }
 }
@@ -567,7 +567,7 @@ body {
         width: 100%;
         z-index: -1;
         overflow-x: hidden;
-        left: 0;
+        inset-inline-start: 0;
         background-image: url("../../images/background-gradient.svg");
     }
 
@@ -649,7 +649,7 @@ body {
                 height: 16px;
                 width: 16px;
                 background-color: $pink-300;
-                margin-left: 8px;
+                margin-inline-start: 8px;
                 transition: transform 0.1s ease-in-out;
             }
 
@@ -681,12 +681,12 @@ body {
             flex: none;
             order: 0;
             flex-grow: 1;
-            margin-right: 32px;
+            margin-inline-end: 32px;
             width: 18rem !important;
 
             img {
-                border-top-right-radius: 24px;
-                border-top-left-radius: 24px;
+                border-start-end-radius: 24px;
+                border-start-start-radius: 24px;
             }
 
             // The card title is now an <h4> (non-skipping under the <h3>
@@ -723,7 +723,7 @@ body {
                 background-color: $pink-300;
                 width: 14px;
                 height: 15px;
-                margin-left: 2px;
+                margin-inline-start: 2px;
             }
         }
     }
@@ -741,7 +741,7 @@ body {
         justify-content: center;
         align-items: center;
         padding: 0px 12px;
-        margin-right: 16px;
+        margin-inline-end: 16px;
         background: $grey-200;
         border: 1px solid $grey-300;
         border-radius: 61px;
@@ -789,7 +789,7 @@ body {
         width: 100%;
         z-index: -1;
         overflow-x: hidden;
-        left: 0;
+        inset-inline-start: 0;
         background:
             url("../../images/api-docs-background-gradient.svg") no-repeat right,
             $grey-100;
@@ -843,7 +843,7 @@ body {
         ul {
             list-style: none;
             margin-bottom: 0;
-            padding-left: 0;
+            padding-inline-start: 0;
 
             li:not(:last-child) {
                 margin-bottom: 20px;
@@ -910,7 +910,7 @@ body {
             flex: none;
             order: 0;
             flex-grow: 1;
-            margin-right: 32px;
+            margin-inline-end: 32px;
             width: 24rem !important;
 
             @include media-breakpoint-down(md) {

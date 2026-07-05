@@ -2,8 +2,8 @@
     .page-item {
         color: $grey-600;
         background: transparent;
-        margin-left: 1px;
-        margin-right: 1px;
+        margin-inline-start: 1px;
+        margin-inline-end: 1px;
         line-height: 175%;
 
         .page-link {
@@ -47,20 +47,20 @@
             }
 
             .page-link-previous {
-                padding-right: 16px;
+                padding-inline-end: 16px;
 
                 .vapor-icon {
-                    margin-left: -3px;
-                    margin-right: 5px;
+                    margin-inline-start: -3px;
+                    margin-inline-end: 5px;
                 }
             }
     
             .page-link-next {
-                padding-left: 16px;
+                padding-inline-start: 16px;
 
                 .vapor-icon {
-                    margin-left: 5px;
-                    margin-right: -3px;
+                    margin-inline-start: 5px;
+                    margin-inline-end: -3px;
                 }
             }
         }

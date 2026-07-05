@@ -16,7 +16,7 @@ nav {
 .kiln-skip-link {
     position: fixed;
     top: 0.5rem;
-    left: 0.5rem;
+    inset-inline-start: 0.5rem;
     z-index: 2000;
     padding: 0.6rem 1rem;
     border-radius: 8px;
@@ -86,7 +86,7 @@ footer {
     }
 
     ul {
-        padding-left: 0;
+        padding-inline-start: 0;
     }
 
     li {
@@ -120,8 +120,8 @@ footer {
     background: white;
     border-top: 1px solid $grey-200;
     border-bottom: 1px solid $grey-200;
-    border-left: none;
-    border-right: none;
+    border-inline-start: none;
+    border-inline-end: none;
     border-radius: 0px;
 }
 
@@ -146,8 +146,8 @@ footer {
 
 #framework-dropdown-menu {
     @include media-breakpoint-down(lg) {
-        margin-left: -1em;
-        margin-right: -1em;
+        margin-inline-start: -1em;
+        margin-inline-end: -1em;
     }
 }
 
@@ -186,7 +186,7 @@ footer {
 
 @include media-breakpoint-down(lg) {
     #documentation-navbar-chevron {
-        float: right;
+        float: inline-end;
     }
 }
 
@@ -244,7 +244,7 @@ footer {
 .theme-opt-icon {
     display: inline-flex;
     align-items: center;
-    margin-right: 0.65rem;
+    margin-inline-end: 0.65rem;
     color: $grey-600;
 }
 
@@ -370,7 +370,7 @@ nav {
         // Restores the gap the old `.navbar-collapse.me-lg-3` wrapper provided:
         // without it the nav links sit flush against the container padding and
         // the Documentation dropdown overflows the right edge of the viewport.
-        margin-right: 1rem;
+        margin-inline-end: 1rem;
     }
 
     .vapor-nav-backdrop {
@@ -389,7 +389,7 @@ nav {
     .vapor-navmenu {
         position: fixed;
         top: 0.75rem;
-        right: 0;
+        inset-inline-end: 0;
         bottom: 0;
         width: 20rem;
         max-width: 86vw;
@@ -417,7 +417,7 @@ nav {
         justify-content: center;
         position: absolute;
         top: 0.75rem;
-        right: 0.9rem;
+        inset-inline-end: 0.9rem;
         width: 2.25rem;
         height: 2.25rem;
         padding: 0;
