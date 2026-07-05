@@ -1,0 +1,42 @@
+// Right-to-left overrides.
+//
+// The design system is authored with CSS logical properties, so the vast
+// majority of it mirrors automatically under `<html dir="rtl">` with no help.
+// This file holds ONLY the handful of directional styles that logical
+// properties can't express — horizontal transforms, box-shadow offsets and
+// mirrored directional icons. It's imported last (see main.scss) so these
+// `[dir="rtl"]` rules win the cascade.
+
+[dir="rtl"] {
+    // Directional arrows/chevrons should point the reading way. Mirror them
+    // horizontally. The diagonal external-link arrow (arrow-narrow-up-right) is
+    // conventionally left un-mirrored, so it's not listed here.
+    .icon-chevron-left,
+    .icon-chevron-right,
+    .icon-arrow-left,
+    .icon-arrow-right {
+        transform: scaleX(-1);
+    }
+
+    // CTA trailing-icon hover nudge (`.btn:hover .vapor-icon` — both the shared
+    // button and the main-site showcase button). Fold the mirror into the nudge
+    // so hover doesn't cancel it, and send the nudge toward the reading edge.
+    .btn:hover .vapor-icon {
+        transform: scaleX(-1) translateX(4px);
+    }
+}
+
+// Mobile nav drawer: it's anchored to the inline-end edge (the left in RTL), so
+// it must hide off the left and cast its shadow the other way. Scoped to the
+// same breakpoint as the base drawer (below lg it's the fixed panel; at lg+ it's
+// the inline desktop nav, which must not be transformed).
+@include media-breakpoint-down(lg) {
+    [dir="rtl"] .vapor-navmenu {
+        transform: translateX(-100%);
+        box-shadow: 24px 0 60px rgba(0, 0, 0, 0.2);
+
+        &.vapor-navmenu-open {
+            transform: translateX(0);
+        }
+    }
+}

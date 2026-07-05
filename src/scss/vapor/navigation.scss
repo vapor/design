@@ -393,8 +393,13 @@ nav {
         bottom: 0;
         width: 20rem;
         max-width: 86vw;
-        border-radius: 24px 0 0 24px;
+        // Round only the content-facing (inline-start) edge; logical corners so
+        // they mirror when the panel flips sides under RTL.
+        border-start-start-radius: 24px;
+        border-end-start-radius: 24px;
         background: white;
+        // Hidden off the inline-end edge. translateX and box-shadow aren't
+        // logical, so their RTL direction is flipped in rtl.scss.
         transform: translateX(100%);
         // Hidden when closed so the drop-shadow doesn't bleed onto the page from
         // off-screen; visibility holds through the slide-out, then snaps hidden.
@@ -549,9 +554,9 @@ nav {
     .navbar-nav .theme-picker .dropdown-menu,
     .navbar-nav .language-picker .dropdown-menu {
         position: absolute !important;
-        inset: auto auto auto 0 !important;
-        top: 100% !important;
-        right: 0 !important;
+        // Full-width below the row (direction-neutral: both inline edges at 0).
+        inset-block: 100% auto !important;
+        inset-inline: 0 !important;
         transform: none !important;
         width: 100%;
         margin-top: 0.5rem;

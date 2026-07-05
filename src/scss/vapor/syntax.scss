@@ -30,6 +30,19 @@
     }
 }
 
+// Code is always left-to-right, even inside RTL prose — indentation, comments and
+// punctuation only read correctly LTR. Forcing the code box and its copy UI to LTR
+// keeps their layout (and the top-inline-end copy button) stable on RTL pages;
+// isolating inline code stops a token from disrupting the surrounding bidi order.
+.hljs,
+pre,
+.hljs-copy-wrapper {
+    direction: ltr;
+}
+:not(pre) > code {
+    unicode-bidi: isolate;
+}
+
 // Single-line / non-line-numbered blocks keep their code directly in `.hljs`,
 // with no `.hljs-ln` table — so the vertical padding (which `.hljs` zeroes and
 // the table's `tr td` rules normally supply) and the copy-button clearance (which
