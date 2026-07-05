@@ -40,3 +40,16 @@
         }
     }
 }
+
+// Desktop: the navbar language/theme picker menus use Bootstrap's end-alignment
+// (`dropdown-menu-end`), which is physical and not dir-aware — so in RTL they open
+// off the inline-start (left) edge of the viewport. Re-anchor them to the left so
+// they open into view. Physical left/right is intentional here: this is the RTL
+// layer, and Bootstrap's own alignment it overrides is physical too.
+@include media-breakpoint-up(lg) {
+    [dir="rtl"] .theme-picker .dropdown-menu,
+    [dir="rtl"] .language-picker .dropdown-menu {
+        right: auto;
+        left: 0;
+    }
+}
