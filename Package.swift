@@ -22,6 +22,9 @@ let package = Package(
             name: "DesignSite",
             dependencies: [
                 .product(name: "Kiln", package: "kiln"),
+                // The style guide showcases the real shared chrome, so it pulls in
+                // the same header/footer Leaf partials the other sites consume.
+                "VaporDesignTheme",
             ]
         ),
         // No dependencies beyond Foundation — just bundles the shared Leaf

@@ -1,26 +1,33 @@
 #extend("base"):
 #export("content"):
-<nav class="navbar navbar-expand-lg" id="vapor-navbar">
-    <div class="container-fluid">
-        <a href="/" class="navbar-brand ms-3"><span id="vapor-logo" class="d-inline-block align-text-top" aria-label="Vapor Logo" width="130" height="50"><span class="visually-hidden">Vapor</span></span></a>
-        <button class="navbar-toggler" type="button" aria-label="Toggle navigation" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"><span id="vapor-navbar-toggler-icon" class="vapor-icon icon-menu-04"><span class="visually-hidden">Toggle Navigation</span></span></button>
-        <div class="collapse navbar-collapse me-lg-3" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a href="https://www.vapor.codes/" target="_blank" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="https://www.vapor.codes/showcase" target="_blank" class="nav-link">Showcase</a></li>
-                <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-no-outline d-flex" id="documentation-dropdown-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">Documentation<span class="vapor-icon icon-chevron-down ms-auto ms-sm-1" id="documentation-navbar-chevron"></span></a>
-                    <ul class="dropdown-menu animate slideIn" id="framework-dropdown-menu">
-                        <li class="m-lg-2"><a href="https://docs.vapor.codes" target="_blank" class="dropdown-item"><div class="nav-dropdown-container d-flex"><span class="vapor-icon icon-server-04"></span><div class="ms-3"><div class="nav-dropdown-container-title">Framework Docs</div><div class="nav-dropdown-container-caption d-none d-lg-block">Learn how to use Vapor</div></div></div></a></li>
-                        <li class="m-lg-2"><a href="https://api.vapor.codes" target="_blank" class="dropdown-item"><div class="nav-dropdown-container d-flex"><span class="vapor-icon icon-dataflow-03" aria-hidden="true"></span><div class="ms-3"><div class="nav-dropdown-container-title">API Docs</div><div class="nav-dropdown-container-caption d-none d-lg-block">Reference documentation for Vapor</div></div></div></a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a href="https://www.vapor.codes/team" target="_blank" class="nav-link">Team</a></li>
-                <li class="nav-item"><a href="https://github.com/vapor" target="_blank" class="nav-link" rel="me"><span class="vapor-icon icon-github-fill" aria-label="GitHub"><span class="visually-hidden">GitHub</span></span></a></li>
-                <li class="nav-item"><a href="#" class="nav-link" id="theme-switch" aria-label="Toggle dark mode"><span class="vapor-icon" id="theme-switch-icon"></span></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+#extend("partials/header"):
+#export("navExtras"):
+<!-- Demo-only language picker: the design guide is English-only, so these
+     options are inert (href="#") and exist purely to showcase the picker's
+     styling and mobile behaviour alongside the real one on the live sites. -->
+<li class="nav-item dropdown language-picker">
+    <span class="vapor-nav-label" aria-hidden="true">#(strings.language)</span>
+    <button type="button" class="nav-link dropdown-no-outline d-flex align-items-center language-picker-toggle" id="language-picker-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="#(strings.language)">
+        <span class="language-icon me-1" aria-hidden="true"><svg width="14" height="17" viewBox="0 0 14 17" xmlns="http://www.w3.org/2000/svg"><path d="M8,1v1h5c1.3,0,1.3,2,0,2h-1.67c-.5,2.43-1.45,4.67-2.76,6.64.3.17.57.33.84.45,1.2.54.37,2.36-.82,1.82C8.18,12.73,7.77,12.5,7.36,12.24,5.76,14.16,3.76,15.75,1.45,16.9.27,17.48-.6,15.7.56,15.1,2.6,14.1,4.36,12.7,5.78,11,4.64,10,3.64,8.72,3.08,7.4,2.57,6.18,4.4,5.4,4.92,6.6,5.33,7.57,6.07,8.57,6.98,9.4,8,7.8,8.8,5.98,9.28,4h-8.28c-1.3,0-1.3-2,0-2h5v-1c0-1.3,2-1.3,2,0z" fill="currentColor"/></svg></span>
+        <span class="language-name">English</span>
+        <span class="vapor-icon icon-chevron-down ms-1 language-chevron" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end animate slideIn">
+        <li><a href="#" class="dropdown-item d-flex align-items-center active">English</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Deutsch</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Español</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Français</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Italiano</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">日本語</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">한국어</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Nederlands</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Polski</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">中文</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Português (Brasil)</a></li>
+    </ul>
+</li>
+#endexport
+#endextend
 
 <div class="container">
     <h1 class="mb-4 mt-4">Vapor's Design Guide</h1>

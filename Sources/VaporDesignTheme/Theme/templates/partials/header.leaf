@@ -84,6 +84,9 @@
                     </ul>
                 </li>
                 #endif
+                <!-- Optional slot for extra nav items (e.g. the design guide's demo
+                     language picker) before the theme picker; empty when unused. -->
+                #import("navExtras")
                 <li class="nav-item dropdown theme-picker">
                     <span class="vapor-nav-label" aria-hidden="true">#(strings.theme)</span>
                     <button type="button" class="nav-link dropdown-no-outline d-flex align-items-center theme-picker-toggle" id="theme-picker-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="#localise("nav.selectTheme")">

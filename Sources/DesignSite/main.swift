@@ -1,4 +1,22 @@
 import Kiln
+import VaporDesignTheme
+
+// Shared-chrome strings the header/footer partials expect. The style guide is
+// English-only, so these live inline here rather than in per-language files.
+// `siteId` is left unset so the nav links point at the live sites
+// (www.vapor.codes, blog.vapor.codes, …) rather than design-guide-local routes.
+let designStrings: [String: String] = [
+    "nav.brandText": "Vapor",
+    "nav.closeMenu": "Close menu",
+    "nav.documentation": "Documentation",
+    "nav.frameworkDocs": "Framework Docs",
+    "nav.frameworkDocs.caption": "Learn how to use Vapor",
+    "nav.apiDocs": "API Docs",
+    "nav.apiDocs.caption": "Reference documentation for Vapor",
+    "nav.selectTheme": "Select theme",
+]
+
+let designLanguage = Language(.english, isDefault: true, customStrings: designStrings)
 
 // The Vapor design guide (design.vapor.codes), built with Kiln.
 //
@@ -15,8 +33,12 @@ let site = KilnSite(
     description: "The style guide for Vapor's design system.",
     theme: .custom(
         directory: "Theme",
+        // Consume the shared header/footer partials so the showcased navbar is
+        // literally the one the other sites use (no drift).
+        sharedLayers: [VaporDesignTheme.directory],
         palette: .autoLightDark(primary: .black, accent: .blue)
     ),
+    languages: [designLanguage],
     // The style guide's own pages aren't useful as AI/markdown output.
     llmsText: false
 ) {
