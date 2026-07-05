@@ -559,5 +559,14 @@ nav {
         overflow-y: auto;
         z-index: 10002;
     }
+    // Flip above the pill when there's no room below (pickerDropdown.js toggles
+    // this class). Anchors the menu to the pill's top edge and grows upward.
+    .navbar-nav .theme-picker .dropdown-menu.picker-dropup,
+    .navbar-nav .language-picker .dropdown-menu.picker-dropup {
+        top: auto !important;
+        bottom: 100% !important;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
 
 }
