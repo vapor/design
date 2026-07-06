@@ -4,12 +4,12 @@ node_modules/
 /build
 /.build
 /.swiftpm
+/Packages
 /*.xcodeproj
 .publish
 Output/
 .vscode/settings.json
 # Kiln build output
 site/
-# webpack builds the CDN assets into Content/; only index.md is source there.
 /Content/*
 !/Content/index.md

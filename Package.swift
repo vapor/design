@@ -15,7 +15,7 @@ let package = Package(
         .library(name: "VaporDesignTheme", targets: ["VaporDesignTheme"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.4.0"),
+        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.5.0"),
     ],
     targets: [
         .executableTarget(

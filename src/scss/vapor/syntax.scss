@@ -3,8 +3,8 @@
 .hljs {
     display: block;
     overflow-x: auto;
-    padding-left: 0.5em;
-    padding-right: 18px;
+    padding-inline-start: 0.5em;
+    padding-inline-end: 18px;
     padding-top: 0;
     padding-bottom: 0;
     background: radial-gradient(97.68% 221.36% at 97.68% 100%, rgba($gradient-blue, 0.052) 0%, rgba($gradient-blue, 0) 100%), $grey-100;
@@ -30,6 +30,19 @@
     }
 }
 
+// Code is always left-to-right, even inside RTL prose — indentation, comments and
+// punctuation only read correctly LTR. Forcing the code box and its copy UI to LTR
+// keeps their layout (and the top-inline-end copy button) stable on RTL pages;
+// isolating inline code stops a token from disrupting the surrounding bidi order.
+.hljs,
+pre,
+.hljs-copy-wrapper {
+    direction: ltr;
+}
+:not(pre) > code {
+    unicode-bidi: isolate;
+}
+
 // Single-line / non-line-numbered blocks keep their code directly in `.hljs`,
 // with no `.hljs-ln` table — so the vertical padding (which `.hljs` zeroes and
 // the table's `tr td` rules normally supply) and the copy-button clearance (which
@@ -49,11 +62,13 @@
     position: relative;
 }
 
-// Sits inside the code box, tucked into the top-right corner.
+// Sits inside the code box, tucked into the inline-end (top-right) corner. The
+// code box is forced LTR (see the direction rule in this file), so this stays
+// top-right on RTL pages too — matching the always-LTR code content.
 .hljs-copy-container {
     position: absolute;
     top: 12px;
-    right: 12px;
+    inset-inline-end: 12px;
     z-index: 2;
     transition: opacity 0.15s ease;
 }
@@ -244,20 +259,20 @@
 
 .hljs-ln-n {
     color: $grey-600;
-    padding-left: 20px;
-    padding-right: 8px;
+    padding-inline-start: 20px;
+    padding-inline-end: 8px;
 }
 
 .hljs-ln-numbers {
-    border-right: 1px solid $grey-300;
+    border-inline-end: 1px solid $grey-300;
 }
 
 .hljs-ln-code {
-    padding-left: 20px;
+    padding-inline-start: 20px;
     // Reserve room on the right for the copy button (absolute, top-right) so it
     // never sits over the code. Without this, a single-line block's text ran
     // under the button and looked cut off / scrolled out of view.
-    padding-right: 44px;
+    padding-inline-end: 44px;
 }
 
 .hljs-ln {
@@ -271,8 +286,8 @@
 @include media-breakpoint-up(lg) {
     .hljs-ln-n {
         color: $grey-600;
-        padding-left: 20px;
-        padding-right: 16px;
+        padding-inline-start: 20px;
+        padding-inline-end: 16px;
     }
 }
 
@@ -400,7 +415,7 @@
     }
 
     .hljs-ln-numbers {
-        border-right: 1px solid rgba($code-border-purple, 0.1);
+        border-inline-end: 1px solid rgba($code-border-purple, 0.1);
     }
 
     .hljs-copy-button {

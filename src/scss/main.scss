@@ -13,3 +13,5 @@
 @import "vapor/language-suggestion";
 @import "vapor/vapor-dark";
 @import "vapor/vapor-light";
+// RTL overrides last so the [dir="rtl"] rules win over the base declarations.
+@import "vapor/rtl";

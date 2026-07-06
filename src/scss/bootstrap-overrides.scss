@@ -1,2 +1,70 @@
-// Import all of Bootstrap's CSS
-@import "~bootstrap/scss/bootstrap";
+// Bootstrap's CSS, imported piece-by-piece (mirroring bootstrap/scss/bootstrap.scss
+// for v5.3.x) so we can customise the `$utilities` map between `utilities` and
+// `utilities/api`.
+//
+// Why: Bootstrap's directional spacing utilities (.ms-*/.me-*/.ps-*/.pe-*) ship
+// as PHYSICAL margin-left/right, so they don't mirror under `dir="rtl"`. We
+// remap them to CSS logical properties so `.ms-3` becomes `margin-inline-start`
+// and flips automatically on RTL pages — keeping the whole design system on a
+// single, direction-agnostic stylesheet. If you bump Bootstrap, re-check this
+// import list against the new `bootstrap/scss/bootstrap.scss`.
+
+@use "sass:map";
+
+// Configuration
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Make the directional spacing utilities logical (mirror under dir="rtl").
+$utilities: map.merge(
+    $utilities,
+    (
+        "margin-start": map.merge(map.get($utilities, "margin-start"), (property: margin-inline-start)),
+        "margin-end": map.merge(map.get($utilities, "margin-end"), (property: margin-inline-end)),
+        "padding-start": map.merge(map.get($utilities, "padding-start"), (property: padding-inline-start)),
+        "padding-end": map.merge(map.get($utilities, "padding-end"), (property: padding-inline-end))
+    )
+);
+
+// Layout & components
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/accordion";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/offcanvas";
+@import "~bootstrap/scss/placeholders";
+
+// Helpers
+@import "~bootstrap/scss/helpers";
+
+// Utilities (emits the customised $utilities above)
+@import "~bootstrap/scss/utilities/api";
