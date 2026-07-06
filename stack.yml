@@ -26,6 +26,9 @@ Resources:
       BucketName: !Ref 'S3BucketName'
       WebsiteConfiguration:
         IndexDocument: index.html
+        # Kiln generates this at the site root; served for any missing key
+        # (with a 404 status) by the S3 website endpoint.
+        ErrorDocument: 404.html
   WebsiteCloudfront:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -40,10 +43,15 @@ Resources:
         HttpVersion: 'http2and3'
         Aliases:
         - !Ref 'DomainName'
+        # The S3 website origin returns 404 for missing objects; 403 can also
+        # surface for denied/blocked keys. Serve the generated 404 page for both.
         CustomErrorResponses:
           - ErrorCode: 403
             ResponseCode: 404
-            ResponsePagePath: '/error/404/index.html'
+            ResponsePagePath: '/404.html'
+          - ErrorCode: 404
+            ResponseCode: 404
+            ResponsePagePath: '/404.html'
         DefaultCacheBehavior:
           AllowedMethods:
           - GET
