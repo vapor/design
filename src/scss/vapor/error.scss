@@ -1,0 +1,64 @@
+// The 404 / error page (Theme/templates/404.leaf). A centred hero between the
+// shared navbar and footer: an oversized brand-gradient "404", the localised
+// title/message, and a primary button back to the home page.
+
+.error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    // Fill the viewport between navbar and footer so the hero sits centred
+    // rather than clinging to the top of the page.
+    min-height: 60vh;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.error-page-inner {
+    max-width: 560px;
+}
+
+.error-code {
+    margin: 0;
+    font-size: 160px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    // Same pink lockup as .btn-primary; clip it to the glyphs. `color` is the
+    // fallback for browsers without background-clip: text.
+    color: $pink-500;
+    background: linear-gradient(180deg, $pink-300 0%, $pink-500 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include media-breakpoint-down(lg) {
+        font-size: 104px;
+    }
+}
+
+// Overrides the global `h1` top margin (2.5em) so the title hugs the "404".
+.error-title {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+
+    @include media-breakpoint-down(lg) {
+        font-size: 30px;
+    }
+}
+
+.error-message {
+    margin-bottom: 32px;
+    font-size: 18px;
+    line-height: 150%;
+    color: $grey-700;
+}
+
+// $grey-700 is too dim on the dark background; lift it to match body text.
+.dark .error-message {
+    color: $grey-500;
+}

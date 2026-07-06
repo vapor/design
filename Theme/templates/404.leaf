@@ -1,0 +1,61 @@
+#extend("base"):
+#export("content"):
+#extend("partials/header"):
+#export("navExtras"):
+<!-- Demo-only language picker: the design guide is English-only, so these
+     options are inert (href="#") and exist purely to showcase the picker's
+     styling and mobile behaviour alongside the real one on the live sites.
+     Kept in sync with home.leaf so the 404's navbar matches the guide. -->
+<li class="nav-item dropdown language-picker">
+    <span class="vapor-nav-label" aria-hidden="true">#(strings.language)</span>
+    <button type="button" class="nav-link dropdown-no-outline d-flex align-items-center language-picker-toggle" id="language-picker-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="#(strings.language)">
+        <span class="language-icon me-1" aria-hidden="true"><svg width="14" height="17" viewBox="0 0 14 17" xmlns="http://www.w3.org/2000/svg"><path d="M8,1v1h5c1.3,0,1.3,2,0,2h-1.67c-.5,2.43-1.45,4.67-2.76,6.64.3.17.57.33.84.45,1.2.54.37,2.36-.82,1.82C8.18,12.73,7.77,12.5,7.36,12.24,5.76,14.16,3.76,15.75,1.45,16.9.27,17.48-.6,15.7.56,15.1,2.6,14.1,4.36,12.7,5.78,11,4.64,10,3.64,8.72,3.08,7.4,2.57,6.18,4.4,5.4,4.92,6.6,5.33,7.57,6.07,8.57,6.98,9.4,8,7.8,8.8,5.98,9.28,4h-8.28c-1.3,0-1.3-2,0-2h5v-1c0-1.3,2-1.3,2,0z" fill="currentColor"/></svg></span>
+        <span class="language-name">English</span>
+        <span class="vapor-icon icon-chevron-down ms-1 language-chevron" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end animate slideIn">
+        <li><a href="#" class="dropdown-item d-flex align-items-center active">English</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Deutsch</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Español</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Français</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Italiano</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">日本語</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">한국어</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Nederlands</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Polski</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">中文</a></li>
+        <li><a href="#" class="dropdown-item d-flex align-items-center">Português (Brasil)</a></li>
+    </ul>
+</li>
+#endexport
+#endextend
+
+<main class="container error-page">
+    <div class="error-page-inner">
+        <p class="error-code" aria-hidden="true">404</p>
+        <h1 class="error-title">#(strings.notFoundTitle)</h1>
+        <p class="error-message">#(strings.notFoundMessage)</p>
+        <a href="#(language.pathPrefix)/" class="btn btn-primary error-home-link">#(strings.notFoundLink)</a>
+    </div>
+</main>
+
+<footer class="mt-5">
+    <div class="container mt-5">
+        <div class="row">
+            <div id="footer-callout" class="col-md"><span class="d-inline-block align-text-top" aria-label="Vapor Logo" id="vapor-logo-footer" width="197" height="76"></span><div class="w-lg-50 mt-4">Vapor provides a safe, performant and easy to use foundation to build HTTP servers, backends and APIs in Swift</div></div>
+            <div class="mt-4 mt-lg-0 col-md">
+                <div class="row">
+                    <div id="footer-community-links" class="col-6 ps-lg-5"><h6 class="ps-lg-5">Community</h6><ul class="ps-lg-5"><li><a href="https://www.vapor.codes/team" class="nav-link">Team</a></li><li><a href="https://vapor.team" target="_blank" class="nav-link">Join our Discord</a></li><li><a href="https://www.vapor.codes/showcase" class="nav-link">Showcase</a></li><li><a href="https://www.vapor.codes/supporters" class="nav-link">Supporters</a></li></ul></div>
+                    <div id="footer-resources-links" class="col-6"><h6>Resources</h6><ul><li><a href="https://blog.vapor.codes" class="nav-link">Blog</a></li><li><a href="https://docs.vapor.codes" target="_blank" class="nav-link">Framework Docs</a></li><li><a href="https://api.vapor.codes" target="_blank" class="nav-link">API Docs</a></li><li><a href="https://design.vapor.codes/VaporPressKit.zip" class="nav-link" download>Press Kit</a></li><li><a href="https://vapor.team" target="_blank" class="nav-link">Help</a></li></ul></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="footer-bottom">
+            <div id="footer-copyright" class="my-auto">© QuTheory, LLC 2026</div>
+            <div id="footer-social-links" class="ms-auto"><ul class="d-flex"><li class="me-4"><a href="https://twitter.com/codevapor" target="_blank" rel="me"><span class="vapor-icon icon-twitter-fill" aria-label="Twitter"><span class="visually-hidden">Twitter</span></span></a></li><li class="me-4"><a href="https://hachyderm.io/@codevapor" target="_blank" rel="me"><span class="vapor-icon icon-mastodon-fill" aria-label="Mastodon"><span class="visually-hidden">Mastodon</span></span></a></li><li><a href="https://bsky.app/profile/vapor.codes" target="_blank" rel="me"><span class="vapor-icon icon-bluesky-fill" aria-label="Bluesky"><span class="visually-hidden">Bluesky</span></span></a></li><li><a href="https://github.com/vapor" target="_blank" rel="me"><span class="vapor-icon icon-github-fill" aria-label="GitHub"><span class="visually-hidden">GitHub</span></span></a></li></ul></div>
+        </div>
+    </div>
+</footer>
+#endexport
+#endextend

@@ -13,3 +13,4 @@ Output/
 site/
 /Content/*
 !/Content/index.md
+.claude/
