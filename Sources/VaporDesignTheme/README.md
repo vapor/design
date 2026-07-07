@@ -60,16 +60,12 @@ Also set `site.copyright` (rendered in the footer).
 | --- | --- |
 | `partials/footer.leaf` | Shared site footer. Link targets branch on `siteId`. |
 | `partials/header.leaf` | Marketing navbar (vapor.codes / blog.vapor.codes). The docs site keeps its own sidebar-shell header. The language picker only renders when the site has more than one language. The blog wraps this in `<header class="vapor-banner">` in its own `base.leaf`. |
-| `partials/pagination.leaf` | Generic pagination (port of the Publish `Pagination`). Render with `#extend("partials/pagination", paginationContext)` where the context has `hasMultiplePages`, `hasPrevious`/`prevURL`, `hasNext`/`nextURL`, `currentPage`, `totalPages`, `links[]` (each `isEllipsis`/`isCurrent`/`page`/`url`), and the **localised** `previousLabel`/`nextLabel`. Used by the website team page and the blog. **Localisation note:** `#extend("…", obj)` *replaces* the template context with `obj`, so `strings.*`/`#localise` are NOT reachable inside — the prev/next labels must be resolved by the caller and passed in `previousLabel`/`nextLabel` (Kiln's blog feature does this from `strings.previousPage`/`nextPage`; the website team page passes its own localised values). |
+| `partials/pagination.leaf` | Generic pagination. Render with `#extend("partials/pagination", paginationContext)` where the context has `hasMultiplePages`, `hasPrevious`/`prevURL`, `hasNext`/`nextURL`, `currentPage`, `totalPages`, `links[]` (each `isEllipsis`/`isCurrent`/`page`/`url`), and the **localised** `previousLabel`/`nextLabel`. Used by the website team page and the blog. **Localisation note:** `#extend("…", obj)` *replaces* the template context with `obj`, so `strings.*`/`#localise` are NOT reachable inside — the prev/next labels must be resolved by the caller and passed in `previousLabel`/`nextLabel` (Kiln's blog feature does this from `strings.previousPage`/`nextPage`; the website team page passes its own localised values). |
 | `partials/blog-pagination.leaf` | One-line adapter (`#extend("partials/pagination")`) so Kiln's blog feature — which extends `partials/blog-pagination` — reuses the shared pagination. |
 | `partials/author-card.leaf` | Person card (avatar, name, handle, bio, socials) rendered with `team-card` styling. Used for blog author listings and the website team page. Context: `name`, `handle`, `pageURL`, `hasImage`/`imageURL`, `hasDescription`/`description`, `hasSocials`/`socials[]` (`url`/`label`/`icon`). |
 | `partials/head.leaf` | The **entire** shared `<head>` — charset, OpenGraph/Twitter cards, canonical, title, favicons, CSS/JS links, structured data. A site's `base.leaf` uses it as `<head>#extend("partials/head")</head>` (unscoped, so `#localise`/`customStrings`/`site.*`/`page.*` are all reachable). See "Shared head" below for the config contract. |
 | `partials/head-preconnect.leaf` | The two `<link rel="preconnect">` hints to the `design.vapor.codes` CDN. Consumed by `head.leaf` near the **top** of `<head>` so the connection warms before the render-blocking CSS/fonts load. Static — no context needed. |
 | `partials/head-brand.leaf` | The shared favicon set, `apple-mobile-web-app-title`, and light/dark `theme-color` metas — identical across every Vapor site. Consumed by `head.leaf`; reads `#(site.name)` from the inherited context. |
-
-`footer.leaf`, `header.leaf`, `pagination.leaf` and `author-card.leaf` are faithful
-Leaf ports of the Publish components in `Sources/VaporDesign/Components/`
-(`SiteFooter`, `SiteNavigation`, `Pagination`, blog author card).
 
 ## Shared head
 

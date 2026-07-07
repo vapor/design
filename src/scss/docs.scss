@@ -1,0 +1,8 @@
+// docs.css — the Kiln docs-site layout (sidebar/TOC/article/version-switcher)
+// plus the DocC API-reference styles. Built by webpack into `docs.css` and served
+// from the CDN (design.vapor.codes/docs.css) to the docs sites only
+// (docs.vapor.codes, api.vapor.codes) — NOT the marketing sites, which load only
+// main.css. Both partials style Kiln's `.kiln-*` / `.docc-*` markup and lean on
+// the `--vp-*` design tokens defined in main.css.
+@import "docs/layout";
+@import "docs/docc";
