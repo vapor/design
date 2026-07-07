@@ -38,10 +38,15 @@ module.exports = {
   // doesn't apply here.
   performance: { hints: false },
 
-  // Resolve .ts before .js so an import without an extension (or a legacy
-  // './foo.js' specifier) picks up the TypeScript source.
+  // Resolve .ts before .js for extensionless imports, and let an explicit
+  // './foo.js' specifier resolve to a './foo.ts' source (extensionAlias) — so
+  // modules can keep their existing `import './x.js'` specifiers as we migrate
+  // files from .js to .ts one at a time.
   resolve: {
     extensions: ['.ts', '.js'],
+    extensionAlias: {
+      '.js': ['.ts', '.js'],
+    },
   },
 
   devServer: {

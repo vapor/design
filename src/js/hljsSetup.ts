@@ -1,0 +1,87 @@
+// highlight.js core + the curated language set.
+//
+// This is a separate module (rather than inline in startSyntaxHighlighting.ts)
+// for load ordering: it must fully evaluate — registering languages and setting
+// window.hljs — *before* the highlightjs-line-numbers.js plugin runs, because
+// that UMD reads window.hljs at load time. ES modules evaluate their imports in
+// source order, so startSyntaxHighlighting.ts imports this module before it
+// imports the plugin, guaranteeing the ordering without a `require()` hack.
+//
+// The language set mirrors the previously-vendored build (highlight.js 11.11.1),
+// including `leaf` and `swift`, which are first-party bundled languages in core —
+// so we register only these instead of shipping all ~190.
+import hljs from 'highlight.js/lib/core';
+import type { HLJSApi } from 'highlight.js';
+
+import armasm from 'highlight.js/lib/languages/armasm';
+import awk from 'highlight.js/lib/languages/awk';
+import bash from 'highlight.js/lib/languages/bash';
+import c from 'highlight.js/lib/languages/c';
+import cmake from 'highlight.js/lib/languages/cmake';
+import cpp from 'highlight.js/lib/languages/cpp';
+import css from 'highlight.js/lib/languages/css';
+import diff from 'highlight.js/lib/languages/diff';
+import dockerfile from 'highlight.js/lib/languages/dockerfile';
+import http from 'highlight.js/lib/languages/http';
+import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
+import leaf from 'highlight.js/lib/languages/leaf';
+import less from 'highlight.js/lib/languages/less';
+import llvm from 'highlight.js/lib/languages/llvm';
+import makefile from 'highlight.js/lib/languages/makefile';
+import markdown from 'highlight.js/lib/languages/markdown';
+import pgsql from 'highlight.js/lib/languages/pgsql';
+import plaintext from 'highlight.js/lib/languages/plaintext';
+import protobuf from 'highlight.js/lib/languages/protobuf';
+import rust from 'highlight.js/lib/languages/rust';
+import scss from 'highlight.js/lib/languages/scss';
+import shell from 'highlight.js/lib/languages/shell';
+import sql from 'highlight.js/lib/languages/sql';
+import swift from 'highlight.js/lib/languages/swift';
+import typescript from 'highlight.js/lib/languages/typescript';
+import wasm from 'highlight.js/lib/languages/wasm';
+import xml from 'highlight.js/lib/languages/xml';
+import yaml from 'highlight.js/lib/languages/yaml';
+
+hljs.registerLanguage('armasm', armasm);
+hljs.registerLanguage('awk', awk);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('c', c);
+hljs.registerLanguage('cmake', cmake);
+hljs.registerLanguage('cpp', cpp);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('diff', diff);
+hljs.registerLanguage('dockerfile', dockerfile);
+hljs.registerLanguage('http', http);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('leaf', leaf);
+hljs.registerLanguage('less', less);
+hljs.registerLanguage('llvm', llvm);
+hljs.registerLanguage('makefile', makefile);
+hljs.registerLanguage('markdown', markdown);
+hljs.registerLanguage('pgsql', pgsql);
+hljs.registerLanguage('plaintext', plaintext);
+hljs.registerLanguage('protobuf', protobuf);
+hljs.registerLanguage('rust', rust);
+hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('shell', shell);
+hljs.registerLanguage('sql', sql);
+hljs.registerLanguage('swift', swift);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('wasm', wasm);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('yaml', yaml);
+
+// Publish for the line-numbers plugin (reads window.hljs at load) and page code.
+window.hljs = hljs;
+
+// The highlightjs-line-numbers.js plugin, imported after this module, augments
+// the same hljs instance at runtime with these methods.
+export interface HLJSWithLineNumbers extends HLJSApi {
+    initLineNumbersOnLoad(options?: { singleLine?: boolean }): void;
+    lineNumbersBlock(element: HTMLElement, options?: { singleLine?: boolean }): void;
+    lineNumbersValue(value: string, options?: { singleLine?: boolean }): string;
+}
+
+export default hljs as HLJSWithLineNumbers;
