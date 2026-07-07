@@ -5,6 +5,9 @@
     "moduleResolution": "bundler",
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "strict": true,
+    // Index/lookup access yields `T | undefined`, so unchecked array/record
+    // reads have to be guarded — catches real undefined-access bugs.
+    "noUncheckedIndexedAccess": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,

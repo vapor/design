@@ -77,7 +77,7 @@
     }
 
     document.addEventListener("shown.bs.dropdown", function (e) {
-        const toggle = e.target as Element;
+        const toggle = e.target;
         const menu = menuFor(toggle);
         if (!menu) return;
         place(toggle, menu);
@@ -85,5 +85,5 @@
             requestAnimationFrame(function () { place(toggle, menu); });
         });
     });
-    document.addEventListener("hidden.bs.dropdown", function (e) { clear(menuFor(e.target as Element)); });
+    document.addEventListener("hidden.bs.dropdown", function (e) { clear(menuFor(e.target)); });
 })();

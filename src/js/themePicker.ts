@@ -13,19 +13,27 @@
 (function () {
     "use strict";
 
+    type Theme = "light" | "dark" | "system";
+
     const items = document.querySelectorAll<HTMLElement>('.theme-picker .dropdown-item[data-theme]');
     if (!items.length) return; // legacy #theme-switch toggle still in use — leave it to toggleDarkMode.js
 
     const KEY = "theme";
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
+    // Normalise any stored/attribute value to a known Theme. Only "light"/"dark"
+    // are ever persisted (system removes the key), so anything else means system.
+    function asTheme(value: string | null): Theme {
+        return value === "light" || value === "dark" ? value : "system";
+    }
+
     function stored(): string | null {
         try { return localStorage.getItem(KEY); } catch (e) { return null; }
     }
-    function current(): string { return stored() || "system"; }
+    function current(): Theme { return asTheme(stored()); }
 
-    function apply(pref: string) {
-        const dark = pref === "dark" || ((pref === "system" || !pref) && mq.matches);
+    function apply(pref: Theme) {
+        const dark = pref === "dark" || (pref === "system" && mq.matches);
         document.documentElement.classList.toggle("dark", dark);
         const meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute("content", dark ? "#141416" : "#ffffff");
@@ -48,7 +56,7 @@
         }
     }
 
-    function setTheme(pref: string) {
+    function setTheme(pref: Theme) {
         try {
             if (pref === "system") localStorage.removeItem(KEY);
             else localStorage.setItem(KEY, pref);
@@ -60,7 +68,7 @@
     items.forEach(function (a) {
         a.addEventListener("click", function (e) {
             e.preventDefault();
-            setTheme(a.getAttribute("data-theme") ?? "system");
+            setTheme(asTheme(a.getAttribute("data-theme")));
         });
     });
 

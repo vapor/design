@@ -1,32 +1,31 @@
-function setTwitterShareLink() {
-    const twitterShareLinks = document.querySelectorAll<HTMLAnchorElement>('.twitter-share-button');
-    twitterShareLinks.forEach((link) => {
-        link.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`;
+// Social "share this page" buttons. Each target rewrites the href of its matching
+// buttons to a share-intent URL built from the current page title + location.
+interface ShareTarget {
+    selector: string;
+    url(title: string, href: string): string;
+}
+
+const SHARE_TARGETS: ShareTarget[] = [
+    {
+        selector: '.twitter-share-button',
+        url: (title, href) => `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(href)}`,
+    },
+    {
+        selector: '.reddit-share-button',
+        url: (title, href) => `https://www.reddit.com/submit?title=${encodeURIComponent(title)}&url=${encodeURIComponent(href)}`,
+    },
+    {
+        selector: '.mastodon-share-button',
+        url: (title, href) => `https://mastodon.social/share?text=${encodeURIComponent(title)}&url=${encodeURIComponent(href)}`,
+    },
+    {
+        selector: '.bsky-share-button',
+        url: (title, href) => `https://bsky.app/intent/compose?text=${encodeURIComponent(title)}&url=${encodeURIComponent(href)}`,
+    },
+];
+
+for (const { selector, url } of SHARE_TARGETS) {
+    document.querySelectorAll<HTMLAnchorElement>(selector).forEach((link) => {
+        link.href = url(document.title, window.location.href);
     });
 }
-
-function setRedditShareLink() {
-    const redditShareLinks = document.querySelectorAll<HTMLAnchorElement>('.reddit-share-button');
-    redditShareLinks.forEach((link) => {
-        link.href = `https://www.reddit.com/submit?title=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`;
-    });
-}
-
-function setMastodonShareLink() {
-    const mastodonShareLinks = document.querySelectorAll<HTMLAnchorElement>('.mastodon-share-button');
-    mastodonShareLinks.forEach((link) => {
-        link.href = `https://mastodon.social/share?text=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`;
-    });
-}
-
-function setBskyShareLink() {
-	const bskyShareLinks = document.querySelectorAll<HTMLAnchorElement>('.bsky-share-button');
-	bskyShareLinks.forEach((link) => {
-		link.href = `https://bsky.app/intent/compose?text=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`;
-	});
-}
-
-setTwitterShareLink();
-setRedditShareLink();
-setMastodonShareLink();
-setBskyShareLink();

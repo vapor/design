@@ -11,7 +11,7 @@
 // including `leaf` and `swift`, which are first-party bundled languages in core —
 // so we register only these instead of shipping all ~190.
 import hljs from 'highlight.js/lib/core';
-import type { HLJSApi } from 'highlight.js';
+import type { HLJSApi, LanguageFn } from 'highlight.js';
 
 import armasm from 'highlight.js/lib/languages/armasm';
 import awk from 'highlight.js/lib/languages/awk';
@@ -43,35 +43,17 @@ import wasm from 'highlight.js/lib/languages/wasm';
 import xml from 'highlight.js/lib/languages/xml';
 import yaml from 'highlight.js/lib/languages/yaml';
 
-hljs.registerLanguage('armasm', armasm);
-hljs.registerLanguage('awk', awk);
-hljs.registerLanguage('bash', bash);
-hljs.registerLanguage('c', c);
-hljs.registerLanguage('cmake', cmake);
-hljs.registerLanguage('cpp', cpp);
-hljs.registerLanguage('css', css);
-hljs.registerLanguage('diff', diff);
-hljs.registerLanguage('dockerfile', dockerfile);
-hljs.registerLanguage('http', http);
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('json', json);
-hljs.registerLanguage('leaf', leaf);
-hljs.registerLanguage('less', less);
-hljs.registerLanguage('llvm', llvm);
-hljs.registerLanguage('makefile', makefile);
-hljs.registerLanguage('markdown', markdown);
-hljs.registerLanguage('pgsql', pgsql);
-hljs.registerLanguage('plaintext', plaintext);
-hljs.registerLanguage('protobuf', protobuf);
-hljs.registerLanguage('rust', rust);
-hljs.registerLanguage('scss', scss);
-hljs.registerLanguage('shell', shell);
-hljs.registerLanguage('sql', sql);
-hljs.registerLanguage('swift', swift);
-hljs.registerLanguage('typescript', typescript);
-hljs.registerLanguage('wasm', wasm);
-hljs.registerLanguage('xml', xml);
-hljs.registerLanguage('yaml', yaml);
+// The curated language set — key is the name hljs registers under. `satisfies`
+// checks every entry is a real LanguageFn without widening the value type.
+const LANGUAGES = {
+    armasm, awk, bash, c, cmake, cpp, css, diff, dockerfile, http, javascript,
+    json, leaf, less, llvm, makefile, markdown, pgsql, plaintext, protobuf,
+    rust, scss, shell, sql, swift, typescript, wasm, xml, yaml,
+} satisfies Record<string, LanguageFn>;
+
+for (const [name, language] of Object.entries(LANGUAGES)) {
+    hljs.registerLanguage(name, language);
+}
 
 // Publish for the line-numbers plugin (reads window.hljs at load) and page code.
 window.hljs = hljs;

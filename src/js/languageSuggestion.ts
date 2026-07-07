@@ -23,8 +23,10 @@
     }
 
     // Native name + copy, in the TARGET language, for each locale we ship. A
-    // German visitor sees the prompt in German.
-    const LOCALES: Record<string, Locale> = {
+    // German visitor sees the prompt in German. `as const satisfies` makes this
+    // table the single source of truth: the shipped locales are exactly its keys
+    // (see LocaleKey), while each entry is still checked against Locale.
+    const LOCALES = {
         "en":    { name: "English",    msg: "This site is available in English.",            go: "Switch",        no: "No thanks" },
         "de":    { name: "Deutsch",    msg: "Diese Website ist auf Deutsch verfügbar.",       go: "Wechseln",      no: "Nein danke" },
         "es":    { name: "Español",    msg: "Este sitio está disponible en español.",          go: "Cambiar",       no: "No, gracias" },
@@ -36,7 +38,13 @@
         "pl":    { name: "Polski",     msg: "Ta witryna jest dostępna w języku polskim.",      go: "Przełącz",      no: "Nie, dziękuję" },
         "zh":    { name: "简体中文",    msg: "本网站提供简体中文版本。",                          go: "切换",          no: "不用了" },
         "pt-BR": { name: "Português",  msg: "Este site está disponível em português.",         go: "Mudar",         no: "Não, obrigado" }
-    };
+    } as const satisfies Record<string, Locale>;
+
+    // The locales we actually ship copy for — derived from the table above.
+    type LocaleKey = keyof typeof LOCALES;
+    function isLocaleKey(key: string): key is LocaleKey {
+        return key in LOCALES;
+    }
 
     // Map a browser language tag ("en-GB", "zh-CN", "pt-PT", …) to a locale key
     // we ship. We only have Simplified Chinese and Brazilian Portuguese, so all
@@ -45,7 +53,7 @@
         tag = (tag || "").toLowerCase();
         if (tag.indexOf("pt") === 0) return "pt-BR";
         if (tag.indexOf("zh") === 0) return "zh";
-        return tag.split("-")[0];
+        return tag.split("-")[0] ?? "";
     }
 
     function read(): string | null { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } }
@@ -66,10 +74,9 @@
 
         // Available translations come from the hreflang alternates both sites emit.
         const alts: Record<string, string> = {};
-        const links = document.querySelectorAll('link[rel="alternate"][hreflang]');
-        for (let i = 0; i < links.length; i++) {
-            const hl = links[i].getAttribute("hreflang");
-            const href = links[i].getAttribute("href");
+        for (const link of document.querySelectorAll('link[rel="alternate"][hreflang]')) {
+            const hl = link.getAttribute("hreflang");
+            const href = link.getAttribute("href");
             if (hl && hl !== "x-default" && href) alts[toLocaleKey(hl)] = href;
         }
 
@@ -77,17 +84,19 @@
         // the visitor's top preference already matches this page, stay quiet.
         const prefs = navigator.languages || [navigator.language || "en"];
         let target: string | null = null;
-        for (let j = 0; j < prefs.length; j++) {
-            const key = toLocaleKey(prefs[j]);
+        let targetUrl: string | null = null;
+        for (const pref of prefs) {
+            const key = toLocaleKey(pref);
             if (key === current) break;
-            if (alts[key]) { target = key; break; }
+            const url = alts[key];
+            if (url) { target = key; targetUrl = url; break; }
         }
-        if (!target || !LOCALES[target]) return;
+        if (!target || !targetUrl || !isLocaleKey(target)) return;
 
-        showBanner(target, alts[target]);
+        showBanner(target, targetUrl);
     }
 
-    function showBanner(target: string, url: string) {
+    function showBanner(target: LocaleKey, url: string) {
         const copy = LOCALES[target];
 
         const bar = document.createElement("div");
@@ -146,7 +155,7 @@
     window.vaporLangSuggest = {
         preview: function (locale?: string) {
             const key = locale || "de";
-            if (!LOCALES[key]) {
+            if (!isLocaleKey(key)) {
                 console.warn("vaporLangSuggest: unknown locale '" + key + "'. Try one of: " + Object.keys(LOCALES).join(", "));
                 return;
             }
