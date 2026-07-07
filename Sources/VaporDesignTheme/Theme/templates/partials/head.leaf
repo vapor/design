@@ -31,7 +31,7 @@
 #if(site.author):<meta name="author" content="#(site.author)">#endif
 #if(noindex):<meta name="robots" content="noindex">#endif
 <link rel="stylesheet" href="https://design.vapor.codes/main.css" type="text/css">
-#if(customStrings.siteId == "docs" || customStrings.siteId == "apiDocs"):<link rel="stylesheet" href="/docs.css" type="text/css">#endif
+#if(customStrings.siteId == "docs" || customStrings.siteId == "apiDocs"):<link rel="stylesheet" href="https://design.vapor.codes/docs.css" type="text/css">#endif
 #for(href in site.extraCSS):<link rel="stylesheet" href="/#(href)" type="text/css">
 #endfor
 <script src="https://design.vapor.codes/js/theme-init.js"></script>
