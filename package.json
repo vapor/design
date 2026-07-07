@@ -1,15 +1,21 @@
 {
   "name": "design",
   "version": "1.0.0",
-  "description": "",
+  "description": "Vapor's shared design assets (CDN CSS/JS/fonts/icons) and the VaporDesignTheme Leaf templates used across its sites.",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "vapor",
+    "design",
+    "bootstrap",
+    "leaf",
+    "kiln"
+  ],
+  "author": "Vapor",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.13",
