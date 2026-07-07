@@ -13,11 +13,18 @@
 (function () {
     "use strict";
 
-    var STORAGE_KEY = "vaporLangSuggestion";
+    const STORAGE_KEY = "vaporLangSuggestion";
+
+    interface Locale {
+        name: string;
+        msg: string;
+        go: string;
+        no: string;
+    }
 
     // Native name + copy, in the TARGET language, for each locale we ship. A
     // German visitor sees the prompt in German.
-    var LOCALES = {
+    const LOCALES: Record<string, Locale> = {
         "en":    { name: "English",    msg: "This site is available in English.",            go: "Switch",        no: "No thanks" },
         "de":    { name: "Deutsch",    msg: "Diese Website ist auf Deutsch verfügbar.",       go: "Wechseln",      no: "Nein danke" },
         "es":    { name: "Español",    msg: "Este sitio está disponible en español.",          go: "Cambiar",       no: "No, gracias" },
@@ -34,43 +41,44 @@
     // Map a browser language tag ("en-GB", "zh-CN", "pt-PT", …) to a locale key
     // we ship. We only have Simplified Chinese and Brazilian Portuguese, so all
     // Chinese / Portuguese variants fold onto those.
-    function toLocaleKey(tag) {
+    function toLocaleKey(tag: string): string {
         tag = (tag || "").toLowerCase();
         if (tag.indexOf("pt") === 0) return "pt-BR";
         if (tag.indexOf("zh") === 0) return "zh";
         return tag.split("-")[0];
     }
 
-    function read() { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } }
-    function write(v) { try { localStorage.setItem(STORAGE_KEY, v); } catch (e) { /* private mode etc. */ } }
+    function read(): string | null { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } }
+    function write(v: string) { try { localStorage.setItem(STORAGE_KEY, v); } catch (e) { /* private mode etc. */ } }
 
     // hreflang hrefs are absolute (e.g. https://vapor.codes/de/), which would send
     // PR-preview / local visitors off to the production host. Re-base the path onto
     // the current origin so "Switch" stays on whatever host serves the page.
-    function toRelative(href) {
-        try { var u = new URL(href, location.href); return u.pathname + u.search + u.hash; }
+    function toRelative(href: string): string {
+        try { const u = new URL(href, location.href); return u.pathname + u.search + u.hash; }
         catch (e) { return href; }
     }
 
     function run() {
         if (read()) return; // already switched or dismissed — don't ask again
 
-        var current = toLocaleKey(document.documentElement.getAttribute("lang") || "en");
+        const current = toLocaleKey(document.documentElement.getAttribute("lang") || "en");
 
         // Available translations come from the hreflang alternates both sites emit.
-        var alts = {};
-        var links = document.querySelectorAll('link[rel="alternate"][hreflang]');
-        for (var i = 0; i < links.length; i++) {
-            var hl = links[i].getAttribute("hreflang");
-            if (hl && hl !== "x-default") alts[toLocaleKey(hl)] = links[i].getAttribute("href");
+        const alts: Record<string, string> = {};
+        const links = document.querySelectorAll('link[rel="alternate"][hreflang]');
+        for (let i = 0; i < links.length; i++) {
+            const hl = links[i].getAttribute("hreflang");
+            const href = links[i].getAttribute("href");
+            if (hl && hl !== "x-default" && href) alts[toLocaleKey(hl)] = href;
         }
 
         // The first preferred language we support that isn't the current one. If
         // the visitor's top preference already matches this page, stay quiet.
-        var prefs = navigator.languages || [navigator.language || "en"];
-        var target = null;
-        for (var j = 0; j < prefs.length; j++) {
-            var key = toLocaleKey(prefs[j]);
+        const prefs = navigator.languages || [navigator.language || "en"];
+        let target: string | null = null;
+        for (let j = 0; j < prefs.length; j++) {
+            const key = toLocaleKey(prefs[j]);
             if (key === current) break;
             if (alts[key]) { target = key; break; }
         }
@@ -79,24 +87,24 @@
         showBanner(target, alts[target]);
     }
 
-    function showBanner(target, url) {
-        var copy = LOCALES[target];
+    function showBanner(target: string, url: string) {
+        const copy = LOCALES[target];
 
-        var bar = document.createElement("div");
+        const bar = document.createElement("div");
         bar.className = "vapor-lang-suggest";
         bar.setAttribute("role", "region");
         bar.setAttribute("aria-label", copy.msg);
         bar.setAttribute("aria-live", "polite");
         bar.setAttribute("lang", target);
 
-        var msg = document.createElement("p");
+        const msg = document.createElement("p");
         msg.className = "vapor-lang-suggest-msg";
         msg.textContent = copy.msg;
 
-        var actions = document.createElement("div");
+        const actions = document.createElement("div");
         actions.className = "vapor-lang-suggest-actions";
 
-        var go = document.createElement("a");
+        const go = document.createElement("a");
         // Reuse the site's primary button styling.
         go.className = "btn btn-primary vapor-lang-suggest-go";
         go.href = toRelative(url);
@@ -104,7 +112,7 @@
         // Record the choice before the browser follows the link.
         go.addEventListener("click", function () { write(target); });
 
-        var no = document.createElement("button");
+        const no = document.createElement("button");
         no.type = "button";
         no.className = "vapor-lang-suggest-no";
         no.textContent = copy.no;
@@ -118,15 +126,15 @@
 
         // Point the visitor at the navbar language selector — where they can
         // change language any time from now on.
-        var picker = document.getElementById("language-picker-toggle");
+        const picker = document.getElementById("language-picker-toggle");
         if (picker) picker.classList.add("lang-suggest-pulse");
 
         requestAnimationFrame(function () { bar.classList.add("is-visible"); });
     }
 
-    function hide(bar) {
+    function hide(bar: HTMLElement) {
         bar.classList.remove("is-visible");
-        var picker = document.getElementById("language-picker-toggle");
+        const picker = document.getElementById("language-picker-toggle");
         if (picker) picker.classList.remove("lang-suggest-pulse");
         setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); }, 250);
     }
@@ -136,23 +144,23 @@
     // own). In DevTools: `vaporLangSuggest.preview('de')` to force-show a locale's
     // banner, `vaporLangSuggest.reset()` to clear the "don't ask again" flag.
     window.vaporLangSuggest = {
-        preview: function (locale) {
-            var key = locale || "de";
+        preview: function (locale?: string) {
+            const key = locale || "de";
             if (!LOCALES[key]) {
                 console.warn("vaporLangSuggest: unknown locale '" + key + "'. Try one of: " + Object.keys(LOCALES).join(", "));
                 return;
             }
-            var existing = document.querySelector(".vapor-lang-suggest");
+            const existing = document.querySelector(".vapor-lang-suggest");
             if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
             // Use the real alternate URL if the page has one, otherwise a no-op href.
-            var link = document.querySelector('link[rel="alternate"][hreflang="' + key + '"]');
-            showBanner(key, link ? link.getAttribute("href") : "#");
+            const link = document.querySelector('link[rel="alternate"][hreflang="' + key + '"]');
+            showBanner(key, link ? link.getAttribute("href") || "#" : "#");
         },
         reset: function () {
             try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
-            var bar = document.querySelector(".vapor-lang-suggest");
+            const bar = document.querySelector(".vapor-lang-suggest");
             if (bar && bar.parentNode) bar.parentNode.removeChild(bar);
-            var picker = document.getElementById("language-picker-toggle");
+            const picker = document.getElementById("language-picker-toggle");
             if (picker) picker.classList.remove("lang-suggest-pulse");
             console.info("vaporLangSuggest: cleared the saved choice — reload to re-run detection.");
         }

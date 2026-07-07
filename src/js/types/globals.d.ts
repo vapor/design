@@ -1,11 +1,18 @@
 import type { HLJSApi } from 'highlight.js';
 
-// startSyntaxHighlighting publishes the highlight.js instance on window so the
-// line-numbers plugin (which reads window.hljs at load) and any page scripts can
-// reach it.
+// QA helper published by languageSuggestion.ts for manual testing in DevTools.
+interface VaporLangSuggest {
+    preview(locale?: string): void;
+    reset(): void;
+}
+
 declare global {
     interface Window {
+        // startSyntaxHighlighting publishes the highlight.js instance so the
+        // line-numbers plugin (which reads window.hljs at load) and page scripts
+        // can reach it.
         hljs: HLJSApi;
+        vaporLangSuggest: VaporLangSuggest;
     }
 }
 

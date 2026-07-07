@@ -7,17 +7,17 @@
 (function () {
     "use strict";
 
-    var toggle = document.getElementById("vapor-navmenu-toggle");
-    var panel = document.getElementById("vapor-navmenu");
+    const toggle = document.getElementById("vapor-navmenu-toggle");
+    const panel = document.getElementById("vapor-navmenu");
     if (!toggle || !panel) return;
 
-    var closeBtn = document.getElementById("vapor-navmenu-close");
-    var backdrop = document.getElementById("vapor-nav-backdrop");
+    const closeBtn = document.getElementById("vapor-navmenu-close");
+    const backdrop = document.getElementById("vapor-nav-backdrop");
 
-    function setOpen(open) {
-        panel.classList.toggle("vapor-navmenu-open", open);
+    function setOpen(open: boolean) {
+        panel!.classList.toggle("vapor-navmenu-open", open);
         if (backdrop) backdrop.classList.toggle("vapor-nav-open", open);
-        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle!.setAttribute("aria-expanded", open ? "true" : "false");
     }
     function close() { setOpen(false); }
 
@@ -33,7 +33,8 @@
     // Close after following a real link, but not when toggling an in-panel
     // dropdown (Documentation / Theme), which use href="#" + data-bs-toggle.
     panel.addEventListener("click", function (e) {
-        var link = e.target.closest("a.nav-link[href]");
+        const target = e.target as HTMLElement | null;
+        const link = target?.closest("a.nav-link[href]");
         if (link && link.getAttribute("href") !== "#" && !link.hasAttribute("data-bs-toggle")) {
             close();
         }
