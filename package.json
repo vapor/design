@@ -16,7 +16,8 @@
     "kiln"
   ],
   "author": "Vapor",
-  "license": "ISC",
+  "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "copy-webpack-plugin": "^14.0.0",
