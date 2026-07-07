@@ -9,7 +9,7 @@
   design.vapor.codes/main.css plus the docs overrides in theme.css.
 
   The Framework/API switcher marks the *current* site active and links out to the
-  other one, driven by `customStrings.siteId` ("docs" vs "api-docs").
+  other one, driven by `customStrings.siteId` ("docs" vs "apiDocs").
 
   Note: the #theme-switch and #documentation-dropdown-link ids are required by the
   shared main.js (toggleDarkMode.js / styleHelpers.js attach listeners to them).
@@ -23,11 +23,11 @@
         </a>
         <div class="dropdown kiln-mobile-docpicker d-lg-none">
             <button type="button" class="nav-link dropdown-no-outline d-flex align-items-center" id="mobile-doc-dropdown-link" data-bs-toggle="dropdown" aria-expanded="false">
-                <span>#if(customStrings.siteId == "api-docs"):#localise("apiDocs")#else:#localise("frameworkDocs")#endif</span>
+                <span>#if(customStrings.siteId == "apiDocs"):#localise("apiDocs")#else:#localise("frameworkDocs")#endif</span>
                 <span class="vapor-icon icon-chevron-down ms-1"></span>
             </button>
             <ul class="dropdown-menu animate slideIn">
-                #if(customStrings.siteId == "api-docs"):
+                #if(customStrings.siteId == "apiDocs"):
                 <li><a class="dropdown-item active" href="/">#localise("apiDocs")</a></li>
                 <li><a class="dropdown-item" href="https://docs.vapor.codes" rel="noopener" target="_blank">#localise("frameworkDocs")</a></li>
                 #else:
@@ -81,11 +81,11 @@
 
                 <li class="nav-item dropdown kiln-doc-nav">
                     <button type="button" class="nav-link dropdown-no-outline d-flex align-items-center" id="documentation-dropdown-link" data-bs-toggle="dropdown" aria-expanded="false">
-                        #if(customStrings.siteId == "api-docs"):#localise("apiDocs")#else:#localise("frameworkDocs")#endif
+                        #if(customStrings.siteId == "apiDocs"):#localise("apiDocs")#else:#localise("frameworkDocs")#endif
                         <span class="vapor-icon icon-chevron-down ms-1" id="documentation-navbar-chevron"></span>
                     </button>
                     <ul class="dropdown-menu animate slideIn" id="framework-dropdown-menu">
-                        #if(customStrings.siteId == "api-docs"):
+                        #if(customStrings.siteId == "apiDocs"):
                         <li class="m-lg-2">
                             <a class="dropdown-item" href="/">
                                 <div class="nav-dropdown-container d-flex">
