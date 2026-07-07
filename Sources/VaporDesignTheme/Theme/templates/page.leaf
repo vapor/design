@@ -1,10 +1,5 @@
 #extend("base"):
 #export("content"):
-<!-- The shared/default page template renders an on-page breadcrumb from
-     page.breadcrumb. The Vapor design chrome already shows a breadcrumb in the
-     sidebar-toggle bar (base.leaf), so to match docs.vapor.codes we omit the
-     on-page trail here. The BreadcrumbList JSON-LD (base.leaf head) is
-     unaffected, so the SEO breadcrumb stays. -->
 <article class="kiln-article">
     #unsafeHTML(page.content)
 </article>

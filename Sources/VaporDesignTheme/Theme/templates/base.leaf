@@ -17,7 +17,6 @@
             <img class="kiln-sidebar-logo" src="/assets/vapor-logo.png" alt="" width="44" height="44">
             <span class="kiln-sidebar-brand-text">#(site.name)</span>
         </a>
-        <!-- DocC sites inject a module + version switcher here; inert (keys absent) elsewhere. -->
         #if(nav.moduleSwitcher):#unsafeHTML(nav.moduleSwitcher)#endif
         #if(nav.versionSwitcher):#unsafeHTML(nav.versionSwitcher)#endif
         <nav class="kiln-nav" aria-label="Documentation navigation">
@@ -27,14 +26,11 @@
     </aside>
 
     <div class="kiln-shell">
-        <header>#extend("partials/header")</header>
+        <header>#extend("partials/docs-header")</header>
 
         <div class="kiln-layout">
         <button class="kiln-sidebar-toggle" id="kiln-sidebar-toggle" type="button" aria-label="#(strings.toggleNavigation)" aria-expanded="false" aria-controls="kiln-sidebar">
             <span class="kiln-crumb-dots" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3.5" cy="10" r="1.7"/><circle cx="10" cy="10" r="1.7"/><circle cx="16.5" cy="10" r="1.7"/></svg></span>
-            <!-- DocC pages carry an explicit breadcrumb trail (module > type > member);
-                 render it as the crumb row. Other pages derive the trail from the
-                 active navigation section plus the page title. -->
             #if(page.breadcrumb):#for(crumb in page.breadcrumb):<span class="vapor-icon icon-chevron-right kiln-crumb-sep" aria-hidden="true"></span>#if(crumb.url):<span class="kiln-crumb-section kiln-crumb-code">#(crumb.name)</span>#else:<span class="kiln-crumb-page kiln-crumb-code">#(crumb.name)</span>#endif#endfor#else:#for(item in nav.items):#if(item.kind == "section"):#if(item.isActive):<span class="vapor-icon icon-chevron-right kiln-crumb-sep" aria-hidden="true"></span><span class="kiln-crumb-section">#(item.title)</span>#endif#endif#endfor<span class="vapor-icon icon-chevron-right kiln-crumb-sep" aria-hidden="true"></span><span class="kiln-crumb-page">#(page.title)</span>#endif
         </button>
 
@@ -97,11 +93,7 @@
 
     #extend("partials/footer")
 
-    <!-- Search/version globals, read from the <body> data- attributes above.
-         External (not inline) so the CSP needs no 'unsafe-inline' for scripts;
-         must run before search.js, which reads window.kilnSearchIndex. -->
     <script src="/_kiln/js/search-init.js"></script>
-    <!-- Shared chrome JS: Bootstrap, dark-mode toggle, syntax highlighting -->
     <script src="https://design.vapor.codes/main.js"></script>
     #if(site.searchEnabled):<script src="/_kiln/js/search.js"></script>#endif
     <script src="/_kiln/js/docs.js"></script>
