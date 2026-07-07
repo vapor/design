@@ -4,7 +4,7 @@
 // 'unsafe-inline' for scripts. Must run before search.js, which reads
 // window.kilnSearchIndex synchronously at load.
 (function () {
-    var data = document.body.dataset;
+    const data = document.body.dataset;
     window.kilnSearchIndex = data.searchIndex;
     window.kilnVersionBase = data.versionBase || "";
 })();

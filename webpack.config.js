@@ -6,10 +6,15 @@ module.exports = {
   mode: 'production',
   entry: {
     // The shared brand bundle (Bootstrap + highlight.js + brand CSS) → main.js/main.css.
-    main: { import: './src/js/main.js', library: { name: 'Vapor', type: 'var' } },
-    // The docs-site layout + DocC styles → docs.css (served to docs sites only).
-    // Pure CSS entry; the emitted docs.js is an unused webpack stub.
-    docs: './src/scss/docs.scss',
+    main: { import: './src/js/main.ts', library: { name: 'Vapor', type: 'var' } },
+    // The docs-site bundle → docs.css (layout + DocC styles) and docs.js (the
+    // docs-body interactions: mobile drawers, scroll-spy, search). Served to
+    // docs/apiDocs sites only.
+    docs: { import: ['./src/scss/docs.scss', './src/js/docs.ts'] },
+    // Pre-paint colour-scheme script, loaded synchronously in <head> → js/theme-init.js.
+    'theme-init': { import: './src/js/themeInit.ts', filename: 'js/theme-init.js' },
+    // Kiln search bootstrap; must load before Kiln's search.js → js/search-init.js.
+    'search-init': { import: './src/js/searchInit.ts', filename: 'js/search-init.js' },
   },
 
   plugins: [
@@ -31,6 +36,10 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'Content'),
+    // Wipe stale output each build so removed entries/assets don't linger (e.g.
+    // the old detectColorScheme.js). Keep Content/index.md — it's the only
+    // tracked source in Content/ (the design guide's page), not a build artifact.
+    clean: { keep: /index\.md/ },
   },
 
   // The bundle intentionally ships all of Bootstrap + highlight.js and is loaded

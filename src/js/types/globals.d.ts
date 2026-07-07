@@ -13,6 +13,9 @@ declare global {
         // can reach it.
         hljs: HLJSApi;
         vaporLangSuggest: VaporLangSuggest;
+        // Set by searchInit from <body> data- attributes; read by Kiln's search.js.
+        kilnSearchIndex: string | undefined;
+        kilnVersionBase: string;
     }
 }
 

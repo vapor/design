@@ -8,18 +8,18 @@
     "use strict";
 
     // --- Mobile drawers: left sidebar + right nav menu ------------------
-    var sidebar = document.getElementById("kiln-sidebar");
-    var sidebarToggle = document.getElementById("kiln-sidebar-toggle");
-    var sidebarClose = document.getElementById("kiln-sidebar-close");
-    var navmenu = document.getElementById("kiln-navmenu");
-    var navmenuToggle = document.getElementById("kiln-navmenu-toggle");
-    var navmenuClose = document.getElementById("kiln-navmenu-close");
-    var backdrop = document.getElementById("kiln-doc-backdrop");
+    const sidebar = document.getElementById("kiln-sidebar");
+    const sidebarToggle = document.getElementById("kiln-sidebar-toggle");
+    const sidebarClose = document.getElementById("kiln-sidebar-close");
+    const navmenu = document.getElementById("kiln-navmenu");
+    const navmenuToggle = document.getElementById("kiln-navmenu-toggle");
+    const navmenuClose = document.getElementById("kiln-navmenu-close");
+    const backdrop = document.getElementById("kiln-doc-backdrop");
 
     function syncBackdrop() {
-        var open = (sidebar && sidebar.classList.contains("kiln-open")) ||
+        const open = (sidebar && sidebar.classList.contains("kiln-open")) ||
             (navmenu && navmenu.classList.contains("kiln-navmenu-open"));
-        if (backdrop) backdrop.classList.toggle("kiln-open", open);
+        if (backdrop) backdrop.classList.toggle("kiln-open", !!open);
     }
     function closeSidebar() {
         if (!sidebar) return;
@@ -51,7 +51,7 @@
     function inMobilePanel() { return window.matchMedia("(max-width: 991.98px)").matches; }
     function syncPanelOverflow() {
         if (!navmenu) return;
-        var open = !!navmenu.querySelector(
+        const open = !!navmenu.querySelector(
             ".language-picker .dropdown-menu.show," +
             ".kiln-version-nav .dropdown-menu.show," +
             ".theme-picker .dropdown-menu.show"
@@ -91,7 +91,8 @@
     // Close the sidebar drawer after following an in-page nav link on mobile.
     if (sidebar) {
         sidebar.addEventListener("click", function (e) {
-            var link = e.target.closest("a.kiln-nav-link");
+            const target = e.target as HTMLElement | null;
+            const link = target?.closest("a.kiln-nav-link");
             if (link && window.matchMedia("(max-width: 800px)").matches) closeSidebar();
         });
     }
@@ -100,10 +101,10 @@
     // Native <details> can't transition its own height, and the `toggle` event
     // fires only on user interaction (not for sections rendered open on load),
     // so we restart a short reveal animation on the freshly-opened list.
-    document.querySelectorAll("details.kiln-nav-section").forEach(function (section) {
+    document.querySelectorAll<HTMLDetailsElement>("details.kiln-nav-section").forEach(function (section) {
         section.addEventListener("toggle", function () {
             if (!section.open) return;
-            var list = section.querySelector(":scope > .kiln-nav-list");
+            const list = section.querySelector<HTMLElement>(":scope > .kiln-nav-list");
             if (!list) return;
             list.classList.remove("kiln-nav-revealing");
             void list.offsetWidth; // reflow so the animation restarts
@@ -122,21 +123,22 @@
     // prompt so it's obvious search is ready. Kiln's search.js owns the results
     // once you type; docs.js loads after it, so our `input` handler re-shows the
     // prompt after Kiln hides the (now empty) results.
-    var searchInput = document.getElementById("kiln-search-input");
-    var searchResults = document.getElementById("kiln-search-results");
+    const searchInput = document.getElementById("kiln-search-input") as HTMLInputElement | null;
+    const searchResults = document.getElementById("kiln-search-results");
     if (searchInput) {
         // Discoverability: on desktop (precise pointer + room) append the
         // keyboard shortcut to the placeholder, with the platform-correct
         // modifier (⌘ on Apple, Ctrl elsewhere). The base text stays localised
         // (set by Kiln); the key combo itself is universal. Hidden on touch /
         // small screens, where there's no keyboard to hint at.
-        var basePlaceholder = searchInput.getAttribute("placeholder") || "";
-        var platform = (navigator.userAgentData && navigator.userAgentData.platform) ||
+        const basePlaceholder = searchInput.getAttribute("placeholder") || "";
+        const nav = navigator as Navigator & { userAgentData?: { platform?: string } };
+        const platform = (nav.userAgentData && nav.userAgentData.platform) ||
             navigator.platform || navigator.userAgent || "";
-        var shortcutHint = /mac|iphone|ipad|ipod/i.test(platform) ? "⌘K" : "Ctrl+K";
-        var desktopQuery = window.matchMedia("(min-width: 800px) and (pointer: fine)");
+        const shortcutHint = /mac|iphone|ipad|ipod/i.test(platform) ? "⌘K" : "Ctrl+K";
+        const desktopQuery = window.matchMedia("(min-width: 800px) and (pointer: fine)");
         function syncSearchPlaceholder() {
-            searchInput.setAttribute(
+            searchInput!.setAttribute(
                 "placeholder",
                 desktopQuery.matches ? basePlaceholder + " (" + shortcutHint + ")" : basePlaceholder
             );
@@ -146,7 +148,7 @@
 
         // "Enter your search…", localised by <html lang>. Kiln's Localisation
         // struct has no field for this, so these strings live here.
-        var ENTER_SEARCH = {
+        const ENTER_SEARCH: Record<string, string> = {
             en: "Enter your search…",
             de: "Suchbegriff eingeben…",
             es: "Introduce tu búsqueda…",
@@ -160,12 +162,12 @@
             ar: "أدخل بحثك…"
         };
         function enterSearchText() {
-            var lang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
-            return ENTER_SEARCH[lang] || ENTER_SEARCH.en;
+            const lang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
+            return ENTER_SEARCH[lang] || ENTER_SEARCH.en || "Enter your search…";
         }
         function showSearchPrompt() {
-            if (!searchResults || searchInput.value.trim()) return;
-            var box = document.createElement("div");
+            if (!searchResults || searchInput!.value.trim()) return;
+            const box = document.createElement("div");
             box.className = "kiln-search-empty kiln-search-prompt";
             box.textContent = enterSearchText();
             searchResults.innerHTML = "";
@@ -175,57 +177,60 @@
         searchInput.addEventListener("focus", showSearchPrompt);
         // Kiln hides the results when the query goes empty; re-show our prompt.
         searchInput.addEventListener("input", function () {
-            if (!searchInput.value.trim()) showSearchPrompt();
+            if (!searchInput!.value.trim()) showSearchPrompt();
         });
 
         document.addEventListener("keydown", function (e) {
-            var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName) ||
-                document.activeElement.isContentEditable;
+            const active = document.activeElement as HTMLElement | null;
+            const typing = !!active && (/^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName) ||
+                active.isContentEditable);
             if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
-                searchInput.focus();
-                searchInput.select();
+                searchInput!.focus();
+                searchInput!.select();
                 showSearchPrompt();
             } else if (e.key === "/" && !typing) {
                 e.preventDefault();
-                searchInput.focus();
+                searchInput!.focus();
                 showSearchPrompt();
             } else if (e.key === "Escape" && document.activeElement === searchInput) {
-                searchInput.blur();
+                searchInput!.blur();
             }
         });
     }
 
     // --- On-this-page scroll-spy ----------------------------------------
-    var tocLinks = Array.prototype.slice.call(
-        document.querySelectorAll(".kiln-toc a[href^='#']")
+    const tocLinks = Array.from(
+        document.querySelectorAll<HTMLAnchorElement>(".kiln-toc a[href^='#']")
     );
     if (tocLinks.length && "IntersectionObserver" in window) {
-        var byId = {};
-        var headings = [];
+        const byId: Record<string, HTMLAnchorElement> = {};
+        const headings: HTMLElement[] = [];
         tocLinks.forEach(function (link) {
-            var id = decodeURIComponent(link.getAttribute("href").slice(1));
-            var el = document.getElementById(id);
+            const id = decodeURIComponent((link.getAttribute("href") || "").slice(1));
+            const el = document.getElementById(id);
             if (el) {
                 byId[id] = link;
                 headings.push(el);
             }
         });
 
-        var current = null;
-        function setActive(id) {
+        let current: string | null = null;
+        function setActive(id: string) {
             if (current === id) return;
             current = id;
             tocLinks.forEach(function (l) { l.classList.remove("kiln-toc-active"); });
-            if (byId[id]) byId[id].classList.add("kiln-toc-active");
+            const link = byId[id];
+            if (link) link.classList.add("kiln-toc-active");
         }
 
-        var observer = new IntersectionObserver(function (entries) {
+        const observer = new IntersectionObserver(function (entries) {
             // Pick the topmost heading currently intersecting the upper viewport.
-            var visible = entries
+            const visible = entries
                 .filter(function (e) { return e.isIntersecting; })
                 .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
-            if (visible.length) setActive(visible[0].target.id);
+            const first = visible[0];
+            if (first) setActive(first.target.id);
         }, { rootMargin: "0px 0px -70% 0px", threshold: 0 });
 
         headings.forEach(function (h) { observer.observe(h); });
@@ -234,14 +239,15 @@
     // --- Carbon ads (desktop only, where the TOC sidebar is visible) -----
     // This custom theme doesn't load Kiln's bundled theme.js, so the carbon
     // loader it normally provides is reproduced here. CSP allows cdn.carbonads.com.
-    var carbon = document.getElementById("kiln-carbon");
-    if (carbon && carbon.dataset.serve && window.innerWidth > 1200) {
-        var ad = document.createElement("script");
+    const carbon = document.getElementById("kiln-carbon");
+    const serve = carbon?.dataset.serve;
+    if (carbon && serve && window.innerWidth > 1200) {
+        const ad = document.createElement("script");
         ad.async = true;
         ad.type = "text/javascript";
         ad.id = "_carbonads_js";
-        ad.src = "//cdn.carbonads.com/carbon.js?serve=" + encodeURIComponent(carbon.dataset.serve) +
-            "&placement=" + encodeURIComponent(carbon.dataset.placement);
+        ad.src = "//cdn.carbonads.com/carbon.js?serve=" + encodeURIComponent(serve) +
+            "&placement=" + encodeURIComponent(carbon.dataset.placement || "");
         carbon.appendChild(ad);
     }
 })();
