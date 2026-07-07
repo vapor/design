@@ -62,7 +62,7 @@
                                 <a href="https://api.vapor.codes" target="_blank" class="nav-link">#localise("footer.apiDocs")</a>
                                 #endif
                             </li>
-                            <li><a href="https://design.vapor.codes/VaporPressKit.zip" class="nav-link" download>#(strings.pressKit)</a></li>
+                            <li><a href="#designResource("VaporPressKit.zip")" class="nav-link" download>#(strings.pressKit)</a></li>
                             <li><a href="https://vapor.team" target="_blank" class="nav-link">#(strings.help)</a></li>
                         </ul>
                     </div>

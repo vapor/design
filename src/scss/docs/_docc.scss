@@ -392,7 +392,8 @@ a.docc-catalog-card:hover {
 .docc-select-option:hover { background: var(--vp-surface); color: var(--vp-heading); }
 .docc-select-option.is-current { color: var(--vp-link); font-weight: 600; }
 
-.docc-select-badge {
+.docc-select-badge,
+.docc-catalog-card-badge {
     display: inline-block;
     margin-inline-start: 0.35rem;
     padding: 0.05rem 0.4rem;

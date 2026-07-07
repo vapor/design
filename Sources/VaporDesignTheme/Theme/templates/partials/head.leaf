@@ -30,11 +30,11 @@
 #if(customStrings.feedURL):<link rel="alternate" type="application/rss+xml" title="#(site.name)#localise("head.homeSuffix")" href="#(customStrings.feedURL)">#endif
 #if(site.author):<meta name="author" content="#(site.author)">#endif
 #if(noindex):<meta name="robots" content="noindex">#endif
-<link rel="stylesheet" href="https://design.vapor.codes/main.css" type="text/css">
-#if(customStrings.siteId == "docs" || customStrings.siteId == "apiDocs"):<link rel="stylesheet" href="https://design.vapor.codes/docs.css" type="text/css">#endif
+<link rel="stylesheet" href="#designResource("main.css")" type="text/css">
+#if(customStrings.siteId == "docs" || customStrings.siteId == "apiDocs"):<link rel="stylesheet" href="#designResource("docs.css")" type="text/css">#endif
 #for(href in site.extraCSS):<link rel="stylesheet" href="/#(href)" type="text/css">
 #endfor
-<script src="https://design.vapor.codes/js/theme-init.js"></script>
+<script src="#designResource("js/theme-init.js")"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
 #extend("partials/head-brand")

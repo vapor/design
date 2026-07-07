@@ -6,33 +6,46 @@ let package = Package(
     name: "DesignSite",
     platforms: [.macOS(.v13)],
     products: [
-        // The design.vapor.codes style guide, built with Kiln.
         .executable(
             name: "DesignSite",
             targets: ["DesignSite"]
         ),
-        // Shared Leaf templates for Vapor's Kiln sites, shipped as a resource.
         .library(name: "VaporDesignTheme", targets: ["VaporDesignTheme"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.5.0"),
+        // TEMPORARY (local dev): points at a local Kiln checkout that adds the
+        // generic `tags:` registration hook to `Kiln.build`. Revert to the
+        // released version once Kiln ships that hook:
+        //   .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.6.0"),
+        .package(path: "../kiln"),
+        // LeafKit — so VaporDesignTheme can define its own Leaf tags (the
+        // `#designResource` asset-URL tag). Kept in lockstep with Kiln's own
+        // leaf-kit requirement so SwiftPM resolves a single version.
+        .package(url: "https://github.com/vapor/leaf-kit.git", from: "1.14.0"),
     ],
     targets: [
         .executableTarget(
             name: "DesignSite",
             dependencies: [
                 .product(name: "Kiln", package: "kiln"),
-                // The style guide showcases the real shared chrome, so it pulls in
-                // the same header/footer Leaf partials the other sites consume.
                 "VaporDesignTheme",
             ]
         ),
-        // No dependencies beyond Foundation — just bundles the shared Leaf
-        // templates so consuming Kiln sites can pull them in as a theme layer.
         .target(
             name: "VaporDesignTheme",
+            dependencies: [
+                .product(name: "LeafKit", package: "leaf-kit"),
+            ],
             exclude: ["README.md"],
             resources: [.copy("Theme")]
+        ),
+        .testTarget(
+            name: "VaporDesignThemeTests",
+            dependencies: [
+                "VaporDesignTheme",
+                .product(name: "Kiln", package: "kiln"),
+                .product(name: "LeafKit", package: "leaf-kit"),
+            ]
         ),
     ]
 )

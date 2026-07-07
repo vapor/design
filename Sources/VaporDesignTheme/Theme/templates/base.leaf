@@ -93,10 +93,10 @@
 
     #extend("partials/footer")
 
-    <script src="https://design.vapor.codes/js/search-init.js"></script>
-    <script src="https://design.vapor.codes/main.js"></script>
+    <script src="#designResource("js/search-init.js")"></script>
+    <script src="#designResource("main.js")"></script>
     #if(site.searchEnabled):<script src="/_kiln/js/search.js"></script>#endif
-    <script src="https://design.vapor.codes/docs.js"></script>
+    <script src="#designResource("docs.js")"></script>
     #if(nav.doccHTML):<script src="/_kiln/js/docc-nav.js"></script>#endif
     #for(src in site.extraJS):<script src="/#(src)"></script>
     #endfor

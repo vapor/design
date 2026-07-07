@@ -13,6 +13,21 @@ theme: .custom(directory: "Theme", sharedLayers: [VaporDesignTheme.directory])
 Templates resolve site-local first, then this shared layer, then Kiln's bundled
 default — so a site can still override any partial in its own `Theme/`.
 
+The shared templates use a custom `#designResource(...)` Leaf tag (see "Shared
+head" below), so **every consuming site must also register the theme's tags** by
+passing `VaporDesignTheme.leafTags` to `Kiln.build`:
+
+```swift
+try await Kiln.build(
+    site,
+    contentDirectory: "Content",
+    outputDirectory: "site",
+    leafTags: VaporDesignTheme.leafTags
+)
+```
+
+Without this, rendering fails with an "unknown tag `designResource`" error.
+
 > Leaf has no comment syntax, so any `<!-- -->` comment in a `.leaf` file leaks
 > into every rendered page. Keep the templates comment-free; document them here.
 
@@ -114,3 +129,11 @@ optional and set only where a feed exists.
 > docs/apiDocs sites — `docs.css`. The docs `base.leaf` additionally loads
 > `js/search-init.js` (before Kiln's `search.js`) and `docs.js` (the docs-body
 > interactions: mobile drawers, scroll-spy, search).
+>
+> **Loading un-deployed assets locally.** Those URLs are emitted by Kiln's
+> `#designResource("<path>")` Leaf tag rather than hard-coded. By default it
+> resolves to `https://design.vapor.codes/<path>`; set the `VAPOR_DESIGN_ASSET_URL`
+> environment variable (e.g. `http://localhost:8001`, a local design webpack dev
+> server) to point every consuming site at that base instead — so you can test
+> in-progress design changes without waiting for a CDN deploy. Unset, sites use
+> the production CDN.
