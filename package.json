@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc",
     "build": "webpack"
   },
   "keywords": [
@@ -19,6 +20,7 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
+    "@types/bootstrap": "^5.2.11",
     "autoprefixer": "^10.4.13",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.0.0",
@@ -28,6 +30,8 @@
     "sass": "^1.57.1",
     "sass-loader": "^17.0.0",
     "style-loader": "^4.0.0",
+    "ts-loader": "^9.6.2",
+    "typescript": "^6.0.3",
     "webpack": "^5.75.0",
     "webpack-cli": "^7.0.0",
     "webpack-dev-server": "^6.0.0"

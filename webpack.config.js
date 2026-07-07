@@ -38,6 +38,12 @@ module.exports = {
   // doesn't apply here.
   performance: { hints: false },
 
+  // Resolve .ts before .js so an import without an extension (or a legacy
+  // './foo.js' specifier) picks up the TypeScript source.
+  resolve: {
+    extensions: ['.ts', '.js'],
+  },
+
   devServer: {
     static: path.resolve(__dirname, 'Content'),
     port: 8001,
@@ -46,6 +52,15 @@ module.exports = {
 
   module: {
     rules: [
+      // TypeScript handling. tsconfig.json sets noEmit:true (so a bare `tsc` /
+      // the editor only type-checks); override it here so ts-loader can emit
+      // into the webpack pipeline.
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: { compilerOptions: { noEmit: false } },
+      },
       // SVG handling
       {
         test: /\.svg$/,

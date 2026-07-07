@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    // ts-loader overrides this to false in webpack.config.js so it can hand
+    // output to webpack; kept true here so a bare `tsc` / the editor only
+    // type-checks (our `npm run typecheck` relies on it) and never writes .js.
+    "noEmit": true
+  },
+  "include": ["src/js"]
+}
