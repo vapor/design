@@ -107,7 +107,10 @@ optional and set only where a feed exists.
 > either over an always-present array (`languages`, `site.extraCSS`) or wrapped in
 > an `#if` presence check (`#if(blogPost)`). Keep it that way when editing.
 
-> **CSS/JS live on the CDN.** `head.leaf` links `design.vapor.codes/main.css`,
-> `design.vapor.codes/js/theme-init.js` (the pre-paint colour-scheme script), and
-> `design.vapor.codes/main.js`. Those assets ship from this repo's `static/`
-> directory and must be deployed to the CDN before a site references a new one.
+> **CSS/JS live on the CDN.** These assets are built by webpack (`npm run build`)
+> into `Content/` and served from `design.vapor.codes`; deploy a new one to the
+> CDN before a site references it. `head.leaf` links `main.css`,
+> `js/theme-init.js` (the pre-paint colour-scheme script), `main.js`, and — on
+> docs/apiDocs sites — `docs.css`. The docs `base.leaf` additionally loads
+> `js/search-init.js` (before Kiln's `search.js`) and `docs.js` (the docs-body
+> interactions: mobile drawers, scroll-spy, search).
