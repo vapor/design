@@ -4,7 +4,13 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './src/js/main.js',
+  entry: {
+    // The shared brand bundle (Bootstrap + highlight.js + brand CSS) → main.js/main.css.
+    main: { import: './src/js/main.js', library: { name: 'Vapor', type: 'var' } },
+    // The docs-site layout + DocC styles → docs.css (served to docs sites only).
+    // Pure CSS entry; the emitted docs.js is an unused webpack stub.
+    docs: './src/scss/docs.scss',
+  },
 
   plugins: [
     // Copy static assets to the output directory
@@ -23,12 +29,8 @@ module.exports = {
   // build). The generated files under Content/ are git-ignored; only Content's
   // source pages (index.md) are tracked.
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'Content'),
-    library: {
-      name: 'Vapor',
-      type: 'var',
-    },
   },
 
   // The bundle intentionally ships all of Bootstrap + highlight.js and is loaded
@@ -67,7 +69,13 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: {
+              sourceMap: true,
+              // Root-absolute url()s (e.g. /assets/heading-link.svg) are runtime
+              // server paths served by the consuming site, not build-time assets,
+              // so leave them untouched instead of trying to resolve a module.
+              url: { filter: (url) => !url.startsWith('/') },
+            },
           },
           {
             loader: 'postcss-loader',
