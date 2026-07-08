@@ -173,6 +173,10 @@
             searchResults.innerHTML = "";
             searchResults.appendChild(box);
             searchResults.hidden = false;
+            // Keep the combobox state truthful: the popup is visible (showing the
+            // prompt), so mark it expanded. Kiln's search.js flips it back to
+            // false when it hides the panel.
+            searchInput!.setAttribute("aria-expanded", "true");
         }
         searchInput.addEventListener("focus", showSearchPrompt);
         // Kiln hides the results when the query goes empty; re-show our prompt.
