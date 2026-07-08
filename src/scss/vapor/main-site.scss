@@ -163,6 +163,10 @@ body {
     font-size: 16px;
     line-height: 150%;
     text-align: center;
+    // Undo the `:where(#main-page-body) h2` 560px cap: this caption is a full-width
+    // centered label, not a marketing section heading, so it must span the section
+    // for `text-align: center` to actually centre it.
+    max-width: none;
     margin-bottom: 32px;
 }
 
