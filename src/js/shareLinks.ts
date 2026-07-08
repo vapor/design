@@ -1,5 +1,3 @@
-// Social "share this page" buttons. Each target rewrites the href of its matching
-// buttons to a share-intent URL built from the current page title + location.
 interface ShareTarget {
     selector: string;
     url(title: string, href: string): string;

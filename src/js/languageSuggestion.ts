@@ -1,15 +1,3 @@
-// Language-suggestion banner — shared across the Vapor sites (website + docs).
-//
-// If the visitor's preferred language (navigator.languages) is available as a
-// translation of the current page but isn't the language they're viewing, show a
-// small, dismissible toast suggesting the switch and briefly highlight the navbar
-// language selector. Their choice — switch or dismiss — is remembered in
-// localStorage so we never ask again.
-//
-// It makes no network requests and injects no inline <script>/<style>, so it
-// needs no CSP changes (localStorage is not governed by CSP). It no-ops cleanly
-// when a page has no translations, when storage is blocked, or when the language
-// markup isn't present, so it's safe to ship on every page of both sites.
 (function () {
     "use strict";
 
@@ -22,10 +10,6 @@
         no: string;
     }
 
-    // Native name + copy, in the TARGET language, for each locale we ship. A
-    // German visitor sees the prompt in German. `as const satisfies` makes this
-    // table the single source of truth: the shipped locales are exactly its keys
-    // (see LocaleKey), while each entry is still checked against Locale.
     const LOCALES = {
         "en":    { name: "English",    msg: "This site is available in English.",            go: "Switch",        no: "No thanks" },
         "de":    { name: "Deutsch",    msg: "Diese Website ist auf Deutsch verfügbar.",       go: "Wechseln",      no: "Nein danke" },
@@ -40,15 +24,12 @@
         "pt-BR": { name: "Português",  msg: "Este site está disponível em português.",         go: "Mudar",         no: "Não, obrigado" }
     } as const satisfies Record<string, Locale>;
 
-    // The locales we actually ship copy for — derived from the table above.
     type LocaleKey = keyof typeof LOCALES;
     function isLocaleKey(key: string): key is LocaleKey {
         return key in LOCALES;
     }
 
     // Map a browser language tag ("en-GB", "zh-CN", "pt-PT", …) to a locale key
-    // we ship. We only have Simplified Chinese and Brazilian Portuguese, so all
-    // Chinese / Portuguese variants fold onto those.
     function toLocaleKey(tag: string): string {
         tag = (tag || "").toLowerCase();
         if (tag.indexOf("pt") === 0) return "pt-BR";
@@ -59,9 +40,6 @@
     function read(): string | null { try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; } }
     function write(v: string) { try { localStorage.setItem(STORAGE_KEY, v); } catch (e) { /* private mode etc. */ } }
 
-    // hreflang hrefs are absolute (e.g. https://vapor.codes/de/), which would send
-    // PR-preview / local visitors off to the production host. Re-base the path onto
-    // the current origin so "Switch" stays on whatever host serves the page.
     function toRelative(href: string): string {
         try { const u = new URL(href, location.href); return u.pathname + u.search + u.hash; }
         catch (e) { return href; }
@@ -72,7 +50,6 @@
 
         const current = toLocaleKey(document.documentElement.getAttribute("lang") || "en");
 
-        // Available translations come from the hreflang alternates both sites emit.
         const alts: Record<string, string> = {};
         for (const link of document.querySelectorAll('link[rel="alternate"][hreflang]')) {
             const hl = link.getAttribute("hreflang");
@@ -80,8 +57,6 @@
             if (hl && hl !== "x-default" && href) alts[toLocaleKey(hl)] = href;
         }
 
-        // The first preferred language we support that isn't the current one. If
-        // the visitor's top preference already matches this page, stay quiet.
         const prefs = navigator.languages || [navigator.language || "en"];
         let target: string | null = null;
         let targetUrl: string | null = null;
@@ -114,11 +89,9 @@
         actions.className = "vapor-lang-suggest-actions";
 
         const go = document.createElement("a");
-        // Reuse the site's primary button styling.
         go.className = "btn btn-primary vapor-lang-suggest-go";
         go.href = toRelative(url);
         go.textContent = copy.go;
-        // Record the choice before the browser follows the link.
         go.addEventListener("click", function () { write(target); });
 
         const no = document.createElement("button");
@@ -133,8 +106,6 @@
         bar.appendChild(actions);
         document.body.appendChild(bar);
 
-        // Point the visitor at the navbar language selector — where they can
-        // change language any time from now on.
         const picker = document.getElementById("language-picker-toggle");
         if (picker) picker.classList.add("lang-suggest-pulse");
 
@@ -148,10 +119,6 @@
         setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); }, 250);
     }
 
-    // Small console helper for manual testing / QA — works on any page, including
-    // the single-language design guide (which never triggers the banner on its
-    // own). In DevTools: `vaporLangSuggest.preview('de')` to force-show a locale's
-    // banner, `vaporLangSuggest.reset()` to clear the "don't ask again" flag.
     window.vaporLangSuggest = {
         preview: function (locale?: string) {
             const key = locale || "de";
@@ -161,7 +128,6 @@
             }
             const existing = document.querySelector(".vapor-lang-suggest");
             if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-            // Use the real alternate URL if the page has one, otherwise a no-op href.
             const link = document.querySelector('link[rel="alternate"][hreflang="' + key + '"]');
             showBanner(key, link ? link.getAttribute("href") || "#" : "#");
         },

@@ -1,28 +1,14 @@
-// Light / Dark / System theme picker.
-//
-// Replaces the legacy single #theme-switch toggle (toggleDarkMode.js) with a
-// dropdown offering an explicit choice. It shares the same model the rest of the
-// design system already uses (detectColorScheme.js applies the theme pre-paint
-// in the <head>):
-//   - "light" / "dark" → stored under the localStorage "theme" key
-//   - "system"         → no key stored, so we follow the OS (prefers-color-scheme)
-//
-// Backwards compatibility: this is a no-op on pages that don't render the picker
-// markup (i.e. sites still serving the old toggle during the rollout window), so
-// main.js can safely import both this and toggleDarkMode.js.
 (function () {
     "use strict";
 
     type Theme = "light" | "dark" | "system";
 
     const items = document.querySelectorAll<HTMLElement>('.theme-picker .dropdown-item[data-theme]');
-    if (!items.length) return; // legacy #theme-switch toggle still in use — leave it to toggleDarkMode.js
+    if (!items.length) return;
 
     const KEY = "theme";
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
-    // Normalise any stored/attribute value to a known Theme. Only "light"/"dark"
-    // are ever persisted (system removes the key), so anything else means system.
     function asTheme(value: string | null): Theme {
         return value === "light" || value === "dark" ? value : "system";
     }
@@ -46,8 +32,6 @@
         items.forEach(function (a) {
             a.classList.toggle("active", a.getAttribute("data-theme") === c);
         });
-        // Mirror the active option's icon onto the toggle so it reflects the
-        // current choice (sun / moon / monitor) at a glance.
         const opt = document.querySelector('.theme-picker .dropdown-item[data-theme="' + c + '"] .theme-opt-icon');
         if (opt) {
             document.querySelectorAll(".theme-toggle-icon").forEach(function (el) {
@@ -72,7 +56,7 @@
         });
     });
 
-    // Follow live OS changes only while in system mode.
+    // Update based on OS preference change in system mode
     mq.addEventListener("change", function () {
         if (current() === "system") apply("system");
     });

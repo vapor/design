@@ -1,15 +1,3 @@
-// highlight.js core + the curated language set.
-//
-// This is a separate module (rather than inline in startSyntaxHighlighting.ts)
-// for load ordering: it must fully evaluate — registering languages and setting
-// window.hljs — *before* the highlightjs-line-numbers.js plugin runs, because
-// that UMD reads window.hljs at load time. ES modules evaluate their imports in
-// source order, so startSyntaxHighlighting.ts imports this module before it
-// imports the plugin, guaranteeing the ordering without a `require()` hack.
-//
-// The language set mirrors the previously-vendored build (highlight.js 11.11.1),
-// including `leaf` and `swift`, which are first-party bundled languages in core —
-// so we register only these instead of shipping all ~190.
 import hljs from 'highlight.js/lib/core';
 import type { HLJSApi, LanguageFn } from 'highlight.js';
 
@@ -43,8 +31,6 @@ import wasm from 'highlight.js/lib/languages/wasm';
 import xml from 'highlight.js/lib/languages/xml';
 import yaml from 'highlight.js/lib/languages/yaml';
 
-// The curated language set — key is the name hljs registers under. `satisfies`
-// checks every entry is a real LanguageFn without widening the value type.
 const LANGUAGES = {
     armasm, awk, bash, c, cmake, cpp, css, diff, dockerfile, http, javascript,
     json, leaf, less, llvm, makefile, markdown, pgsql, plaintext, protobuf,
@@ -55,11 +41,9 @@ for (const [name, language] of Object.entries(LANGUAGES)) {
     hljs.registerLanguage(name, language);
 }
 
-// Publish for the line-numbers plugin (reads window.hljs at load) and page code.
+// Required for the line-numbers plugin
 window.hljs = hljs;
 
-// The highlightjs-line-numbers.js plugin, imported after this module, augments
-// the same hljs instance at runtime with these methods.
 export interface HLJSWithLineNumbers extends HLJSApi {
     initLineNumbersOnLoad(options?: { singleLine?: boolean }): void;
     lineNumbersBlock(element: HTMLElement, options?: { singleLine?: boolean }): void;

@@ -1,9 +1,3 @@
-// Mobile off-canvas navigation panel.
-//
-// Replaces the old Bootstrap collapse menu (SiteNavigation): below `lg` the nav
-// slides in from the right as a panel. Opened by the hamburger, closed by the X,
-// the backdrop, Escape, or after tapping a real navigation link. No-ops on sites
-// that don't render the panel markup yet (rollout window).
 (function () {
     "use strict";
 
@@ -29,9 +23,7 @@
     document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") close();
     });
-
-    // Close after following a real link, but not when toggling an in-panel
-    // dropdown (Documentation / Theme), which use href="#" + data-bs-toggle.
+    
     panel.addEventListener("click", function (e) {
         const target = e.target as HTMLElement | null;
         const link = target?.closest("a.nav-link[href]");
