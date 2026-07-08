@@ -1,6 +1,15 @@
 {
-  "originHash" : "9597608023291355abd18d714dfa1ab83d6f70c561a2124ed9e9925a9bd5eda0",
+  "originHash" : "c97442e70978fb944f233b6f6f0135b717487bd9b5800dfd0afd41d864cc2076",
   "pins" : [
+    {
+      "identity" : "kiln",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brokenhandsio/kiln.git",
+      "state" : {
+        "revision" : "5a48bf76802f74cf55aac4a1dfd8e1c01176b718",
+        "version" : "1.7.0"
+      }
+    },
     {
       "identity" : "leaf-kit",
       "kind" : "remoteSourceControl",

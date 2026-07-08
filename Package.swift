@@ -13,11 +13,7 @@ let package = Package(
         .library(name: "VaporDesignTheme", targets: ["VaporDesignTheme"]),
     ],
     dependencies: [
-        // TEMPORARY (local dev): points at a local Kiln checkout that adds the
-        // generic `tags:` registration hook to `Kiln.build`. Revert to the
-        // released version once Kiln ships that hook:
-        //   .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.6.0"),
-        .package(path: "../kiln"),
+        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.7.0"),
         // LeafKit — so VaporDesignTheme can define its own Leaf tags (the
         // `#designResource` asset-URL tag). Kept in lockstep with Kiln's own
         // leaf-kit requirement so SwiftPM resolves a single version.
