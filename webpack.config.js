@@ -61,7 +61,15 @@ module.exports = {
   devServer: {
     static: path.resolve(__dirname, 'Content'),
     port: 8001,
-    hot: true
+    hot: true,
+    // Serve cross-origin so a consuming site (docs/website/blog) pointed here via
+    // VAPOR_DESIGN_ASSET_URL can load these assets from its own origin —
+    // webpack-dev-server otherwise defaults to Cross-Origin-Resource-Policy:
+    // same-origin, which the browser blocks.
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Cross-Origin-Resource-Policy': 'cross-origin',
+    },
   },
 
   module: {
