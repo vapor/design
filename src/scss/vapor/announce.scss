@@ -1,0 +1,163 @@
+// Variables + Bootstrap mixins come from vapor/vapor (imported first in main.scss);
+// importing it here would re-emit the whole Bootstrap framework.
+//
+// Site-wide announcement banner (markup: partials/announce.leaf, behaviour:
+// src/js/announce.ts). It sits above the nav on every Vapor site. The vivid
+// gradient with near-black text is intentionally identical in light and dark
+// mode, so there's no .dark override — the bar reads the same in both themes.
+
+// Near-black ink used for the text and controls — AAA on the light gradient.
+$announce-ink: #160a22;
+// Solid overlay tint for the eyebrow pill / control hovers.
+$announce-overlay: rgba(10, 4, 20, 0.86);
+
+.vapor-announce {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    min-height: 52px;
+    // Collapse animates max-height (not min-height): min-height can't shrink the
+    // bar below its text's intrinsic height, which would leave a ~23px sliver
+    // when dismissed. max-height clips content to 0. 120px comfortably clears the
+    // banner even when the message wraps to two lines on narrow screens.
+    max-height: 120px;
+    padding: 8px 56px;
+    color: $announce-ink;
+    background: linear-gradient(90deg, #5cd0ff 0%, #6fa0ff 34%, #b98cff 66%, #ef8cff 100%);
+    overflow: hidden;
+    transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s, padding 0.32s;
+
+    &__msg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 15px;
+        line-height: 1.35;
+        text-align: center;
+    }
+
+    &__eyebrow {
+        flex: none;
+        padding: 5px 12px;
+        border-radius: 999px;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        background: $announce-overlay;
+        color: #fff;
+    }
+
+    &__txt {
+        font-weight: 600;
+    }
+
+    // The call-to-action is the design system's secondary-small button
+    // (.btn.btn-secondary.btn-small); it carries its own styling. Only keep it
+    // from being stretched by the flex row and nudge the arrow icon on hover to
+    // match the other trailing-icon buttons in the kit.
+    &__cta {
+        flex: none;
+        white-space: nowrap;
+
+        .vapor-icon {
+            transition: transform 0.15s ease-in-out;
+        }
+
+        &:hover .vapor-icon {
+            transform: translateX(3px);
+        }
+    }
+
+    &__close {
+        position: absolute;
+        inset-inline-end: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border: none;
+        border-radius: 9px;
+        background: transparent;
+        cursor: pointer;
+        transition: background 0.15s;
+
+        &:hover {
+            background: rgba(10, 4, 20, 0.14);
+        }
+
+        // The X is the design system's icon font (a CSS mask), tinted via
+        // background-color rather than an SVG stroke.
+        .vapor-icon {
+            width: 16px;
+            height: 16px;
+            background-color: $announce-ink;
+        }
+    }
+
+    &__close:focus-visible,
+    &__cta:focus-visible {
+        outline: 2px solid $announce-ink;
+        outline-offset: 2px;
+    }
+
+    // Collapsed state after the visitor dismisses the banner (toggled in JS).
+    &.is-dismissed {
+        min-height: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+// The design specifies a 640px breakpoint (between Bootstrap's sm/md), so use a
+// literal query rather than a media-breakpoint-down mixin to match it exactly.
+@media (max-width: 640px) {
+    .vapor-announce {
+        padding: 10px 48px;
+
+        &__msg {
+            font-size: 14px;
+            gap: 6px 12px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vapor-announce {
+        transition: none;
+    }
+}
+
+// The banner keeps its bright gradient in dark mode, so its CTA must keep the
+// LIGHT secondary-button treatment too. The default dark .btn-secondary is a
+// translucent white fill meant for the dark site surface (rgba(white, .05)),
+// which is nearly invisible and low-contrast on the gradient. The extra class
+// in the selector raises specificity past `.dark .btn-secondary`, which is
+// defined later in vapor-dark.scss.
+.dark .vapor-announce .vapor-announce__cta {
+    background: $grey-200;
+    border-color: rgba($pink-300, 0.1);
+    color: $pink-300;
+
+    .vapor-icon {
+        background-color: $pink-300;
+    }
+
+    &:hover {
+        background: $grey-300;
+        color: $pink-400;
+
+        .vapor-icon {
+            background-color: $pink-400;
+        }
+    }
+}
