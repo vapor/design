@@ -159,10 +159,11 @@ html.dark body { background-image: none; }
     line-height: 1.45;
 }
 .kiln-nav-link:hover { color: var(--vp-link-hover); }
-/* Active page: highlight the left edge only — text keeps the normal colour. */
+/* Active page: blue text and a blue left bar (matches the DocC sidebar). */
 .kiln-nav-link.kiln-current {
     border-inline-start: 2px solid var(--vp-blue-300);
     border-radius: 0;
+    color: var(--vp-link);
 }
 
 /* Items nested inside a section get a vertical guide line; the current one

@@ -34,8 +34,6 @@ html.dark {
     margin: 0 0 0.25rem;
     font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     color: var(--vp-text-muted);
 }
 
@@ -421,22 +419,29 @@ a.docc-catalog-card:hover {
     margin-inline-start: 0.75rem;
 }
 
-.docc-nav-item { margin: 0.05rem 0; }
+.docc-nav-item { margin: 0.2rem 0; }
 
 .docc-nav-link {
     display: block;
     padding: 0.2rem 0.5rem;
     border-radius: 6px;
-    /* Sidebar entries are code identifiers → code font. The uppercase category
-       group headings (.docc-nav-group > summary) are not links, so stay sans. */
+    /* Sidebar entries are code identifiers → code font. The category group
+       headings (.docc-nav-group > summary) are not links, so stay sans. This is
+       the compact, muted treatment for nested entries (members, nested types);
+       top-level symbols are enlarged and whitened below — by nesting level, not
+       by whether they expand, so items at the same level always match. */
     font-family: var(--vp-font-code, "Roboto Mono", monospace);
     font-size: 0.82rem;
     color: var(--vp-text);
     text-decoration: none;
-    line-height: 1.4;
+    line-height: 1.55;
 }
 
-.docc-nav-link:hover { background: var(--vp-surface); color: var(--vp-heading); }
+/* Hover: no filled box. A white "heading" link (top-level type or nested type
+   branch — anything without a guide bar) turns blue with no underline, matching
+   the doc site. A nested member (with a guide bar) brightens to white — both its
+   text and its bar. */
+.docc-nav-link:hover { color: var(--vp-link); text-decoration: none; }
 
 /* Current page: blue text, no filled box. Nested items additionally get a blue
    guide bar (below); top-level ("heading") items are just recoloured. */
@@ -447,11 +452,9 @@ a.docc-catalog-card:hover {
     list-style: none;
     padding: 0.2rem 0.5rem;
     border-radius: 6px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--vp-text-muted);
+    font-size: 0.97rem;
+    font-weight: 600;
+    color: var(--vp-heading);
     margin-top: 0.6rem;
 }
 .docc-nav-group > summary::-webkit-details-marker { display: none; }
@@ -465,6 +468,25 @@ a.docc-catalog-card:hover {
     gap: 0.1rem;
 }
 .docc-nav-row .docc-nav-link { flex: 1; min-width: 0; }
+
+/* Top-level symbols (e.g. JWTSerializer, RSAKey) read as headings — white and at
+   the doc-site size — whether or not they expand, so items at the same level
+   always match. Member signatures can be long, so nested entries keep the compact
+   muted base (above). The current page keeps its blue (.docc-nav-link.docc-current). */
+.kiln-nav > .docc-nav-list > .docc-nav-item > .docc-nav-link,
+.kiln-nav > .docc-nav-list > .docc-nav-item > .docc-nav-row > .docc-nav-link {
+    font-size: 0.97rem;
+}
+.kiln-nav > .docc-nav-list > .docc-nav-item > .docc-nav-link:not(.docc-current),
+.kiln-nav > .docc-nav-list > .docc-nav-item > .docc-nav-row > .docc-nav-link:not(.docc-current) {
+    color: var(--vp-heading);
+}
+/* …but on hover they go blue like every other heading link. This needs to match
+   the specificity of the white rule above (the base .docc-nav-link:hover can't). */
+.kiln-nav > .docc-nav-list > .docc-nav-item > .docc-nav-link:hover,
+.kiln-nav > .docc-nav-list > .docc-nav-item > .docc-nav-row > .docc-nav-link:hover {
+    color: var(--vp-link);
+}
 
 .docc-nav-toggle {
     flex: none;
@@ -490,20 +512,18 @@ a.docc-catalog-card:hover {
    so the guide line below still sits at the item's left edge. */
 .docc-nav-item > .docc-nav-link { padding-inline-start: 1.75rem; }
 
-/* Vertical guide line on nested items — drawn on the leaf link or the branch
-   row so a single item's segment can be recoloured. Grey by default, brighter
-   on hover, blue for the current page (matches the designer's sidebar). The
-   root level ("headings") has no guide, so those items get no bar. */
-.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link,
-.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-row {
+/* Vertical guide line on nested leaf items only. Expandable rows (with a
+   chevron) don't get a bar — the chevron already marks them — so the guide is
+   reserved for the members. Grey by default, brighter on hover, blue for the
+   current page. Top-level items ("headings") have no guide either. */
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link {
     border-inline-start: 2px solid var(--vp-border);
     border-radius: 0;
 }
-.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link:hover,
-.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-row:hover {
-    border-inline-start-color: var(--vp-grey-600);
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link:hover {
+    color: var(--vp-heading);
+    border-inline-start-color: var(--vp-heading);
 }
-.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link.docc-current,
-.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-row.docc-current {
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link.docc-current {
     border-inline-start-color: var(--vp-blue-300);
 }
