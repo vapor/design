@@ -25,6 +25,7 @@
     <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
 </head>
 <body>
+    #extend("partials/announce")
     #import("content")
     <script src="/main.js"></script>
 </body>

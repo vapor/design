@@ -5,6 +5,7 @@
 </head>
 <body data-search-index="#(searchIndexURL)" data-version-base="#(versionBasePath)">
     <a class="kiln-skip-link" href="#kiln-main">#localise("skipToContent")</a>
+    #extend("partials/announce")
     <div class="kiln-doc-backdrop" id="kiln-doc-backdrop"></div>
 
     <div class="kiln-top">
