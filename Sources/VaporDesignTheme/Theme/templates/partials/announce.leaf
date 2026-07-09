@@ -1,7 +1,7 @@
 <div class="vapor-announce" role="region" aria-label="Site announcement" data-announce-id="vapor5-launch-2026">
     <span class="vapor-announce__msg">
         <span class="vapor-announce__eyebrow">New</span>
-        <span class="vapor-announce__txt">Vapor 5 is here — async-first, faster routing, and a new CLI.</span>
+        <span class="vapor-announce__txt">Vapor 5 is here — built from the ground up for modern Swift</span>
         <a class="vapor-announce__cta btn btn-secondary btn-small d-inline-flex align-items-center" href="https://blog.vapor.codes">Read the announcement<span class="vapor-icon icon-arrow-right ms-2" aria-hidden="true"></span></a>
     </span>
     <button class="vapor-announce__close" type="button" aria-label="Dismiss announcement">
