@@ -415,10 +415,10 @@ a.docc-catalog-card:hover {
     padding: 0;
 }
 
+/* Nested lists indent only; the vertical guide line lives on each item (below)
+   so the current page's segment can be highlighted individually. */
 .docc-nav-list .docc-nav-list {
-    margin-left: 0.75rem;
-    padding-left: 0.6rem;
-    border-left: 1px solid var(--vp-border);
+    margin-inline-start: 0.75rem;
 }
 
 .docc-nav-item { margin: 0.05rem 0; }
@@ -438,21 +438,15 @@ a.docc-catalog-card:hover {
 
 .docc-nav-link:hover { background: var(--vp-surface); color: var(--vp-heading); }
 
-.docc-nav-link.docc-current {
-    background: color-mix(in srgb, var(--vp-link) 14%, transparent);
-    color: var(--vp-link);
-    font-weight: 600;
-}
+/* Current page: blue text, no filled box. Nested items additionally get a blue
+   guide bar (below); top-level ("heading") items are just recoloured. */
+.docc-nav-link.docc-current { color: var(--vp-link); }
 
-.docc-nav-group > summary,
-.docc-nav-branch > summary {
+.docc-nav-group > summary {
     cursor: pointer;
     list-style: none;
     padding: 0.2rem 0.5rem;
     border-radius: 6px;
-}
-
-.docc-nav-group > summary {
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -460,9 +454,56 @@ a.docc-catalog-card:hover {
     color: var(--vp-text-muted);
     margin-top: 0.6rem;
 }
-
-.docc-nav-branch > summary { padding: 0; }
-.docc-nav-branch > summary::-webkit-details-marker { display: none; }
 .docc-nav-group > summary::-webkit-details-marker { display: none; }
-.docc-nav-branch > summary::marker,
 .docc-nav-group > summary::marker { content: ""; }
+
+/* Symbol branch: the navigable link paired with a separate expand/collapse
+   toggle (they can't be one control — a link inside a <summary> is invalid). */
+.docc-nav-row {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+.docc-nav-row .docc-nav-link { flex: 1; min-width: 0; }
+
+.docc-nav-toggle {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--vp-text-muted);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.docc-nav-toggle:hover { background: var(--vp-surface); color: var(--vp-heading); }
+.docc-nav-chevron { display: inline-flex; transition: transform 0.15s ease; }
+.docc-nav-chevron svg { display: block; width: 13px; height: 13px; }
+.docc-nav-toggle[aria-expanded="true"] .docc-nav-chevron { transform: rotate(90deg); }
+
+/* Leaf rows have no toggle; pad their text so it lines up with the links in
+   sibling branch rows (toggle width + gap + link padding). Padding, not margin,
+   so the guide line below still sits at the item's left edge. */
+.docc-nav-item > .docc-nav-link { padding-inline-start: 1.75rem; }
+
+/* Vertical guide line on nested items — drawn on the leaf link or the branch
+   row so a single item's segment can be recoloured. Grey by default, brighter
+   on hover, blue for the current page (matches the designer's sidebar). The
+   root level ("headings") has no guide, so those items get no bar. */
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link,
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-row {
+    border-inline-start: 2px solid var(--vp-border);
+    border-radius: 0;
+}
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link:hover,
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-row:hover {
+    border-inline-start-color: var(--vp-grey-600);
+}
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-link.docc-current,
+.docc-nav-list .docc-nav-list > .docc-nav-item > .docc-nav-row.docc-current {
+    border-inline-start-color: var(--vp-blue-300);
+}
