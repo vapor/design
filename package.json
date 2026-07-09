@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc",
     "build": "webpack"
   },
   "keywords": [
@@ -19,26 +20,30 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
+    "@types/bootstrap": "^5.2.11",
+    "autoprefixer": "^10.5.2",
     "copy-webpack-plugin": "^14.0.0",
-    "css-loader": "^7.0.0",
-    "mini-css-extract-plugin": "^2.7.2",
-    "postcss-loader": "^8.0.0",
+    "css-loader": "^7.1.4",
+    "mini-css-extract-plugin": "^2.10.2",
+    "postcss-loader": "^8.2.1",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.57.1",
+    "sass": "^1.101.0",
     "sass-loader": "^17.0.0",
     "style-loader": "^4.0.0",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^7.0.0",
+    "ts-loader": "^9.6.2",
+    "typescript": "^6.0.3",
+    "webpack": "^5.108.4",
+    "webpack-cli": "^7.2.1",
     "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
-    "highlightjs-copy": "^1.0.6"
+    "bootstrap": "^5.3.8",
+    "highlight.js": "^11.11.1",
+    "highlightjs-copy": "^1.0.6",
+    "highlightjs-line-numbers.js": "^2.9.1"
   },
-  "_comment_overrides": "uuid is forced to a patched (>=11.1.1) release — the vulnerable 8.x is pulled transitively via sockjs <- webpack-dev-server (dev-only). This avoids `npm audit fix --force`, which would downgrade webpack-dev-server v5 -> v1.",
-  "overrides": {
-    "uuid": "^11.1.1"
+  "allowScripts": {
+    "@parcel/watcher@2.5.6": true
   }
 }

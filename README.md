@@ -27,6 +27,21 @@ kiln serve
 
 `kiln serve` runs the `kiln.json` pre-build (`npm run build`) to compile the CDN assets into `./Content`, generates the site into `./site`, serves it at http://localhost:8080, and watches both `src/` (Sass/JS) and the `Theme/` templates — re-running webpack and regenerating the site on every change.
 
+### Testing another site against local design assets
+
+To preview a consuming site (docs, blog, website) with un-deployed design changes, serve the assets here and point that site at them via `VAPOR_DESIGN_ASSET_URL`:
+
+```bash
+# in this repo — serves ./Content at :8001 (CORS-enabled, hot-reloads on src/ change)
+npm start
+
+# in the consuming repo — generates + serves at :8080 and watches its content;
+# its #designResource(...) URLs now resolve to :8001
+VAPOR_DESIGN_ASSET_URL=http://localhost:8001 kiln serve
+```
+
+The env var is read when the site is generated; refresh after a webpack rebuild. Unset, sites use the production CDN.
+
 ### Build a deployable site
 
 ```bash

@@ -5,11 +5,11 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
-    // The shared brand bundle (Bootstrap + highlight.js + brand CSS) → main.js/main.css.
-    main: { import: './src/js/main.js', library: { name: 'Vapor', type: 'var' } },
-    // The docs-site layout + DocC styles → docs.css (served to docs sites only).
-    // Pure CSS entry; the emitted docs.js is an unused webpack stub.
-    docs: './src/scss/docs.scss',
+    // Order is important here
+    main: { import: './src/js/main.ts', library: { name: 'Vapor', type: 'var' } },
+    docs: { import: ['./src/scss/docs.scss', './src/js/docs.ts'] },
+    'theme-init': { import: './src/js/themeInit.ts', filename: 'js/theme-init.js' },
+    'search-init': { import: './src/js/searchInit.ts', filename: 'js/search-init.js' },
   },
 
   plugins: [
@@ -17,35 +17,46 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [{ from: 'static' }]
     }),
-    // Extract CSS into separate files
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),
   ],
 
-  // Emit the CDN assets (main.css/js, fonts, icons) and the copied static/ files
-  // into Kiln's content directory. Kiln then copies them verbatim into ./site on
-  // build — so webpack never writes into ./site directly (which Kiln wipes each
-  // build). The generated files under Content/ are git-ignored; only Content's
-  // source pages (index.md) are tracked.
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'Content'),
+    clean: { keep: /index\.md/ },
   },
 
-  // The bundle intentionally ships all of Bootstrap + highlight.js and is loaded
-  // once from the CDN by every site, so webpack's generic 244 KiB asset-size hint
-  // doesn't apply here.
   performance: { hints: false },
+
+  resolve: {
+    extensions: ['.ts', '.js'],
+    extensionAlias: {
+      '.js': ['.ts', '.js'],
+    },
+  },
 
   devServer: {
     static: path.resolve(__dirname, 'Content'),
     port: 8001,
-    hot: true
+    hot: true,
+    // Add CORS so we can test the sites with this running locally
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Cross-Origin-Resource-Policy': 'cross-origin',
+    },
   },
 
   module: {
     rules: [
+      // TypeScript handling
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: { compilerOptions: { noEmit: false } },
+      },
       // SVG handling
       {
         test: /\.svg$/,
@@ -71,9 +82,8 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              // Root-absolute url()s (e.g. /assets/heading-link.svg) are runtime
-              // server paths served by the consuming site, not build-time assets,
-              // so leave them untouched instead of trying to resolve a module.
+              // Root-absolute url()s (e.g. /assets/heading-link.svg) are assets copied over so don't need
+              // a URL rewrite
               url: { filter: (url) => !url.startsWith('/') },
             },
           },
@@ -92,13 +102,8 @@ module.exports = {
             options: {
               sourceMap: true,
               sassOptions: {
-                // Most build warnings come from Bootstrap's own SCSS (deprecated
-                // global colour functions, @import) which isn't ours to change —
-                // silence deprecations originating in dependencies.
+                // Shut bootstrap up
                 quietDeps: true,
-                // Our SCSS still uses @import (that's how Bootstrap shares its
-                // vars/mixins with the partials); silence the @import deprecation
-                // until a proper @use/@forward migration.
                 silenceDeprecations: ['import'],
               },
             },

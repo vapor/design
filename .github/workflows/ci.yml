@@ -31,11 +31,15 @@ jobs:
         uses: actions/checkout@v7
         with:
           token: ${{ steps.get-token.outputs.token }}
-      - name: Set up Node 
+      - name: Set up Node
         uses: actions/setup-node@v6
         with:
           node-version: 26
           cache: npm
+      - name: Install Swift
+        uses: vapor/swiftly-action@bedb227456c5f495afbef80baebee17a8a02cef4 # v0.2.1
+        with:
+          toolchain: latest
       - name: Set up CloudFormation Lint
         uses: ScottBrenner/cfn-lint-action@ed184e91f5085a2932501da8314e899e5e0ef5be # v2.7.1
       - name: Run CloudFormation Lint
@@ -44,6 +48,8 @@ jobs:
         run: npm ci
       - name: Build CDN assets (webpack → ./Content)
         run: npm run build
+      - name: Run Swift tests
+        run: swift test
       - name: Generate the site (Kiln, ./Content → ./site)
         run: swift run DesignSite
       - name: Deploy S3 Website
