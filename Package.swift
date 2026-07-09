@@ -13,10 +13,7 @@ let package = Package(
         .library(name: "VaporDesignTheme", targets: ["VaporDesignTheme"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.7.0"),
-        // LeafKit — so VaporDesignTheme can define its own Leaf tags (the
-        // `#designResource` asset-URL tag). Kept in lockstep with Kiln's own
-        // leaf-kit requirement so SwiftPM resolves a single version.
+        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.8.2"),
         .package(url: "https://github.com/vapor/leaf-kit.git", from: "1.14.0"),
     ],
     targets: [
