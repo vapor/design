@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables + Bootstrap mixins come from vapor/vapor (imported first in main.scss);
 // importing it here would re-emit the whole Bootstrap framework.
 //
@@ -137,14 +139,19 @@ $announce-overlay: rgba(10, 4, 20, 0.86);
     }
 }
 
-// The banner keeps its bright gradient in dark mode, so its CTA must keep the
-// LIGHT secondary-button treatment too. The default dark .btn-secondary is a
-// translucent white fill meant for the dark site surface (rgba(white, .05)),
-// which is nearly invisible and low-contrast on the gradient. The extra class
-// in the selector raises specificity past `.dark .btn-secondary`, which is
-// defined later in vapor-dark.scss.
+// Banner-specific CTA button for dark mode.
+//
+// In dark mode the CTA should read like the design system's dark secondary
+// button (a dark chip with a pink label) the way it looks elsewhere on the page.
+// The real `.dark .btn-secondary` fills with 5% white — that only reads as a
+// dark chip because it sits on the dark *site* background; over the banner's
+// bright gradient the same translucent fill washes out. So we composite that
+// exact tint onto the dark surface (mix(white, $grey-900, …)) to get an OPAQUE
+// equivalent that holds up on the gradient, and mirror the dark secondary's
+// pink label / border / hover. The extra class raises specificity past
+// `.dark .btn-secondary` (defined later, in vapor-dark.scss).
 .dark .vapor-announce .vapor-announce__cta {
-    background: $grey-200;
+    background: color.mix(white, $grey-900, 5%);
     border-color: rgba($pink-300, 0.1);
     color: $pink-300;
 
@@ -153,11 +160,12 @@ $announce-overlay: rgba(10, 4, 20, 0.86);
     }
 
     &:hover {
-        background: $grey-300;
-        color: $pink-400;
+        background: color.mix(white, $grey-900, 10%);
+        border-color: rgba($pink-300, 0.2);
+        color: $pink-200;
 
         .vapor-icon {
-            background-color: $pink-400;
+            background-color: $pink-200;
         }
     }
 }
