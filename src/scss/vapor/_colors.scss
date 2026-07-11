@@ -1,0 +1,72 @@
+// Shared colour palette — variables only, emits no CSS. Imported by the main
+// bundle (vapor.scss) and the docs bundle (docs.scss) so both draw syntax and
+// theme colours from one source (e.g. the DocC declaration tokens in _docc.scss
+// reuse the same $pink-*/$blue-* values as the highlight.js code blocks).
+$blue-500: #135b80;
+$blue-400: #1e92cc;
+$blue-300: #40c4ff;
+$blue-200: #a6e3ff;
+$blue-100: #e8f6fd;
+$pink-500: #701980;
+$pink-400: #b11fcc;
+$pink-300: #df3efb;
+$pink-200: #ea7efc;
+$pink-100: #f9ecfb;
+$grey-900: #141416;
+$grey-800: #373953;
+$grey-700: #666880;
+$grey-600: #8385a3;
+$grey-500: #9fa1bf;
+$grey-400: #c1c2d6;
+$grey-300: #dfe0eb;
+$grey-200: #f0f0f7;
+$grey-100: #fafafd;
+$off-black: #1c1c1f;
+$off-light-grey: #eaecf0;
+$off-black-2: #101828;
+// these colours are used in the code error blocks on the main page
+$code-error-sidebar-background-red: #b2235f1a;
+$code-explainer-title: #df3feb;
+$code-error-background: rgba(179, 35, 95, 0.21);
+// Light-purple border tint shared by the code blocks (syntax, dark mode) and
+// the code-error box — defined once so the rgb isn't repeated across files.
+$code-border-purple: #ddd6fe;
+$code-error-border: rgba($code-border-purple, 0.1);
+// Dark-mode code-error red (the sidebar/background tints in vapor-dark).
+$code-error-red: #801944;
+// these colours are used in code blocks
+$variable-blue: #3f6e74;
+$code-text-blue: #8194f7;
+$code-link-blue: #6699ff;
+$code-section-heading-red: #643820;
+$code-substring: #000;
+// Light-mode syntax token colours. The vibrant tokens above read fine on the
+// dark code background but fail WCAG AA on the near-white light code bg
+// (1.9–3.4:1). These darker, hue-preserving variants apply in light mode; the
+// `.dark` block restores the vibrant colours. (Tokens already dark enough —
+// string $pink-400, type $blue-500, attr $pink-500, variable — are unchanged.)
+$code-text-light: #3b3f8f;   // base text / operators (was #8194f7, 2.7:1 → 8.9:1)
+$code-title-light: #1b6fb3;  // titles / numbers (was #40c4ff, 1.9:1 → 5.2:1)
+$code-link-light: #2f54d4;   // regexp / links (was #6699ff, 2.7:1 → 6.1:1)
+$code-formula: #eee;
+$code-addition: #baeeba;
+$code-deletion: #ffc8bd;
+// Diff line text. The base code text (#8194f7) is far too light on the pale
+// add/remove backgrounds (≈2:1), so diff lines get their own readable text
+// colour per mode (all ≥7:1 vs their background — WCAG AA/AAA).
+// Light mode: dark green / dark red text on the pale bands.
+$code-addition-text: #0f5132;
+$code-deletion-text: #842029;
+// Dark mode: subtle dark green / red tinted bands (layered over the dark code
+// background) with light green / red text — keeps the git add/remove theme.
+$code-addition-dark-bg: rgba(63, 185, 80, 0.18);
+$code-deletion-dark-bg: rgba(248, 81, 73, 0.18);
+$code-addition-dark-text: #7ee787;
+$code-deletion-dark-text: #ffa198;
+$code-selector: #9b703f;
+// Bright blue for the code-block radial glow (syntax) and the main-site brand
+// "blurry-background" gradient.
+$gradient-blue: #23acf0;
+// Decorative "code outline" gradient on the main-site features section.
+$code-outline-grey: #94a8b2;
+$code-outline-light: #f6f7f7;
