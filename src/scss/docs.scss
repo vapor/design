@@ -4,5 +4,6 @@
 // (docs.vapor.codes, api.vapor.codes) — NOT the marketing sites, which load only
 // main.css. Both partials style Kiln's `.kiln-*` / `.docc-*` markup and lean on
 // the `--vp-*` design tokens defined in main.css.
+@import "vapor/colors";
 @import "docs/layout";
 @import "docs/docc";

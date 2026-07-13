@@ -10,17 +10,23 @@
  * intended to be extracted into the shared Vapor design system in Milestone 2.
  */
 
+// Syntax colours reuse the shared palette (vapor/_colors.scss) so DocC
+// declarations and highlight.js code blocks stay identical.
 :root {
     --docc-decl-bg: var(--vp-grey-100);
-    --docc-keyword: #ad3da4;
-    --docc-type: #3900a0;
+    --docc-keyword: #{$pink-500};
+    --docc-type: #{$blue-500};
+    --docc-string: #{$pink-400};
+    --docc-number: #{$code-title-light};
     --docc-param: var(--vp-grey-800);
 }
 
 html.dark {
-    --docc-decl-bg: #1c1c1f;
-    --docc-keyword: #ff7ab2;
-    --docc-type: #6bdfff;
+    --docc-decl-bg: var(--vp-off-black);
+    --docc-keyword: #{$pink-200};
+    --docc-type: #{$blue-200};
+    --docc-string: #{$pink-100};
+    --docc-number: #{$blue-300};
     --docc-param: var(--vp-grey-300);
 }
 
@@ -90,9 +96,9 @@ a.token-typeIdentifier:hover { text-decoration: underline; }
 .token-externalParam { color: var(--vp-text); font-weight: 600; }
 .token-internalParam,
 .token-genericParameter { color: var(--vp-text-muted); }
-.token-text,
-.token-number,
-.token-string { color: var(--vp-text); }
+.token-text { color: var(--vp-text); }
+.token-number { color: var(--docc-number); }
+.token-string { color: var(--docc-string); }
 
 /* ---- Parameters / possible values ---- */
 
