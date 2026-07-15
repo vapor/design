@@ -624,8 +624,8 @@ html.dark .dropdown-item:hover .nav-dropdown-container-title { color: #fff; }
 .kiln-search-empty { padding: 0.7rem 0.85rem; color: var(--vp-text-muted); font-size: 0.92rem; }
 .kiln-search-results a { display: block; padding: 0.5rem 0.7rem; border-radius: 8px; color: var(--vp-text); text-decoration: none; }
 .kiln-search-results a:hover, .kiln-search-results a.kiln-active { background: var(--vp-surface); color: var(--vp-link-hover); }
-.kiln-search-result-title { font-weight: 600; }
-.kiln-search-result-context { font-size: 0.85rem; color: var(--vp-text-muted); }
+.kiln-search-result-title { display: block; font-weight: 600; }
+.kiln-search-result-context { display: block; margin-top: 0.15rem; font-size: 0.85rem; color: var(--vp-text-muted); }
 
 /* Prerelease badge in the version dropdown */
 .kiln-badge {
