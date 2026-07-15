@@ -36,6 +36,16 @@ html.dark {
     margin-bottom: 1rem;
 }
 
+/* Optional module logo on a module landing page — a contained banner above the
+   title. Modules without one are unaffected. */
+.docc-module-image {
+    display: block;
+    height: auto;
+    max-height: 4rem;
+    max-width: 100%;
+    margin-bottom: 0.75rem;
+}
+
 .docc-eyebrow {
     margin: 0 0 0.25rem;
     font-size: 0.85rem;
@@ -412,6 +422,21 @@ a.docc-catalog-card:hover {
 }
 
 /* ---- Sidebar: DocC symbol tree ---- */
+
+/* Module-home header at the top of the tree — links back to the module landing
+   so a reader can return from any symbol without opening the module switcher. */
+.docc-nav-home {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    font-family: var(--vp-font-code, "Roboto Mono", monospace);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--vp-heading);
+    text-decoration: none;
+}
+
+.docc-nav-home:hover { color: var(--vp-link); }
 
 .docc-nav-list {
     list-style: none;
