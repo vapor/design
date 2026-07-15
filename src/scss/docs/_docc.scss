@@ -191,8 +191,6 @@ a.docc-symbol-link code { color: inherit; }
 .docc-relationships h2,
 .docc-default-implementations h2,
 .docc-see-also h2 {
-    border-bottom: 1px solid var(--vp-border);
-    padding-bottom: 0.35rem;
     margin-top: 2.5rem;
 }
 
@@ -268,8 +266,6 @@ a.docc-topic-link:hover { text-decoration: underline; }
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--vp-text-muted);
-    border-bottom: 1px solid var(--vp-border);
-    padding-bottom: 0.4rem;
     margin-bottom: 1.25rem;
 }
 
