@@ -36,6 +36,16 @@ html.dark {
     margin-bottom: 1rem;
 }
 
+/* Optional module logo on a module landing page — a contained banner above the
+   title. Modules without one are unaffected. */
+.docc-module-image {
+    display: block;
+    height: auto;
+    max-height: 4rem;
+    max-width: 100%;
+    margin-bottom: 0.75rem;
+}
+
 .docc-eyebrow {
     margin: 0 0 0.25rem;
     font-size: 0.85rem;
@@ -181,8 +191,6 @@ a.docc-symbol-link code { color: inherit; }
 .docc-relationships h2,
 .docc-default-implementations h2,
 .docc-see-also h2 {
-    border-bottom: 1px solid var(--vp-border);
-    padding-bottom: 0.35rem;
     margin-top: 2.5rem;
 }
 
@@ -258,8 +266,6 @@ a.docc-topic-link:hover { text-decoration: underline; }
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--vp-text-muted);
-    border-bottom: 1px solid var(--vp-border);
-    padding-bottom: 0.4rem;
     margin-bottom: 1.25rem;
 }
 
@@ -285,6 +291,9 @@ a.docc-catalog-card:hover {
     border-color: var(--vp-link);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    /* Cards signal hover via the border, not an underline (override the global
+       `.kiln-article a:hover` underline). */
+    text-decoration: none;
 }
 
 .docc-catalog-card-title {
@@ -298,6 +307,13 @@ a.docc-catalog-card:hover {
     font-size: 0.9rem;
     color: var(--vp-text-muted);
     line-height: 1.5;
+    transition: color 0.15s ease;
+}
+
+/* On hover the description brightens to the title colour (e.g. white in dark
+   mode) so the whole card reads as active. */
+a.docc-catalog-card:hover .docc-catalog-card-desc {
+    color: var(--vp-heading);
 }
 
 /* ---- Shared select (module + version switchers) ----
@@ -412,6 +428,21 @@ a.docc-catalog-card:hover {
 }
 
 /* ---- Sidebar: DocC symbol tree ---- */
+
+/* Module-home header at the top of the tree — links back to the module landing
+   so a reader can return from any symbol without opening the module switcher. */
+.docc-nav-home {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    font-family: var(--vp-font-code, "Roboto Mono", monospace);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--vp-heading);
+    text-decoration: none;
+}
+
+.docc-nav-home:hover { color: var(--vp-link); }
 
 .docc-nav-list {
     list-style: none;
