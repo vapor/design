@@ -69,6 +69,34 @@ html.dark {
     letter-spacing: -0.01em;
 }
 
+/* Platform-availability badges under a symbol title (iOS 13.0+, macOS 10.15+…). */
+.docc-availability {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+.docc-availability-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.6rem;
+    border: 1px solid var(--vp-border);
+    border-radius: 999px;
+    background: var(--vp-surface);
+    color: var(--vp-text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.docc-availability-flag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--vp-link);
+}
+.docc-availability-flag.is-deprecated { color: #e0a225; }
+
 .docc-abstract {
     font-size: 1.05rem;
     color: var(--vp-text);
@@ -484,6 +512,10 @@ a.docc-catalog-card:hover .docc-catalog-card-desc {
 /* Current page: blue text, no filled box. Nested items additionally get a blue
    guide bar (below); top-level ("heading") items are just recoloured. */
 .docc-nav-link.docc-current { color: var(--vp-link); }
+
+/* Deprecated symbols are struck through in the sidebar. */
+.docc-nav-deprecated > .docc-nav-link,
+.docc-nav-deprecated > .docc-nav-row > .docc-nav-link { text-decoration: line-through; }
 
 .docc-nav-group > summary {
     cursor: pointer;
