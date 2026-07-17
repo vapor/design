@@ -413,7 +413,8 @@ a.docc-catalog-card:hover .docc-catalog-card-desc {
 .docc-select-option.is-current { color: var(--vp-link); font-weight: 600; }
 
 .docc-select-badge,
-.docc-catalog-card-badge {
+.docc-catalog-card-badge,
+.kiln-search-result-badge {
     display: inline-block;
     margin-inline-start: 0.35rem;
     padding: 0.05rem 0.4rem;
