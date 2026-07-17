@@ -344,6 +344,59 @@ a.docc-catalog-card:hover .docc-catalog-card-desc {
     color: var(--vp-heading);
 }
 
+/* ---- @Links card grids (DocC's @Links directive, in discussion prose) ---- */
+
+.docc-link-cards {
+    display: grid;
+    gap: 1rem;
+    margin: 1.25rem 0;
+}
+.docc-link-cards--compactgrid,
+.docc-link-cards--detailedgrid {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+.docc-link-cards--list { grid-template-columns: 1fr; }
+
+.docc-link-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--vp-border);
+    border-radius: 12px;
+    background: var(--vp-content-bg);
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.docc-link-card:hover {
+    border-color: var(--vp-link);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+a.docc-link-card-title {
+    font-family: var(--vp-font-code, "Roboto Mono", monospace);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--vp-heading);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+a.docc-link-card-title:hover { text-decoration: none; }
+.docc-link-card-title code { background: none; padding: 0; }
+/* Stretch the title link over the whole card so it's fully clickable, while
+   leaving any links inside the abstract clickable above it. */
+a.docc-link-card-title::after { content: ""; position: absolute; inset: 0; }
+
+.docc-link-card-abstract {
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--vp-text-muted);
+    line-height: 1.5;
+}
+.docc-link-card-abstract p { margin: 0; }
+.docc-link-card-abstract a { position: relative; }
+
 /* ---- Shared select (module + version switchers) ----
  * A reusable pill dropdown. Sizes via .docc-select--module / --version.
  * Intended to move into the shared design-system component library. */
