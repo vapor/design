@@ -52,6 +52,19 @@ html.dark {
     font-weight: 600;
     color: var(--vp-text-muted);
 }
+/* Extended-module badge: which foreign module a cross-module extension extends. */
+.docc-extended-module {
+    display: inline-block;
+    margin-inline-start: 0.6rem;
+    padding: 0.05rem 0.5rem;
+    border-radius: 999px;
+    background: var(--vp-surface);
+    border: 1px solid var(--vp-border);
+    color: var(--vp-text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    vertical-align: middle;
+}
 
 .kiln-article .docc-header h1 {
     margin-top: 0;
