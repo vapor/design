@@ -52,6 +52,22 @@ html.dark {
     font-weight: 600;
     color: var(--vp-text-muted);
 }
+/* An extension's title links to where that type is canonically documented; it
+   should still read as a heading, not a link. */
+a.docc-canonical-type {
+    color: inherit;
+    text-decoration: none;
+}
+a.docc-canonical-type:hover {
+    color: var(--vp-link);
+    text-decoration: none;
+}
+a.docc-extended-module:hover {
+    color: var(--vp-link);
+    border-color: var(--vp-link);
+    text-decoration: none;
+}
+
 /* Extended-module badge: which foreign module a cross-module extension extends. */
 .docc-extended-module {
     display: inline-block;
