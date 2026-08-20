@@ -52,6 +52,35 @@ html.dark {
     font-weight: 600;
     color: var(--vp-text-muted);
 }
+/* An extension's title links to where that type is canonically documented; it
+   should still read as a heading, not a link. */
+a.docc-canonical-type {
+    color: inherit;
+    text-decoration: none;
+}
+a.docc-canonical-type:hover {
+    color: var(--vp-link);
+    text-decoration: none;
+}
+a.docc-extended-module:hover {
+    color: var(--vp-link);
+    border-color: var(--vp-link);
+    text-decoration: none;
+}
+
+/* Extended-module badge: which foreign module a cross-module extension extends. */
+.docc-extended-module {
+    display: inline-block;
+    margin-inline-start: 0.6rem;
+    padding: 0.05rem 0.5rem;
+    border-radius: 999px;
+    background: var(--vp-surface);
+    border: 1px solid var(--vp-border);
+    color: var(--vp-text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    vertical-align: middle;
+}
 
 .kiln-article .docc-header h1 {
     margin-top: 0;
@@ -68,6 +97,34 @@ html.dark {
     font-size: 1.9rem;
     letter-spacing: -0.01em;
 }
+
+/* Platform-availability badges under a symbol title (iOS 13.0+, macOS 10.15+…). */
+.docc-availability {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+.docc-availability-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.15rem 0.6rem;
+    border: 1px solid var(--vp-border);
+    border-radius: 999px;
+    background: var(--vp-surface);
+    color: var(--vp-text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.docc-availability-flag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--vp-link);
+}
+.docc-availability-flag.is-deprecated { color: #e0a225; }
 
 .docc-abstract {
     font-size: 1.05rem;
@@ -316,6 +373,59 @@ a.docc-catalog-card:hover .docc-catalog-card-desc {
     color: var(--vp-heading);
 }
 
+/* ---- @Links card grids (DocC's @Links directive, in discussion prose) ---- */
+
+.docc-link-cards {
+    display: grid;
+    gap: 1rem;
+    margin: 1.25rem 0;
+}
+.docc-link-cards--compactgrid,
+.docc-link-cards--detailedgrid {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+.docc-link-cards--list { grid-template-columns: 1fr; }
+
+.docc-link-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--vp-border);
+    border-radius: 12px;
+    background: var(--vp-content-bg);
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.docc-link-card:hover {
+    border-color: var(--vp-link);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+a.docc-link-card-title {
+    font-family: var(--vp-font-code, "Roboto Mono", monospace);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--vp-heading);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+a.docc-link-card-title:hover { text-decoration: none; }
+.docc-link-card-title code { background: none; padding: 0; }
+/* Stretch the title link over the whole card so it's fully clickable, while
+   leaving any links inside the abstract clickable above it. */
+a.docc-link-card-title::after { content: ""; position: absolute; inset: 0; }
+
+.docc-link-card-abstract {
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--vp-text-muted);
+    line-height: 1.5;
+}
+.docc-link-card-abstract p { margin: 0; }
+.docc-link-card-abstract a { position: relative; }
+
 /* ---- Shared select (module + version switchers) ----
  * A reusable pill dropdown. Sizes via .docc-select--module / --version.
  * Intended to move into the shared design-system component library. */
@@ -484,6 +594,10 @@ a.docc-catalog-card:hover .docc-catalog-card-desc {
 /* Current page: blue text, no filled box. Nested items additionally get a blue
    guide bar (below); top-level ("heading") items are just recoloured. */
 .docc-nav-link.docc-current { color: var(--vp-link); }
+
+/* Deprecated symbols are struck through in the sidebar. */
+.docc-nav-deprecated > .docc-nav-link,
+.docc-nav-deprecated > .docc-nav-row > .docc-nav-link { text-decoration: line-through; }
 
 .docc-nav-group > summary {
     cursor: pointer;
