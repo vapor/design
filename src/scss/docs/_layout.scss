@@ -468,6 +468,8 @@ html.dark .dropdown-item:hover .nav-dropdown-container-title { color: #fff; }
 }
 .admonition > :last-child { margin-bottom: 0; }
 .admonition.warning { border-inline-start-color: #e0a225; }
+.admonition.deprecated { border-inline-start-color: #e0a225; }
+.admonition.deprecated .admonition-title { color: #e0a225; }
 .admonition.note { border-inline-start-color: var(--vp-blue-300); }
 .admonition-title { font-weight: 700; margin: 0 0 0.4rem; color: var(--vp-heading); }
 .kiln-version-notice, .kiln-fallback { margin-bottom: 1.5rem; }

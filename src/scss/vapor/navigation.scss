@@ -185,8 +185,17 @@ footer {
 }
 
 @include media-breakpoint-down(lg) {
-    #documentation-navbar-chevron {
-        float: inline-end;
+    .vapor-navmenu #documentation-dropdown-link {
+        align-items: center;
+        column-gap: 0.5rem;
+    }
+
+    // Match the language picker's chevron in the larger mobile navigation row.
+    .vapor-navmenu #documentation-navbar-chevron {
+        width: 22px;
+        height: 22px;
+        margin-top: 0;
+        flex-shrink: 0;
     }
 }
 

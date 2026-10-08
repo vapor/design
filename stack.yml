@@ -89,6 +89,14 @@ Resources:
           OriginOverride: true
         CustomHeadersConfig:
           Items:
+            # Assets here have unversioned names (main.css, docs.css), and S3
+            # sets no Cache-Control — without this browsers fall back to
+            # heuristic caching and can hold a stale stylesheet for hours after
+            # a deploy. Override: false so per-object metadata still wins if a
+            # future hashed asset wants `immutable`.
+            - Header: Cache-Control
+              Value: 'public, max-age=300, must-revalidate'
+              Override: false
             - Header: Permissions-Policy
               Value: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
               Override: false
