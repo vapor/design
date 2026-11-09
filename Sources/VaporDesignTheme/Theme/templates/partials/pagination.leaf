@@ -1,5 +1,5 @@
 #if(hasMultiplePages):
-<nav aria-label="Pagination">
+<nav aria-label="#if(label):#(label)#else:Pagination#endif">
     <ul class="pagination justify-content-center">
         <li class="page-item me-auto#if(!hasPrevious): disabled#endif">
             #if(hasPrevious):

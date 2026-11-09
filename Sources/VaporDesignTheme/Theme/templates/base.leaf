@@ -20,7 +20,7 @@
         </a>
         #if(nav.moduleSwitcher):#unsafeHTML(nav.moduleSwitcher)#endif
         #if(nav.versionSwitcher):#unsafeHTML(nav.versionSwitcher)#endif
-        <nav class="kiln-nav" aria-label="Documentation navigation">
+        <nav class="kiln-nav" aria-label="#(strings.mainNavigation)">
             #if(nav.doccHTML):#unsafeHTML(nav.doccHTML)#else:#extend("partials/nav-tree", nav)#endif
         </nav>
         </div>
@@ -69,7 +69,7 @@
             #import("content")
             #endif
 
-            <nav class="kiln-page-nav" aria-label="Page navigation">
+            <nav class="kiln-page-nav" aria-label="#(strings.pageNavigation)">
                 #if(nav.previous):<a class="kiln-prev" href="#(nav.previous.url)"><span class="kiln-page-nav-label">#(strings.previousPage)</span><span class="kiln-page-nav-title">#(nav.previous.title)</span></a>#endif
                 #if(nav.next):<a class="kiln-next" href="#(nav.next.url)"><span class="kiln-page-nav-label">#(strings.nextPage)</span><span class="kiln-page-nav-title">#(nav.next.title)</span></a>#endif
             </nav>
@@ -79,10 +79,10 @@
 
         <aside class="kiln-toc">
             #if(page.hasTOC):
-            <div class="kiln-toc-inner">
+            <nav class="kiln-toc-inner" aria-label="#(strings.tableOfContentsNavigation)">
                 <p class="kiln-toc-title">#(strings.tableOfContentsTitle)</p>
                 #extend("partials/toc")
-            </div>
+            </nav>
             #endif
             #if(site.carbonAds):
             <div class="kiln-carbon" id="kiln-carbon" data-serve="#(site.carbonAds.serve)" data-placement="#(site.carbonAds.placement)"></div>

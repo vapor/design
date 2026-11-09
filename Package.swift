@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "VaporDesignTheme", targets: ["VaporDesignTheme"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.8.2"),
+        .package(url: "https://github.com/brokenhandsio/kiln.git", from: "1.11.0"),
         .package(url: "https://github.com/vapor/leaf-kit.git", from: "1.14.0"),
     ],
     targets: [
