@@ -538,6 +538,48 @@ a.docc-link-card-title::after { content: ""; position: absolute; inset: 0; }
     vertical-align: middle;
 }
 
+/* The owning module of a DocC symbol result — the "Module" badge's quieter
+   sibling: same uppercase label typography, neutral colours so it reads as
+   context rather than as a second claim on the eye. The code font is
+   deliberately avoided; uppercase mono sets too wide at this size. */
+.kiln-search-result-module {
+    display: inline-block;
+    margin-inline-start: 0.35rem;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--vp-text-muted);
+    background: var(--vp-surface);
+    border: 1px solid var(--vp-border);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* A result row fills with --vp-surface on hover/keyboard focus, so lift the
+   pill off it — otherwise only its border survives. */
+.kiln-search-results a:hover .kiln-search-result-module,
+.kiln-search-results a.kiln-active .kiln-search-result-module {
+    background: var(--vp-content-bg);
+}
+
+/* Query matches: Bootstrap's reboot gives <mark> a pale-yellow fill that sits
+   outside the palette, and inside the module pill it would stack a second fill
+   on the pill's own. Tint the matched text instead. */
+.kiln-search-result-title mark,
+.kiln-search-result-context mark {
+    padding: 0;
+    background: color-mix(in srgb, var(--vp-link) 22%, transparent);
+    color: inherit;
+    border-radius: 3px;
+}
+
+.kiln-search-result-module mark {
+    background: none;
+    color: var(--vp-link);
+}
 /* ---- Sidebar: DocC symbol tree ---- */
 
 /* Module-home header at the top of the tree — links back to the module landing
