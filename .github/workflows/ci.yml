@@ -54,7 +54,7 @@ jobs:
         run: swift run DesignSite
       - name: Deploy S3 Website
         if: ${{ github.event.pull_request.head.repo.full_name == 'vapor/design' }}
-        uses: brokenhandsio/s3-website-pr-action@6ebd9b622b4bb33358228571a50e05d375cbd4de # v3.1.0
+        uses: brokenhandsio/s3-website-pr-action@904a6412af330dc591004ca782ec9122c4380f6f # v3.1.1
         with:
           bucket-prefix: vapor-design-pulls
           folder-to-copy: "./site"
